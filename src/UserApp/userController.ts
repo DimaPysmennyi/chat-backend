@@ -15,9 +15,15 @@ async function authUser(req: Request, res: Response){
     res.json(result);
 }
 
+async function getUserByToken(req: Request, res: Response){
+    const result = await userService.getUserById(Number(res.locals.userId))
+    res.json(result);
+}
+
 const userController = {
     registerUser: registerUser,
-    authUser: authUser
+    authUser: authUser,
+    getUserByToken: getUserByToken
 }
 
 export default userController;

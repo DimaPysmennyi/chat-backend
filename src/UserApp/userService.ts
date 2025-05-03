@@ -1,4 +1,4 @@
-import { CreateUser, IError, ISuccess } from "./types";
+import { CreateUser, IError, ISuccess, User } from "./types";
 import { compare, hash } from 'bcrypt';
 import userRepository from "./userRepository";
 import { sign } from "jsonwebtoken";
@@ -37,9 +37,18 @@ async function authUser(email: string, password: string): Promise <IError | ISuc
     return {status: "success", data: token};
 }
 
+async function getUserById(id: number): Promise <IError | ISuccess<User>>{
+    const user = await userRepository.getUserById(id);
+    if (!user){
+        return {status: "error", message: "User not found"}
+    }
+    return {status: "success", data: user};
+}
+
 const userService = {
     registerUser: registerUser,
-    authUser: authUser
+    authUser: authUser,
+    getUserById: getUserById
 }
 
 export default userService;

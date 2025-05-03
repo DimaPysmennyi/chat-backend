@@ -6,6 +6,6 @@ const router = Router();
 
 router.post('/register', userController.registerUser);
 router.post('/login', userController.authUser);
-router.get('/me', authTokenMiddleware)
+router.get('/me', authTokenMiddleware, userController.getUserByToken);
 
 export default router;
