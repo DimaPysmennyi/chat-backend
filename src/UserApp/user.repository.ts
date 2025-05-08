@@ -1,7 +1,8 @@
 import { client } from "../client/client";
 import { Prisma } from "../generated";
-import { CreateUser } from "./types";
+import { CreateUser } from "./user.types";
 import { errors, IErrors } from "../config/errorCodes";
+
 
 async function findUserByEmail(email: string){
     try{
@@ -42,6 +43,13 @@ async function getUserById(id: number){
         const user = client.user.findUnique({
             where: {
                 id: id
+            },
+            select: {
+                id: true,
+                username: true,
+                email: true,
+                firstname: true,
+                lastname: true,
             }
         })
         return user;
@@ -55,10 +63,8 @@ async function getUserById(id: number){
     }
 }
 
-const userRepository = {
+export const userRepository = {
     findUserByEmail: findUserByEmail,
     registerUser: registerUser,
     getUserById: getUserById
 }
-
-export default userRepository

@@ -11,5 +11,13 @@ export interface ISuccess<T>{
     data: T
 }
 
-export type User = Prisma.UserGetPayload<{}>;
+export type User = Prisma.UserGetPayload<{
+    select: {
+        id: true,
+        email: true,
+        username: true,
+        firstname: true,
+        lastname: true,
+    }
+}>;
 export type CreateUser = Prisma.UserCreateInput;
