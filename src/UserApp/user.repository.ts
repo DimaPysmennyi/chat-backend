@@ -50,6 +50,7 @@ async function getUserById(id: number){
                 email: true,
                 firstname: true,
                 lastname: true,
+                posts: true
             }
         })
         return user;
@@ -63,8 +64,8 @@ async function getUserById(id: number){
     }
 }
 
-export const userRepository = {
-    findUserByEmail: findUserByEmail,
-    registerUser: registerUser,
-    getUserById: getUserById
+export const repository = {
+    findUserByEmail,
+    registerUser,
+    getUserById
 }

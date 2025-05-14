@@ -1,16 +1,5 @@
 import { Prisma } from "../generated";
 
-
-export interface IError{
-    status: string,
-    message: string
-}
-
-export interface ISuccess<T>{
-    status: string,
-    data: T
-}
-
 export type User = Prisma.UserGetPayload<{
     select: {
         id: true,
@@ -18,6 +7,7 @@ export type User = Prisma.UserGetPayload<{
         username: true,
         firstname: true,
         lastname: true,
+        posts: true,
     }
 }>;
 export type CreateUser = Prisma.UserCreateInput;

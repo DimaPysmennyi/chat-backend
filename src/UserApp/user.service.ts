@@ -1,21 +1,22 @@
-import { CreateUser, IError, ISuccess, User } from "./user.types";
+import { CreateUser, User } from "./user.types";
 import { compare, hash } from 'bcrypt';
-import { userRepository } from "./user.repository";
+import { repository } from "./user.repository";
 import { sign } from "jsonwebtoken";
 import { TOKEN } from '../config/token';
 import { createTransport } from 'nodemailer';
+import { IError, ISuccess } from "../types/types";
 
 const givenCodes = new Map<string, {code: string, expiresAt: number}>()
 
 async function registerUser(data: CreateUser): Promise <IError | ISuccess<string>>{
-    const user = await userRepository.findUserByEmail(data.email);
+    const user = await repository.findUserByEmail(data.email);
     if (user){
         return {status: "error", message: "User already exists"}
     }
 
     const hashedPassword = await hash(data.password, 10);
 
-    const registeredUser = await userRepository.registerUser({...data, password: hashedPassword});
+    const registeredUser = await repository.registerUser({...data, password: hashedPassword});
 
     if (!registeredUser){
         return {status: "error", message: "Registration failed"}
@@ -26,7 +27,7 @@ async function registerUser(data: CreateUser): Promise <IError | ISuccess<string
 }
 
 async function authUser(email: string, password: string): Promise <IError | ISuccess<string>>{
-    const user = await userRepository.findUserByEmail(email);
+    const user = await repository.findUserByEmail(email);
     if (!user){
         return {status: "error", message: "User does not exist"}
     }
@@ -41,7 +42,7 @@ async function authUser(email: string, password: string): Promise <IError | ISuc
 }
 
 async function getUserById(id: number): Promise <IError | ISuccess<User>>{
-    const user = await userRepository.getUserById(id);
+    const user = await repository.getUserById(id);
     if (!user){
         return {status: "error", message: "User not found"}
     }
@@ -102,11 +103,11 @@ function saveCode(email: string, code: string){
     givenCodes.set(email, {code, expiresAt})
 }
 
-export const userService = {
-    registerUser: registerUser,
-    authUser: authUser,
-    getUserById: getUserById,
-    sendCode: sendCode,
-    verifyCode: verifyCode,
-    saveCode: saveCode
+export const service = {
+    registerUser,
+    authUser,
+    getUserById,
+    sendCode,
+    verifyCode,
+    saveCode
 }
