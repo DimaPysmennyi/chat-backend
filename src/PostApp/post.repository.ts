@@ -1,6 +1,7 @@
 import { client } from "../client/client";
 import { errors, IErrors } from "../config/errorCodes";
 import { Prisma } from "../generated";
+import { handleError } from "../tools/handleError";
 import { CreatePost, UpdatePost } from "./post.types";
 
 async function getAllPosts(){
@@ -8,12 +9,7 @@ async function getAllPosts(){
         const posts = client.userPost.findMany({});
         return posts;
     } catch(error){
-        if (error instanceof Prisma.PrismaClientKnownRequestError){
-            if (error.code in Object.keys(errors)){
-                const errorKey: keyof IErrors = error.code
-                console.log(errors[errorKey])
-            }
-        }
+        handleError(error);
     }
 }
 
@@ -24,26 +20,18 @@ async function getPostById(id: number){
         })
         return post;
     } catch (error){
-        if (error instanceof Prisma.PrismaClientKnownRequestError){
-            if (error.code in Object.keys(errors)){
-                const errorKey: keyof IErrors = error.code
-                console.log(errors[errorKey])
-            }
-        }        
+        handleError(error);       
     }
 }
 
 async function createPost(data: CreatePost){
     try{
-        const post = client.userPost.create({data});
+        const post = client.userPost.create({
+            data: data
+        });
         return post;
     } catch (error){
-        if (error instanceof Prisma.PrismaClientKnownRequestError){
-            if (error.code in Object.keys(errors)){
-                const errorKey: keyof IErrors = error.code
-                console.log(errors[errorKey])
-            }
-        }        
+        handleError(error);       
     }
 }
 
@@ -54,12 +42,7 @@ async function updatePost(id: number, data: UpdatePost){
         })
         return post;
     } catch (error){
-        if (error instanceof Prisma.PrismaClientKnownRequestError){
-            if (error.code in Object.keys(errors)){
-                const errorKey: keyof IErrors = error.code
-                console.log(errors[errorKey])
-            }
-        }        
+        handleError(error);     
     }
 }
 
@@ -70,12 +53,7 @@ async function deletePost(id: number){
         })
         return post;
     } catch (error){
-        if (error instanceof Prisma.PrismaClientKnownRequestError){
-            if (error.code in Object.keys(errors)){
-                const errorKey: keyof IErrors = error.code
-                console.log(errors[errorKey])
-            }
-        }        
+        handleError(error);
     }
 }
 
