@@ -1,4 +1,4 @@
-import { CreateUser, User } from "./user.types";
+import { CreateUser, UpdateUser, User } from "./user.types";
 import { compare, hash } from 'bcrypt';
 import { repository } from "./user.repository";
 import { sign } from "jsonwebtoken";
@@ -43,6 +43,14 @@ async function authUser(email: string, password: string): Promise <IError | ISuc
 
 async function getUserById(id: number): Promise <IError | ISuccess<User>>{
     const user = await repository.getUserById(id);
+    if (!user){
+        return {status: "error", message: "User not found"}
+    }
+    return {status: "success", data: user};
+}
+
+async function updateUser(id: number, data: UpdateUser): Promise <IError | ISuccess<User>>{
+    const user = await repository.updateUser(id, data);
     if (!user){
         return {status: "error", message: "User not found"}
     }
@@ -107,6 +115,7 @@ export const service = {
     registerUser,
     authUser,
     getUserById,
+    updateUser,
     sendCode,
     verifyCode,
     saveCode

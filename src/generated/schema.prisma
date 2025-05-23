@@ -19,6 +19,8 @@ model User {
   firstname String?
   lastname  String?
   password  String
+  image     String?
+  birthdate DateTime?
   posts     UserPost[]
 }
 

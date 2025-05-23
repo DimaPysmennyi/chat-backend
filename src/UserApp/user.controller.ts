@@ -22,6 +22,12 @@ async function authUser(req: Request, res: Response){
     res.json(result);
 }
 
+async function updateUser(req: Request, res: Response){
+    const id = +req.params.id;
+    const result = await service.updateUser(id, req.body)
+    res.json(result);
+}
+
 async function getUserByToken(req: Request, res: Response){
     const result = await service.getUserById(Number(res.locals.userId))
     res.json(result);
@@ -37,6 +43,7 @@ async function sendCode(req: Request, res: Response){
 export const controller = {
     registerUser,
     authUser,
+    updateUser,
     getUserByToken,
     sendCode
 }

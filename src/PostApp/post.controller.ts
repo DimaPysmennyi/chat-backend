@@ -26,11 +26,16 @@ async function deletePost(req: Request, res: Response){
     res.json(result);
 }
 
+async function getPostsByUserId(req: Request, res: Response){
+    const result = await service.getPostsByUserId(+req.params.id);
+    res.json(result);
+}
 
 export const controller = {
     getAllPosts,
     getPostById,
     createPost,
     updatePost,
-    deletePost
+    deletePost,
+    getPostsByUserId
 }

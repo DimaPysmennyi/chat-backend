@@ -1,7 +1,8 @@
 import { client } from "../client/client";
 import { Prisma } from "../generated";
-import { CreateUser } from "./user.types";
+import { CreateUser, UpdateUser } from "./user.types";
 import { errors, IErrors } from "../config/errorCodes";
+import { handleError } from "../tools/handleError";
 
 
 async function findUserByEmail(email: string){
@@ -13,12 +14,7 @@ async function findUserByEmail(email: string){
         })
         return user;
     } catch(error){
-        if (error instanceof Prisma.PrismaClientKnownRequestError){
-            if (error.code in Object.keys(errors)){
-                const errorKey: keyof IErrors = error.code
-                console.log(errors[errorKey])
-            }
-        }
+        handleError(error);
     }
 }
 
@@ -29,12 +25,29 @@ async function registerUser(data: CreateUser){
         })
         return user
     } catch(error){
-        if (error instanceof Prisma.PrismaClientKnownRequestError){
-            if (error.code in Object.keys(errors)){
-                const errorKey: keyof IErrors = error.code
-                console.log(errors[errorKey])
+        handleError(error);
+    }
+}
+
+async function updateUser(id: number, data: UpdateUser){
+    try{
+        const user = client.user.update({
+            where: {id},
+            data: data,
+            select: {
+                id: true,
+                username: true,
+                email: true,
+                firstname: true,
+                lastname: true,
+                posts: true,
+                image: true,
+                birthdate: true
             }
-        }
+        })
+        return user
+    } catch(error){
+        handleError(error);
     }
 }
 
@@ -50,22 +63,20 @@ async function getUserById(id: number){
                 email: true,
                 firstname: true,
                 lastname: true,
-                posts: true
+                posts: true,
+                image: true,
+                birthdate: true
             }
         })
         return user;
     } catch (error){
-        if (error instanceof Prisma.PrismaClientKnownRequestError){
-            if (error.code in Object.keys(errors)){
-                const errorKey: keyof IErrors = error.code
-                console.log(errors[errorKey])
-            }
-        }        
+        handleError(error);     
     }
 }
 
 export const repository = {
     findUserByEmail,
     registerUser,
+    updateUser,
     getUserById
 }

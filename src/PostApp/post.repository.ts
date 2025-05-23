@@ -57,10 +57,22 @@ async function deletePost(id: number){
     }
 }
 
+async function getPostsByUserId(userId: number){
+    try{
+        const post = client.userPost.findMany({
+            where: {userId}
+        })
+        return post;
+    } catch (error){
+        handleError(error);
+    }
+}
+
 export const repository = {
     getAllPosts,
     getPostById,
     createPost,
     updatePost,
-    deletePost
+    deletePost,
+    getPostsByUserId
 }

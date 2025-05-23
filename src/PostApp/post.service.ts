@@ -48,10 +48,20 @@ async function deletePost(id: number): Promise <IError | ISuccess<Post>>{
     return {status: "success", data: post};
 }
 
+async function getPostsByUserId(id: number): Promise <IError | ISuccess<Post[]>>{
+    const posts = await repository.getPostsByUserId(id);
+    if (!posts){
+        return {status: "error", message: "Posts Not Found"}
+    }
+
+    return {status: "success", data: posts};
+}
+
 export const service = {
     getAllPosts,
     getPostById,
     createPost,
     updatePost,
-    deletePost
+    deletePost,
+    getPostsByUserId
 }
