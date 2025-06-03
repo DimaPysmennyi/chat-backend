@@ -10,6 +10,11 @@ async function findUserByEmail(email: string){
         const user = client.user.findUnique({
             where: {
                 email: email,
+            },
+            include: {
+                posts: true,
+                albums: true,
+                friends: true,
             }
         })
         return user;
@@ -41,6 +46,8 @@ async function updateUser(id: number, data: UpdateUser){
                 firstname: true,
                 lastname: true,
                 posts: true,
+                albums: true,
+                friends: true,
                 image: true,
                 birthdate: true
             }
@@ -64,6 +71,8 @@ async function getUserById(id: number){
                 firstname: true,
                 lastname: true,
                 posts: true,
+                friends: true,
+                albums: true,
                 image: true,
                 birthdate: true
             }

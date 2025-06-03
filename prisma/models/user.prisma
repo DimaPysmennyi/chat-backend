@@ -1,11 +1,14 @@
 model User {
-  id        Int        @id @default(autoincrement())
+  id        Int         @id @default(autoincrement())
   username  String?
-  email     String     @unique
+  email     String      @unique
   firstname String?
   lastname  String?
   password  String
   image     String?
-  birthdate DateTime?
+  birthdate String?
   posts     UserPost[]
+  albums    UserAlbum[]
+  friendOf  Friend[]    @relation(name: "FriendOf")
+  friends   Friend[]    @relation(name: "Friend")
 }

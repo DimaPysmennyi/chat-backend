@@ -8,6 +8,8 @@ export type User = Prisma.UserGetPayload<{
         firstname?: true,
         lastname?: true,
         posts: true,
+        albums: true,
+        friends: true,
         image?: true,
         birthdate?: true
     }

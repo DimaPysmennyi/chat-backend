@@ -1,0 +1,7 @@
+model Friend {
+  id           Int  @id @default(autoincrement())
+  friendUser   User @relation(fields: [friendUserId], references: [id], name: "Friend")
+  friendUserId Int
+  friendOf     User @relation(fields: [friendOfId], references: [id], name: "FriendOf")
+  friendOfId   Int
+}

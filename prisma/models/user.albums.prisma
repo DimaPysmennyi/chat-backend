@@ -1,0 +1,6 @@
+model UserAlbum {
+  id     Int    @id @default(autoincrement())
+  src    String
+  user   User   @relation(fields: [userId], references: [id])
+  userId Int
+}
