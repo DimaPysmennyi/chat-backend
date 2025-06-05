@@ -1,4 +1,4 @@
-import { CreateUser, UpdateUser, User } from "./user.types";
+import { Album, CreateAlbum, CreateFriend, CreateUser, Friend, UpdateUser, User } from "./user.types";
 import { compare, hash } from 'bcrypt';
 import { repository } from "./user.repository";
 import { sign } from "jsonwebtoken";
@@ -41,6 +41,46 @@ async function authUser(email: string, password: string): Promise <IError | ISuc
     return {status: "success", data: token};
 }
 
+async function getUserAlbums(id: number): Promise <IError | ISuccess<Album[]>>{
+    const result = await repository.getUserAlbums(id);
+    if (!result){
+        return {status: "error", message: "Albums not found"}
+    }
+    return {status: "success", data: result.albums}
+}
+
+async function getAllFriends(id: number): Promise <IError | ISuccess<Friend[]>>{
+    const result = await repository.getAllFriends(id);
+    if (!result){
+        return {status: "error", message: "Friends Not Found"}
+    }
+    return {status: "success", data: result.friends}
+}
+
+async function createAlbum(data: CreateAlbum): Promise <IError | ISuccess<Album>>{
+    const album = await repository.createAlbum(data);
+    if (!album){
+        return {status: "error", message: "Could not create album"}
+    }
+    return {status: "success", data: album}
+}
+
+async function addFriend(id: number, friendId: number): Promise <IError | ISuccess<Friend>>{
+    const friend = await repository.addFriend(id, friendId);
+    if (!friend){
+        return {status: "error", message: "Could not add friend"}
+    }
+    return {status: "success", data: friend}
+}
+
+async function deleteFriend(id: number, friendId: number): Promise <IError | ISuccess<Friend>>{
+    const friend = await repository.deleteFriend(id, friendId);
+    if (!friend){
+        return {status: "error", message: "Could not delete friend"}
+    }
+    return {status: "success", data: friend}
+}
+
 async function getUserById(id: number): Promise <IError | ISuccess<User>>{
     const user = await repository.getUserById(id);
     if (!user){
@@ -49,7 +89,7 @@ async function getUserById(id: number): Promise <IError | ISuccess<User>>{
     return {status: "success", data: user};
 }
 
-async function getAllUsers(){
+async function getAllUsers(): Promise <IError | ISuccess<User[]>>{
     const users = await repository.getAllUsers();
     if (!users){
         return {status: "error", message: "Users Not Found"}
@@ -119,6 +159,7 @@ function saveCode(email: string, code: string){
     givenCodes.set(email, {code, expiresAt})
 }
 
+
 export const service = {
     registerUser,
     authUser,
@@ -127,5 +168,10 @@ export const service = {
     updateUser,
     sendCode,
     verifyCode,
-    saveCode
+    saveCode,
+    getUserAlbums,
+    createAlbum,
+    getAllFriends,
+    addFriend,
+    deleteFriend
 }

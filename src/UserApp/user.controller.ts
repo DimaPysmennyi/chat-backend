@@ -51,6 +51,34 @@ async function sendCode(req: Request, res: Response){
     res.json(result);
 }
 
+async function getUserAlbums(req: Request, res: Response){
+    const result = await service.getUserAlbums(+res.locals.id);
+    res.json(result);
+}
+
+async function getAllFriends(req: Request, res: Response){
+    const result = await service.getAllFriends(+res.locals.id);
+    res.json(result);
+}
+
+async function createAlbum(req: Request, res: Response){
+    const data = req.body;
+    const result = await service.createAlbum(data);
+    res.json(result);
+}
+
+async function addFriend(req: Request, res: Response){
+    const data = req.body;
+    const result = await service.addFriend(+res.locals.id, +data.id);
+    res.json(result);
+}
+
+async function deleteFriend(req: Request, res: Response){
+    const data = req.body;
+    const result = await service.deleteFriend(+res.locals.id, +data.id);
+    res.json(result);
+}
+
 export const controller = {
     registerUser,
     authUser,
@@ -58,5 +86,10 @@ export const controller = {
     getAllUsers,
     updateUser,
     getUserByToken,
-    sendCode
+    sendCode,
+    getUserAlbums,
+    getAllFriends,
+    createAlbum,
+    addFriend,
+    deleteFriend
 }

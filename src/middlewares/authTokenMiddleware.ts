@@ -24,7 +24,7 @@ export function authTokenMiddleware(req: Request, res: Response, next: NextFunct
 
     try{
         const newToken = verify(token, TOKEN) as IToken;
-        // console.log(newToken);
+        console.log(newToken);
         res.locals.userId = newToken.id;
         next()
     } catch(error){

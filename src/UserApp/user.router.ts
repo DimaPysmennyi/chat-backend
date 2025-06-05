@@ -6,10 +6,16 @@ const router = Router();
 
 router.post('/register', controller.registerUser);
 router.post('/login', controller.authUser);
-router.post('/update/:id', controller.updateUser);
 router.post('/send-code', controller.sendCode);
 router.get('/me', authTokenMiddleware, controller.getUserByToken);
-router.get('/unique/:id', controller.getUserById);
 router.get('/all', controller.getAllUsers);
+router.get('/albums/:id', controller.getUserAlbums);
+router.get('/friends/:id', controller.getAllFriends);
+router.post('/update/:id', controller.updateUser);
+router.get('/unique/:id', controller.getUserById);
+router.post('/create-album/:id', controller.createAlbum);
+router.post('/add-friend/:id', controller.addFriend);
+router.post('/delete-friend/:id', controller.deleteFriend);
+
 
 export default router;

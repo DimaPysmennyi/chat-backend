@@ -15,5 +15,11 @@ export type User = Prisma.UserGetPayload<{
     }
 }>;
 
+export type Album = Prisma.UserAlbumGetPayload<{}>;
+export type Friend = Prisma.FriendGetPayload<{}>;
+
 export type CreateUser = Prisma.UserCreateInput;
+export type CreateAlbum = Prisma.UserAlbumCreateInput;
+export type CreateFriend = Prisma.FriendCreateInput;
+
 export type UpdateUser = Prisma.UserUpdateInput;
