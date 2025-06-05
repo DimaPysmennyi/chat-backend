@@ -49,6 +49,14 @@ async function getUserById(id: number): Promise <IError | ISuccess<User>>{
     return {status: "success", data: user};
 }
 
+async function getAllUsers(){
+    const users = await repository.getAllUsers();
+    if (!users){
+        return {status: "error", message: "Users Not Found"}
+    }
+    return {status: "success", data: users}
+}
+
 async function updateUser(id: number, data: UpdateUser): Promise <IError | ISuccess<User>>{
     const user = await repository.updateUser(id, data);
     if (!user){
@@ -115,6 +123,7 @@ export const service = {
     registerUser,
     authUser,
     getUserById,
+    getAllUsers,
     updateUser,
     sendCode,
     verifyCode,

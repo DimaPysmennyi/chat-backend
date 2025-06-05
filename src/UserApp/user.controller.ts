@@ -22,6 +22,17 @@ async function authUser(req: Request, res: Response){
     res.json(result);
 }
 
+async function getAllUsers(req: Request, res: Response){
+    const result = await service.getAllUsers();
+    res.json(result);
+}
+
+async function getUserById(req: Request, res: Response){
+    const id = +req.params.id;
+    const result = await service.getUserById(id);
+    res.json(result);
+}
+
 async function updateUser(req: Request, res: Response){
     const id = +req.params.id;
     const result = await service.updateUser(id, req.body)
@@ -43,6 +54,8 @@ async function sendCode(req: Request, res: Response){
 export const controller = {
     registerUser,
     authUser,
+    getUserById,
+    getAllUsers,
     updateUser,
     getUserByToken,
     sendCode

@@ -58,6 +58,29 @@ async function updateUser(id: number, data: UpdateUser){
     }
 }
 
+async function getAllUsers(){
+    try{
+        const users = client.user.findMany({
+            select: {
+                id: true,
+                username: true,
+                email: true,
+                firstname: true,
+                lastname: true,
+                posts: true,
+                friends: true,
+                albums: true,
+                image: true,
+                birthdate: true
+            }
+        });
+
+        return users;
+    } catch(error){
+        handleError(error);
+    }
+}
+
 async function getUserById(id: number){
     try{
         const user = client.user.findUnique({
@@ -86,6 +109,7 @@ async function getUserById(id: number){
 export const repository = {
     findUserByEmail,
     registerUser,
+    getAllUsers,
     updateUser,
     getUserById
 }
