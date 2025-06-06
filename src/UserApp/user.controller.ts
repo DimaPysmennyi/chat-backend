@@ -52,12 +52,13 @@ async function sendCode(req: Request, res: Response){
 }
 
 async function getUserAlbums(req: Request, res: Response){
-    const result = await service.getUserAlbums(+res.locals.id);
+    const result = await service.getUserAlbums(+req.params.id);
     res.json(result);
 }
 
 async function getAllFriends(req: Request, res: Response){
-    const result = await service.getAllFriends(+res.locals.id);
+    console.log(res.locals.id)
+    const result = await service.getAllFriends(Number(+req.params.id));
     res.json(result);
 }
 
@@ -69,13 +70,13 @@ async function createAlbum(req: Request, res: Response){
 
 async function addFriend(req: Request, res: Response){
     const data = req.body;
-    const result = await service.addFriend(+res.locals.id, +data.id);
+    const result = await service.addFriend(+req.params.id, +data.id);
     res.json(result);
 }
 
 async function deleteFriend(req: Request, res: Response){
     const data = req.body;
-    const result = await service.deleteFriend(+res.locals.id, +data.id);
+    const result = await service.deleteFriend(+req.params.id, +data.id);
     res.json(result);
 }
 

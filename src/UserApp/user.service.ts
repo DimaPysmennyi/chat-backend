@@ -49,12 +49,13 @@ async function getUserAlbums(id: number): Promise <IError | ISuccess<Album[]>>{
     return {status: "success", data: result.albums}
 }
 
-async function getAllFriends(id: number): Promise <IError | ISuccess<Friend[]>>{
+async function getAllFriends(id: number): Promise <IError | ISuccess<User[]>>{
+    // console.log(id);
     const result = await repository.getAllFriends(id);
     if (!result){
         return {status: "error", message: "Friends Not Found"}
     }
-    return {status: "success", data: result.friends}
+    return {status: "success", data: result}
 }
 
 async function createAlbum(data: CreateAlbum): Promise <IError | ISuccess<Album>>{

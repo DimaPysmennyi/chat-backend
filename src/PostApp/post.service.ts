@@ -1,4 +1,5 @@
 
+import { uploadImage } from "../tools/uploadImage";
 import { IError, ISuccess } from "../types/types";
 import { repository } from "./post.repository";
 import { CreatePost, Post, UpdatePost } from "./post.types";
@@ -25,6 +26,12 @@ async function createPost(data: CreatePost): Promise <IError | ISuccess<Post>>{
     const post = await repository.createPost(data);
     if (!post){
         return {status: "error", message: "Post did not create"}
+    }
+    let images = post.images?.split(" ");
+    if (images){
+        for (let image of images){
+            uploadImage(image);
+        }
     }
 
     return {status: "success", data: post};
