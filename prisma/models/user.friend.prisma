@@ -1,7 +1,8 @@
 model Friend {
-  id           Int  @id @default(autoincrement())
-  friendUser   User @relation(fields: [friendUserId], references: [id], name: "Friend")
-  friendUserId Int
-  friendOf     User @relation(fields: [friendOfId], references: [id], name: "FriendOf")
-  friendOfId   Int
+  id            Int   @id @default(autoincrement())
+  friendUserId  Int
+  friendOfId    Int
+  accepted      Boolean @default(false)
+  friendUser    User @relation(name: "Friend", fields: [friendUserId], references: [id])
+  friendOf      User @relation(name: "FriendOf", fields: [friendOfId], references: [id])
 }
