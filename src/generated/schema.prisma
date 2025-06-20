@@ -1,45 +1,103 @@
-model UserAlbum {
-  id     Int    @id @default(autoincrement())
-  src    String
-  user   User   @relation(fields: [userId], references: [id])
+model Album {
+  id           Int      @id @default(autoincrement())
+  name         String
+  createdAt    DateTime @default(now())
+  previewImage String?
+  userId       Int
+  shown        Boolean  @default(true)
+  topicId      Int?
+  user         User     @relation(fields: [userId], references: [id])
+  images       Image[]  @relation("AlbumImages")
+}
+
+model Avatar {
+  id     Int     @id @default(autoincrement())
+  image  String
   userId Int
+  active Boolean @default(true)
+  shown  Boolean @default(true)
+  user   User    @relation(fields: [userId], references: [id])
+}
+
+model ChatGroup {
+  id             Int           @id @default(autoincrement())
+  name           String
+  isPersonalChat Boolean       @default(false)
+  avatar         String?
+  adminId        Int
+  admin          User          @relation("GroupAdmin", fields: [adminId], references: [id])
+  members        User[]        @relation("GroupMembers")
+  messages       ChatMessage[]
+}
+
+model ChatMessage {
+  id            Int       @id @default(autoincrement())
+  content       String
+  sentAt        DateTime  @default(now())
+  attachedImage String?
+  authorId      Int
+  chatGroupId   Int
+  author        User      @relation("MessageAuthor", fields: [authorId], references: [id])
+  chatGroup     ChatGroup @relation(fields: [chatGroupId], references: [id])
 }
 
 model Friend {
-  id           Int  @id @default(autoincrement())
-  friendUser   User @relation(fields: [friendUserId], references: [id], name: "Friend")
+  id           Int     @id @default(autoincrement())
   friendUserId Int
-  friendOf     User @relation(fields: [friendOfId], references: [id], name: "FriendOf")
   friendOfId   Int
+  accepted     Boolean @default(false)
+  friendUser   User    @relation(name: "Friend", fields: [friendUserId], references: [id])
+  friendOf     User    @relation(name: "FriendOf", fields: [friendOfId], references: [id])
 }
 
-model UserPost {
-  id      Int     @id @default(autoincrement())
-  title   String
-  topic   String?
-  tags    String?
-  content String
-  links   String?
-  images  String?
-  views   Int     @default(0)
-  likes   Int     @default(0)
-  user    User    @relation(fields: [userId], references: [id])
-  userId  Int     @default(11)
+model Image {
+  id         Int      @id @default(autoincrement())
+  filename   String
+  url        String
+  uploadedAt DateTime @default(now())
+  posts      Post[]   @relation("PostImages")
+  albums     Album[]  @relation("AlbumImages")
+}
+
+model Link {
+  id     Int    @id @default(autoincrement())
+  url    String
+  postId Int
+  post   Post   @relation(fields: [postId], references: [id])
+}
+
+model Post {
+  id         Int     @id @default(autoincrement())
+  title      String
+  topic      String?
+  tags       String?
+  content    String
+  links      String?
+  views      Int     @default(0)
+  likes      Int     @default(0)
+  userId     Int
+  user       User    @relation(fields: [userId], references: [id])
+  postImages Image[] @relation("PostImages")
+  postLinks  Link[]
 }
 
 model User {
-  id        Int         @id @default(autoincrement())
-  username  String?
-  email     String      @unique
-  firstname String?
-  lastname  String?
-  password  String
-  image     String?
-  birthdate String?
-  posts     UserPost[]
-  albums    UserAlbum[]
-  friendOf  Friend[]    @relation(name: "FriendOf")
-  friends   Friend[]    @relation(name: "Friend")
+  id                 Int           @id @default(autoincrement())
+  username           String?
+  email              String        @unique
+  firstname          String?
+  lastname           String?
+  password           String
+  image              String?
+  birthdate          String?
+  posts              Post[]
+  albums             Album[]
+  friendOf           Friend[]      @relation(name: "FriendOf")
+  friends            Friend[]      @relation(name: "Friend")
+  avatars            Avatar[]
+  sentMessages       ChatMessage[] @relation("MessageAuthor")
+  chatGroups         ChatGroup[]   @relation("GroupMembers")
+  administeredGroups ChatGroup[]   @relation("GroupAdmin")
 }
 
 // This is your Prisma schema file,

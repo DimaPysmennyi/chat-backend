@@ -1,12 +1,10 @@
 import { client } from "../client/client";
-import { errors, IErrors } from "../config/errorCodes";
-import { Prisma } from "../generated";
 import { handleError } from "../tools/handleError";
 import { CreatePost, UpdatePost } from "./post.types";
 
 async function getAllPosts(){
     try{
-        const posts = client.userPost.findMany({});
+        const posts = client.post.findMany({});
         return posts;
     } catch(error){
         handleError(error);
@@ -15,7 +13,7 @@ async function getAllPosts(){
 
 async function getPostById(id: number){
     try{
-        const post = client.userPost.findUnique({
+        const post = client.post.findUnique({
             where: {id}
         })
         return post;
@@ -26,8 +24,12 @@ async function getPostById(id: number){
 
 async function createPost(data: CreatePost){
     try{
-        const post = client.userPost.create({
-            data: data
+        const post = client.post.create({
+            data: data,
+            include: {
+                postImages: true,
+                postLinks: true
+            }
         });
         return post;
     } catch (error){
@@ -37,7 +39,7 @@ async function createPost(data: CreatePost){
 
 async function updatePost(id: number, data: UpdatePost){
     try{
-        const post = client.userPost.update({
+        const post = client.post.update({
             where: {id}, data: data
         })
         return post;
@@ -48,7 +50,7 @@ async function updatePost(id: number, data: UpdatePost){
 
 async function deletePost(id: number){
     try{
-        const post = client.userPost.delete({
+        const post = client.post.delete({
             where: {id}
         })
         return post;
@@ -59,7 +61,7 @@ async function deletePost(id: number){
 
 async function getPostsByUserId(userId: number){
     try{
-        const post = client.userPost.findMany({
+        const post = client.post.findMany({
             where: {userId}
         })
         return post;

@@ -27,10 +27,10 @@ async function createPost(data: CreatePost): Promise <IError | ISuccess<Post>>{
     if (!post){
         return {status: "error", message: "Post did not create"}
     }
-    let images = post.images?.split(" ");
-    if (images){
-        for (let image of images){
-            uploadImage(image);
+
+    if (post.postImages){
+        for (let image of post.postImages){
+            uploadImage(image.filename);
         }
     }
 

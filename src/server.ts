@@ -5,7 +5,7 @@ import postRouter from './PostApp/post.router';
 
 const app = express()
 
-const HOST = "192.168.0.51";
+const HOST = "192.168.178.39";
 const PORT = 8000;
 
 app.set('json spaces', 2);

@@ -1,0 +1,8 @@
+model Image {
+  id         Int      @id @default(autoincrement())
+  filename   String
+  url        String
+  uploadedAt DateTime @default(now())
+  posts      Post[]   @relation("PostImages")
+  albums     Album[] @relation("AlbumImages")
+}

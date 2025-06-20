@@ -7,8 +7,8 @@ model User {
   password   String
   image      String?
   birthdate  String?
-  posts      UserPost[]
-  albums     UserAlbum[]
+  posts      Post[]
+  albums     Album[]
   friendOf   Friend[]  @relation(name: "FriendOf")
   friends    Friend[]  @relation(name: "Friend")
   avatars    Avatar[]

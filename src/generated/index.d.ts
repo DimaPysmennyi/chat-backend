@@ -14,20 +14,45 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model UserAlbum
+ * Model Album
  * 
  */
-export type UserAlbum = $Result.DefaultSelection<Prisma.$UserAlbumPayload>
+export type Album = $Result.DefaultSelection<Prisma.$AlbumPayload>
+/**
+ * Model Avatar
+ * 
+ */
+export type Avatar = $Result.DefaultSelection<Prisma.$AvatarPayload>
+/**
+ * Model ChatGroup
+ * 
+ */
+export type ChatGroup = $Result.DefaultSelection<Prisma.$ChatGroupPayload>
+/**
+ * Model ChatMessage
+ * 
+ */
+export type ChatMessage = $Result.DefaultSelection<Prisma.$ChatMessagePayload>
 /**
  * Model Friend
  * 
  */
 export type Friend = $Result.DefaultSelection<Prisma.$FriendPayload>
 /**
- * Model UserPost
+ * Model Image
  * 
  */
-export type UserPost = $Result.DefaultSelection<Prisma.$UserPostPayload>
+export type Image = $Result.DefaultSelection<Prisma.$ImagePayload>
+/**
+ * Model Link
+ * 
+ */
+export type Link = $Result.DefaultSelection<Prisma.$LinkPayload>
+/**
+ * Model Post
+ * 
+ */
+export type Post = $Result.DefaultSelection<Prisma.$PostPayload>
 /**
  * Model User
  * 
@@ -41,8 +66,8 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more UserAlbums
- * const userAlbums = await prisma.userAlbum.findMany()
+ * // Fetch zero or more Albums
+ * const albums = await prisma.album.findMany()
  * ```
  *
  *
@@ -62,8 +87,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more UserAlbums
-   * const userAlbums = await prisma.userAlbum.findMany()
+   * // Fetch zero or more Albums
+   * const albums = await prisma.album.findMany()
    * ```
    *
    *
@@ -160,14 +185,44 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.userAlbum`: Exposes CRUD operations for the **UserAlbum** model.
+   * `prisma.album`: Exposes CRUD operations for the **Album** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more UserAlbums
-    * const userAlbums = await prisma.userAlbum.findMany()
+    * // Fetch zero or more Albums
+    * const albums = await prisma.album.findMany()
     * ```
     */
-  get userAlbum(): Prisma.UserAlbumDelegate<ExtArgs, ClientOptions>;
+  get album(): Prisma.AlbumDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.avatar`: Exposes CRUD operations for the **Avatar** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Avatars
+    * const avatars = await prisma.avatar.findMany()
+    * ```
+    */
+  get avatar(): Prisma.AvatarDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.chatGroup`: Exposes CRUD operations for the **ChatGroup** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ChatGroups
+    * const chatGroups = await prisma.chatGroup.findMany()
+    * ```
+    */
+  get chatGroup(): Prisma.ChatGroupDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.chatMessage`: Exposes CRUD operations for the **ChatMessage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ChatMessages
+    * const chatMessages = await prisma.chatMessage.findMany()
+    * ```
+    */
+  get chatMessage(): Prisma.ChatMessageDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.friend`: Exposes CRUD operations for the **Friend** model.
@@ -180,14 +235,34 @@ export class PrismaClient<
   get friend(): Prisma.FriendDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.userPost`: Exposes CRUD operations for the **UserPost** model.
+   * `prisma.image`: Exposes CRUD operations for the **Image** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more UserPosts
-    * const userPosts = await prisma.userPost.findMany()
+    * // Fetch zero or more Images
+    * const images = await prisma.image.findMany()
     * ```
     */
-  get userPost(): Prisma.UserPostDelegate<ExtArgs, ClientOptions>;
+  get image(): Prisma.ImageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.link`: Exposes CRUD operations for the **Link** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Links
+    * const links = await prisma.link.findMany()
+    * ```
+    */
+  get link(): Prisma.LinkDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.post`: Exposes CRUD operations for the **Post** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Posts
+    * const posts = await prisma.post.findMany()
+    * ```
+    */
+  get post(): Prisma.PostDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
@@ -256,8 +331,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.7.0
-   * Query Engine version: 3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
+   * Prisma Client JS version: 6.10.1
+   * Query Engine version: 9b628578b3b7cae625e8c927178f15a170e74a9c
    */
   export type PrismaVersion = {
     client: string
@@ -638,9 +713,14 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    UserAlbum: 'UserAlbum',
+    Album: 'Album',
+    Avatar: 'Avatar',
+    ChatGroup: 'ChatGroup',
+    ChatMessage: 'ChatMessage',
     Friend: 'Friend',
-    UserPost: 'UserPost',
+    Image: 'Image',
+    Link: 'Link',
+    Post: 'Post',
     User: 'User'
   };
 
@@ -660,81 +740,303 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "userAlbum" | "friend" | "userPost" | "user"
+      modelProps: "album" | "avatar" | "chatGroup" | "chatMessage" | "friend" | "image" | "link" | "post" | "user"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      UserAlbum: {
-        payload: Prisma.$UserAlbumPayload<ExtArgs>
-        fields: Prisma.UserAlbumFieldRefs
+      Album: {
+        payload: Prisma.$AlbumPayload<ExtArgs>
+        fields: Prisma.AlbumFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.UserAlbumFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserAlbumPayload> | null
+            args: Prisma.AlbumFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlbumPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.UserAlbumFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserAlbumPayload>
+            args: Prisma.AlbumFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlbumPayload>
           }
           findFirst: {
-            args: Prisma.UserAlbumFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserAlbumPayload> | null
+            args: Prisma.AlbumFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlbumPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.UserAlbumFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserAlbumPayload>
+            args: Prisma.AlbumFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlbumPayload>
           }
           findMany: {
-            args: Prisma.UserAlbumFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserAlbumPayload>[]
+            args: Prisma.AlbumFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlbumPayload>[]
           }
           create: {
-            args: Prisma.UserAlbumCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserAlbumPayload>
+            args: Prisma.AlbumCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlbumPayload>
           }
           createMany: {
-            args: Prisma.UserAlbumCreateManyArgs<ExtArgs>
+            args: Prisma.AlbumCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.UserAlbumCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserAlbumPayload>[]
+            args: Prisma.AlbumCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlbumPayload>[]
           }
           delete: {
-            args: Prisma.UserAlbumDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserAlbumPayload>
+            args: Prisma.AlbumDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlbumPayload>
           }
           update: {
-            args: Prisma.UserAlbumUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserAlbumPayload>
+            args: Prisma.AlbumUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlbumPayload>
           }
           deleteMany: {
-            args: Prisma.UserAlbumDeleteManyArgs<ExtArgs>
+            args: Prisma.AlbumDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.UserAlbumUpdateManyArgs<ExtArgs>
+            args: Prisma.AlbumUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.UserAlbumUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserAlbumPayload>[]
+            args: Prisma.AlbumUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlbumPayload>[]
           }
           upsert: {
-            args: Prisma.UserAlbumUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserAlbumPayload>
+            args: Prisma.AlbumUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlbumPayload>
           }
           aggregate: {
-            args: Prisma.UserAlbumAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateUserAlbum>
+            args: Prisma.AlbumAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAlbum>
           }
           groupBy: {
-            args: Prisma.UserAlbumGroupByArgs<ExtArgs>
-            result: $Utils.Optional<UserAlbumGroupByOutputType>[]
+            args: Prisma.AlbumGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AlbumGroupByOutputType>[]
           }
           count: {
-            args: Prisma.UserAlbumCountArgs<ExtArgs>
-            result: $Utils.Optional<UserAlbumCountAggregateOutputType> | number
+            args: Prisma.AlbumCountArgs<ExtArgs>
+            result: $Utils.Optional<AlbumCountAggregateOutputType> | number
+          }
+        }
+      }
+      Avatar: {
+        payload: Prisma.$AvatarPayload<ExtArgs>
+        fields: Prisma.AvatarFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AvatarFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvatarPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AvatarFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvatarPayload>
+          }
+          findFirst: {
+            args: Prisma.AvatarFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvatarPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AvatarFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvatarPayload>
+          }
+          findMany: {
+            args: Prisma.AvatarFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvatarPayload>[]
+          }
+          create: {
+            args: Prisma.AvatarCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvatarPayload>
+          }
+          createMany: {
+            args: Prisma.AvatarCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AvatarCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvatarPayload>[]
+          }
+          delete: {
+            args: Prisma.AvatarDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvatarPayload>
+          }
+          update: {
+            args: Prisma.AvatarUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvatarPayload>
+          }
+          deleteMany: {
+            args: Prisma.AvatarDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AvatarUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AvatarUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvatarPayload>[]
+          }
+          upsert: {
+            args: Prisma.AvatarUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvatarPayload>
+          }
+          aggregate: {
+            args: Prisma.AvatarAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAvatar>
+          }
+          groupBy: {
+            args: Prisma.AvatarGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AvatarGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AvatarCountArgs<ExtArgs>
+            result: $Utils.Optional<AvatarCountAggregateOutputType> | number
+          }
+        }
+      }
+      ChatGroup: {
+        payload: Prisma.$ChatGroupPayload<ExtArgs>
+        fields: Prisma.ChatGroupFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ChatGroupFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatGroupPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ChatGroupFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatGroupPayload>
+          }
+          findFirst: {
+            args: Prisma.ChatGroupFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatGroupPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ChatGroupFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatGroupPayload>
+          }
+          findMany: {
+            args: Prisma.ChatGroupFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatGroupPayload>[]
+          }
+          create: {
+            args: Prisma.ChatGroupCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatGroupPayload>
+          }
+          createMany: {
+            args: Prisma.ChatGroupCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ChatGroupCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatGroupPayload>[]
+          }
+          delete: {
+            args: Prisma.ChatGroupDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatGroupPayload>
+          }
+          update: {
+            args: Prisma.ChatGroupUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatGroupPayload>
+          }
+          deleteMany: {
+            args: Prisma.ChatGroupDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ChatGroupUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ChatGroupUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatGroupPayload>[]
+          }
+          upsert: {
+            args: Prisma.ChatGroupUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatGroupPayload>
+          }
+          aggregate: {
+            args: Prisma.ChatGroupAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateChatGroup>
+          }
+          groupBy: {
+            args: Prisma.ChatGroupGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ChatGroupGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ChatGroupCountArgs<ExtArgs>
+            result: $Utils.Optional<ChatGroupCountAggregateOutputType> | number
+          }
+        }
+      }
+      ChatMessage: {
+        payload: Prisma.$ChatMessagePayload<ExtArgs>
+        fields: Prisma.ChatMessageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ChatMessageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatMessagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ChatMessageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatMessagePayload>
+          }
+          findFirst: {
+            args: Prisma.ChatMessageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatMessagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ChatMessageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatMessagePayload>
+          }
+          findMany: {
+            args: Prisma.ChatMessageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatMessagePayload>[]
+          }
+          create: {
+            args: Prisma.ChatMessageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatMessagePayload>
+          }
+          createMany: {
+            args: Prisma.ChatMessageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ChatMessageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatMessagePayload>[]
+          }
+          delete: {
+            args: Prisma.ChatMessageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatMessagePayload>
+          }
+          update: {
+            args: Prisma.ChatMessageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatMessagePayload>
+          }
+          deleteMany: {
+            args: Prisma.ChatMessageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ChatMessageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ChatMessageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatMessagePayload>[]
+          }
+          upsert: {
+            args: Prisma.ChatMessageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatMessagePayload>
+          }
+          aggregate: {
+            args: Prisma.ChatMessageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateChatMessage>
+          }
+          groupBy: {
+            args: Prisma.ChatMessageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ChatMessageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ChatMessageCountArgs<ExtArgs>
+            result: $Utils.Optional<ChatMessageCountAggregateOutputType> | number
           }
         }
       }
@@ -812,77 +1114,225 @@ export namespace Prisma {
           }
         }
       }
-      UserPost: {
-        payload: Prisma.$UserPostPayload<ExtArgs>
-        fields: Prisma.UserPostFieldRefs
+      Image: {
+        payload: Prisma.$ImagePayload<ExtArgs>
+        fields: Prisma.ImageFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.UserPostFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPostPayload> | null
+            args: Prisma.ImageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.UserPostFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPostPayload>
+            args: Prisma.ImageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
           }
           findFirst: {
-            args: Prisma.UserPostFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPostPayload> | null
+            args: Prisma.ImageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.UserPostFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPostPayload>
+            args: Prisma.ImageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
           }
           findMany: {
-            args: Prisma.UserPostFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPostPayload>[]
+            args: Prisma.ImageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>[]
           }
           create: {
-            args: Prisma.UserPostCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPostPayload>
+            args: Prisma.ImageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
           }
           createMany: {
-            args: Prisma.UserPostCreateManyArgs<ExtArgs>
+            args: Prisma.ImageCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.UserPostCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPostPayload>[]
+            args: Prisma.ImageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>[]
           }
           delete: {
-            args: Prisma.UserPostDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPostPayload>
+            args: Prisma.ImageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
           }
           update: {
-            args: Prisma.UserPostUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPostPayload>
+            args: Prisma.ImageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
           }
           deleteMany: {
-            args: Prisma.UserPostDeleteManyArgs<ExtArgs>
+            args: Prisma.ImageDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.UserPostUpdateManyArgs<ExtArgs>
+            args: Prisma.ImageUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.UserPostUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPostPayload>[]
+            args: Prisma.ImageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>[]
           }
           upsert: {
-            args: Prisma.UserPostUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPostPayload>
+            args: Prisma.ImageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
           }
           aggregate: {
-            args: Prisma.UserPostAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateUserPost>
+            args: Prisma.ImageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateImage>
           }
           groupBy: {
-            args: Prisma.UserPostGroupByArgs<ExtArgs>
-            result: $Utils.Optional<UserPostGroupByOutputType>[]
+            args: Prisma.ImageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ImageGroupByOutputType>[]
           }
           count: {
-            args: Prisma.UserPostCountArgs<ExtArgs>
-            result: $Utils.Optional<UserPostCountAggregateOutputType> | number
+            args: Prisma.ImageCountArgs<ExtArgs>
+            result: $Utils.Optional<ImageCountAggregateOutputType> | number
+          }
+        }
+      }
+      Link: {
+        payload: Prisma.$LinkPayload<ExtArgs>
+        fields: Prisma.LinkFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LinkFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinkPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LinkFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinkPayload>
+          }
+          findFirst: {
+            args: Prisma.LinkFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinkPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LinkFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinkPayload>
+          }
+          findMany: {
+            args: Prisma.LinkFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinkPayload>[]
+          }
+          create: {
+            args: Prisma.LinkCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinkPayload>
+          }
+          createMany: {
+            args: Prisma.LinkCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.LinkCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinkPayload>[]
+          }
+          delete: {
+            args: Prisma.LinkDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinkPayload>
+          }
+          update: {
+            args: Prisma.LinkUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinkPayload>
+          }
+          deleteMany: {
+            args: Prisma.LinkDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LinkUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.LinkUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinkPayload>[]
+          }
+          upsert: {
+            args: Prisma.LinkUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinkPayload>
+          }
+          aggregate: {
+            args: Prisma.LinkAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLink>
+          }
+          groupBy: {
+            args: Prisma.LinkGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LinkGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.LinkCountArgs<ExtArgs>
+            result: $Utils.Optional<LinkCountAggregateOutputType> | number
+          }
+        }
+      }
+      Post: {
+        payload: Prisma.$PostPayload<ExtArgs>
+        fields: Prisma.PostFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PostFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PostFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>
+          }
+          findFirst: {
+            args: Prisma.PostFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PostFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>
+          }
+          findMany: {
+            args: Prisma.PostFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>[]
+          }
+          create: {
+            args: Prisma.PostCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>
+          }
+          createMany: {
+            args: Prisma.PostCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PostCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>[]
+          }
+          delete: {
+            args: Prisma.PostDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>
+          }
+          update: {
+            args: Prisma.PostUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>
+          }
+          deleteMany: {
+            args: Prisma.PostDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PostUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PostUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>[]
+          }
+          upsert: {
+            args: Prisma.PostUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>
+          }
+          aggregate: {
+            args: Prisma.PostAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePost>
+          }
+          groupBy: {
+            args: Prisma.PostGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PostGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PostCountArgs<ExtArgs>
+            result: $Utils.Optional<PostCountAggregateOutputType> | number
           }
         }
       }
@@ -1044,9 +1494,14 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
-    userAlbum?: UserAlbumOmit
+    album?: AlbumOmit
+    avatar?: AvatarOmit
+    chatGroup?: ChatGroupOmit
+    chatMessage?: ChatMessageOmit
     friend?: FriendOmit
-    userPost?: UserPostOmit
+    image?: ImageOmit
+    link?: LinkOmit
+    post?: PostOmit
     user?: UserOmit
   }
 
@@ -1138,6 +1593,157 @@ export namespace Prisma {
 
 
   /**
+   * Count Type AlbumCountOutputType
+   */
+
+  export type AlbumCountOutputType = {
+    images: number
+  }
+
+  export type AlbumCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    images?: boolean | AlbumCountOutputTypeCountImagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * AlbumCountOutputType without action
+   */
+  export type AlbumCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AlbumCountOutputType
+     */
+    select?: AlbumCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * AlbumCountOutputType without action
+   */
+  export type AlbumCountOutputTypeCountImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ImageWhereInput
+  }
+
+
+  /**
+   * Count Type ChatGroupCountOutputType
+   */
+
+  export type ChatGroupCountOutputType = {
+    members: number
+    messages: number
+  }
+
+  export type ChatGroupCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    members?: boolean | ChatGroupCountOutputTypeCountMembersArgs
+    messages?: boolean | ChatGroupCountOutputTypeCountMessagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ChatGroupCountOutputType without action
+   */
+  export type ChatGroupCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatGroupCountOutputType
+     */
+    select?: ChatGroupCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ChatGroupCountOutputType without action
+   */
+  export type ChatGroupCountOutputTypeCountMembersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserWhereInput
+  }
+
+  /**
+   * ChatGroupCountOutputType without action
+   */
+  export type ChatGroupCountOutputTypeCountMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ChatMessageWhereInput
+  }
+
+
+  /**
+   * Count Type ImageCountOutputType
+   */
+
+  export type ImageCountOutputType = {
+    posts: number
+    albums: number
+  }
+
+  export type ImageCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    posts?: boolean | ImageCountOutputTypeCountPostsArgs
+    albums?: boolean | ImageCountOutputTypeCountAlbumsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ImageCountOutputType without action
+   */
+  export type ImageCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImageCountOutputType
+     */
+    select?: ImageCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ImageCountOutputType without action
+   */
+  export type ImageCountOutputTypeCountPostsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PostWhereInput
+  }
+
+  /**
+   * ImageCountOutputType without action
+   */
+  export type ImageCountOutputTypeCountAlbumsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AlbumWhereInput
+  }
+
+
+  /**
+   * Count Type PostCountOutputType
+   */
+
+  export type PostCountOutputType = {
+    postImages: number
+    postLinks: number
+  }
+
+  export type PostCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    postImages?: boolean | PostCountOutputTypeCountPostImagesArgs
+    postLinks?: boolean | PostCountOutputTypeCountPostLinksArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PostCountOutputType without action
+   */
+  export type PostCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostCountOutputType
+     */
+    select?: PostCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PostCountOutputType without action
+   */
+  export type PostCountOutputTypeCountPostImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ImageWhereInput
+  }
+
+  /**
+   * PostCountOutputType without action
+   */
+  export type PostCountOutputTypeCountPostLinksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LinkWhereInput
+  }
+
+
+  /**
    * Count Type UserCountOutputType
    */
 
@@ -1146,6 +1752,10 @@ export namespace Prisma {
     albums: number
     friendOf: number
     friends: number
+    avatars: number
+    sentMessages: number
+    chatGroups: number
+    administeredGroups: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1153,6 +1763,10 @@ export namespace Prisma {
     albums?: boolean | UserCountOutputTypeCountAlbumsArgs
     friendOf?: boolean | UserCountOutputTypeCountFriendOfArgs
     friends?: boolean | UserCountOutputTypeCountFriendsArgs
+    avatars?: boolean | UserCountOutputTypeCountAvatarsArgs
+    sentMessages?: boolean | UserCountOutputTypeCountSentMessagesArgs
+    chatGroups?: boolean | UserCountOutputTypeCountChatGroupsArgs
+    administeredGroups?: boolean | UserCountOutputTypeCountAdministeredGroupsArgs
   }
 
   // Custom InputTypes
@@ -1170,14 +1784,14 @@ export namespace Prisma {
    * UserCountOutputType without action
    */
   export type UserCountOutputTypeCountPostsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserPostWhereInput
+    where?: PostWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
   export type UserCountOutputTypeCountAlbumsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserAlbumWhereInput
+    where?: AlbumWhereInput
   }
 
   /**
@@ -1194,370 +1808,455 @@ export namespace Prisma {
     where?: FriendWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAvatarsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AvatarWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountSentMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ChatMessageWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountChatGroupsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ChatGroupWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAdministeredGroupsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ChatGroupWhereInput
+  }
+
 
   /**
    * Models
    */
 
   /**
-   * Model UserAlbum
+   * Model Album
    */
 
-  export type AggregateUserAlbum = {
-    _count: UserAlbumCountAggregateOutputType | null
-    _avg: UserAlbumAvgAggregateOutputType | null
-    _sum: UserAlbumSumAggregateOutputType | null
-    _min: UserAlbumMinAggregateOutputType | null
-    _max: UserAlbumMaxAggregateOutputType | null
+  export type AggregateAlbum = {
+    _count: AlbumCountAggregateOutputType | null
+    _avg: AlbumAvgAggregateOutputType | null
+    _sum: AlbumSumAggregateOutputType | null
+    _min: AlbumMinAggregateOutputType | null
+    _max: AlbumMaxAggregateOutputType | null
   }
 
-  export type UserAlbumAvgAggregateOutputType = {
+  export type AlbumAvgAggregateOutputType = {
     id: number | null
     userId: number | null
+    topicId: number | null
   }
 
-  export type UserAlbumSumAggregateOutputType = {
+  export type AlbumSumAggregateOutputType = {
     id: number | null
     userId: number | null
+    topicId: number | null
   }
 
-  export type UserAlbumMinAggregateOutputType = {
+  export type AlbumMinAggregateOutputType = {
     id: number | null
-    src: string | null
+    name: string | null
+    createdAt: Date | null
+    previewImage: string | null
     userId: number | null
+    shown: boolean | null
+    topicId: number | null
   }
 
-  export type UserAlbumMaxAggregateOutputType = {
+  export type AlbumMaxAggregateOutputType = {
     id: number | null
-    src: string | null
+    name: string | null
+    createdAt: Date | null
+    previewImage: string | null
     userId: number | null
+    shown: boolean | null
+    topicId: number | null
   }
 
-  export type UserAlbumCountAggregateOutputType = {
+  export type AlbumCountAggregateOutputType = {
     id: number
-    src: number
+    name: number
+    createdAt: number
+    previewImage: number
     userId: number
+    shown: number
+    topicId: number
     _all: number
   }
 
 
-  export type UserAlbumAvgAggregateInputType = {
+  export type AlbumAvgAggregateInputType = {
     id?: true
     userId?: true
+    topicId?: true
   }
 
-  export type UserAlbumSumAggregateInputType = {
+  export type AlbumSumAggregateInputType = {
     id?: true
     userId?: true
+    topicId?: true
   }
 
-  export type UserAlbumMinAggregateInputType = {
+  export type AlbumMinAggregateInputType = {
     id?: true
-    src?: true
+    name?: true
+    createdAt?: true
+    previewImage?: true
     userId?: true
+    shown?: true
+    topicId?: true
   }
 
-  export type UserAlbumMaxAggregateInputType = {
+  export type AlbumMaxAggregateInputType = {
     id?: true
-    src?: true
+    name?: true
+    createdAt?: true
+    previewImage?: true
     userId?: true
+    shown?: true
+    topicId?: true
   }
 
-  export type UserAlbumCountAggregateInputType = {
+  export type AlbumCountAggregateInputType = {
     id?: true
-    src?: true
+    name?: true
+    createdAt?: true
+    previewImage?: true
     userId?: true
+    shown?: true
+    topicId?: true
     _all?: true
   }
 
-  export type UserAlbumAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlbumAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which UserAlbum to aggregate.
+     * Filter which Album to aggregate.
      */
-    where?: UserAlbumWhereInput
+    where?: AlbumWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserAlbums to fetch.
+     * Determine the order of Albums to fetch.
      */
-    orderBy?: UserAlbumOrderByWithRelationInput | UserAlbumOrderByWithRelationInput[]
+    orderBy?: AlbumOrderByWithRelationInput | AlbumOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: UserAlbumWhereUniqueInput
+    cursor?: AlbumWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserAlbums from the position of the cursor.
+     * Take `±n` Albums from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserAlbums.
+     * Skip the first `n` Albums.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned UserAlbums
+     * Count returned Albums
     **/
-    _count?: true | UserAlbumCountAggregateInputType
+    _count?: true | AlbumCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: UserAlbumAvgAggregateInputType
+    _avg?: AlbumAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: UserAlbumSumAggregateInputType
+    _sum?: AlbumSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: UserAlbumMinAggregateInputType
+    _min?: AlbumMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: UserAlbumMaxAggregateInputType
+    _max?: AlbumMaxAggregateInputType
   }
 
-  export type GetUserAlbumAggregateType<T extends UserAlbumAggregateArgs> = {
-        [P in keyof T & keyof AggregateUserAlbum]: P extends '_count' | 'count'
+  export type GetAlbumAggregateType<T extends AlbumAggregateArgs> = {
+        [P in keyof T & keyof AggregateAlbum]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateUserAlbum[P]>
-      : GetScalarType<T[P], AggregateUserAlbum[P]>
+        : GetScalarType<T[P], AggregateAlbum[P]>
+      : GetScalarType<T[P], AggregateAlbum[P]>
   }
 
 
 
 
-  export type UserAlbumGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserAlbumWhereInput
-    orderBy?: UserAlbumOrderByWithAggregationInput | UserAlbumOrderByWithAggregationInput[]
-    by: UserAlbumScalarFieldEnum[] | UserAlbumScalarFieldEnum
-    having?: UserAlbumScalarWhereWithAggregatesInput
+  export type AlbumGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AlbumWhereInput
+    orderBy?: AlbumOrderByWithAggregationInput | AlbumOrderByWithAggregationInput[]
+    by: AlbumScalarFieldEnum[] | AlbumScalarFieldEnum
+    having?: AlbumScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: UserAlbumCountAggregateInputType | true
-    _avg?: UserAlbumAvgAggregateInputType
-    _sum?: UserAlbumSumAggregateInputType
-    _min?: UserAlbumMinAggregateInputType
-    _max?: UserAlbumMaxAggregateInputType
+    _count?: AlbumCountAggregateInputType | true
+    _avg?: AlbumAvgAggregateInputType
+    _sum?: AlbumSumAggregateInputType
+    _min?: AlbumMinAggregateInputType
+    _max?: AlbumMaxAggregateInputType
   }
 
-  export type UserAlbumGroupByOutputType = {
+  export type AlbumGroupByOutputType = {
     id: number
-    src: string
+    name: string
+    createdAt: Date
+    previewImage: string | null
     userId: number
-    _count: UserAlbumCountAggregateOutputType | null
-    _avg: UserAlbumAvgAggregateOutputType | null
-    _sum: UserAlbumSumAggregateOutputType | null
-    _min: UserAlbumMinAggregateOutputType | null
-    _max: UserAlbumMaxAggregateOutputType | null
+    shown: boolean
+    topicId: number | null
+    _count: AlbumCountAggregateOutputType | null
+    _avg: AlbumAvgAggregateOutputType | null
+    _sum: AlbumSumAggregateOutputType | null
+    _min: AlbumMinAggregateOutputType | null
+    _max: AlbumMaxAggregateOutputType | null
   }
 
-  type GetUserAlbumGroupByPayload<T extends UserAlbumGroupByArgs> = Prisma.PrismaPromise<
+  type GetAlbumGroupByPayload<T extends AlbumGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<UserAlbumGroupByOutputType, T['by']> &
+      PickEnumerable<AlbumGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof UserAlbumGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof AlbumGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], UserAlbumGroupByOutputType[P]>
-            : GetScalarType<T[P], UserAlbumGroupByOutputType[P]>
+              : GetScalarType<T[P], AlbumGroupByOutputType[P]>
+            : GetScalarType<T[P], AlbumGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type UserAlbumSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AlbumSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    src?: boolean
+    name?: boolean
+    createdAt?: boolean
+    previewImage?: boolean
     userId?: boolean
+    shown?: boolean
+    topicId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userAlbum"]>
+    images?: boolean | Album$imagesArgs<ExtArgs>
+    _count?: boolean | AlbumCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["album"]>
 
-  export type UserAlbumSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AlbumSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    src?: boolean
+    name?: boolean
+    createdAt?: boolean
+    previewImage?: boolean
     userId?: boolean
+    shown?: boolean
+    topicId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userAlbum"]>
+  }, ExtArgs["result"]["album"]>
 
-  export type UserAlbumSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AlbumSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    src?: boolean
+    name?: boolean
+    createdAt?: boolean
+    previewImage?: boolean
     userId?: boolean
+    shown?: boolean
+    topicId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userAlbum"]>
+  }, ExtArgs["result"]["album"]>
 
-  export type UserAlbumSelectScalar = {
+  export type AlbumSelectScalar = {
     id?: boolean
-    src?: boolean
+    name?: boolean
+    createdAt?: boolean
+    previewImage?: boolean
     userId?: boolean
+    shown?: boolean
+    topicId?: boolean
   }
 
-  export type UserAlbumOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "src" | "userId", ExtArgs["result"]["userAlbum"]>
-  export type UserAlbumInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlbumOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "previewImage" | "userId" | "shown" | "topicId", ExtArgs["result"]["album"]>
+  export type AlbumInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    images?: boolean | Album$imagesArgs<ExtArgs>
+    _count?: boolean | AlbumCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type AlbumIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
-  export type UserAlbumIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type UserAlbumIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlbumIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
-  export type $UserAlbumPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "UserAlbum"
+  export type $AlbumPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Album"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
+      images: Prisma.$ImagePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      src: string
+      name: string
+      createdAt: Date
+      previewImage: string | null
       userId: number
-    }, ExtArgs["result"]["userAlbum"]>
+      shown: boolean
+      topicId: number | null
+    }, ExtArgs["result"]["album"]>
     composites: {}
   }
 
-  type UserAlbumGetPayload<S extends boolean | null | undefined | UserAlbumDefaultArgs> = $Result.GetResult<Prisma.$UserAlbumPayload, S>
+  type AlbumGetPayload<S extends boolean | null | undefined | AlbumDefaultArgs> = $Result.GetResult<Prisma.$AlbumPayload, S>
 
-  type UserAlbumCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<UserAlbumFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: UserAlbumCountAggregateInputType | true
+  type AlbumCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AlbumFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AlbumCountAggregateInputType | true
     }
 
-  export interface UserAlbumDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserAlbum'], meta: { name: 'UserAlbum' } }
+  export interface AlbumDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Album'], meta: { name: 'Album' } }
     /**
-     * Find zero or one UserAlbum that matches the filter.
-     * @param {UserAlbumFindUniqueArgs} args - Arguments to find a UserAlbum
+     * Find zero or one Album that matches the filter.
+     * @param {AlbumFindUniqueArgs} args - Arguments to find a Album
      * @example
-     * // Get one UserAlbum
-     * const userAlbum = await prisma.userAlbum.findUnique({
+     * // Get one Album
+     * const album = await prisma.album.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends UserAlbumFindUniqueArgs>(args: SelectSubset<T, UserAlbumFindUniqueArgs<ExtArgs>>): Prisma__UserAlbumClient<$Result.GetResult<Prisma.$UserAlbumPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends AlbumFindUniqueArgs>(args: SelectSubset<T, AlbumFindUniqueArgs<ExtArgs>>): Prisma__AlbumClient<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one UserAlbum that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Album that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {UserAlbumFindUniqueOrThrowArgs} args - Arguments to find a UserAlbum
+     * @param {AlbumFindUniqueOrThrowArgs} args - Arguments to find a Album
      * @example
-     * // Get one UserAlbum
-     * const userAlbum = await prisma.userAlbum.findUniqueOrThrow({
+     * // Get one Album
+     * const album = await prisma.album.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends UserAlbumFindUniqueOrThrowArgs>(args: SelectSubset<T, UserAlbumFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserAlbumClient<$Result.GetResult<Prisma.$UserAlbumPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends AlbumFindUniqueOrThrowArgs>(args: SelectSubset<T, AlbumFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AlbumClient<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first UserAlbum that matches the filter.
+     * Find the first Album that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserAlbumFindFirstArgs} args - Arguments to find a UserAlbum
+     * @param {AlbumFindFirstArgs} args - Arguments to find a Album
      * @example
-     * // Get one UserAlbum
-     * const userAlbum = await prisma.userAlbum.findFirst({
+     * // Get one Album
+     * const album = await prisma.album.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends UserAlbumFindFirstArgs>(args?: SelectSubset<T, UserAlbumFindFirstArgs<ExtArgs>>): Prisma__UserAlbumClient<$Result.GetResult<Prisma.$UserAlbumPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends AlbumFindFirstArgs>(args?: SelectSubset<T, AlbumFindFirstArgs<ExtArgs>>): Prisma__AlbumClient<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first UserAlbum that matches the filter or
+     * Find the first Album that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserAlbumFindFirstOrThrowArgs} args - Arguments to find a UserAlbum
+     * @param {AlbumFindFirstOrThrowArgs} args - Arguments to find a Album
      * @example
-     * // Get one UserAlbum
-     * const userAlbum = await prisma.userAlbum.findFirstOrThrow({
+     * // Get one Album
+     * const album = await prisma.album.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends UserAlbumFindFirstOrThrowArgs>(args?: SelectSubset<T, UserAlbumFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserAlbumClient<$Result.GetResult<Prisma.$UserAlbumPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends AlbumFindFirstOrThrowArgs>(args?: SelectSubset<T, AlbumFindFirstOrThrowArgs<ExtArgs>>): Prisma__AlbumClient<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more UserAlbums that matches the filter.
+     * Find zero or more Albums that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserAlbumFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {AlbumFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all UserAlbums
-     * const userAlbums = await prisma.userAlbum.findMany()
+     * // Get all Albums
+     * const albums = await prisma.album.findMany()
      * 
-     * // Get first 10 UserAlbums
-     * const userAlbums = await prisma.userAlbum.findMany({ take: 10 })
+     * // Get first 10 Albums
+     * const albums = await prisma.album.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const userAlbumWithIdOnly = await prisma.userAlbum.findMany({ select: { id: true } })
+     * const albumWithIdOnly = await prisma.album.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends UserAlbumFindManyArgs>(args?: SelectSubset<T, UserAlbumFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserAlbumPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends AlbumFindManyArgs>(args?: SelectSubset<T, AlbumFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a UserAlbum.
-     * @param {UserAlbumCreateArgs} args - Arguments to create a UserAlbum.
+     * Create a Album.
+     * @param {AlbumCreateArgs} args - Arguments to create a Album.
      * @example
-     * // Create one UserAlbum
-     * const UserAlbum = await prisma.userAlbum.create({
+     * // Create one Album
+     * const Album = await prisma.album.create({
      *   data: {
-     *     // ... data to create a UserAlbum
+     *     // ... data to create a Album
      *   }
      * })
      * 
      */
-    create<T extends UserAlbumCreateArgs>(args: SelectSubset<T, UserAlbumCreateArgs<ExtArgs>>): Prisma__UserAlbumClient<$Result.GetResult<Prisma.$UserAlbumPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends AlbumCreateArgs>(args: SelectSubset<T, AlbumCreateArgs<ExtArgs>>): Prisma__AlbumClient<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many UserAlbums.
-     * @param {UserAlbumCreateManyArgs} args - Arguments to create many UserAlbums.
+     * Create many Albums.
+     * @param {AlbumCreateManyArgs} args - Arguments to create many Albums.
      * @example
-     * // Create many UserAlbums
-     * const userAlbum = await prisma.userAlbum.createMany({
+     * // Create many Albums
+     * const album = await prisma.album.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends UserAlbumCreateManyArgs>(args?: SelectSubset<T, UserAlbumCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends AlbumCreateManyArgs>(args?: SelectSubset<T, AlbumCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many UserAlbums and returns the data saved in the database.
-     * @param {UserAlbumCreateManyAndReturnArgs} args - Arguments to create many UserAlbums.
+     * Create many Albums and returns the data saved in the database.
+     * @param {AlbumCreateManyAndReturnArgs} args - Arguments to create many Albums.
      * @example
-     * // Create many UserAlbums
-     * const userAlbum = await prisma.userAlbum.createManyAndReturn({
+     * // Create many Albums
+     * const album = await prisma.album.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many UserAlbums and only return the `id`
-     * const userAlbumWithIdOnly = await prisma.userAlbum.createManyAndReturn({
+     * // Create many Albums and only return the `id`
+     * const albumWithIdOnly = await prisma.album.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -1567,28 +2266,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends UserAlbumCreateManyAndReturnArgs>(args?: SelectSubset<T, UserAlbumCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserAlbumPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends AlbumCreateManyAndReturnArgs>(args?: SelectSubset<T, AlbumCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a UserAlbum.
-     * @param {UserAlbumDeleteArgs} args - Arguments to delete one UserAlbum.
+     * Delete a Album.
+     * @param {AlbumDeleteArgs} args - Arguments to delete one Album.
      * @example
-     * // Delete one UserAlbum
-     * const UserAlbum = await prisma.userAlbum.delete({
+     * // Delete one Album
+     * const Album = await prisma.album.delete({
      *   where: {
-     *     // ... filter to delete one UserAlbum
+     *     // ... filter to delete one Album
      *   }
      * })
      * 
      */
-    delete<T extends UserAlbumDeleteArgs>(args: SelectSubset<T, UserAlbumDeleteArgs<ExtArgs>>): Prisma__UserAlbumClient<$Result.GetResult<Prisma.$UserAlbumPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends AlbumDeleteArgs>(args: SelectSubset<T, AlbumDeleteArgs<ExtArgs>>): Prisma__AlbumClient<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one UserAlbum.
-     * @param {UserAlbumUpdateArgs} args - Arguments to update one UserAlbum.
+     * Update one Album.
+     * @param {AlbumUpdateArgs} args - Arguments to update one Album.
      * @example
-     * // Update one UserAlbum
-     * const userAlbum = await prisma.userAlbum.update({
+     * // Update one Album
+     * const album = await prisma.album.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1598,30 +2297,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends UserAlbumUpdateArgs>(args: SelectSubset<T, UserAlbumUpdateArgs<ExtArgs>>): Prisma__UserAlbumClient<$Result.GetResult<Prisma.$UserAlbumPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends AlbumUpdateArgs>(args: SelectSubset<T, AlbumUpdateArgs<ExtArgs>>): Prisma__AlbumClient<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more UserAlbums.
-     * @param {UserAlbumDeleteManyArgs} args - Arguments to filter UserAlbums to delete.
+     * Delete zero or more Albums.
+     * @param {AlbumDeleteManyArgs} args - Arguments to filter Albums to delete.
      * @example
-     * // Delete a few UserAlbums
-     * const { count } = await prisma.userAlbum.deleteMany({
+     * // Delete a few Albums
+     * const { count } = await prisma.album.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends UserAlbumDeleteManyArgs>(args?: SelectSubset<T, UserAlbumDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends AlbumDeleteManyArgs>(args?: SelectSubset<T, AlbumDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more UserAlbums.
+     * Update zero or more Albums.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserAlbumUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {AlbumUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many UserAlbums
-     * const userAlbum = await prisma.userAlbum.updateMany({
+     * // Update many Albums
+     * const album = await prisma.album.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1631,14 +2330,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends UserAlbumUpdateManyArgs>(args: SelectSubset<T, UserAlbumUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends AlbumUpdateManyArgs>(args: SelectSubset<T, AlbumUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more UserAlbums and returns the data updated in the database.
-     * @param {UserAlbumUpdateManyAndReturnArgs} args - Arguments to update many UserAlbums.
+     * Update zero or more Albums and returns the data updated in the database.
+     * @param {AlbumUpdateManyAndReturnArgs} args - Arguments to update many Albums.
      * @example
-     * // Update many UserAlbums
-     * const userAlbum = await prisma.userAlbum.updateManyAndReturn({
+     * // Update many Albums
+     * const album = await prisma.album.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1647,8 +2346,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more UserAlbums and only return the `id`
-     * const userAlbumWithIdOnly = await prisma.userAlbum.updateManyAndReturn({
+     * // Update zero or more Albums and only return the `id`
+     * const albumWithIdOnly = await prisma.album.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -1661,56 +2360,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends UserAlbumUpdateManyAndReturnArgs>(args: SelectSubset<T, UserAlbumUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserAlbumPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends AlbumUpdateManyAndReturnArgs>(args: SelectSubset<T, AlbumUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one UserAlbum.
-     * @param {UserAlbumUpsertArgs} args - Arguments to update or create a UserAlbum.
+     * Create or update one Album.
+     * @param {AlbumUpsertArgs} args - Arguments to update or create a Album.
      * @example
-     * // Update or create a UserAlbum
-     * const userAlbum = await prisma.userAlbum.upsert({
+     * // Update or create a Album
+     * const album = await prisma.album.upsert({
      *   create: {
-     *     // ... data to create a UserAlbum
+     *     // ... data to create a Album
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the UserAlbum we want to update
+     *     // ... the filter for the Album we want to update
      *   }
      * })
      */
-    upsert<T extends UserAlbumUpsertArgs>(args: SelectSubset<T, UserAlbumUpsertArgs<ExtArgs>>): Prisma__UserAlbumClient<$Result.GetResult<Prisma.$UserAlbumPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends AlbumUpsertArgs>(args: SelectSubset<T, AlbumUpsertArgs<ExtArgs>>): Prisma__AlbumClient<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of UserAlbums.
+     * Count the number of Albums.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserAlbumCountArgs} args - Arguments to filter UserAlbums to count.
+     * @param {AlbumCountArgs} args - Arguments to filter Albums to count.
      * @example
-     * // Count the number of UserAlbums
-     * const count = await prisma.userAlbum.count({
+     * // Count the number of Albums
+     * const count = await prisma.album.count({
      *   where: {
-     *     // ... the filter for the UserAlbums we want to count
+     *     // ... the filter for the Albums we want to count
      *   }
      * })
     **/
-    count<T extends UserAlbumCountArgs>(
-      args?: Subset<T, UserAlbumCountArgs>,
+    count<T extends AlbumCountArgs>(
+      args?: Subset<T, AlbumCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], UserAlbumCountAggregateOutputType>
+          : GetScalarType<T['select'], AlbumCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a UserAlbum.
+     * Allows you to perform aggregations operations on a Album.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserAlbumAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {AlbumAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -1730,13 +2429,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends UserAlbumAggregateArgs>(args: Subset<T, UserAlbumAggregateArgs>): Prisma.PrismaPromise<GetUserAlbumAggregateType<T>>
+    aggregate<T extends AlbumAggregateArgs>(args: Subset<T, AlbumAggregateArgs>): Prisma.PrismaPromise<GetAlbumAggregateType<T>>
 
     /**
-     * Group by UserAlbum.
+     * Group by Album.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserAlbumGroupByArgs} args - Group by arguments.
+     * @param {AlbumGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -1751,14 +2450,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends UserAlbumGroupByArgs,
+      T extends AlbumGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: UserAlbumGroupByArgs['orderBy'] }
-        : { orderBy?: UserAlbumGroupByArgs['orderBy'] },
+        ? { orderBy: AlbumGroupByArgs['orderBy'] }
+        : { orderBy?: AlbumGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -1807,20 +2506,1141 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, UserAlbumGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserAlbumGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, AlbumGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAlbumGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the UserAlbum model
+   * Fields of the Album model
    */
-  readonly fields: UserAlbumFieldRefs;
+  readonly fields: AlbumFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for UserAlbum.
+   * The delegate class that acts as a "Promise-like" for Album.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__UserAlbumClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__AlbumClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    images<T extends Album$imagesArgs<ExtArgs> = {}>(args?: Subset<T, Album$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Album model
+   */
+  interface AlbumFieldRefs {
+    readonly id: FieldRef<"Album", 'Int'>
+    readonly name: FieldRef<"Album", 'String'>
+    readonly createdAt: FieldRef<"Album", 'DateTime'>
+    readonly previewImage: FieldRef<"Album", 'String'>
+    readonly userId: FieldRef<"Album", 'Int'>
+    readonly shown: FieldRef<"Album", 'Boolean'>
+    readonly topicId: FieldRef<"Album", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Album findUnique
+   */
+  export type AlbumFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlbumInclude<ExtArgs> | null
+    /**
+     * Filter, which Album to fetch.
+     */
+    where: AlbumWhereUniqueInput
+  }
+
+  /**
+   * Album findUniqueOrThrow
+   */
+  export type AlbumFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlbumInclude<ExtArgs> | null
+    /**
+     * Filter, which Album to fetch.
+     */
+    where: AlbumWhereUniqueInput
+  }
+
+  /**
+   * Album findFirst
+   */
+  export type AlbumFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlbumInclude<ExtArgs> | null
+    /**
+     * Filter, which Album to fetch.
+     */
+    where?: AlbumWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Albums to fetch.
+     */
+    orderBy?: AlbumOrderByWithRelationInput | AlbumOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Albums.
+     */
+    cursor?: AlbumWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Albums from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Albums.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Albums.
+     */
+    distinct?: AlbumScalarFieldEnum | AlbumScalarFieldEnum[]
+  }
+
+  /**
+   * Album findFirstOrThrow
+   */
+  export type AlbumFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlbumInclude<ExtArgs> | null
+    /**
+     * Filter, which Album to fetch.
+     */
+    where?: AlbumWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Albums to fetch.
+     */
+    orderBy?: AlbumOrderByWithRelationInput | AlbumOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Albums.
+     */
+    cursor?: AlbumWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Albums from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Albums.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Albums.
+     */
+    distinct?: AlbumScalarFieldEnum | AlbumScalarFieldEnum[]
+  }
+
+  /**
+   * Album findMany
+   */
+  export type AlbumFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlbumInclude<ExtArgs> | null
+    /**
+     * Filter, which Albums to fetch.
+     */
+    where?: AlbumWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Albums to fetch.
+     */
+    orderBy?: AlbumOrderByWithRelationInput | AlbumOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Albums.
+     */
+    cursor?: AlbumWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Albums from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Albums.
+     */
+    skip?: number
+    distinct?: AlbumScalarFieldEnum | AlbumScalarFieldEnum[]
+  }
+
+  /**
+   * Album create
+   */
+  export type AlbumCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlbumInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Album.
+     */
+    data: XOR<AlbumCreateInput, AlbumUncheckedCreateInput>
+  }
+
+  /**
+   * Album createMany
+   */
+  export type AlbumCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Albums.
+     */
+    data: AlbumCreateManyInput | AlbumCreateManyInput[]
+  }
+
+  /**
+   * Album createManyAndReturn
+   */
+  export type AlbumCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * The data used to create many Albums.
+     */
+    data: AlbumCreateManyInput | AlbumCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlbumIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Album update
+   */
+  export type AlbumUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlbumInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Album.
+     */
+    data: XOR<AlbumUpdateInput, AlbumUncheckedUpdateInput>
+    /**
+     * Choose, which Album to update.
+     */
+    where: AlbumWhereUniqueInput
+  }
+
+  /**
+   * Album updateMany
+   */
+  export type AlbumUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Albums.
+     */
+    data: XOR<AlbumUpdateManyMutationInput, AlbumUncheckedUpdateManyInput>
+    /**
+     * Filter which Albums to update
+     */
+    where?: AlbumWhereInput
+    /**
+     * Limit how many Albums to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Album updateManyAndReturn
+   */
+  export type AlbumUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * The data used to update Albums.
+     */
+    data: XOR<AlbumUpdateManyMutationInput, AlbumUncheckedUpdateManyInput>
+    /**
+     * Filter which Albums to update
+     */
+    where?: AlbumWhereInput
+    /**
+     * Limit how many Albums to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlbumIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Album upsert
+   */
+  export type AlbumUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlbumInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Album to update in case it exists.
+     */
+    where: AlbumWhereUniqueInput
+    /**
+     * In case the Album found by the `where` argument doesn't exist, create a new Album with this data.
+     */
+    create: XOR<AlbumCreateInput, AlbumUncheckedCreateInput>
+    /**
+     * In case the Album was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AlbumUpdateInput, AlbumUncheckedUpdateInput>
+  }
+
+  /**
+   * Album delete
+   */
+  export type AlbumDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlbumInclude<ExtArgs> | null
+    /**
+     * Filter which Album to delete.
+     */
+    where: AlbumWhereUniqueInput
+  }
+
+  /**
+   * Album deleteMany
+   */
+  export type AlbumDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Albums to delete
+     */
+    where?: AlbumWhereInput
+    /**
+     * Limit how many Albums to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Album.images
+   */
+  export type Album$imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    where?: ImageWhereInput
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
+    cursor?: ImageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ImageScalarFieldEnum | ImageScalarFieldEnum[]
+  }
+
+  /**
+   * Album without action
+   */
+  export type AlbumDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlbumInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Avatar
+   */
+
+  export type AggregateAvatar = {
+    _count: AvatarCountAggregateOutputType | null
+    _avg: AvatarAvgAggregateOutputType | null
+    _sum: AvatarSumAggregateOutputType | null
+    _min: AvatarMinAggregateOutputType | null
+    _max: AvatarMaxAggregateOutputType | null
+  }
+
+  export type AvatarAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type AvatarSumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type AvatarMinAggregateOutputType = {
+    id: number | null
+    image: string | null
+    userId: number | null
+    active: boolean | null
+    shown: boolean | null
+  }
+
+  export type AvatarMaxAggregateOutputType = {
+    id: number | null
+    image: string | null
+    userId: number | null
+    active: boolean | null
+    shown: boolean | null
+  }
+
+  export type AvatarCountAggregateOutputType = {
+    id: number
+    image: number
+    userId: number
+    active: number
+    shown: number
+    _all: number
+  }
+
+
+  export type AvatarAvgAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type AvatarSumAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type AvatarMinAggregateInputType = {
+    id?: true
+    image?: true
+    userId?: true
+    active?: true
+    shown?: true
+  }
+
+  export type AvatarMaxAggregateInputType = {
+    id?: true
+    image?: true
+    userId?: true
+    active?: true
+    shown?: true
+  }
+
+  export type AvatarCountAggregateInputType = {
+    id?: true
+    image?: true
+    userId?: true
+    active?: true
+    shown?: true
+    _all?: true
+  }
+
+  export type AvatarAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Avatar to aggregate.
+     */
+    where?: AvatarWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Avatars to fetch.
+     */
+    orderBy?: AvatarOrderByWithRelationInput | AvatarOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AvatarWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Avatars from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Avatars.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Avatars
+    **/
+    _count?: true | AvatarCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AvatarAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AvatarSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AvatarMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AvatarMaxAggregateInputType
+  }
+
+  export type GetAvatarAggregateType<T extends AvatarAggregateArgs> = {
+        [P in keyof T & keyof AggregateAvatar]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAvatar[P]>
+      : GetScalarType<T[P], AggregateAvatar[P]>
+  }
+
+
+
+
+  export type AvatarGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AvatarWhereInput
+    orderBy?: AvatarOrderByWithAggregationInput | AvatarOrderByWithAggregationInput[]
+    by: AvatarScalarFieldEnum[] | AvatarScalarFieldEnum
+    having?: AvatarScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AvatarCountAggregateInputType | true
+    _avg?: AvatarAvgAggregateInputType
+    _sum?: AvatarSumAggregateInputType
+    _min?: AvatarMinAggregateInputType
+    _max?: AvatarMaxAggregateInputType
+  }
+
+  export type AvatarGroupByOutputType = {
+    id: number
+    image: string
+    userId: number
+    active: boolean
+    shown: boolean
+    _count: AvatarCountAggregateOutputType | null
+    _avg: AvatarAvgAggregateOutputType | null
+    _sum: AvatarSumAggregateOutputType | null
+    _min: AvatarMinAggregateOutputType | null
+    _max: AvatarMaxAggregateOutputType | null
+  }
+
+  type GetAvatarGroupByPayload<T extends AvatarGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AvatarGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AvatarGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AvatarGroupByOutputType[P]>
+            : GetScalarType<T[P], AvatarGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AvatarSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    image?: boolean
+    userId?: boolean
+    active?: boolean
+    shown?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["avatar"]>
+
+  export type AvatarSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    image?: boolean
+    userId?: boolean
+    active?: boolean
+    shown?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["avatar"]>
+
+  export type AvatarSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    image?: boolean
+    userId?: boolean
+    active?: boolean
+    shown?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["avatar"]>
+
+  export type AvatarSelectScalar = {
+    id?: boolean
+    image?: boolean
+    userId?: boolean
+    active?: boolean
+    shown?: boolean
+  }
+
+  export type AvatarOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "image" | "userId" | "active" | "shown", ExtArgs["result"]["avatar"]>
+  export type AvatarInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type AvatarIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type AvatarIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $AvatarPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Avatar"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      image: string
+      userId: number
+      active: boolean
+      shown: boolean
+    }, ExtArgs["result"]["avatar"]>
+    composites: {}
+  }
+
+  type AvatarGetPayload<S extends boolean | null | undefined | AvatarDefaultArgs> = $Result.GetResult<Prisma.$AvatarPayload, S>
+
+  type AvatarCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AvatarFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AvatarCountAggregateInputType | true
+    }
+
+  export interface AvatarDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Avatar'], meta: { name: 'Avatar' } }
+    /**
+     * Find zero or one Avatar that matches the filter.
+     * @param {AvatarFindUniqueArgs} args - Arguments to find a Avatar
+     * @example
+     * // Get one Avatar
+     * const avatar = await prisma.avatar.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AvatarFindUniqueArgs>(args: SelectSubset<T, AvatarFindUniqueArgs<ExtArgs>>): Prisma__AvatarClient<$Result.GetResult<Prisma.$AvatarPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Avatar that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AvatarFindUniqueOrThrowArgs} args - Arguments to find a Avatar
+     * @example
+     * // Get one Avatar
+     * const avatar = await prisma.avatar.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AvatarFindUniqueOrThrowArgs>(args: SelectSubset<T, AvatarFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AvatarClient<$Result.GetResult<Prisma.$AvatarPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Avatar that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvatarFindFirstArgs} args - Arguments to find a Avatar
+     * @example
+     * // Get one Avatar
+     * const avatar = await prisma.avatar.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AvatarFindFirstArgs>(args?: SelectSubset<T, AvatarFindFirstArgs<ExtArgs>>): Prisma__AvatarClient<$Result.GetResult<Prisma.$AvatarPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Avatar that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvatarFindFirstOrThrowArgs} args - Arguments to find a Avatar
+     * @example
+     * // Get one Avatar
+     * const avatar = await prisma.avatar.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AvatarFindFirstOrThrowArgs>(args?: SelectSubset<T, AvatarFindFirstOrThrowArgs<ExtArgs>>): Prisma__AvatarClient<$Result.GetResult<Prisma.$AvatarPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Avatars that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvatarFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Avatars
+     * const avatars = await prisma.avatar.findMany()
+     * 
+     * // Get first 10 Avatars
+     * const avatars = await prisma.avatar.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const avatarWithIdOnly = await prisma.avatar.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AvatarFindManyArgs>(args?: SelectSubset<T, AvatarFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvatarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Avatar.
+     * @param {AvatarCreateArgs} args - Arguments to create a Avatar.
+     * @example
+     * // Create one Avatar
+     * const Avatar = await prisma.avatar.create({
+     *   data: {
+     *     // ... data to create a Avatar
+     *   }
+     * })
+     * 
+     */
+    create<T extends AvatarCreateArgs>(args: SelectSubset<T, AvatarCreateArgs<ExtArgs>>): Prisma__AvatarClient<$Result.GetResult<Prisma.$AvatarPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Avatars.
+     * @param {AvatarCreateManyArgs} args - Arguments to create many Avatars.
+     * @example
+     * // Create many Avatars
+     * const avatar = await prisma.avatar.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AvatarCreateManyArgs>(args?: SelectSubset<T, AvatarCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Avatars and returns the data saved in the database.
+     * @param {AvatarCreateManyAndReturnArgs} args - Arguments to create many Avatars.
+     * @example
+     * // Create many Avatars
+     * const avatar = await prisma.avatar.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Avatars and only return the `id`
+     * const avatarWithIdOnly = await prisma.avatar.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AvatarCreateManyAndReturnArgs>(args?: SelectSubset<T, AvatarCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvatarPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Avatar.
+     * @param {AvatarDeleteArgs} args - Arguments to delete one Avatar.
+     * @example
+     * // Delete one Avatar
+     * const Avatar = await prisma.avatar.delete({
+     *   where: {
+     *     // ... filter to delete one Avatar
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AvatarDeleteArgs>(args: SelectSubset<T, AvatarDeleteArgs<ExtArgs>>): Prisma__AvatarClient<$Result.GetResult<Prisma.$AvatarPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Avatar.
+     * @param {AvatarUpdateArgs} args - Arguments to update one Avatar.
+     * @example
+     * // Update one Avatar
+     * const avatar = await prisma.avatar.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AvatarUpdateArgs>(args: SelectSubset<T, AvatarUpdateArgs<ExtArgs>>): Prisma__AvatarClient<$Result.GetResult<Prisma.$AvatarPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Avatars.
+     * @param {AvatarDeleteManyArgs} args - Arguments to filter Avatars to delete.
+     * @example
+     * // Delete a few Avatars
+     * const { count } = await prisma.avatar.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AvatarDeleteManyArgs>(args?: SelectSubset<T, AvatarDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Avatars.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvatarUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Avatars
+     * const avatar = await prisma.avatar.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AvatarUpdateManyArgs>(args: SelectSubset<T, AvatarUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Avatars and returns the data updated in the database.
+     * @param {AvatarUpdateManyAndReturnArgs} args - Arguments to update many Avatars.
+     * @example
+     * // Update many Avatars
+     * const avatar = await prisma.avatar.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Avatars and only return the `id`
+     * const avatarWithIdOnly = await prisma.avatar.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AvatarUpdateManyAndReturnArgs>(args: SelectSubset<T, AvatarUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvatarPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Avatar.
+     * @param {AvatarUpsertArgs} args - Arguments to update or create a Avatar.
+     * @example
+     * // Update or create a Avatar
+     * const avatar = await prisma.avatar.upsert({
+     *   create: {
+     *     // ... data to create a Avatar
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Avatar we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AvatarUpsertArgs>(args: SelectSubset<T, AvatarUpsertArgs<ExtArgs>>): Prisma__AvatarClient<$Result.GetResult<Prisma.$AvatarPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Avatars.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvatarCountArgs} args - Arguments to filter Avatars to count.
+     * @example
+     * // Count the number of Avatars
+     * const count = await prisma.avatar.count({
+     *   where: {
+     *     // ... the filter for the Avatars we want to count
+     *   }
+     * })
+    **/
+    count<T extends AvatarCountArgs>(
+      args?: Subset<T, AvatarCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AvatarCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Avatar.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvatarAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AvatarAggregateArgs>(args: Subset<T, AvatarAggregateArgs>): Prisma.PrismaPromise<GetAvatarAggregateType<T>>
+
+    /**
+     * Group by Avatar.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvatarGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AvatarGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AvatarGroupByArgs['orderBy'] }
+        : { orderBy?: AvatarGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AvatarGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAvatarGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Avatar model
+   */
+  readonly fields: AvatarFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Avatar.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AvatarClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
@@ -1849,421 +3669,2694 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the UserAlbum model
+   * Fields of the Avatar model
    */
-  interface UserAlbumFieldRefs {
-    readonly id: FieldRef<"UserAlbum", 'Int'>
-    readonly src: FieldRef<"UserAlbum", 'String'>
-    readonly userId: FieldRef<"UserAlbum", 'Int'>
+  interface AvatarFieldRefs {
+    readonly id: FieldRef<"Avatar", 'Int'>
+    readonly image: FieldRef<"Avatar", 'String'>
+    readonly userId: FieldRef<"Avatar", 'Int'>
+    readonly active: FieldRef<"Avatar", 'Boolean'>
+    readonly shown: FieldRef<"Avatar", 'Boolean'>
   }
     
 
   // Custom InputTypes
   /**
-   * UserAlbum findUnique
+   * Avatar findUnique
    */
-  export type UserAlbumFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AvatarFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserAlbum
+     * Select specific fields to fetch from the Avatar
      */
-    select?: UserAlbumSelect<ExtArgs> | null
+    select?: AvatarSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserAlbum
+     * Omit specific fields from the Avatar
      */
-    omit?: UserAlbumOmit<ExtArgs> | null
+    omit?: AvatarOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserAlbumInclude<ExtArgs> | null
+    include?: AvatarInclude<ExtArgs> | null
     /**
-     * Filter, which UserAlbum to fetch.
+     * Filter, which Avatar to fetch.
      */
-    where: UserAlbumWhereUniqueInput
+    where: AvatarWhereUniqueInput
   }
 
   /**
-   * UserAlbum findUniqueOrThrow
+   * Avatar findUniqueOrThrow
    */
-  export type UserAlbumFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AvatarFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserAlbum
+     * Select specific fields to fetch from the Avatar
      */
-    select?: UserAlbumSelect<ExtArgs> | null
+    select?: AvatarSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserAlbum
+     * Omit specific fields from the Avatar
      */
-    omit?: UserAlbumOmit<ExtArgs> | null
+    omit?: AvatarOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserAlbumInclude<ExtArgs> | null
+    include?: AvatarInclude<ExtArgs> | null
     /**
-     * Filter, which UserAlbum to fetch.
+     * Filter, which Avatar to fetch.
      */
-    where: UserAlbumWhereUniqueInput
+    where: AvatarWhereUniqueInput
   }
 
   /**
-   * UserAlbum findFirst
+   * Avatar findFirst
    */
-  export type UserAlbumFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AvatarFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserAlbum
+     * Select specific fields to fetch from the Avatar
      */
-    select?: UserAlbumSelect<ExtArgs> | null
+    select?: AvatarSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserAlbum
+     * Omit specific fields from the Avatar
      */
-    omit?: UserAlbumOmit<ExtArgs> | null
+    omit?: AvatarOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserAlbumInclude<ExtArgs> | null
+    include?: AvatarInclude<ExtArgs> | null
     /**
-     * Filter, which UserAlbum to fetch.
+     * Filter, which Avatar to fetch.
      */
-    where?: UserAlbumWhereInput
+    where?: AvatarWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserAlbums to fetch.
+     * Determine the order of Avatars to fetch.
      */
-    orderBy?: UserAlbumOrderByWithRelationInput | UserAlbumOrderByWithRelationInput[]
+    orderBy?: AvatarOrderByWithRelationInput | AvatarOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for UserAlbums.
+     * Sets the position for searching for Avatars.
      */
-    cursor?: UserAlbumWhereUniqueInput
+    cursor?: AvatarWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserAlbums from the position of the cursor.
+     * Take `±n` Avatars from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserAlbums.
+     * Skip the first `n` Avatars.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserAlbums.
+     * Filter by unique combinations of Avatars.
      */
-    distinct?: UserAlbumScalarFieldEnum | UserAlbumScalarFieldEnum[]
+    distinct?: AvatarScalarFieldEnum | AvatarScalarFieldEnum[]
   }
 
   /**
-   * UserAlbum findFirstOrThrow
+   * Avatar findFirstOrThrow
    */
-  export type UserAlbumFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AvatarFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserAlbum
+     * Select specific fields to fetch from the Avatar
      */
-    select?: UserAlbumSelect<ExtArgs> | null
+    select?: AvatarSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserAlbum
+     * Omit specific fields from the Avatar
      */
-    omit?: UserAlbumOmit<ExtArgs> | null
+    omit?: AvatarOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserAlbumInclude<ExtArgs> | null
+    include?: AvatarInclude<ExtArgs> | null
     /**
-     * Filter, which UserAlbum to fetch.
+     * Filter, which Avatar to fetch.
      */
-    where?: UserAlbumWhereInput
+    where?: AvatarWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserAlbums to fetch.
+     * Determine the order of Avatars to fetch.
      */
-    orderBy?: UserAlbumOrderByWithRelationInput | UserAlbumOrderByWithRelationInput[]
+    orderBy?: AvatarOrderByWithRelationInput | AvatarOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for UserAlbums.
+     * Sets the position for searching for Avatars.
      */
-    cursor?: UserAlbumWhereUniqueInput
+    cursor?: AvatarWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserAlbums from the position of the cursor.
+     * Take `±n` Avatars from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserAlbums.
+     * Skip the first `n` Avatars.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserAlbums.
+     * Filter by unique combinations of Avatars.
      */
-    distinct?: UserAlbumScalarFieldEnum | UserAlbumScalarFieldEnum[]
+    distinct?: AvatarScalarFieldEnum | AvatarScalarFieldEnum[]
   }
 
   /**
-   * UserAlbum findMany
+   * Avatar findMany
    */
-  export type UserAlbumFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AvatarFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserAlbum
+     * Select specific fields to fetch from the Avatar
      */
-    select?: UserAlbumSelect<ExtArgs> | null
+    select?: AvatarSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserAlbum
+     * Omit specific fields from the Avatar
      */
-    omit?: UserAlbumOmit<ExtArgs> | null
+    omit?: AvatarOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserAlbumInclude<ExtArgs> | null
+    include?: AvatarInclude<ExtArgs> | null
     /**
-     * Filter, which UserAlbums to fetch.
+     * Filter, which Avatars to fetch.
      */
-    where?: UserAlbumWhereInput
+    where?: AvatarWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserAlbums to fetch.
+     * Determine the order of Avatars to fetch.
      */
-    orderBy?: UserAlbumOrderByWithRelationInput | UserAlbumOrderByWithRelationInput[]
+    orderBy?: AvatarOrderByWithRelationInput | AvatarOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing UserAlbums.
+     * Sets the position for listing Avatars.
      */
-    cursor?: UserAlbumWhereUniqueInput
+    cursor?: AvatarWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserAlbums from the position of the cursor.
+     * Take `±n` Avatars from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserAlbums.
+     * Skip the first `n` Avatars.
      */
     skip?: number
-    distinct?: UserAlbumScalarFieldEnum | UserAlbumScalarFieldEnum[]
+    distinct?: AvatarScalarFieldEnum | AvatarScalarFieldEnum[]
   }
 
   /**
-   * UserAlbum create
+   * Avatar create
    */
-  export type UserAlbumCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AvatarCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserAlbum
+     * Select specific fields to fetch from the Avatar
      */
-    select?: UserAlbumSelect<ExtArgs> | null
+    select?: AvatarSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserAlbum
+     * Omit specific fields from the Avatar
      */
-    omit?: UserAlbumOmit<ExtArgs> | null
+    omit?: AvatarOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserAlbumInclude<ExtArgs> | null
+    include?: AvatarInclude<ExtArgs> | null
     /**
-     * The data needed to create a UserAlbum.
+     * The data needed to create a Avatar.
      */
-    data: XOR<UserAlbumCreateInput, UserAlbumUncheckedCreateInput>
+    data: XOR<AvatarCreateInput, AvatarUncheckedCreateInput>
   }
 
   /**
-   * UserAlbum createMany
+   * Avatar createMany
    */
-  export type UserAlbumCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AvatarCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many UserAlbums.
+     * The data used to create many Avatars.
      */
-    data: UserAlbumCreateManyInput | UserAlbumCreateManyInput[]
+    data: AvatarCreateManyInput | AvatarCreateManyInput[]
   }
 
   /**
-   * UserAlbum createManyAndReturn
+   * Avatar createManyAndReturn
    */
-  export type UserAlbumCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AvatarCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserAlbum
+     * Select specific fields to fetch from the Avatar
      */
-    select?: UserAlbumSelectCreateManyAndReturn<ExtArgs> | null
+    select?: AvatarSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the UserAlbum
+     * Omit specific fields from the Avatar
      */
-    omit?: UserAlbumOmit<ExtArgs> | null
+    omit?: AvatarOmit<ExtArgs> | null
     /**
-     * The data used to create many UserAlbums.
+     * The data used to create many Avatars.
      */
-    data: UserAlbumCreateManyInput | UserAlbumCreateManyInput[]
+    data: AvatarCreateManyInput | AvatarCreateManyInput[]
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserAlbumIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: AvatarIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * UserAlbum update
+   * Avatar update
    */
-  export type UserAlbumUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AvatarUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserAlbum
+     * Select specific fields to fetch from the Avatar
      */
-    select?: UserAlbumSelect<ExtArgs> | null
+    select?: AvatarSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserAlbum
+     * Omit specific fields from the Avatar
      */
-    omit?: UserAlbumOmit<ExtArgs> | null
+    omit?: AvatarOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserAlbumInclude<ExtArgs> | null
+    include?: AvatarInclude<ExtArgs> | null
     /**
-     * The data needed to update a UserAlbum.
+     * The data needed to update a Avatar.
      */
-    data: XOR<UserAlbumUpdateInput, UserAlbumUncheckedUpdateInput>
+    data: XOR<AvatarUpdateInput, AvatarUncheckedUpdateInput>
     /**
-     * Choose, which UserAlbum to update.
+     * Choose, which Avatar to update.
      */
-    where: UserAlbumWhereUniqueInput
+    where: AvatarWhereUniqueInput
   }
 
   /**
-   * UserAlbum updateMany
+   * Avatar updateMany
    */
-  export type UserAlbumUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AvatarUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update UserAlbums.
+     * The data used to update Avatars.
      */
-    data: XOR<UserAlbumUpdateManyMutationInput, UserAlbumUncheckedUpdateManyInput>
+    data: XOR<AvatarUpdateManyMutationInput, AvatarUncheckedUpdateManyInput>
     /**
-     * Filter which UserAlbums to update
+     * Filter which Avatars to update
      */
-    where?: UserAlbumWhereInput
+    where?: AvatarWhereInput
     /**
-     * Limit how many UserAlbums to update.
+     * Limit how many Avatars to update.
      */
     limit?: number
   }
 
   /**
-   * UserAlbum updateManyAndReturn
+   * Avatar updateManyAndReturn
    */
-  export type UserAlbumUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AvatarUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserAlbum
+     * Select specific fields to fetch from the Avatar
      */
-    select?: UserAlbumSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: AvatarSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the UserAlbum
+     * Omit specific fields from the Avatar
      */
-    omit?: UserAlbumOmit<ExtArgs> | null
+    omit?: AvatarOmit<ExtArgs> | null
     /**
-     * The data used to update UserAlbums.
+     * The data used to update Avatars.
      */
-    data: XOR<UserAlbumUpdateManyMutationInput, UserAlbumUncheckedUpdateManyInput>
+    data: XOR<AvatarUpdateManyMutationInput, AvatarUncheckedUpdateManyInput>
     /**
-     * Filter which UserAlbums to update
+     * Filter which Avatars to update
      */
-    where?: UserAlbumWhereInput
+    where?: AvatarWhereInput
     /**
-     * Limit how many UserAlbums to update.
+     * Limit how many Avatars to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserAlbumIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: AvatarIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * UserAlbum upsert
+   * Avatar upsert
    */
-  export type UserAlbumUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AvatarUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserAlbum
+     * Select specific fields to fetch from the Avatar
      */
-    select?: UserAlbumSelect<ExtArgs> | null
+    select?: AvatarSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserAlbum
+     * Omit specific fields from the Avatar
      */
-    omit?: UserAlbumOmit<ExtArgs> | null
+    omit?: AvatarOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserAlbumInclude<ExtArgs> | null
+    include?: AvatarInclude<ExtArgs> | null
     /**
-     * The filter to search for the UserAlbum to update in case it exists.
+     * The filter to search for the Avatar to update in case it exists.
      */
-    where: UserAlbumWhereUniqueInput
+    where: AvatarWhereUniqueInput
     /**
-     * In case the UserAlbum found by the `where` argument doesn't exist, create a new UserAlbum with this data.
+     * In case the Avatar found by the `where` argument doesn't exist, create a new Avatar with this data.
      */
-    create: XOR<UserAlbumCreateInput, UserAlbumUncheckedCreateInput>
+    create: XOR<AvatarCreateInput, AvatarUncheckedCreateInput>
     /**
-     * In case the UserAlbum was found with the provided `where` argument, update it with this data.
+     * In case the Avatar was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<UserAlbumUpdateInput, UserAlbumUncheckedUpdateInput>
+    update: XOR<AvatarUpdateInput, AvatarUncheckedUpdateInput>
   }
 
   /**
-   * UserAlbum delete
+   * Avatar delete
    */
-  export type UserAlbumDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AvatarDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserAlbum
+     * Select specific fields to fetch from the Avatar
      */
-    select?: UserAlbumSelect<ExtArgs> | null
+    select?: AvatarSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserAlbum
+     * Omit specific fields from the Avatar
      */
-    omit?: UserAlbumOmit<ExtArgs> | null
+    omit?: AvatarOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserAlbumInclude<ExtArgs> | null
+    include?: AvatarInclude<ExtArgs> | null
     /**
-     * Filter which UserAlbum to delete.
+     * Filter which Avatar to delete.
      */
-    where: UserAlbumWhereUniqueInput
+    where: AvatarWhereUniqueInput
   }
 
   /**
-   * UserAlbum deleteMany
+   * Avatar deleteMany
    */
-  export type UserAlbumDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AvatarDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which UserAlbums to delete
+     * Filter which Avatars to delete
      */
-    where?: UserAlbumWhereInput
+    where?: AvatarWhereInput
     /**
-     * Limit how many UserAlbums to delete.
+     * Limit how many Avatars to delete.
      */
     limit?: number
   }
 
   /**
-   * UserAlbum without action
+   * Avatar without action
    */
-  export type UserAlbumDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AvatarDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserAlbum
+     * Select specific fields to fetch from the Avatar
      */
-    select?: UserAlbumSelect<ExtArgs> | null
+    select?: AvatarSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserAlbum
+     * Omit specific fields from the Avatar
      */
-    omit?: UserAlbumOmit<ExtArgs> | null
+    omit?: AvatarOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserAlbumInclude<ExtArgs> | null
+    include?: AvatarInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ChatGroup
+   */
+
+  export type AggregateChatGroup = {
+    _count: ChatGroupCountAggregateOutputType | null
+    _avg: ChatGroupAvgAggregateOutputType | null
+    _sum: ChatGroupSumAggregateOutputType | null
+    _min: ChatGroupMinAggregateOutputType | null
+    _max: ChatGroupMaxAggregateOutputType | null
+  }
+
+  export type ChatGroupAvgAggregateOutputType = {
+    id: number | null
+    adminId: number | null
+  }
+
+  export type ChatGroupSumAggregateOutputType = {
+    id: number | null
+    adminId: number | null
+  }
+
+  export type ChatGroupMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    isPersonalChat: boolean | null
+    avatar: string | null
+    adminId: number | null
+  }
+
+  export type ChatGroupMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    isPersonalChat: boolean | null
+    avatar: string | null
+    adminId: number | null
+  }
+
+  export type ChatGroupCountAggregateOutputType = {
+    id: number
+    name: number
+    isPersonalChat: number
+    avatar: number
+    adminId: number
+    _all: number
+  }
+
+
+  export type ChatGroupAvgAggregateInputType = {
+    id?: true
+    adminId?: true
+  }
+
+  export type ChatGroupSumAggregateInputType = {
+    id?: true
+    adminId?: true
+  }
+
+  export type ChatGroupMinAggregateInputType = {
+    id?: true
+    name?: true
+    isPersonalChat?: true
+    avatar?: true
+    adminId?: true
+  }
+
+  export type ChatGroupMaxAggregateInputType = {
+    id?: true
+    name?: true
+    isPersonalChat?: true
+    avatar?: true
+    adminId?: true
+  }
+
+  export type ChatGroupCountAggregateInputType = {
+    id?: true
+    name?: true
+    isPersonalChat?: true
+    avatar?: true
+    adminId?: true
+    _all?: true
+  }
+
+  export type ChatGroupAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ChatGroup to aggregate.
+     */
+    where?: ChatGroupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ChatGroups to fetch.
+     */
+    orderBy?: ChatGroupOrderByWithRelationInput | ChatGroupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ChatGroupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ChatGroups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ChatGroups.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ChatGroups
+    **/
+    _count?: true | ChatGroupCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ChatGroupAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ChatGroupSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ChatGroupMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ChatGroupMaxAggregateInputType
+  }
+
+  export type GetChatGroupAggregateType<T extends ChatGroupAggregateArgs> = {
+        [P in keyof T & keyof AggregateChatGroup]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateChatGroup[P]>
+      : GetScalarType<T[P], AggregateChatGroup[P]>
+  }
+
+
+
+
+  export type ChatGroupGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ChatGroupWhereInput
+    orderBy?: ChatGroupOrderByWithAggregationInput | ChatGroupOrderByWithAggregationInput[]
+    by: ChatGroupScalarFieldEnum[] | ChatGroupScalarFieldEnum
+    having?: ChatGroupScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ChatGroupCountAggregateInputType | true
+    _avg?: ChatGroupAvgAggregateInputType
+    _sum?: ChatGroupSumAggregateInputType
+    _min?: ChatGroupMinAggregateInputType
+    _max?: ChatGroupMaxAggregateInputType
+  }
+
+  export type ChatGroupGroupByOutputType = {
+    id: number
+    name: string
+    isPersonalChat: boolean
+    avatar: string | null
+    adminId: number
+    _count: ChatGroupCountAggregateOutputType | null
+    _avg: ChatGroupAvgAggregateOutputType | null
+    _sum: ChatGroupSumAggregateOutputType | null
+    _min: ChatGroupMinAggregateOutputType | null
+    _max: ChatGroupMaxAggregateOutputType | null
+  }
+
+  type GetChatGroupGroupByPayload<T extends ChatGroupGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ChatGroupGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ChatGroupGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ChatGroupGroupByOutputType[P]>
+            : GetScalarType<T[P], ChatGroupGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ChatGroupSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    isPersonalChat?: boolean
+    avatar?: boolean
+    adminId?: boolean
+    admin?: boolean | UserDefaultArgs<ExtArgs>
+    members?: boolean | ChatGroup$membersArgs<ExtArgs>
+    messages?: boolean | ChatGroup$messagesArgs<ExtArgs>
+    _count?: boolean | ChatGroupCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["chatGroup"]>
+
+  export type ChatGroupSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    isPersonalChat?: boolean
+    avatar?: boolean
+    adminId?: boolean
+    admin?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["chatGroup"]>
+
+  export type ChatGroupSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    isPersonalChat?: boolean
+    avatar?: boolean
+    adminId?: boolean
+    admin?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["chatGroup"]>
+
+  export type ChatGroupSelectScalar = {
+    id?: boolean
+    name?: boolean
+    isPersonalChat?: boolean
+    avatar?: boolean
+    adminId?: boolean
+  }
+
+  export type ChatGroupOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "isPersonalChat" | "avatar" | "adminId", ExtArgs["result"]["chatGroup"]>
+  export type ChatGroupInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    admin?: boolean | UserDefaultArgs<ExtArgs>
+    members?: boolean | ChatGroup$membersArgs<ExtArgs>
+    messages?: boolean | ChatGroup$messagesArgs<ExtArgs>
+    _count?: boolean | ChatGroupCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ChatGroupIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    admin?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ChatGroupIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    admin?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $ChatGroupPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ChatGroup"
+    objects: {
+      admin: Prisma.$UserPayload<ExtArgs>
+      members: Prisma.$UserPayload<ExtArgs>[]
+      messages: Prisma.$ChatMessagePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      isPersonalChat: boolean
+      avatar: string | null
+      adminId: number
+    }, ExtArgs["result"]["chatGroup"]>
+    composites: {}
+  }
+
+  type ChatGroupGetPayload<S extends boolean | null | undefined | ChatGroupDefaultArgs> = $Result.GetResult<Prisma.$ChatGroupPayload, S>
+
+  type ChatGroupCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ChatGroupFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ChatGroupCountAggregateInputType | true
+    }
+
+  export interface ChatGroupDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ChatGroup'], meta: { name: 'ChatGroup' } }
+    /**
+     * Find zero or one ChatGroup that matches the filter.
+     * @param {ChatGroupFindUniqueArgs} args - Arguments to find a ChatGroup
+     * @example
+     * // Get one ChatGroup
+     * const chatGroup = await prisma.chatGroup.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ChatGroupFindUniqueArgs>(args: SelectSubset<T, ChatGroupFindUniqueArgs<ExtArgs>>): Prisma__ChatGroupClient<$Result.GetResult<Prisma.$ChatGroupPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ChatGroup that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ChatGroupFindUniqueOrThrowArgs} args - Arguments to find a ChatGroup
+     * @example
+     * // Get one ChatGroup
+     * const chatGroup = await prisma.chatGroup.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ChatGroupFindUniqueOrThrowArgs>(args: SelectSubset<T, ChatGroupFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ChatGroupClient<$Result.GetResult<Prisma.$ChatGroupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ChatGroup that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatGroupFindFirstArgs} args - Arguments to find a ChatGroup
+     * @example
+     * // Get one ChatGroup
+     * const chatGroup = await prisma.chatGroup.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ChatGroupFindFirstArgs>(args?: SelectSubset<T, ChatGroupFindFirstArgs<ExtArgs>>): Prisma__ChatGroupClient<$Result.GetResult<Prisma.$ChatGroupPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ChatGroup that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatGroupFindFirstOrThrowArgs} args - Arguments to find a ChatGroup
+     * @example
+     * // Get one ChatGroup
+     * const chatGroup = await prisma.chatGroup.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ChatGroupFindFirstOrThrowArgs>(args?: SelectSubset<T, ChatGroupFindFirstOrThrowArgs<ExtArgs>>): Prisma__ChatGroupClient<$Result.GetResult<Prisma.$ChatGroupPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ChatGroups that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatGroupFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ChatGroups
+     * const chatGroups = await prisma.chatGroup.findMany()
+     * 
+     * // Get first 10 ChatGroups
+     * const chatGroups = await prisma.chatGroup.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const chatGroupWithIdOnly = await prisma.chatGroup.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ChatGroupFindManyArgs>(args?: SelectSubset<T, ChatGroupFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChatGroupPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ChatGroup.
+     * @param {ChatGroupCreateArgs} args - Arguments to create a ChatGroup.
+     * @example
+     * // Create one ChatGroup
+     * const ChatGroup = await prisma.chatGroup.create({
+     *   data: {
+     *     // ... data to create a ChatGroup
+     *   }
+     * })
+     * 
+     */
+    create<T extends ChatGroupCreateArgs>(args: SelectSubset<T, ChatGroupCreateArgs<ExtArgs>>): Prisma__ChatGroupClient<$Result.GetResult<Prisma.$ChatGroupPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ChatGroups.
+     * @param {ChatGroupCreateManyArgs} args - Arguments to create many ChatGroups.
+     * @example
+     * // Create many ChatGroups
+     * const chatGroup = await prisma.chatGroup.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ChatGroupCreateManyArgs>(args?: SelectSubset<T, ChatGroupCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ChatGroups and returns the data saved in the database.
+     * @param {ChatGroupCreateManyAndReturnArgs} args - Arguments to create many ChatGroups.
+     * @example
+     * // Create many ChatGroups
+     * const chatGroup = await prisma.chatGroup.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ChatGroups and only return the `id`
+     * const chatGroupWithIdOnly = await prisma.chatGroup.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ChatGroupCreateManyAndReturnArgs>(args?: SelectSubset<T, ChatGroupCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChatGroupPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ChatGroup.
+     * @param {ChatGroupDeleteArgs} args - Arguments to delete one ChatGroup.
+     * @example
+     * // Delete one ChatGroup
+     * const ChatGroup = await prisma.chatGroup.delete({
+     *   where: {
+     *     // ... filter to delete one ChatGroup
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ChatGroupDeleteArgs>(args: SelectSubset<T, ChatGroupDeleteArgs<ExtArgs>>): Prisma__ChatGroupClient<$Result.GetResult<Prisma.$ChatGroupPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ChatGroup.
+     * @param {ChatGroupUpdateArgs} args - Arguments to update one ChatGroup.
+     * @example
+     * // Update one ChatGroup
+     * const chatGroup = await prisma.chatGroup.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ChatGroupUpdateArgs>(args: SelectSubset<T, ChatGroupUpdateArgs<ExtArgs>>): Prisma__ChatGroupClient<$Result.GetResult<Prisma.$ChatGroupPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ChatGroups.
+     * @param {ChatGroupDeleteManyArgs} args - Arguments to filter ChatGroups to delete.
+     * @example
+     * // Delete a few ChatGroups
+     * const { count } = await prisma.chatGroup.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ChatGroupDeleteManyArgs>(args?: SelectSubset<T, ChatGroupDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ChatGroups.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatGroupUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ChatGroups
+     * const chatGroup = await prisma.chatGroup.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ChatGroupUpdateManyArgs>(args: SelectSubset<T, ChatGroupUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ChatGroups and returns the data updated in the database.
+     * @param {ChatGroupUpdateManyAndReturnArgs} args - Arguments to update many ChatGroups.
+     * @example
+     * // Update many ChatGroups
+     * const chatGroup = await prisma.chatGroup.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ChatGroups and only return the `id`
+     * const chatGroupWithIdOnly = await prisma.chatGroup.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ChatGroupUpdateManyAndReturnArgs>(args: SelectSubset<T, ChatGroupUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChatGroupPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ChatGroup.
+     * @param {ChatGroupUpsertArgs} args - Arguments to update or create a ChatGroup.
+     * @example
+     * // Update or create a ChatGroup
+     * const chatGroup = await prisma.chatGroup.upsert({
+     *   create: {
+     *     // ... data to create a ChatGroup
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ChatGroup we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ChatGroupUpsertArgs>(args: SelectSubset<T, ChatGroupUpsertArgs<ExtArgs>>): Prisma__ChatGroupClient<$Result.GetResult<Prisma.$ChatGroupPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ChatGroups.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatGroupCountArgs} args - Arguments to filter ChatGroups to count.
+     * @example
+     * // Count the number of ChatGroups
+     * const count = await prisma.chatGroup.count({
+     *   where: {
+     *     // ... the filter for the ChatGroups we want to count
+     *   }
+     * })
+    **/
+    count<T extends ChatGroupCountArgs>(
+      args?: Subset<T, ChatGroupCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ChatGroupCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ChatGroup.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatGroupAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ChatGroupAggregateArgs>(args: Subset<T, ChatGroupAggregateArgs>): Prisma.PrismaPromise<GetChatGroupAggregateType<T>>
+
+    /**
+     * Group by ChatGroup.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatGroupGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ChatGroupGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ChatGroupGroupByArgs['orderBy'] }
+        : { orderBy?: ChatGroupGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ChatGroupGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetChatGroupGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ChatGroup model
+   */
+  readonly fields: ChatGroupFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ChatGroup.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ChatGroupClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    admin<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    members<T extends ChatGroup$membersArgs<ExtArgs> = {}>(args?: Subset<T, ChatGroup$membersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    messages<T extends ChatGroup$messagesArgs<ExtArgs> = {}>(args?: Subset<T, ChatGroup$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ChatGroup model
+   */
+  interface ChatGroupFieldRefs {
+    readonly id: FieldRef<"ChatGroup", 'Int'>
+    readonly name: FieldRef<"ChatGroup", 'String'>
+    readonly isPersonalChat: FieldRef<"ChatGroup", 'Boolean'>
+    readonly avatar: FieldRef<"ChatGroup", 'String'>
+    readonly adminId: FieldRef<"ChatGroup", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ChatGroup findUnique
+   */
+  export type ChatGroupFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatGroup
+     */
+    select?: ChatGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatGroup
+     */
+    omit?: ChatGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatGroupInclude<ExtArgs> | null
+    /**
+     * Filter, which ChatGroup to fetch.
+     */
+    where: ChatGroupWhereUniqueInput
+  }
+
+  /**
+   * ChatGroup findUniqueOrThrow
+   */
+  export type ChatGroupFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatGroup
+     */
+    select?: ChatGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatGroup
+     */
+    omit?: ChatGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatGroupInclude<ExtArgs> | null
+    /**
+     * Filter, which ChatGroup to fetch.
+     */
+    where: ChatGroupWhereUniqueInput
+  }
+
+  /**
+   * ChatGroup findFirst
+   */
+  export type ChatGroupFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatGroup
+     */
+    select?: ChatGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatGroup
+     */
+    omit?: ChatGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatGroupInclude<ExtArgs> | null
+    /**
+     * Filter, which ChatGroup to fetch.
+     */
+    where?: ChatGroupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ChatGroups to fetch.
+     */
+    orderBy?: ChatGroupOrderByWithRelationInput | ChatGroupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ChatGroups.
+     */
+    cursor?: ChatGroupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ChatGroups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ChatGroups.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ChatGroups.
+     */
+    distinct?: ChatGroupScalarFieldEnum | ChatGroupScalarFieldEnum[]
+  }
+
+  /**
+   * ChatGroup findFirstOrThrow
+   */
+  export type ChatGroupFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatGroup
+     */
+    select?: ChatGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatGroup
+     */
+    omit?: ChatGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatGroupInclude<ExtArgs> | null
+    /**
+     * Filter, which ChatGroup to fetch.
+     */
+    where?: ChatGroupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ChatGroups to fetch.
+     */
+    orderBy?: ChatGroupOrderByWithRelationInput | ChatGroupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ChatGroups.
+     */
+    cursor?: ChatGroupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ChatGroups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ChatGroups.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ChatGroups.
+     */
+    distinct?: ChatGroupScalarFieldEnum | ChatGroupScalarFieldEnum[]
+  }
+
+  /**
+   * ChatGroup findMany
+   */
+  export type ChatGroupFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatGroup
+     */
+    select?: ChatGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatGroup
+     */
+    omit?: ChatGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatGroupInclude<ExtArgs> | null
+    /**
+     * Filter, which ChatGroups to fetch.
+     */
+    where?: ChatGroupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ChatGroups to fetch.
+     */
+    orderBy?: ChatGroupOrderByWithRelationInput | ChatGroupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ChatGroups.
+     */
+    cursor?: ChatGroupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ChatGroups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ChatGroups.
+     */
+    skip?: number
+    distinct?: ChatGroupScalarFieldEnum | ChatGroupScalarFieldEnum[]
+  }
+
+  /**
+   * ChatGroup create
+   */
+  export type ChatGroupCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatGroup
+     */
+    select?: ChatGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatGroup
+     */
+    omit?: ChatGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatGroupInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ChatGroup.
+     */
+    data: XOR<ChatGroupCreateInput, ChatGroupUncheckedCreateInput>
+  }
+
+  /**
+   * ChatGroup createMany
+   */
+  export type ChatGroupCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ChatGroups.
+     */
+    data: ChatGroupCreateManyInput | ChatGroupCreateManyInput[]
+  }
+
+  /**
+   * ChatGroup createManyAndReturn
+   */
+  export type ChatGroupCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatGroup
+     */
+    select?: ChatGroupSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatGroup
+     */
+    omit?: ChatGroupOmit<ExtArgs> | null
+    /**
+     * The data used to create many ChatGroups.
+     */
+    data: ChatGroupCreateManyInput | ChatGroupCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatGroupIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ChatGroup update
+   */
+  export type ChatGroupUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatGroup
+     */
+    select?: ChatGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatGroup
+     */
+    omit?: ChatGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatGroupInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ChatGroup.
+     */
+    data: XOR<ChatGroupUpdateInput, ChatGroupUncheckedUpdateInput>
+    /**
+     * Choose, which ChatGroup to update.
+     */
+    where: ChatGroupWhereUniqueInput
+  }
+
+  /**
+   * ChatGroup updateMany
+   */
+  export type ChatGroupUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ChatGroups.
+     */
+    data: XOR<ChatGroupUpdateManyMutationInput, ChatGroupUncheckedUpdateManyInput>
+    /**
+     * Filter which ChatGroups to update
+     */
+    where?: ChatGroupWhereInput
+    /**
+     * Limit how many ChatGroups to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ChatGroup updateManyAndReturn
+   */
+  export type ChatGroupUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatGroup
+     */
+    select?: ChatGroupSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatGroup
+     */
+    omit?: ChatGroupOmit<ExtArgs> | null
+    /**
+     * The data used to update ChatGroups.
+     */
+    data: XOR<ChatGroupUpdateManyMutationInput, ChatGroupUncheckedUpdateManyInput>
+    /**
+     * Filter which ChatGroups to update
+     */
+    where?: ChatGroupWhereInput
+    /**
+     * Limit how many ChatGroups to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatGroupIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ChatGroup upsert
+   */
+  export type ChatGroupUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatGroup
+     */
+    select?: ChatGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatGroup
+     */
+    omit?: ChatGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatGroupInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ChatGroup to update in case it exists.
+     */
+    where: ChatGroupWhereUniqueInput
+    /**
+     * In case the ChatGroup found by the `where` argument doesn't exist, create a new ChatGroup with this data.
+     */
+    create: XOR<ChatGroupCreateInput, ChatGroupUncheckedCreateInput>
+    /**
+     * In case the ChatGroup was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ChatGroupUpdateInput, ChatGroupUncheckedUpdateInput>
+  }
+
+  /**
+   * ChatGroup delete
+   */
+  export type ChatGroupDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatGroup
+     */
+    select?: ChatGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatGroup
+     */
+    omit?: ChatGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatGroupInclude<ExtArgs> | null
+    /**
+     * Filter which ChatGroup to delete.
+     */
+    where: ChatGroupWhereUniqueInput
+  }
+
+  /**
+   * ChatGroup deleteMany
+   */
+  export type ChatGroupDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ChatGroups to delete
+     */
+    where?: ChatGroupWhereInput
+    /**
+     * Limit how many ChatGroups to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ChatGroup.members
+   */
+  export type ChatGroup$membersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    cursor?: UserWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+  }
+
+  /**
+   * ChatGroup.messages
+   */
+  export type ChatGroup$messagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatMessage
+     */
+    omit?: ChatMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+    where?: ChatMessageWhereInput
+    orderBy?: ChatMessageOrderByWithRelationInput | ChatMessageOrderByWithRelationInput[]
+    cursor?: ChatMessageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ChatMessageScalarFieldEnum | ChatMessageScalarFieldEnum[]
+  }
+
+  /**
+   * ChatGroup without action
+   */
+  export type ChatGroupDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatGroup
+     */
+    select?: ChatGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatGroup
+     */
+    omit?: ChatGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatGroupInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ChatMessage
+   */
+
+  export type AggregateChatMessage = {
+    _count: ChatMessageCountAggregateOutputType | null
+    _avg: ChatMessageAvgAggregateOutputType | null
+    _sum: ChatMessageSumAggregateOutputType | null
+    _min: ChatMessageMinAggregateOutputType | null
+    _max: ChatMessageMaxAggregateOutputType | null
+  }
+
+  export type ChatMessageAvgAggregateOutputType = {
+    id: number | null
+    authorId: number | null
+    chatGroupId: number | null
+  }
+
+  export type ChatMessageSumAggregateOutputType = {
+    id: number | null
+    authorId: number | null
+    chatGroupId: number | null
+  }
+
+  export type ChatMessageMinAggregateOutputType = {
+    id: number | null
+    content: string | null
+    sentAt: Date | null
+    attachedImage: string | null
+    authorId: number | null
+    chatGroupId: number | null
+  }
+
+  export type ChatMessageMaxAggregateOutputType = {
+    id: number | null
+    content: string | null
+    sentAt: Date | null
+    attachedImage: string | null
+    authorId: number | null
+    chatGroupId: number | null
+  }
+
+  export type ChatMessageCountAggregateOutputType = {
+    id: number
+    content: number
+    sentAt: number
+    attachedImage: number
+    authorId: number
+    chatGroupId: number
+    _all: number
+  }
+
+
+  export type ChatMessageAvgAggregateInputType = {
+    id?: true
+    authorId?: true
+    chatGroupId?: true
+  }
+
+  export type ChatMessageSumAggregateInputType = {
+    id?: true
+    authorId?: true
+    chatGroupId?: true
+  }
+
+  export type ChatMessageMinAggregateInputType = {
+    id?: true
+    content?: true
+    sentAt?: true
+    attachedImage?: true
+    authorId?: true
+    chatGroupId?: true
+  }
+
+  export type ChatMessageMaxAggregateInputType = {
+    id?: true
+    content?: true
+    sentAt?: true
+    attachedImage?: true
+    authorId?: true
+    chatGroupId?: true
+  }
+
+  export type ChatMessageCountAggregateInputType = {
+    id?: true
+    content?: true
+    sentAt?: true
+    attachedImage?: true
+    authorId?: true
+    chatGroupId?: true
+    _all?: true
+  }
+
+  export type ChatMessageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ChatMessage to aggregate.
+     */
+    where?: ChatMessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ChatMessages to fetch.
+     */
+    orderBy?: ChatMessageOrderByWithRelationInput | ChatMessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ChatMessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ChatMessages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ChatMessages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ChatMessages
+    **/
+    _count?: true | ChatMessageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ChatMessageAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ChatMessageSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ChatMessageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ChatMessageMaxAggregateInputType
+  }
+
+  export type GetChatMessageAggregateType<T extends ChatMessageAggregateArgs> = {
+        [P in keyof T & keyof AggregateChatMessage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateChatMessage[P]>
+      : GetScalarType<T[P], AggregateChatMessage[P]>
+  }
+
+
+
+
+  export type ChatMessageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ChatMessageWhereInput
+    orderBy?: ChatMessageOrderByWithAggregationInput | ChatMessageOrderByWithAggregationInput[]
+    by: ChatMessageScalarFieldEnum[] | ChatMessageScalarFieldEnum
+    having?: ChatMessageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ChatMessageCountAggregateInputType | true
+    _avg?: ChatMessageAvgAggregateInputType
+    _sum?: ChatMessageSumAggregateInputType
+    _min?: ChatMessageMinAggregateInputType
+    _max?: ChatMessageMaxAggregateInputType
+  }
+
+  export type ChatMessageGroupByOutputType = {
+    id: number
+    content: string
+    sentAt: Date
+    attachedImage: string | null
+    authorId: number
+    chatGroupId: number
+    _count: ChatMessageCountAggregateOutputType | null
+    _avg: ChatMessageAvgAggregateOutputType | null
+    _sum: ChatMessageSumAggregateOutputType | null
+    _min: ChatMessageMinAggregateOutputType | null
+    _max: ChatMessageMaxAggregateOutputType | null
+  }
+
+  type GetChatMessageGroupByPayload<T extends ChatMessageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ChatMessageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ChatMessageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ChatMessageGroupByOutputType[P]>
+            : GetScalarType<T[P], ChatMessageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ChatMessageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    content?: boolean
+    sentAt?: boolean
+    attachedImage?: boolean
+    authorId?: boolean
+    chatGroupId?: boolean
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    chatGroup?: boolean | ChatGroupDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["chatMessage"]>
+
+  export type ChatMessageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    content?: boolean
+    sentAt?: boolean
+    attachedImage?: boolean
+    authorId?: boolean
+    chatGroupId?: boolean
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    chatGroup?: boolean | ChatGroupDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["chatMessage"]>
+
+  export type ChatMessageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    content?: boolean
+    sentAt?: boolean
+    attachedImage?: boolean
+    authorId?: boolean
+    chatGroupId?: boolean
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    chatGroup?: boolean | ChatGroupDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["chatMessage"]>
+
+  export type ChatMessageSelectScalar = {
+    id?: boolean
+    content?: boolean
+    sentAt?: boolean
+    attachedImage?: boolean
+    authorId?: boolean
+    chatGroupId?: boolean
+  }
+
+  export type ChatMessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "content" | "sentAt" | "attachedImage" | "authorId" | "chatGroupId", ExtArgs["result"]["chatMessage"]>
+  export type ChatMessageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    chatGroup?: boolean | ChatGroupDefaultArgs<ExtArgs>
+  }
+  export type ChatMessageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    chatGroup?: boolean | ChatGroupDefaultArgs<ExtArgs>
+  }
+  export type ChatMessageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    chatGroup?: boolean | ChatGroupDefaultArgs<ExtArgs>
+  }
+
+  export type $ChatMessagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ChatMessage"
+    objects: {
+      author: Prisma.$UserPayload<ExtArgs>
+      chatGroup: Prisma.$ChatGroupPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      content: string
+      sentAt: Date
+      attachedImage: string | null
+      authorId: number
+      chatGroupId: number
+    }, ExtArgs["result"]["chatMessage"]>
+    composites: {}
+  }
+
+  type ChatMessageGetPayload<S extends boolean | null | undefined | ChatMessageDefaultArgs> = $Result.GetResult<Prisma.$ChatMessagePayload, S>
+
+  type ChatMessageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ChatMessageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ChatMessageCountAggregateInputType | true
+    }
+
+  export interface ChatMessageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ChatMessage'], meta: { name: 'ChatMessage' } }
+    /**
+     * Find zero or one ChatMessage that matches the filter.
+     * @param {ChatMessageFindUniqueArgs} args - Arguments to find a ChatMessage
+     * @example
+     * // Get one ChatMessage
+     * const chatMessage = await prisma.chatMessage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ChatMessageFindUniqueArgs>(args: SelectSubset<T, ChatMessageFindUniqueArgs<ExtArgs>>): Prisma__ChatMessageClient<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ChatMessage that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ChatMessageFindUniqueOrThrowArgs} args - Arguments to find a ChatMessage
+     * @example
+     * // Get one ChatMessage
+     * const chatMessage = await prisma.chatMessage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ChatMessageFindUniqueOrThrowArgs>(args: SelectSubset<T, ChatMessageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ChatMessageClient<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ChatMessage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatMessageFindFirstArgs} args - Arguments to find a ChatMessage
+     * @example
+     * // Get one ChatMessage
+     * const chatMessage = await prisma.chatMessage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ChatMessageFindFirstArgs>(args?: SelectSubset<T, ChatMessageFindFirstArgs<ExtArgs>>): Prisma__ChatMessageClient<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ChatMessage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatMessageFindFirstOrThrowArgs} args - Arguments to find a ChatMessage
+     * @example
+     * // Get one ChatMessage
+     * const chatMessage = await prisma.chatMessage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ChatMessageFindFirstOrThrowArgs>(args?: SelectSubset<T, ChatMessageFindFirstOrThrowArgs<ExtArgs>>): Prisma__ChatMessageClient<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ChatMessages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatMessageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ChatMessages
+     * const chatMessages = await prisma.chatMessage.findMany()
+     * 
+     * // Get first 10 ChatMessages
+     * const chatMessages = await prisma.chatMessage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const chatMessageWithIdOnly = await prisma.chatMessage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ChatMessageFindManyArgs>(args?: SelectSubset<T, ChatMessageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ChatMessage.
+     * @param {ChatMessageCreateArgs} args - Arguments to create a ChatMessage.
+     * @example
+     * // Create one ChatMessage
+     * const ChatMessage = await prisma.chatMessage.create({
+     *   data: {
+     *     // ... data to create a ChatMessage
+     *   }
+     * })
+     * 
+     */
+    create<T extends ChatMessageCreateArgs>(args: SelectSubset<T, ChatMessageCreateArgs<ExtArgs>>): Prisma__ChatMessageClient<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ChatMessages.
+     * @param {ChatMessageCreateManyArgs} args - Arguments to create many ChatMessages.
+     * @example
+     * // Create many ChatMessages
+     * const chatMessage = await prisma.chatMessage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ChatMessageCreateManyArgs>(args?: SelectSubset<T, ChatMessageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ChatMessages and returns the data saved in the database.
+     * @param {ChatMessageCreateManyAndReturnArgs} args - Arguments to create many ChatMessages.
+     * @example
+     * // Create many ChatMessages
+     * const chatMessage = await prisma.chatMessage.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ChatMessages and only return the `id`
+     * const chatMessageWithIdOnly = await prisma.chatMessage.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ChatMessageCreateManyAndReturnArgs>(args?: SelectSubset<T, ChatMessageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ChatMessage.
+     * @param {ChatMessageDeleteArgs} args - Arguments to delete one ChatMessage.
+     * @example
+     * // Delete one ChatMessage
+     * const ChatMessage = await prisma.chatMessage.delete({
+     *   where: {
+     *     // ... filter to delete one ChatMessage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ChatMessageDeleteArgs>(args: SelectSubset<T, ChatMessageDeleteArgs<ExtArgs>>): Prisma__ChatMessageClient<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ChatMessage.
+     * @param {ChatMessageUpdateArgs} args - Arguments to update one ChatMessage.
+     * @example
+     * // Update one ChatMessage
+     * const chatMessage = await prisma.chatMessage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ChatMessageUpdateArgs>(args: SelectSubset<T, ChatMessageUpdateArgs<ExtArgs>>): Prisma__ChatMessageClient<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ChatMessages.
+     * @param {ChatMessageDeleteManyArgs} args - Arguments to filter ChatMessages to delete.
+     * @example
+     * // Delete a few ChatMessages
+     * const { count } = await prisma.chatMessage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ChatMessageDeleteManyArgs>(args?: SelectSubset<T, ChatMessageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ChatMessages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatMessageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ChatMessages
+     * const chatMessage = await prisma.chatMessage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ChatMessageUpdateManyArgs>(args: SelectSubset<T, ChatMessageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ChatMessages and returns the data updated in the database.
+     * @param {ChatMessageUpdateManyAndReturnArgs} args - Arguments to update many ChatMessages.
+     * @example
+     * // Update many ChatMessages
+     * const chatMessage = await prisma.chatMessage.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ChatMessages and only return the `id`
+     * const chatMessageWithIdOnly = await prisma.chatMessage.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ChatMessageUpdateManyAndReturnArgs>(args: SelectSubset<T, ChatMessageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ChatMessage.
+     * @param {ChatMessageUpsertArgs} args - Arguments to update or create a ChatMessage.
+     * @example
+     * // Update or create a ChatMessage
+     * const chatMessage = await prisma.chatMessage.upsert({
+     *   create: {
+     *     // ... data to create a ChatMessage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ChatMessage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ChatMessageUpsertArgs>(args: SelectSubset<T, ChatMessageUpsertArgs<ExtArgs>>): Prisma__ChatMessageClient<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ChatMessages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatMessageCountArgs} args - Arguments to filter ChatMessages to count.
+     * @example
+     * // Count the number of ChatMessages
+     * const count = await prisma.chatMessage.count({
+     *   where: {
+     *     // ... the filter for the ChatMessages we want to count
+     *   }
+     * })
+    **/
+    count<T extends ChatMessageCountArgs>(
+      args?: Subset<T, ChatMessageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ChatMessageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ChatMessage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatMessageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ChatMessageAggregateArgs>(args: Subset<T, ChatMessageAggregateArgs>): Prisma.PrismaPromise<GetChatMessageAggregateType<T>>
+
+    /**
+     * Group by ChatMessage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatMessageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ChatMessageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ChatMessageGroupByArgs['orderBy'] }
+        : { orderBy?: ChatMessageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ChatMessageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetChatMessageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ChatMessage model
+   */
+  readonly fields: ChatMessageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ChatMessage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ChatMessageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    chatGroup<T extends ChatGroupDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ChatGroupDefaultArgs<ExtArgs>>): Prisma__ChatGroupClient<$Result.GetResult<Prisma.$ChatGroupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ChatMessage model
+   */
+  interface ChatMessageFieldRefs {
+    readonly id: FieldRef<"ChatMessage", 'Int'>
+    readonly content: FieldRef<"ChatMessage", 'String'>
+    readonly sentAt: FieldRef<"ChatMessage", 'DateTime'>
+    readonly attachedImage: FieldRef<"ChatMessage", 'String'>
+    readonly authorId: FieldRef<"ChatMessage", 'Int'>
+    readonly chatGroupId: FieldRef<"ChatMessage", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ChatMessage findUnique
+   */
+  export type ChatMessageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatMessage
+     */
+    omit?: ChatMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+    /**
+     * Filter, which ChatMessage to fetch.
+     */
+    where: ChatMessageWhereUniqueInput
+  }
+
+  /**
+   * ChatMessage findUniqueOrThrow
+   */
+  export type ChatMessageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatMessage
+     */
+    omit?: ChatMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+    /**
+     * Filter, which ChatMessage to fetch.
+     */
+    where: ChatMessageWhereUniqueInput
+  }
+
+  /**
+   * ChatMessage findFirst
+   */
+  export type ChatMessageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatMessage
+     */
+    omit?: ChatMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+    /**
+     * Filter, which ChatMessage to fetch.
+     */
+    where?: ChatMessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ChatMessages to fetch.
+     */
+    orderBy?: ChatMessageOrderByWithRelationInput | ChatMessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ChatMessages.
+     */
+    cursor?: ChatMessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ChatMessages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ChatMessages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ChatMessages.
+     */
+    distinct?: ChatMessageScalarFieldEnum | ChatMessageScalarFieldEnum[]
+  }
+
+  /**
+   * ChatMessage findFirstOrThrow
+   */
+  export type ChatMessageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatMessage
+     */
+    omit?: ChatMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+    /**
+     * Filter, which ChatMessage to fetch.
+     */
+    where?: ChatMessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ChatMessages to fetch.
+     */
+    orderBy?: ChatMessageOrderByWithRelationInput | ChatMessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ChatMessages.
+     */
+    cursor?: ChatMessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ChatMessages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ChatMessages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ChatMessages.
+     */
+    distinct?: ChatMessageScalarFieldEnum | ChatMessageScalarFieldEnum[]
+  }
+
+  /**
+   * ChatMessage findMany
+   */
+  export type ChatMessageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatMessage
+     */
+    omit?: ChatMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+    /**
+     * Filter, which ChatMessages to fetch.
+     */
+    where?: ChatMessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ChatMessages to fetch.
+     */
+    orderBy?: ChatMessageOrderByWithRelationInput | ChatMessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ChatMessages.
+     */
+    cursor?: ChatMessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ChatMessages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ChatMessages.
+     */
+    skip?: number
+    distinct?: ChatMessageScalarFieldEnum | ChatMessageScalarFieldEnum[]
+  }
+
+  /**
+   * ChatMessage create
+   */
+  export type ChatMessageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatMessage
+     */
+    omit?: ChatMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ChatMessage.
+     */
+    data: XOR<ChatMessageCreateInput, ChatMessageUncheckedCreateInput>
+  }
+
+  /**
+   * ChatMessage createMany
+   */
+  export type ChatMessageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ChatMessages.
+     */
+    data: ChatMessageCreateManyInput | ChatMessageCreateManyInput[]
+  }
+
+  /**
+   * ChatMessage createManyAndReturn
+   */
+  export type ChatMessageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatMessage
+     */
+    omit?: ChatMessageOmit<ExtArgs> | null
+    /**
+     * The data used to create many ChatMessages.
+     */
+    data: ChatMessageCreateManyInput | ChatMessageCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ChatMessage update
+   */
+  export type ChatMessageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatMessage
+     */
+    omit?: ChatMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ChatMessage.
+     */
+    data: XOR<ChatMessageUpdateInput, ChatMessageUncheckedUpdateInput>
+    /**
+     * Choose, which ChatMessage to update.
+     */
+    where: ChatMessageWhereUniqueInput
+  }
+
+  /**
+   * ChatMessage updateMany
+   */
+  export type ChatMessageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ChatMessages.
+     */
+    data: XOR<ChatMessageUpdateManyMutationInput, ChatMessageUncheckedUpdateManyInput>
+    /**
+     * Filter which ChatMessages to update
+     */
+    where?: ChatMessageWhereInput
+    /**
+     * Limit how many ChatMessages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ChatMessage updateManyAndReturn
+   */
+  export type ChatMessageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatMessage
+     */
+    omit?: ChatMessageOmit<ExtArgs> | null
+    /**
+     * The data used to update ChatMessages.
+     */
+    data: XOR<ChatMessageUpdateManyMutationInput, ChatMessageUncheckedUpdateManyInput>
+    /**
+     * Filter which ChatMessages to update
+     */
+    where?: ChatMessageWhereInput
+    /**
+     * Limit how many ChatMessages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ChatMessage upsert
+   */
+  export type ChatMessageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatMessage
+     */
+    omit?: ChatMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ChatMessage to update in case it exists.
+     */
+    where: ChatMessageWhereUniqueInput
+    /**
+     * In case the ChatMessage found by the `where` argument doesn't exist, create a new ChatMessage with this data.
+     */
+    create: XOR<ChatMessageCreateInput, ChatMessageUncheckedCreateInput>
+    /**
+     * In case the ChatMessage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ChatMessageUpdateInput, ChatMessageUncheckedUpdateInput>
+  }
+
+  /**
+   * ChatMessage delete
+   */
+  export type ChatMessageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatMessage
+     */
+    omit?: ChatMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+    /**
+     * Filter which ChatMessage to delete.
+     */
+    where: ChatMessageWhereUniqueInput
+  }
+
+  /**
+   * ChatMessage deleteMany
+   */
+  export type ChatMessageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ChatMessages to delete
+     */
+    where?: ChatMessageWhereInput
+    /**
+     * Limit how many ChatMessages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ChatMessage without action
+   */
+  export type ChatMessageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatMessage
+     */
+    omit?: ChatMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
   }
 
 
@@ -2295,18 +6388,21 @@ export namespace Prisma {
     id: number | null
     friendUserId: number | null
     friendOfId: number | null
+    accepted: boolean | null
   }
 
   export type FriendMaxAggregateOutputType = {
     id: number | null
     friendUserId: number | null
     friendOfId: number | null
+    accepted: boolean | null
   }
 
   export type FriendCountAggregateOutputType = {
     id: number
     friendUserId: number
     friendOfId: number
+    accepted: number
     _all: number
   }
 
@@ -2327,18 +6423,21 @@ export namespace Prisma {
     id?: true
     friendUserId?: true
     friendOfId?: true
+    accepted?: true
   }
 
   export type FriendMaxAggregateInputType = {
     id?: true
     friendUserId?: true
     friendOfId?: true
+    accepted?: true
   }
 
   export type FriendCountAggregateInputType = {
     id?: true
     friendUserId?: true
     friendOfId?: true
+    accepted?: true
     _all?: true
   }
 
@@ -2432,6 +6531,7 @@ export namespace Prisma {
     id: number
     friendUserId: number
     friendOfId: number
+    accepted: boolean
     _count: FriendCountAggregateOutputType | null
     _avg: FriendAvgAggregateOutputType | null
     _sum: FriendSumAggregateOutputType | null
@@ -2457,6 +6557,7 @@ export namespace Prisma {
     id?: boolean
     friendUserId?: boolean
     friendOfId?: boolean
+    accepted?: boolean
     friendUser?: boolean | UserDefaultArgs<ExtArgs>
     friendOf?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["friend"]>
@@ -2465,6 +6566,7 @@ export namespace Prisma {
     id?: boolean
     friendUserId?: boolean
     friendOfId?: boolean
+    accepted?: boolean
     friendUser?: boolean | UserDefaultArgs<ExtArgs>
     friendOf?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["friend"]>
@@ -2473,6 +6575,7 @@ export namespace Prisma {
     id?: boolean
     friendUserId?: boolean
     friendOfId?: boolean
+    accepted?: boolean
     friendUser?: boolean | UserDefaultArgs<ExtArgs>
     friendOf?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["friend"]>
@@ -2481,9 +6584,10 @@ export namespace Prisma {
     id?: boolean
     friendUserId?: boolean
     friendOfId?: boolean
+    accepted?: boolean
   }
 
-  export type FriendOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "friendUserId" | "friendOfId", ExtArgs["result"]["friend"]>
+  export type FriendOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "friendUserId" | "friendOfId" | "accepted", ExtArgs["result"]["friend"]>
   export type FriendInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     friendUser?: boolean | UserDefaultArgs<ExtArgs>
     friendOf?: boolean | UserDefaultArgs<ExtArgs>
@@ -2507,6 +6611,7 @@ export namespace Prisma {
       id: number
       friendUserId: number
       friendOfId: number
+      accepted: boolean
     }, ExtArgs["result"]["friend"]>
     composites: {}
   }
@@ -2935,6 +7040,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Friend", 'Int'>
     readonly friendUserId: FieldRef<"Friend", 'Int'>
     readonly friendOfId: FieldRef<"Friend", 'Int'>
+    readonly accepted: FieldRef<"Friend", 'Boolean'>
   }
     
 
@@ -3348,456 +7454,371 @@ export namespace Prisma {
 
 
   /**
-   * Model UserPost
+   * Model Image
    */
 
-  export type AggregateUserPost = {
-    _count: UserPostCountAggregateOutputType | null
-    _avg: UserPostAvgAggregateOutputType | null
-    _sum: UserPostSumAggregateOutputType | null
-    _min: UserPostMinAggregateOutputType | null
-    _max: UserPostMaxAggregateOutputType | null
+  export type AggregateImage = {
+    _count: ImageCountAggregateOutputType | null
+    _avg: ImageAvgAggregateOutputType | null
+    _sum: ImageSumAggregateOutputType | null
+    _min: ImageMinAggregateOutputType | null
+    _max: ImageMaxAggregateOutputType | null
   }
 
-  export type UserPostAvgAggregateOutputType = {
+  export type ImageAvgAggregateOutputType = {
     id: number | null
-    views: number | null
-    likes: number | null
-    userId: number | null
   }
 
-  export type UserPostSumAggregateOutputType = {
+  export type ImageSumAggregateOutputType = {
     id: number | null
-    views: number | null
-    likes: number | null
-    userId: number | null
   }
 
-  export type UserPostMinAggregateOutputType = {
+  export type ImageMinAggregateOutputType = {
     id: number | null
-    title: string | null
-    topic: string | null
-    tags: string | null
-    content: string | null
-    links: string | null
-    images: string | null
-    views: number | null
-    likes: number | null
-    userId: number | null
+    filename: string | null
+    url: string | null
+    uploadedAt: Date | null
   }
 
-  export type UserPostMaxAggregateOutputType = {
+  export type ImageMaxAggregateOutputType = {
     id: number | null
-    title: string | null
-    topic: string | null
-    tags: string | null
-    content: string | null
-    links: string | null
-    images: string | null
-    views: number | null
-    likes: number | null
-    userId: number | null
+    filename: string | null
+    url: string | null
+    uploadedAt: Date | null
   }
 
-  export type UserPostCountAggregateOutputType = {
+  export type ImageCountAggregateOutputType = {
     id: number
-    title: number
-    topic: number
-    tags: number
-    content: number
-    links: number
-    images: number
-    views: number
-    likes: number
-    userId: number
+    filename: number
+    url: number
+    uploadedAt: number
     _all: number
   }
 
 
-  export type UserPostAvgAggregateInputType = {
+  export type ImageAvgAggregateInputType = {
     id?: true
-    views?: true
-    likes?: true
-    userId?: true
   }
 
-  export type UserPostSumAggregateInputType = {
+  export type ImageSumAggregateInputType = {
     id?: true
-    views?: true
-    likes?: true
-    userId?: true
   }
 
-  export type UserPostMinAggregateInputType = {
+  export type ImageMinAggregateInputType = {
     id?: true
-    title?: true
-    topic?: true
-    tags?: true
-    content?: true
-    links?: true
-    images?: true
-    views?: true
-    likes?: true
-    userId?: true
+    filename?: true
+    url?: true
+    uploadedAt?: true
   }
 
-  export type UserPostMaxAggregateInputType = {
+  export type ImageMaxAggregateInputType = {
     id?: true
-    title?: true
-    topic?: true
-    tags?: true
-    content?: true
-    links?: true
-    images?: true
-    views?: true
-    likes?: true
-    userId?: true
+    filename?: true
+    url?: true
+    uploadedAt?: true
   }
 
-  export type UserPostCountAggregateInputType = {
+  export type ImageCountAggregateInputType = {
     id?: true
-    title?: true
-    topic?: true
-    tags?: true
-    content?: true
-    links?: true
-    images?: true
-    views?: true
-    likes?: true
-    userId?: true
+    filename?: true
+    url?: true
+    uploadedAt?: true
     _all?: true
   }
 
-  export type UserPostAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which UserPost to aggregate.
+     * Filter which Image to aggregate.
      */
-    where?: UserPostWhereInput
+    where?: ImageWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserPosts to fetch.
+     * Determine the order of Images to fetch.
      */
-    orderBy?: UserPostOrderByWithRelationInput | UserPostOrderByWithRelationInput[]
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: UserPostWhereUniqueInput
+    cursor?: ImageWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserPosts from the position of the cursor.
+     * Take `±n` Images from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserPosts.
+     * Skip the first `n` Images.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned UserPosts
+     * Count returned Images
     **/
-    _count?: true | UserPostCountAggregateInputType
+    _count?: true | ImageCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: UserPostAvgAggregateInputType
+    _avg?: ImageAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: UserPostSumAggregateInputType
+    _sum?: ImageSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: UserPostMinAggregateInputType
+    _min?: ImageMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: UserPostMaxAggregateInputType
+    _max?: ImageMaxAggregateInputType
   }
 
-  export type GetUserPostAggregateType<T extends UserPostAggregateArgs> = {
-        [P in keyof T & keyof AggregateUserPost]: P extends '_count' | 'count'
+  export type GetImageAggregateType<T extends ImageAggregateArgs> = {
+        [P in keyof T & keyof AggregateImage]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateUserPost[P]>
-      : GetScalarType<T[P], AggregateUserPost[P]>
+        : GetScalarType<T[P], AggregateImage[P]>
+      : GetScalarType<T[P], AggregateImage[P]>
   }
 
 
 
 
-  export type UserPostGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserPostWhereInput
-    orderBy?: UserPostOrderByWithAggregationInput | UserPostOrderByWithAggregationInput[]
-    by: UserPostScalarFieldEnum[] | UserPostScalarFieldEnum
-    having?: UserPostScalarWhereWithAggregatesInput
+  export type ImageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ImageWhereInput
+    orderBy?: ImageOrderByWithAggregationInput | ImageOrderByWithAggregationInput[]
+    by: ImageScalarFieldEnum[] | ImageScalarFieldEnum
+    having?: ImageScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: UserPostCountAggregateInputType | true
-    _avg?: UserPostAvgAggregateInputType
-    _sum?: UserPostSumAggregateInputType
-    _min?: UserPostMinAggregateInputType
-    _max?: UserPostMaxAggregateInputType
+    _count?: ImageCountAggregateInputType | true
+    _avg?: ImageAvgAggregateInputType
+    _sum?: ImageSumAggregateInputType
+    _min?: ImageMinAggregateInputType
+    _max?: ImageMaxAggregateInputType
   }
 
-  export type UserPostGroupByOutputType = {
+  export type ImageGroupByOutputType = {
     id: number
-    title: string
-    topic: string | null
-    tags: string | null
-    content: string
-    links: string | null
-    images: string | null
-    views: number
-    likes: number
-    userId: number
-    _count: UserPostCountAggregateOutputType | null
-    _avg: UserPostAvgAggregateOutputType | null
-    _sum: UserPostSumAggregateOutputType | null
-    _min: UserPostMinAggregateOutputType | null
-    _max: UserPostMaxAggregateOutputType | null
+    filename: string
+    url: string
+    uploadedAt: Date
+    _count: ImageCountAggregateOutputType | null
+    _avg: ImageAvgAggregateOutputType | null
+    _sum: ImageSumAggregateOutputType | null
+    _min: ImageMinAggregateOutputType | null
+    _max: ImageMaxAggregateOutputType | null
   }
 
-  type GetUserPostGroupByPayload<T extends UserPostGroupByArgs> = Prisma.PrismaPromise<
+  type GetImageGroupByPayload<T extends ImageGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<UserPostGroupByOutputType, T['by']> &
+      PickEnumerable<ImageGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof UserPostGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof ImageGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], UserPostGroupByOutputType[P]>
-            : GetScalarType<T[P], UserPostGroupByOutputType[P]>
+              : GetScalarType<T[P], ImageGroupByOutputType[P]>
+            : GetScalarType<T[P], ImageGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type UserPostSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ImageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
-    topic?: boolean
-    tags?: boolean
-    content?: boolean
-    links?: boolean
-    images?: boolean
-    views?: boolean
-    likes?: boolean
-    userId?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userPost"]>
+    filename?: boolean
+    url?: boolean
+    uploadedAt?: boolean
+    posts?: boolean | Image$postsArgs<ExtArgs>
+    albums?: boolean | Image$albumsArgs<ExtArgs>
+    _count?: boolean | ImageCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["image"]>
 
-  export type UserPostSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ImageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
-    topic?: boolean
-    tags?: boolean
-    content?: boolean
-    links?: boolean
-    images?: boolean
-    views?: boolean
-    likes?: boolean
-    userId?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userPost"]>
+    filename?: boolean
+    url?: boolean
+    uploadedAt?: boolean
+  }, ExtArgs["result"]["image"]>
 
-  export type UserPostSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ImageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
-    topic?: boolean
-    tags?: boolean
-    content?: boolean
-    links?: boolean
-    images?: boolean
-    views?: boolean
-    likes?: boolean
-    userId?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userPost"]>
+    filename?: boolean
+    url?: boolean
+    uploadedAt?: boolean
+  }, ExtArgs["result"]["image"]>
 
-  export type UserPostSelectScalar = {
+  export type ImageSelectScalar = {
     id?: boolean
-    title?: boolean
-    topic?: boolean
-    tags?: boolean
-    content?: boolean
-    links?: boolean
-    images?: boolean
-    views?: boolean
-    likes?: boolean
-    userId?: boolean
+    filename?: boolean
+    url?: boolean
+    uploadedAt?: boolean
   }
 
-  export type UserPostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "topic" | "tags" | "content" | "links" | "images" | "views" | "likes" | "userId", ExtArgs["result"]["userPost"]>
-  export type UserPostInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+  export type ImageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "filename" | "url" | "uploadedAt", ExtArgs["result"]["image"]>
+  export type ImageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    posts?: boolean | Image$postsArgs<ExtArgs>
+    albums?: boolean | Image$albumsArgs<ExtArgs>
+    _count?: boolean | ImageCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type UserPostIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type UserPostIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
+  export type ImageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ImageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
-  export type $UserPostPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "UserPost"
+  export type $ImagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Image"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
+      posts: Prisma.$PostPayload<ExtArgs>[]
+      albums: Prisma.$AlbumPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      title: string
-      topic: string | null
-      tags: string | null
-      content: string
-      links: string | null
-      images: string | null
-      views: number
-      likes: number
-      userId: number
-    }, ExtArgs["result"]["userPost"]>
+      filename: string
+      url: string
+      uploadedAt: Date
+    }, ExtArgs["result"]["image"]>
     composites: {}
   }
 
-  type UserPostGetPayload<S extends boolean | null | undefined | UserPostDefaultArgs> = $Result.GetResult<Prisma.$UserPostPayload, S>
+  type ImageGetPayload<S extends boolean | null | undefined | ImageDefaultArgs> = $Result.GetResult<Prisma.$ImagePayload, S>
 
-  type UserPostCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<UserPostFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: UserPostCountAggregateInputType | true
+  type ImageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ImageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ImageCountAggregateInputType | true
     }
 
-  export interface UserPostDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserPost'], meta: { name: 'UserPost' } }
+  export interface ImageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Image'], meta: { name: 'Image' } }
     /**
-     * Find zero or one UserPost that matches the filter.
-     * @param {UserPostFindUniqueArgs} args - Arguments to find a UserPost
+     * Find zero or one Image that matches the filter.
+     * @param {ImageFindUniqueArgs} args - Arguments to find a Image
      * @example
-     * // Get one UserPost
-     * const userPost = await prisma.userPost.findUnique({
+     * // Get one Image
+     * const image = await prisma.image.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends UserPostFindUniqueArgs>(args: SelectSubset<T, UserPostFindUniqueArgs<ExtArgs>>): Prisma__UserPostClient<$Result.GetResult<Prisma.$UserPostPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends ImageFindUniqueArgs>(args: SelectSubset<T, ImageFindUniqueArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one UserPost that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Image that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {UserPostFindUniqueOrThrowArgs} args - Arguments to find a UserPost
+     * @param {ImageFindUniqueOrThrowArgs} args - Arguments to find a Image
      * @example
-     * // Get one UserPost
-     * const userPost = await prisma.userPost.findUniqueOrThrow({
+     * // Get one Image
+     * const image = await prisma.image.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends UserPostFindUniqueOrThrowArgs>(args: SelectSubset<T, UserPostFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserPostClient<$Result.GetResult<Prisma.$UserPostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends ImageFindUniqueOrThrowArgs>(args: SelectSubset<T, ImageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first UserPost that matches the filter.
+     * Find the first Image that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserPostFindFirstArgs} args - Arguments to find a UserPost
+     * @param {ImageFindFirstArgs} args - Arguments to find a Image
      * @example
-     * // Get one UserPost
-     * const userPost = await prisma.userPost.findFirst({
+     * // Get one Image
+     * const image = await prisma.image.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends UserPostFindFirstArgs>(args?: SelectSubset<T, UserPostFindFirstArgs<ExtArgs>>): Prisma__UserPostClient<$Result.GetResult<Prisma.$UserPostPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends ImageFindFirstArgs>(args?: SelectSubset<T, ImageFindFirstArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first UserPost that matches the filter or
+     * Find the first Image that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserPostFindFirstOrThrowArgs} args - Arguments to find a UserPost
+     * @param {ImageFindFirstOrThrowArgs} args - Arguments to find a Image
      * @example
-     * // Get one UserPost
-     * const userPost = await prisma.userPost.findFirstOrThrow({
+     * // Get one Image
+     * const image = await prisma.image.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends UserPostFindFirstOrThrowArgs>(args?: SelectSubset<T, UserPostFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserPostClient<$Result.GetResult<Prisma.$UserPostPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends ImageFindFirstOrThrowArgs>(args?: SelectSubset<T, ImageFindFirstOrThrowArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more UserPosts that matches the filter.
+     * Find zero or more Images that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserPostFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {ImageFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all UserPosts
-     * const userPosts = await prisma.userPost.findMany()
+     * // Get all Images
+     * const images = await prisma.image.findMany()
      * 
-     * // Get first 10 UserPosts
-     * const userPosts = await prisma.userPost.findMany({ take: 10 })
+     * // Get first 10 Images
+     * const images = await prisma.image.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const userPostWithIdOnly = await prisma.userPost.findMany({ select: { id: true } })
+     * const imageWithIdOnly = await prisma.image.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends UserPostFindManyArgs>(args?: SelectSubset<T, UserPostFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends ImageFindManyArgs>(args?: SelectSubset<T, ImageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a UserPost.
-     * @param {UserPostCreateArgs} args - Arguments to create a UserPost.
+     * Create a Image.
+     * @param {ImageCreateArgs} args - Arguments to create a Image.
      * @example
-     * // Create one UserPost
-     * const UserPost = await prisma.userPost.create({
+     * // Create one Image
+     * const Image = await prisma.image.create({
      *   data: {
-     *     // ... data to create a UserPost
+     *     // ... data to create a Image
      *   }
      * })
      * 
      */
-    create<T extends UserPostCreateArgs>(args: SelectSubset<T, UserPostCreateArgs<ExtArgs>>): Prisma__UserPostClient<$Result.GetResult<Prisma.$UserPostPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends ImageCreateArgs>(args: SelectSubset<T, ImageCreateArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many UserPosts.
-     * @param {UserPostCreateManyArgs} args - Arguments to create many UserPosts.
+     * Create many Images.
+     * @param {ImageCreateManyArgs} args - Arguments to create many Images.
      * @example
-     * // Create many UserPosts
-     * const userPost = await prisma.userPost.createMany({
+     * // Create many Images
+     * const image = await prisma.image.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends UserPostCreateManyArgs>(args?: SelectSubset<T, UserPostCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends ImageCreateManyArgs>(args?: SelectSubset<T, ImageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many UserPosts and returns the data saved in the database.
-     * @param {UserPostCreateManyAndReturnArgs} args - Arguments to create many UserPosts.
+     * Create many Images and returns the data saved in the database.
+     * @param {ImageCreateManyAndReturnArgs} args - Arguments to create many Images.
      * @example
-     * // Create many UserPosts
-     * const userPost = await prisma.userPost.createManyAndReturn({
+     * // Create many Images
+     * const image = await prisma.image.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many UserPosts and only return the `id`
-     * const userPostWithIdOnly = await prisma.userPost.createManyAndReturn({
+     * // Create many Images and only return the `id`
+     * const imageWithIdOnly = await prisma.image.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -3807,28 +7828,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends UserPostCreateManyAndReturnArgs>(args?: SelectSubset<T, UserPostCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPostPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends ImageCreateManyAndReturnArgs>(args?: SelectSubset<T, ImageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a UserPost.
-     * @param {UserPostDeleteArgs} args - Arguments to delete one UserPost.
+     * Delete a Image.
+     * @param {ImageDeleteArgs} args - Arguments to delete one Image.
      * @example
-     * // Delete one UserPost
-     * const UserPost = await prisma.userPost.delete({
+     * // Delete one Image
+     * const Image = await prisma.image.delete({
      *   where: {
-     *     // ... filter to delete one UserPost
+     *     // ... filter to delete one Image
      *   }
      * })
      * 
      */
-    delete<T extends UserPostDeleteArgs>(args: SelectSubset<T, UserPostDeleteArgs<ExtArgs>>): Prisma__UserPostClient<$Result.GetResult<Prisma.$UserPostPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends ImageDeleteArgs>(args: SelectSubset<T, ImageDeleteArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one UserPost.
-     * @param {UserPostUpdateArgs} args - Arguments to update one UserPost.
+     * Update one Image.
+     * @param {ImageUpdateArgs} args - Arguments to update one Image.
      * @example
-     * // Update one UserPost
-     * const userPost = await prisma.userPost.update({
+     * // Update one Image
+     * const image = await prisma.image.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3838,30 +7859,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends UserPostUpdateArgs>(args: SelectSubset<T, UserPostUpdateArgs<ExtArgs>>): Prisma__UserPostClient<$Result.GetResult<Prisma.$UserPostPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends ImageUpdateArgs>(args: SelectSubset<T, ImageUpdateArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more UserPosts.
-     * @param {UserPostDeleteManyArgs} args - Arguments to filter UserPosts to delete.
+     * Delete zero or more Images.
+     * @param {ImageDeleteManyArgs} args - Arguments to filter Images to delete.
      * @example
-     * // Delete a few UserPosts
-     * const { count } = await prisma.userPost.deleteMany({
+     * // Delete a few Images
+     * const { count } = await prisma.image.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends UserPostDeleteManyArgs>(args?: SelectSubset<T, UserPostDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends ImageDeleteManyArgs>(args?: SelectSubset<T, ImageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more UserPosts.
+     * Update zero or more Images.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserPostUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {ImageUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many UserPosts
-     * const userPost = await prisma.userPost.updateMany({
+     * // Update many Images
+     * const image = await prisma.image.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3871,14 +7892,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends UserPostUpdateManyArgs>(args: SelectSubset<T, UserPostUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends ImageUpdateManyArgs>(args: SelectSubset<T, ImageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more UserPosts and returns the data updated in the database.
-     * @param {UserPostUpdateManyAndReturnArgs} args - Arguments to update many UserPosts.
+     * Update zero or more Images and returns the data updated in the database.
+     * @param {ImageUpdateManyAndReturnArgs} args - Arguments to update many Images.
      * @example
-     * // Update many UserPosts
-     * const userPost = await prisma.userPost.updateManyAndReturn({
+     * // Update many Images
+     * const image = await prisma.image.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3887,8 +7908,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more UserPosts and only return the `id`
-     * const userPostWithIdOnly = await prisma.userPost.updateManyAndReturn({
+     * // Update zero or more Images and only return the `id`
+     * const imageWithIdOnly = await prisma.image.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -3901,56 +7922,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends UserPostUpdateManyAndReturnArgs>(args: SelectSubset<T, UserPostUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPostPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends ImageUpdateManyAndReturnArgs>(args: SelectSubset<T, ImageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one UserPost.
-     * @param {UserPostUpsertArgs} args - Arguments to update or create a UserPost.
+     * Create or update one Image.
+     * @param {ImageUpsertArgs} args - Arguments to update or create a Image.
      * @example
-     * // Update or create a UserPost
-     * const userPost = await prisma.userPost.upsert({
+     * // Update or create a Image
+     * const image = await prisma.image.upsert({
      *   create: {
-     *     // ... data to create a UserPost
+     *     // ... data to create a Image
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the UserPost we want to update
+     *     // ... the filter for the Image we want to update
      *   }
      * })
      */
-    upsert<T extends UserPostUpsertArgs>(args: SelectSubset<T, UserPostUpsertArgs<ExtArgs>>): Prisma__UserPostClient<$Result.GetResult<Prisma.$UserPostPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends ImageUpsertArgs>(args: SelectSubset<T, ImageUpsertArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of UserPosts.
+     * Count the number of Images.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserPostCountArgs} args - Arguments to filter UserPosts to count.
+     * @param {ImageCountArgs} args - Arguments to filter Images to count.
      * @example
-     * // Count the number of UserPosts
-     * const count = await prisma.userPost.count({
+     * // Count the number of Images
+     * const count = await prisma.image.count({
      *   where: {
-     *     // ... the filter for the UserPosts we want to count
+     *     // ... the filter for the Images we want to count
      *   }
      * })
     **/
-    count<T extends UserPostCountArgs>(
-      args?: Subset<T, UserPostCountArgs>,
+    count<T extends ImageCountArgs>(
+      args?: Subset<T, ImageCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], UserPostCountAggregateOutputType>
+          : GetScalarType<T['select'], ImageCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a UserPost.
+     * Allows you to perform aggregations operations on a Image.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserPostAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {ImageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -3970,13 +7991,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends UserPostAggregateArgs>(args: Subset<T, UserPostAggregateArgs>): Prisma.PrismaPromise<GetUserPostAggregateType<T>>
+    aggregate<T extends ImageAggregateArgs>(args: Subset<T, ImageAggregateArgs>): Prisma.PrismaPromise<GetImageAggregateType<T>>
 
     /**
-     * Group by UserPost.
+     * Group by Image.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserPostGroupByArgs} args - Group by arguments.
+     * @param {ImageGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -3991,14 +8012,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends UserPostGroupByArgs,
+      T extends ImageGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: UserPostGroupByArgs['orderBy'] }
-        : { orderBy?: UserPostGroupByArgs['orderBy'] },
+        ? { orderBy: ImageGroupByArgs['orderBy'] }
+        : { orderBy?: ImageGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -4047,22 +8068,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, UserPostGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserPostGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, ImageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetImageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the UserPost model
+   * Fields of the Image model
    */
-  readonly fields: UserPostFieldRefs;
+  readonly fields: ImageFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for UserPost.
+   * The delegate class that acts as a "Promise-like" for Image.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__UserPostClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ImageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    posts<T extends Image$postsArgs<ExtArgs> = {}>(args?: Subset<T, Image$postsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    albums<T extends Image$albumsArgs<ExtArgs> = {}>(args?: Subset<T, Image$albumsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4089,428 +8111,2742 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the UserPost model
+   * Fields of the Image model
    */
-  interface UserPostFieldRefs {
-    readonly id: FieldRef<"UserPost", 'Int'>
-    readonly title: FieldRef<"UserPost", 'String'>
-    readonly topic: FieldRef<"UserPost", 'String'>
-    readonly tags: FieldRef<"UserPost", 'String'>
-    readonly content: FieldRef<"UserPost", 'String'>
-    readonly links: FieldRef<"UserPost", 'String'>
-    readonly images: FieldRef<"UserPost", 'String'>
-    readonly views: FieldRef<"UserPost", 'Int'>
-    readonly likes: FieldRef<"UserPost", 'Int'>
-    readonly userId: FieldRef<"UserPost", 'Int'>
+  interface ImageFieldRefs {
+    readonly id: FieldRef<"Image", 'Int'>
+    readonly filename: FieldRef<"Image", 'String'>
+    readonly url: FieldRef<"Image", 'String'>
+    readonly uploadedAt: FieldRef<"Image", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * UserPost findUnique
+   * Image findUnique
    */
-  export type UserPostFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserPost
+     * Select specific fields to fetch from the Image
      */
-    select?: UserPostSelect<ExtArgs> | null
+    select?: ImageSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserPost
+     * Omit specific fields from the Image
      */
-    omit?: UserPostOmit<ExtArgs> | null
+    omit?: ImageOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserPostInclude<ExtArgs> | null
+    include?: ImageInclude<ExtArgs> | null
     /**
-     * Filter, which UserPost to fetch.
+     * Filter, which Image to fetch.
      */
-    where: UserPostWhereUniqueInput
+    where: ImageWhereUniqueInput
   }
 
   /**
-   * UserPost findUniqueOrThrow
+   * Image findUniqueOrThrow
    */
-  export type UserPostFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserPost
+     * Select specific fields to fetch from the Image
      */
-    select?: UserPostSelect<ExtArgs> | null
+    select?: ImageSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserPost
+     * Omit specific fields from the Image
      */
-    omit?: UserPostOmit<ExtArgs> | null
+    omit?: ImageOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserPostInclude<ExtArgs> | null
+    include?: ImageInclude<ExtArgs> | null
     /**
-     * Filter, which UserPost to fetch.
+     * Filter, which Image to fetch.
      */
-    where: UserPostWhereUniqueInput
+    where: ImageWhereUniqueInput
   }
 
   /**
-   * UserPost findFirst
+   * Image findFirst
    */
-  export type UserPostFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserPost
+     * Select specific fields to fetch from the Image
      */
-    select?: UserPostSelect<ExtArgs> | null
+    select?: ImageSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserPost
+     * Omit specific fields from the Image
      */
-    omit?: UserPostOmit<ExtArgs> | null
+    omit?: ImageOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserPostInclude<ExtArgs> | null
+    include?: ImageInclude<ExtArgs> | null
     /**
-     * Filter, which UserPost to fetch.
+     * Filter, which Image to fetch.
      */
-    where?: UserPostWhereInput
+    where?: ImageWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserPosts to fetch.
+     * Determine the order of Images to fetch.
      */
-    orderBy?: UserPostOrderByWithRelationInput | UserPostOrderByWithRelationInput[]
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for UserPosts.
+     * Sets the position for searching for Images.
      */
-    cursor?: UserPostWhereUniqueInput
+    cursor?: ImageWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserPosts from the position of the cursor.
+     * Take `±n` Images from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserPosts.
+     * Skip the first `n` Images.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserPosts.
+     * Filter by unique combinations of Images.
      */
-    distinct?: UserPostScalarFieldEnum | UserPostScalarFieldEnum[]
+    distinct?: ImageScalarFieldEnum | ImageScalarFieldEnum[]
   }
 
   /**
-   * UserPost findFirstOrThrow
+   * Image findFirstOrThrow
    */
-  export type UserPostFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserPost
+     * Select specific fields to fetch from the Image
      */
-    select?: UserPostSelect<ExtArgs> | null
+    select?: ImageSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserPost
+     * Omit specific fields from the Image
      */
-    omit?: UserPostOmit<ExtArgs> | null
+    omit?: ImageOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserPostInclude<ExtArgs> | null
+    include?: ImageInclude<ExtArgs> | null
     /**
-     * Filter, which UserPost to fetch.
+     * Filter, which Image to fetch.
      */
-    where?: UserPostWhereInput
+    where?: ImageWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserPosts to fetch.
+     * Determine the order of Images to fetch.
      */
-    orderBy?: UserPostOrderByWithRelationInput | UserPostOrderByWithRelationInput[]
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for UserPosts.
+     * Sets the position for searching for Images.
      */
-    cursor?: UserPostWhereUniqueInput
+    cursor?: ImageWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserPosts from the position of the cursor.
+     * Take `±n` Images from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserPosts.
+     * Skip the first `n` Images.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserPosts.
+     * Filter by unique combinations of Images.
      */
-    distinct?: UserPostScalarFieldEnum | UserPostScalarFieldEnum[]
+    distinct?: ImageScalarFieldEnum | ImageScalarFieldEnum[]
   }
 
   /**
-   * UserPost findMany
+   * Image findMany
    */
-  export type UserPostFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserPost
+     * Select specific fields to fetch from the Image
      */
-    select?: UserPostSelect<ExtArgs> | null
+    select?: ImageSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserPost
+     * Omit specific fields from the Image
      */
-    omit?: UserPostOmit<ExtArgs> | null
+    omit?: ImageOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserPostInclude<ExtArgs> | null
+    include?: ImageInclude<ExtArgs> | null
     /**
-     * Filter, which UserPosts to fetch.
+     * Filter, which Images to fetch.
      */
-    where?: UserPostWhereInput
+    where?: ImageWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserPosts to fetch.
+     * Determine the order of Images to fetch.
      */
-    orderBy?: UserPostOrderByWithRelationInput | UserPostOrderByWithRelationInput[]
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing UserPosts.
+     * Sets the position for listing Images.
      */
-    cursor?: UserPostWhereUniqueInput
+    cursor?: ImageWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserPosts from the position of the cursor.
+     * Take `±n` Images from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserPosts.
+     * Skip the first `n` Images.
      */
     skip?: number
-    distinct?: UserPostScalarFieldEnum | UserPostScalarFieldEnum[]
+    distinct?: ImageScalarFieldEnum | ImageScalarFieldEnum[]
   }
 
   /**
-   * UserPost create
+   * Image create
    */
-  export type UserPostCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserPost
+     * Select specific fields to fetch from the Image
      */
-    select?: UserPostSelect<ExtArgs> | null
+    select?: ImageSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserPost
+     * Omit specific fields from the Image
      */
-    omit?: UserPostOmit<ExtArgs> | null
+    omit?: ImageOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserPostInclude<ExtArgs> | null
+    include?: ImageInclude<ExtArgs> | null
     /**
-     * The data needed to create a UserPost.
+     * The data needed to create a Image.
      */
-    data: XOR<UserPostCreateInput, UserPostUncheckedCreateInput>
+    data: XOR<ImageCreateInput, ImageUncheckedCreateInput>
   }
 
   /**
-   * UserPost createMany
+   * Image createMany
    */
-  export type UserPostCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many UserPosts.
+     * The data used to create many Images.
      */
-    data: UserPostCreateManyInput | UserPostCreateManyInput[]
+    data: ImageCreateManyInput | ImageCreateManyInput[]
   }
 
   /**
-   * UserPost createManyAndReturn
+   * Image createManyAndReturn
    */
-  export type UserPostCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserPost
+     * Select specific fields to fetch from the Image
      */
-    select?: UserPostSelectCreateManyAndReturn<ExtArgs> | null
+    select?: ImageSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the UserPost
+     * Omit specific fields from the Image
      */
-    omit?: UserPostOmit<ExtArgs> | null
+    omit?: ImageOmit<ExtArgs> | null
     /**
-     * The data used to create many UserPosts.
+     * The data used to create many Images.
      */
-    data: UserPostCreateManyInput | UserPostCreateManyInput[]
+    data: ImageCreateManyInput | ImageCreateManyInput[]
+  }
+
+  /**
+   * Image update
+   */
+  export type ImageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserPostIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Image.
+     */
+    data: XOR<ImageUpdateInput, ImageUncheckedUpdateInput>
+    /**
+     * Choose, which Image to update.
+     */
+    where: ImageWhereUniqueInput
   }
 
   /**
-   * UserPost update
+   * Image updateMany
    */
-  export type UserPostUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserPost
+     * The data used to update Images.
      */
-    select?: UserPostSelect<ExtArgs> | null
+    data: XOR<ImageUpdateManyMutationInput, ImageUncheckedUpdateManyInput>
     /**
-     * Omit specific fields from the UserPost
+     * Filter which Images to update
      */
-    omit?: UserPostOmit<ExtArgs> | null
+    where?: ImageWhereInput
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserPostInclude<ExtArgs> | null
-    /**
-     * The data needed to update a UserPost.
-     */
-    data: XOR<UserPostUpdateInput, UserPostUncheckedUpdateInput>
-    /**
-     * Choose, which UserPost to update.
-     */
-    where: UserPostWhereUniqueInput
-  }
-
-  /**
-   * UserPost updateMany
-   */
-  export type UserPostUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update UserPosts.
-     */
-    data: XOR<UserPostUpdateManyMutationInput, UserPostUncheckedUpdateManyInput>
-    /**
-     * Filter which UserPosts to update
-     */
-    where?: UserPostWhereInput
-    /**
-     * Limit how many UserPosts to update.
+     * Limit how many Images to update.
      */
     limit?: number
   }
 
   /**
-   * UserPost updateManyAndReturn
+   * Image updateManyAndReturn
    */
-  export type UserPostUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserPost
+     * Select specific fields to fetch from the Image
      */
-    select?: UserPostSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: ImageSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the UserPost
+     * Omit specific fields from the Image
      */
-    omit?: UserPostOmit<ExtArgs> | null
+    omit?: ImageOmit<ExtArgs> | null
     /**
-     * The data used to update UserPosts.
+     * The data used to update Images.
      */
-    data: XOR<UserPostUpdateManyMutationInput, UserPostUncheckedUpdateManyInput>
+    data: XOR<ImageUpdateManyMutationInput, ImageUncheckedUpdateManyInput>
     /**
-     * Filter which UserPosts to update
+     * Filter which Images to update
      */
-    where?: UserPostWhereInput
+    where?: ImageWhereInput
     /**
-     * Limit how many UserPosts to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserPostIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * UserPost upsert
-   */
-  export type UserPostUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserPost
-     */
-    select?: UserPostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserPost
-     */
-    omit?: UserPostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserPostInclude<ExtArgs> | null
-    /**
-     * The filter to search for the UserPost to update in case it exists.
-     */
-    where: UserPostWhereUniqueInput
-    /**
-     * In case the UserPost found by the `where` argument doesn't exist, create a new UserPost with this data.
-     */
-    create: XOR<UserPostCreateInput, UserPostUncheckedCreateInput>
-    /**
-     * In case the UserPost was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<UserPostUpdateInput, UserPostUncheckedUpdateInput>
-  }
-
-  /**
-   * UserPost delete
-   */
-  export type UserPostDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserPost
-     */
-    select?: UserPostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserPost
-     */
-    omit?: UserPostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserPostInclude<ExtArgs> | null
-    /**
-     * Filter which UserPost to delete.
-     */
-    where: UserPostWhereUniqueInput
-  }
-
-  /**
-   * UserPost deleteMany
-   */
-  export type UserPostDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which UserPosts to delete
-     */
-    where?: UserPostWhereInput
-    /**
-     * Limit how many UserPosts to delete.
+     * Limit how many Images to update.
      */
     limit?: number
   }
 
   /**
-   * UserPost without action
+   * Image upsert
    */
-  export type UserPostDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserPost
+     * Select specific fields to fetch from the Image
      */
-    select?: UserPostSelect<ExtArgs> | null
+    select?: ImageSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserPost
+     * Omit specific fields from the Image
      */
-    omit?: UserPostOmit<ExtArgs> | null
+    omit?: ImageOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserPostInclude<ExtArgs> | null
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Image to update in case it exists.
+     */
+    where: ImageWhereUniqueInput
+    /**
+     * In case the Image found by the `where` argument doesn't exist, create a new Image with this data.
+     */
+    create: XOR<ImageCreateInput, ImageUncheckedCreateInput>
+    /**
+     * In case the Image was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ImageUpdateInput, ImageUncheckedUpdateInput>
+  }
+
+  /**
+   * Image delete
+   */
+  export type ImageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * Filter which Image to delete.
+     */
+    where: ImageWhereUniqueInput
+  }
+
+  /**
+   * Image deleteMany
+   */
+  export type ImageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Images to delete
+     */
+    where?: ImageWhereInput
+    /**
+     * Limit how many Images to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Image.posts
+   */
+  export type Image$postsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Post
+     */
+    select?: PostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Post
+     */
+    omit?: PostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostInclude<ExtArgs> | null
+    where?: PostWhereInput
+    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
+    cursor?: PostWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
+  }
+
+  /**
+   * Image.albums
+   */
+  export type Image$albumsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlbumInclude<ExtArgs> | null
+    where?: AlbumWhereInput
+    orderBy?: AlbumOrderByWithRelationInput | AlbumOrderByWithRelationInput[]
+    cursor?: AlbumWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AlbumScalarFieldEnum | AlbumScalarFieldEnum[]
+  }
+
+  /**
+   * Image without action
+   */
+  export type ImageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Link
+   */
+
+  export type AggregateLink = {
+    _count: LinkCountAggregateOutputType | null
+    _avg: LinkAvgAggregateOutputType | null
+    _sum: LinkSumAggregateOutputType | null
+    _min: LinkMinAggregateOutputType | null
+    _max: LinkMaxAggregateOutputType | null
+  }
+
+  export type LinkAvgAggregateOutputType = {
+    id: number | null
+    postId: number | null
+  }
+
+  export type LinkSumAggregateOutputType = {
+    id: number | null
+    postId: number | null
+  }
+
+  export type LinkMinAggregateOutputType = {
+    id: number | null
+    url: string | null
+    postId: number | null
+  }
+
+  export type LinkMaxAggregateOutputType = {
+    id: number | null
+    url: string | null
+    postId: number | null
+  }
+
+  export type LinkCountAggregateOutputType = {
+    id: number
+    url: number
+    postId: number
+    _all: number
+  }
+
+
+  export type LinkAvgAggregateInputType = {
+    id?: true
+    postId?: true
+  }
+
+  export type LinkSumAggregateInputType = {
+    id?: true
+    postId?: true
+  }
+
+  export type LinkMinAggregateInputType = {
+    id?: true
+    url?: true
+    postId?: true
+  }
+
+  export type LinkMaxAggregateInputType = {
+    id?: true
+    url?: true
+    postId?: true
+  }
+
+  export type LinkCountAggregateInputType = {
+    id?: true
+    url?: true
+    postId?: true
+    _all?: true
+  }
+
+  export type LinkAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Link to aggregate.
+     */
+    where?: LinkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Links to fetch.
+     */
+    orderBy?: LinkOrderByWithRelationInput | LinkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LinkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Links from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Links.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Links
+    **/
+    _count?: true | LinkCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: LinkAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: LinkSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LinkMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LinkMaxAggregateInputType
+  }
+
+  export type GetLinkAggregateType<T extends LinkAggregateArgs> = {
+        [P in keyof T & keyof AggregateLink]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLink[P]>
+      : GetScalarType<T[P], AggregateLink[P]>
+  }
+
+
+
+
+  export type LinkGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LinkWhereInput
+    orderBy?: LinkOrderByWithAggregationInput | LinkOrderByWithAggregationInput[]
+    by: LinkScalarFieldEnum[] | LinkScalarFieldEnum
+    having?: LinkScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LinkCountAggregateInputType | true
+    _avg?: LinkAvgAggregateInputType
+    _sum?: LinkSumAggregateInputType
+    _min?: LinkMinAggregateInputType
+    _max?: LinkMaxAggregateInputType
+  }
+
+  export type LinkGroupByOutputType = {
+    id: number
+    url: string
+    postId: number
+    _count: LinkCountAggregateOutputType | null
+    _avg: LinkAvgAggregateOutputType | null
+    _sum: LinkSumAggregateOutputType | null
+    _min: LinkMinAggregateOutputType | null
+    _max: LinkMaxAggregateOutputType | null
+  }
+
+  type GetLinkGroupByPayload<T extends LinkGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LinkGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LinkGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LinkGroupByOutputType[P]>
+            : GetScalarType<T[P], LinkGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LinkSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    postId?: boolean
+    post?: boolean | PostDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["link"]>
+
+  export type LinkSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    postId?: boolean
+    post?: boolean | PostDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["link"]>
+
+  export type LinkSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    postId?: boolean
+    post?: boolean | PostDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["link"]>
+
+  export type LinkSelectScalar = {
+    id?: boolean
+    url?: boolean
+    postId?: boolean
+  }
+
+  export type LinkOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "url" | "postId", ExtArgs["result"]["link"]>
+  export type LinkInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    post?: boolean | PostDefaultArgs<ExtArgs>
+  }
+  export type LinkIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    post?: boolean | PostDefaultArgs<ExtArgs>
+  }
+  export type LinkIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    post?: boolean | PostDefaultArgs<ExtArgs>
+  }
+
+  export type $LinkPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Link"
+    objects: {
+      post: Prisma.$PostPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      url: string
+      postId: number
+    }, ExtArgs["result"]["link"]>
+    composites: {}
+  }
+
+  type LinkGetPayload<S extends boolean | null | undefined | LinkDefaultArgs> = $Result.GetResult<Prisma.$LinkPayload, S>
+
+  type LinkCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<LinkFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: LinkCountAggregateInputType | true
+    }
+
+  export interface LinkDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Link'], meta: { name: 'Link' } }
+    /**
+     * Find zero or one Link that matches the filter.
+     * @param {LinkFindUniqueArgs} args - Arguments to find a Link
+     * @example
+     * // Get one Link
+     * const link = await prisma.link.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends LinkFindUniqueArgs>(args: SelectSubset<T, LinkFindUniqueArgs<ExtArgs>>): Prisma__LinkClient<$Result.GetResult<Prisma.$LinkPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Link that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {LinkFindUniqueOrThrowArgs} args - Arguments to find a Link
+     * @example
+     * // Get one Link
+     * const link = await prisma.link.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends LinkFindUniqueOrThrowArgs>(args: SelectSubset<T, LinkFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LinkClient<$Result.GetResult<Prisma.$LinkPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Link that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LinkFindFirstArgs} args - Arguments to find a Link
+     * @example
+     * // Get one Link
+     * const link = await prisma.link.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends LinkFindFirstArgs>(args?: SelectSubset<T, LinkFindFirstArgs<ExtArgs>>): Prisma__LinkClient<$Result.GetResult<Prisma.$LinkPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Link that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LinkFindFirstOrThrowArgs} args - Arguments to find a Link
+     * @example
+     * // Get one Link
+     * const link = await prisma.link.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends LinkFindFirstOrThrowArgs>(args?: SelectSubset<T, LinkFindFirstOrThrowArgs<ExtArgs>>): Prisma__LinkClient<$Result.GetResult<Prisma.$LinkPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Links that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LinkFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Links
+     * const links = await prisma.link.findMany()
+     * 
+     * // Get first 10 Links
+     * const links = await prisma.link.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const linkWithIdOnly = await prisma.link.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends LinkFindManyArgs>(args?: SelectSubset<T, LinkFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LinkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Link.
+     * @param {LinkCreateArgs} args - Arguments to create a Link.
+     * @example
+     * // Create one Link
+     * const Link = await prisma.link.create({
+     *   data: {
+     *     // ... data to create a Link
+     *   }
+     * })
+     * 
+     */
+    create<T extends LinkCreateArgs>(args: SelectSubset<T, LinkCreateArgs<ExtArgs>>): Prisma__LinkClient<$Result.GetResult<Prisma.$LinkPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Links.
+     * @param {LinkCreateManyArgs} args - Arguments to create many Links.
+     * @example
+     * // Create many Links
+     * const link = await prisma.link.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends LinkCreateManyArgs>(args?: SelectSubset<T, LinkCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Links and returns the data saved in the database.
+     * @param {LinkCreateManyAndReturnArgs} args - Arguments to create many Links.
+     * @example
+     * // Create many Links
+     * const link = await prisma.link.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Links and only return the `id`
+     * const linkWithIdOnly = await prisma.link.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends LinkCreateManyAndReturnArgs>(args?: SelectSubset<T, LinkCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LinkPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Link.
+     * @param {LinkDeleteArgs} args - Arguments to delete one Link.
+     * @example
+     * // Delete one Link
+     * const Link = await prisma.link.delete({
+     *   where: {
+     *     // ... filter to delete one Link
+     *   }
+     * })
+     * 
+     */
+    delete<T extends LinkDeleteArgs>(args: SelectSubset<T, LinkDeleteArgs<ExtArgs>>): Prisma__LinkClient<$Result.GetResult<Prisma.$LinkPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Link.
+     * @param {LinkUpdateArgs} args - Arguments to update one Link.
+     * @example
+     * // Update one Link
+     * const link = await prisma.link.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends LinkUpdateArgs>(args: SelectSubset<T, LinkUpdateArgs<ExtArgs>>): Prisma__LinkClient<$Result.GetResult<Prisma.$LinkPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Links.
+     * @param {LinkDeleteManyArgs} args - Arguments to filter Links to delete.
+     * @example
+     * // Delete a few Links
+     * const { count } = await prisma.link.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends LinkDeleteManyArgs>(args?: SelectSubset<T, LinkDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Links.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LinkUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Links
+     * const link = await prisma.link.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends LinkUpdateManyArgs>(args: SelectSubset<T, LinkUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Links and returns the data updated in the database.
+     * @param {LinkUpdateManyAndReturnArgs} args - Arguments to update many Links.
+     * @example
+     * // Update many Links
+     * const link = await prisma.link.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Links and only return the `id`
+     * const linkWithIdOnly = await prisma.link.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends LinkUpdateManyAndReturnArgs>(args: SelectSubset<T, LinkUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LinkPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Link.
+     * @param {LinkUpsertArgs} args - Arguments to update or create a Link.
+     * @example
+     * // Update or create a Link
+     * const link = await prisma.link.upsert({
+     *   create: {
+     *     // ... data to create a Link
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Link we want to update
+     *   }
+     * })
+     */
+    upsert<T extends LinkUpsertArgs>(args: SelectSubset<T, LinkUpsertArgs<ExtArgs>>): Prisma__LinkClient<$Result.GetResult<Prisma.$LinkPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Links.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LinkCountArgs} args - Arguments to filter Links to count.
+     * @example
+     * // Count the number of Links
+     * const count = await prisma.link.count({
+     *   where: {
+     *     // ... the filter for the Links we want to count
+     *   }
+     * })
+    **/
+    count<T extends LinkCountArgs>(
+      args?: Subset<T, LinkCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LinkCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Link.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LinkAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LinkAggregateArgs>(args: Subset<T, LinkAggregateArgs>): Prisma.PrismaPromise<GetLinkAggregateType<T>>
+
+    /**
+     * Group by Link.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LinkGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LinkGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LinkGroupByArgs['orderBy'] }
+        : { orderBy?: LinkGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LinkGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLinkGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Link model
+   */
+  readonly fields: LinkFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Link.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LinkClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    post<T extends PostDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PostDefaultArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Link model
+   */
+  interface LinkFieldRefs {
+    readonly id: FieldRef<"Link", 'Int'>
+    readonly url: FieldRef<"Link", 'String'>
+    readonly postId: FieldRef<"Link", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Link findUnique
+   */
+  export type LinkFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Link
+     */
+    select?: LinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Link
+     */
+    omit?: LinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkInclude<ExtArgs> | null
+    /**
+     * Filter, which Link to fetch.
+     */
+    where: LinkWhereUniqueInput
+  }
+
+  /**
+   * Link findUniqueOrThrow
+   */
+  export type LinkFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Link
+     */
+    select?: LinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Link
+     */
+    omit?: LinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkInclude<ExtArgs> | null
+    /**
+     * Filter, which Link to fetch.
+     */
+    where: LinkWhereUniqueInput
+  }
+
+  /**
+   * Link findFirst
+   */
+  export type LinkFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Link
+     */
+    select?: LinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Link
+     */
+    omit?: LinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkInclude<ExtArgs> | null
+    /**
+     * Filter, which Link to fetch.
+     */
+    where?: LinkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Links to fetch.
+     */
+    orderBy?: LinkOrderByWithRelationInput | LinkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Links.
+     */
+    cursor?: LinkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Links from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Links.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Links.
+     */
+    distinct?: LinkScalarFieldEnum | LinkScalarFieldEnum[]
+  }
+
+  /**
+   * Link findFirstOrThrow
+   */
+  export type LinkFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Link
+     */
+    select?: LinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Link
+     */
+    omit?: LinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkInclude<ExtArgs> | null
+    /**
+     * Filter, which Link to fetch.
+     */
+    where?: LinkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Links to fetch.
+     */
+    orderBy?: LinkOrderByWithRelationInput | LinkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Links.
+     */
+    cursor?: LinkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Links from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Links.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Links.
+     */
+    distinct?: LinkScalarFieldEnum | LinkScalarFieldEnum[]
+  }
+
+  /**
+   * Link findMany
+   */
+  export type LinkFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Link
+     */
+    select?: LinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Link
+     */
+    omit?: LinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkInclude<ExtArgs> | null
+    /**
+     * Filter, which Links to fetch.
+     */
+    where?: LinkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Links to fetch.
+     */
+    orderBy?: LinkOrderByWithRelationInput | LinkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Links.
+     */
+    cursor?: LinkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Links from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Links.
+     */
+    skip?: number
+    distinct?: LinkScalarFieldEnum | LinkScalarFieldEnum[]
+  }
+
+  /**
+   * Link create
+   */
+  export type LinkCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Link
+     */
+    select?: LinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Link
+     */
+    omit?: LinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Link.
+     */
+    data: XOR<LinkCreateInput, LinkUncheckedCreateInput>
+  }
+
+  /**
+   * Link createMany
+   */
+  export type LinkCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Links.
+     */
+    data: LinkCreateManyInput | LinkCreateManyInput[]
+  }
+
+  /**
+   * Link createManyAndReturn
+   */
+  export type LinkCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Link
+     */
+    select?: LinkSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Link
+     */
+    omit?: LinkOmit<ExtArgs> | null
+    /**
+     * The data used to create many Links.
+     */
+    data: LinkCreateManyInput | LinkCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Link update
+   */
+  export type LinkUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Link
+     */
+    select?: LinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Link
+     */
+    omit?: LinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Link.
+     */
+    data: XOR<LinkUpdateInput, LinkUncheckedUpdateInput>
+    /**
+     * Choose, which Link to update.
+     */
+    where: LinkWhereUniqueInput
+  }
+
+  /**
+   * Link updateMany
+   */
+  export type LinkUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Links.
+     */
+    data: XOR<LinkUpdateManyMutationInput, LinkUncheckedUpdateManyInput>
+    /**
+     * Filter which Links to update
+     */
+    where?: LinkWhereInput
+    /**
+     * Limit how many Links to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Link updateManyAndReturn
+   */
+  export type LinkUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Link
+     */
+    select?: LinkSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Link
+     */
+    omit?: LinkOmit<ExtArgs> | null
+    /**
+     * The data used to update Links.
+     */
+    data: XOR<LinkUpdateManyMutationInput, LinkUncheckedUpdateManyInput>
+    /**
+     * Filter which Links to update
+     */
+    where?: LinkWhereInput
+    /**
+     * Limit how many Links to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Link upsert
+   */
+  export type LinkUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Link
+     */
+    select?: LinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Link
+     */
+    omit?: LinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Link to update in case it exists.
+     */
+    where: LinkWhereUniqueInput
+    /**
+     * In case the Link found by the `where` argument doesn't exist, create a new Link with this data.
+     */
+    create: XOR<LinkCreateInput, LinkUncheckedCreateInput>
+    /**
+     * In case the Link was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LinkUpdateInput, LinkUncheckedUpdateInput>
+  }
+
+  /**
+   * Link delete
+   */
+  export type LinkDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Link
+     */
+    select?: LinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Link
+     */
+    omit?: LinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkInclude<ExtArgs> | null
+    /**
+     * Filter which Link to delete.
+     */
+    where: LinkWhereUniqueInput
+  }
+
+  /**
+   * Link deleteMany
+   */
+  export type LinkDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Links to delete
+     */
+    where?: LinkWhereInput
+    /**
+     * Limit how many Links to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Link without action
+   */
+  export type LinkDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Link
+     */
+    select?: LinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Link
+     */
+    omit?: LinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Post
+   */
+
+  export type AggregatePost = {
+    _count: PostCountAggregateOutputType | null
+    _avg: PostAvgAggregateOutputType | null
+    _sum: PostSumAggregateOutputType | null
+    _min: PostMinAggregateOutputType | null
+    _max: PostMaxAggregateOutputType | null
+  }
+
+  export type PostAvgAggregateOutputType = {
+    id: number | null
+    views: number | null
+    likes: number | null
+    userId: number | null
+  }
+
+  export type PostSumAggregateOutputType = {
+    id: number | null
+    views: number | null
+    likes: number | null
+    userId: number | null
+  }
+
+  export type PostMinAggregateOutputType = {
+    id: number | null
+    title: string | null
+    topic: string | null
+    tags: string | null
+    content: string | null
+    links: string | null
+    views: number | null
+    likes: number | null
+    userId: number | null
+  }
+
+  export type PostMaxAggregateOutputType = {
+    id: number | null
+    title: string | null
+    topic: string | null
+    tags: string | null
+    content: string | null
+    links: string | null
+    views: number | null
+    likes: number | null
+    userId: number | null
+  }
+
+  export type PostCountAggregateOutputType = {
+    id: number
+    title: number
+    topic: number
+    tags: number
+    content: number
+    links: number
+    views: number
+    likes: number
+    userId: number
+    _all: number
+  }
+
+
+  export type PostAvgAggregateInputType = {
+    id?: true
+    views?: true
+    likes?: true
+    userId?: true
+  }
+
+  export type PostSumAggregateInputType = {
+    id?: true
+    views?: true
+    likes?: true
+    userId?: true
+  }
+
+  export type PostMinAggregateInputType = {
+    id?: true
+    title?: true
+    topic?: true
+    tags?: true
+    content?: true
+    links?: true
+    views?: true
+    likes?: true
+    userId?: true
+  }
+
+  export type PostMaxAggregateInputType = {
+    id?: true
+    title?: true
+    topic?: true
+    tags?: true
+    content?: true
+    links?: true
+    views?: true
+    likes?: true
+    userId?: true
+  }
+
+  export type PostCountAggregateInputType = {
+    id?: true
+    title?: true
+    topic?: true
+    tags?: true
+    content?: true
+    links?: true
+    views?: true
+    likes?: true
+    userId?: true
+    _all?: true
+  }
+
+  export type PostAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Post to aggregate.
+     */
+    where?: PostWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Posts to fetch.
+     */
+    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PostWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Posts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Posts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Posts
+    **/
+    _count?: true | PostCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PostAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PostSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PostMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PostMaxAggregateInputType
+  }
+
+  export type GetPostAggregateType<T extends PostAggregateArgs> = {
+        [P in keyof T & keyof AggregatePost]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePost[P]>
+      : GetScalarType<T[P], AggregatePost[P]>
+  }
+
+
+
+
+  export type PostGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PostWhereInput
+    orderBy?: PostOrderByWithAggregationInput | PostOrderByWithAggregationInput[]
+    by: PostScalarFieldEnum[] | PostScalarFieldEnum
+    having?: PostScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PostCountAggregateInputType | true
+    _avg?: PostAvgAggregateInputType
+    _sum?: PostSumAggregateInputType
+    _min?: PostMinAggregateInputType
+    _max?: PostMaxAggregateInputType
+  }
+
+  export type PostGroupByOutputType = {
+    id: number
+    title: string
+    topic: string | null
+    tags: string | null
+    content: string
+    links: string | null
+    views: number
+    likes: number
+    userId: number
+    _count: PostCountAggregateOutputType | null
+    _avg: PostAvgAggregateOutputType | null
+    _sum: PostSumAggregateOutputType | null
+    _min: PostMinAggregateOutputType | null
+    _max: PostMaxAggregateOutputType | null
+  }
+
+  type GetPostGroupByPayload<T extends PostGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PostGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PostGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PostGroupByOutputType[P]>
+            : GetScalarType<T[P], PostGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PostSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    topic?: boolean
+    tags?: boolean
+    content?: boolean
+    links?: boolean
+    views?: boolean
+    likes?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    postImages?: boolean | Post$postImagesArgs<ExtArgs>
+    postLinks?: boolean | Post$postLinksArgs<ExtArgs>
+    _count?: boolean | PostCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["post"]>
+
+  export type PostSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    topic?: boolean
+    tags?: boolean
+    content?: boolean
+    links?: boolean
+    views?: boolean
+    likes?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["post"]>
+
+  export type PostSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    topic?: boolean
+    tags?: boolean
+    content?: boolean
+    links?: boolean
+    views?: boolean
+    likes?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["post"]>
+
+  export type PostSelectScalar = {
+    id?: boolean
+    title?: boolean
+    topic?: boolean
+    tags?: boolean
+    content?: boolean
+    links?: boolean
+    views?: boolean
+    likes?: boolean
+    userId?: boolean
+  }
+
+  export type PostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "topic" | "tags" | "content" | "links" | "views" | "likes" | "userId", ExtArgs["result"]["post"]>
+  export type PostInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    postImages?: boolean | Post$postImagesArgs<ExtArgs>
+    postLinks?: boolean | Post$postLinksArgs<ExtArgs>
+    _count?: boolean | PostCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type PostIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type PostIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $PostPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Post"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      postImages: Prisma.$ImagePayload<ExtArgs>[]
+      postLinks: Prisma.$LinkPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      title: string
+      topic: string | null
+      tags: string | null
+      content: string
+      links: string | null
+      views: number
+      likes: number
+      userId: number
+    }, ExtArgs["result"]["post"]>
+    composites: {}
+  }
+
+  type PostGetPayload<S extends boolean | null | undefined | PostDefaultArgs> = $Result.GetResult<Prisma.$PostPayload, S>
+
+  type PostCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PostFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PostCountAggregateInputType | true
+    }
+
+  export interface PostDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Post'], meta: { name: 'Post' } }
+    /**
+     * Find zero or one Post that matches the filter.
+     * @param {PostFindUniqueArgs} args - Arguments to find a Post
+     * @example
+     * // Get one Post
+     * const post = await prisma.post.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PostFindUniqueArgs>(args: SelectSubset<T, PostFindUniqueArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Post that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PostFindUniqueOrThrowArgs} args - Arguments to find a Post
+     * @example
+     * // Get one Post
+     * const post = await prisma.post.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PostFindUniqueOrThrowArgs>(args: SelectSubset<T, PostFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Post that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostFindFirstArgs} args - Arguments to find a Post
+     * @example
+     * // Get one Post
+     * const post = await prisma.post.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PostFindFirstArgs>(args?: SelectSubset<T, PostFindFirstArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Post that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostFindFirstOrThrowArgs} args - Arguments to find a Post
+     * @example
+     * // Get one Post
+     * const post = await prisma.post.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PostFindFirstOrThrowArgs>(args?: SelectSubset<T, PostFindFirstOrThrowArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Posts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Posts
+     * const posts = await prisma.post.findMany()
+     * 
+     * // Get first 10 Posts
+     * const posts = await prisma.post.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const postWithIdOnly = await prisma.post.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PostFindManyArgs>(args?: SelectSubset<T, PostFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Post.
+     * @param {PostCreateArgs} args - Arguments to create a Post.
+     * @example
+     * // Create one Post
+     * const Post = await prisma.post.create({
+     *   data: {
+     *     // ... data to create a Post
+     *   }
+     * })
+     * 
+     */
+    create<T extends PostCreateArgs>(args: SelectSubset<T, PostCreateArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Posts.
+     * @param {PostCreateManyArgs} args - Arguments to create many Posts.
+     * @example
+     * // Create many Posts
+     * const post = await prisma.post.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PostCreateManyArgs>(args?: SelectSubset<T, PostCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Posts and returns the data saved in the database.
+     * @param {PostCreateManyAndReturnArgs} args - Arguments to create many Posts.
+     * @example
+     * // Create many Posts
+     * const post = await prisma.post.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Posts and only return the `id`
+     * const postWithIdOnly = await prisma.post.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PostCreateManyAndReturnArgs>(args?: SelectSubset<T, PostCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Post.
+     * @param {PostDeleteArgs} args - Arguments to delete one Post.
+     * @example
+     * // Delete one Post
+     * const Post = await prisma.post.delete({
+     *   where: {
+     *     // ... filter to delete one Post
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PostDeleteArgs>(args: SelectSubset<T, PostDeleteArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Post.
+     * @param {PostUpdateArgs} args - Arguments to update one Post.
+     * @example
+     * // Update one Post
+     * const post = await prisma.post.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PostUpdateArgs>(args: SelectSubset<T, PostUpdateArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Posts.
+     * @param {PostDeleteManyArgs} args - Arguments to filter Posts to delete.
+     * @example
+     * // Delete a few Posts
+     * const { count } = await prisma.post.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PostDeleteManyArgs>(args?: SelectSubset<T, PostDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Posts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Posts
+     * const post = await prisma.post.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PostUpdateManyArgs>(args: SelectSubset<T, PostUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Posts and returns the data updated in the database.
+     * @param {PostUpdateManyAndReturnArgs} args - Arguments to update many Posts.
+     * @example
+     * // Update many Posts
+     * const post = await prisma.post.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Posts and only return the `id`
+     * const postWithIdOnly = await prisma.post.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PostUpdateManyAndReturnArgs>(args: SelectSubset<T, PostUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Post.
+     * @param {PostUpsertArgs} args - Arguments to update or create a Post.
+     * @example
+     * // Update or create a Post
+     * const post = await prisma.post.upsert({
+     *   create: {
+     *     // ... data to create a Post
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Post we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PostUpsertArgs>(args: SelectSubset<T, PostUpsertArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Posts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostCountArgs} args - Arguments to filter Posts to count.
+     * @example
+     * // Count the number of Posts
+     * const count = await prisma.post.count({
+     *   where: {
+     *     // ... the filter for the Posts we want to count
+     *   }
+     * })
+    **/
+    count<T extends PostCountArgs>(
+      args?: Subset<T, PostCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PostCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Post.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PostAggregateArgs>(args: Subset<T, PostAggregateArgs>): Prisma.PrismaPromise<GetPostAggregateType<T>>
+
+    /**
+     * Group by Post.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PostGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PostGroupByArgs['orderBy'] }
+        : { orderBy?: PostGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PostGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPostGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Post model
+   */
+  readonly fields: PostFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Post.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PostClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    postImages<T extends Post$postImagesArgs<ExtArgs> = {}>(args?: Subset<T, Post$postImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    postLinks<T extends Post$postLinksArgs<ExtArgs> = {}>(args?: Subset<T, Post$postLinksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LinkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Post model
+   */
+  interface PostFieldRefs {
+    readonly id: FieldRef<"Post", 'Int'>
+    readonly title: FieldRef<"Post", 'String'>
+    readonly topic: FieldRef<"Post", 'String'>
+    readonly tags: FieldRef<"Post", 'String'>
+    readonly content: FieldRef<"Post", 'String'>
+    readonly links: FieldRef<"Post", 'String'>
+    readonly views: FieldRef<"Post", 'Int'>
+    readonly likes: FieldRef<"Post", 'Int'>
+    readonly userId: FieldRef<"Post", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Post findUnique
+   */
+  export type PostFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Post
+     */
+    select?: PostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Post
+     */
+    omit?: PostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostInclude<ExtArgs> | null
+    /**
+     * Filter, which Post to fetch.
+     */
+    where: PostWhereUniqueInput
+  }
+
+  /**
+   * Post findUniqueOrThrow
+   */
+  export type PostFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Post
+     */
+    select?: PostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Post
+     */
+    omit?: PostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostInclude<ExtArgs> | null
+    /**
+     * Filter, which Post to fetch.
+     */
+    where: PostWhereUniqueInput
+  }
+
+  /**
+   * Post findFirst
+   */
+  export type PostFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Post
+     */
+    select?: PostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Post
+     */
+    omit?: PostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostInclude<ExtArgs> | null
+    /**
+     * Filter, which Post to fetch.
+     */
+    where?: PostWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Posts to fetch.
+     */
+    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Posts.
+     */
+    cursor?: PostWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Posts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Posts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Posts.
+     */
+    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
+  }
+
+  /**
+   * Post findFirstOrThrow
+   */
+  export type PostFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Post
+     */
+    select?: PostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Post
+     */
+    omit?: PostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostInclude<ExtArgs> | null
+    /**
+     * Filter, which Post to fetch.
+     */
+    where?: PostWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Posts to fetch.
+     */
+    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Posts.
+     */
+    cursor?: PostWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Posts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Posts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Posts.
+     */
+    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
+  }
+
+  /**
+   * Post findMany
+   */
+  export type PostFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Post
+     */
+    select?: PostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Post
+     */
+    omit?: PostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostInclude<ExtArgs> | null
+    /**
+     * Filter, which Posts to fetch.
+     */
+    where?: PostWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Posts to fetch.
+     */
+    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Posts.
+     */
+    cursor?: PostWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Posts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Posts.
+     */
+    skip?: number
+    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
+  }
+
+  /**
+   * Post create
+   */
+  export type PostCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Post
+     */
+    select?: PostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Post
+     */
+    omit?: PostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Post.
+     */
+    data: XOR<PostCreateInput, PostUncheckedCreateInput>
+  }
+
+  /**
+   * Post createMany
+   */
+  export type PostCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Posts.
+     */
+    data: PostCreateManyInput | PostCreateManyInput[]
+  }
+
+  /**
+   * Post createManyAndReturn
+   */
+  export type PostCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Post
+     */
+    select?: PostSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Post
+     */
+    omit?: PostOmit<ExtArgs> | null
+    /**
+     * The data used to create many Posts.
+     */
+    data: PostCreateManyInput | PostCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Post update
+   */
+  export type PostUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Post
+     */
+    select?: PostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Post
+     */
+    omit?: PostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Post.
+     */
+    data: XOR<PostUpdateInput, PostUncheckedUpdateInput>
+    /**
+     * Choose, which Post to update.
+     */
+    where: PostWhereUniqueInput
+  }
+
+  /**
+   * Post updateMany
+   */
+  export type PostUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Posts.
+     */
+    data: XOR<PostUpdateManyMutationInput, PostUncheckedUpdateManyInput>
+    /**
+     * Filter which Posts to update
+     */
+    where?: PostWhereInput
+    /**
+     * Limit how many Posts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Post updateManyAndReturn
+   */
+  export type PostUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Post
+     */
+    select?: PostSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Post
+     */
+    omit?: PostOmit<ExtArgs> | null
+    /**
+     * The data used to update Posts.
+     */
+    data: XOR<PostUpdateManyMutationInput, PostUncheckedUpdateManyInput>
+    /**
+     * Filter which Posts to update
+     */
+    where?: PostWhereInput
+    /**
+     * Limit how many Posts to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Post upsert
+   */
+  export type PostUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Post
+     */
+    select?: PostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Post
+     */
+    omit?: PostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Post to update in case it exists.
+     */
+    where: PostWhereUniqueInput
+    /**
+     * In case the Post found by the `where` argument doesn't exist, create a new Post with this data.
+     */
+    create: XOR<PostCreateInput, PostUncheckedCreateInput>
+    /**
+     * In case the Post was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PostUpdateInput, PostUncheckedUpdateInput>
+  }
+
+  /**
+   * Post delete
+   */
+  export type PostDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Post
+     */
+    select?: PostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Post
+     */
+    omit?: PostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostInclude<ExtArgs> | null
+    /**
+     * Filter which Post to delete.
+     */
+    where: PostWhereUniqueInput
+  }
+
+  /**
+   * Post deleteMany
+   */
+  export type PostDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Posts to delete
+     */
+    where?: PostWhereInput
+    /**
+     * Limit how many Posts to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Post.postImages
+   */
+  export type Post$postImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    where?: ImageWhereInput
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
+    cursor?: ImageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ImageScalarFieldEnum | ImageScalarFieldEnum[]
+  }
+
+  /**
+   * Post.postLinks
+   */
+  export type Post$postLinksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Link
+     */
+    select?: LinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Link
+     */
+    omit?: LinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkInclude<ExtArgs> | null
+    where?: LinkWhereInput
+    orderBy?: LinkOrderByWithRelationInput | LinkOrderByWithRelationInput[]
+    cursor?: LinkWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LinkScalarFieldEnum | LinkScalarFieldEnum[]
+  }
+
+  /**
+   * Post without action
+   */
+  export type PostDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Post
+     */
+    select?: PostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Post
+     */
+    omit?: PostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostInclude<ExtArgs> | null
   }
 
 
@@ -4740,6 +11076,10 @@ export namespace Prisma {
     albums?: boolean | User$albumsArgs<ExtArgs>
     friendOf?: boolean | User$friendOfArgs<ExtArgs>
     friends?: boolean | User$friendsArgs<ExtArgs>
+    avatars?: boolean | User$avatarsArgs<ExtArgs>
+    sentMessages?: boolean | User$sentMessagesArgs<ExtArgs>
+    chatGroups?: boolean | User$chatGroupsArgs<ExtArgs>
+    administeredGroups?: boolean | User$administeredGroupsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -4782,6 +11122,10 @@ export namespace Prisma {
     albums?: boolean | User$albumsArgs<ExtArgs>
     friendOf?: boolean | User$friendOfArgs<ExtArgs>
     friends?: boolean | User$friendsArgs<ExtArgs>
+    avatars?: boolean | User$avatarsArgs<ExtArgs>
+    sentMessages?: boolean | User$sentMessagesArgs<ExtArgs>
+    chatGroups?: boolean | User$chatGroupsArgs<ExtArgs>
+    administeredGroups?: boolean | User$administeredGroupsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -4790,10 +11134,14 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      posts: Prisma.$UserPostPayload<ExtArgs>[]
-      albums: Prisma.$UserAlbumPayload<ExtArgs>[]
+      posts: Prisma.$PostPayload<ExtArgs>[]
+      albums: Prisma.$AlbumPayload<ExtArgs>[]
       friendOf: Prisma.$FriendPayload<ExtArgs>[]
       friends: Prisma.$FriendPayload<ExtArgs>[]
+      avatars: Prisma.$AvatarPayload<ExtArgs>[]
+      sentMessages: Prisma.$ChatMessagePayload<ExtArgs>[]
+      chatGroups: Prisma.$ChatGroupPayload<ExtArgs>[]
+      administeredGroups: Prisma.$ChatGroupPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -5198,10 +11546,14 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    posts<T extends User$postsArgs<ExtArgs> = {}>(args?: Subset<T, User$postsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    albums<T extends User$albumsArgs<ExtArgs> = {}>(args?: Subset<T, User$albumsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserAlbumPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    posts<T extends User$postsArgs<ExtArgs> = {}>(args?: Subset<T, User$postsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    albums<T extends User$albumsArgs<ExtArgs> = {}>(args?: Subset<T, User$albumsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     friendOf<T extends User$friendOfArgs<ExtArgs> = {}>(args?: Subset<T, User$friendOfArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FriendPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     friends<T extends User$friendsArgs<ExtArgs> = {}>(args?: Subset<T, User$friendsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FriendPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    avatars<T extends User$avatarsArgs<ExtArgs> = {}>(args?: Subset<T, User$avatarsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvatarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    sentMessages<T extends User$sentMessagesArgs<ExtArgs> = {}>(args?: Subset<T, User$sentMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    chatGroups<T extends User$chatGroupsArgs<ExtArgs> = {}>(args?: Subset<T, User$chatGroupsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChatGroupPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    administeredGroups<T extends User$administeredGroupsArgs<ExtArgs> = {}>(args?: Subset<T, User$administeredGroupsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChatGroupPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5629,23 +11981,23 @@ export namespace Prisma {
    */
   export type User$postsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserPost
+     * Select specific fields to fetch from the Post
      */
-    select?: UserPostSelect<ExtArgs> | null
+    select?: PostSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserPost
+     * Omit specific fields from the Post
      */
-    omit?: UserPostOmit<ExtArgs> | null
+    omit?: PostOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserPostInclude<ExtArgs> | null
-    where?: UserPostWhereInput
-    orderBy?: UserPostOrderByWithRelationInput | UserPostOrderByWithRelationInput[]
-    cursor?: UserPostWhereUniqueInput
+    include?: PostInclude<ExtArgs> | null
+    where?: PostWhereInput
+    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
+    cursor?: PostWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: UserPostScalarFieldEnum | UserPostScalarFieldEnum[]
+    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
   }
 
   /**
@@ -5653,23 +12005,23 @@ export namespace Prisma {
    */
   export type User$albumsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserAlbum
+     * Select specific fields to fetch from the Album
      */
-    select?: UserAlbumSelect<ExtArgs> | null
+    select?: AlbumSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserAlbum
+     * Omit specific fields from the Album
      */
-    omit?: UserAlbumOmit<ExtArgs> | null
+    omit?: AlbumOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserAlbumInclude<ExtArgs> | null
-    where?: UserAlbumWhereInput
-    orderBy?: UserAlbumOrderByWithRelationInput | UserAlbumOrderByWithRelationInput[]
-    cursor?: UserAlbumWhereUniqueInput
+    include?: AlbumInclude<ExtArgs> | null
+    where?: AlbumWhereInput
+    orderBy?: AlbumOrderByWithRelationInput | AlbumOrderByWithRelationInput[]
+    cursor?: AlbumWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: UserAlbumScalarFieldEnum | UserAlbumScalarFieldEnum[]
+    distinct?: AlbumScalarFieldEnum | AlbumScalarFieldEnum[]
   }
 
   /**
@@ -5721,6 +12073,102 @@ export namespace Prisma {
   }
 
   /**
+   * User.avatars
+   */
+  export type User$avatarsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avatar
+     */
+    select?: AvatarSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avatar
+     */
+    omit?: AvatarOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvatarInclude<ExtArgs> | null
+    where?: AvatarWhereInput
+    orderBy?: AvatarOrderByWithRelationInput | AvatarOrderByWithRelationInput[]
+    cursor?: AvatarWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AvatarScalarFieldEnum | AvatarScalarFieldEnum[]
+  }
+
+  /**
+   * User.sentMessages
+   */
+  export type User$sentMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatMessage
+     */
+    omit?: ChatMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+    where?: ChatMessageWhereInput
+    orderBy?: ChatMessageOrderByWithRelationInput | ChatMessageOrderByWithRelationInput[]
+    cursor?: ChatMessageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ChatMessageScalarFieldEnum | ChatMessageScalarFieldEnum[]
+  }
+
+  /**
+   * User.chatGroups
+   */
+  export type User$chatGroupsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatGroup
+     */
+    select?: ChatGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatGroup
+     */
+    omit?: ChatGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatGroupInclude<ExtArgs> | null
+    where?: ChatGroupWhereInput
+    orderBy?: ChatGroupOrderByWithRelationInput | ChatGroupOrderByWithRelationInput[]
+    cursor?: ChatGroupWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ChatGroupScalarFieldEnum | ChatGroupScalarFieldEnum[]
+  }
+
+  /**
+   * User.administeredGroups
+   */
+  export type User$administeredGroupsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatGroup
+     */
+    select?: ChatGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatGroup
+     */
+    omit?: ChatGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatGroupInclude<ExtArgs> | null
+    where?: ChatGroupWhereInput
+    orderBy?: ChatGroupOrderByWithRelationInput | ChatGroupOrderByWithRelationInput[]
+    cursor?: ChatGroupWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ChatGroupScalarFieldEnum | ChatGroupScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5750,38 +12198,95 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const UserAlbumScalarFieldEnum: {
+  export const AlbumScalarFieldEnum: {
     id: 'id',
-    src: 'src',
-    userId: 'userId'
+    name: 'name',
+    createdAt: 'createdAt',
+    previewImage: 'previewImage',
+    userId: 'userId',
+    shown: 'shown',
+    topicId: 'topicId'
   };
 
-  export type UserAlbumScalarFieldEnum = (typeof UserAlbumScalarFieldEnum)[keyof typeof UserAlbumScalarFieldEnum]
+  export type AlbumScalarFieldEnum = (typeof AlbumScalarFieldEnum)[keyof typeof AlbumScalarFieldEnum]
+
+
+  export const AvatarScalarFieldEnum: {
+    id: 'id',
+    image: 'image',
+    userId: 'userId',
+    active: 'active',
+    shown: 'shown'
+  };
+
+  export type AvatarScalarFieldEnum = (typeof AvatarScalarFieldEnum)[keyof typeof AvatarScalarFieldEnum]
+
+
+  export const ChatGroupScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    isPersonalChat: 'isPersonalChat',
+    avatar: 'avatar',
+    adminId: 'adminId'
+  };
+
+  export type ChatGroupScalarFieldEnum = (typeof ChatGroupScalarFieldEnum)[keyof typeof ChatGroupScalarFieldEnum]
+
+
+  export const ChatMessageScalarFieldEnum: {
+    id: 'id',
+    content: 'content',
+    sentAt: 'sentAt',
+    attachedImage: 'attachedImage',
+    authorId: 'authorId',
+    chatGroupId: 'chatGroupId'
+  };
+
+  export type ChatMessageScalarFieldEnum = (typeof ChatMessageScalarFieldEnum)[keyof typeof ChatMessageScalarFieldEnum]
 
 
   export const FriendScalarFieldEnum: {
     id: 'id',
     friendUserId: 'friendUserId',
-    friendOfId: 'friendOfId'
+    friendOfId: 'friendOfId',
+    accepted: 'accepted'
   };
 
   export type FriendScalarFieldEnum = (typeof FriendScalarFieldEnum)[keyof typeof FriendScalarFieldEnum]
 
 
-  export const UserPostScalarFieldEnum: {
+  export const ImageScalarFieldEnum: {
+    id: 'id',
+    filename: 'filename',
+    url: 'url',
+    uploadedAt: 'uploadedAt'
+  };
+
+  export type ImageScalarFieldEnum = (typeof ImageScalarFieldEnum)[keyof typeof ImageScalarFieldEnum]
+
+
+  export const LinkScalarFieldEnum: {
+    id: 'id',
+    url: 'url',
+    postId: 'postId'
+  };
+
+  export type LinkScalarFieldEnum = (typeof LinkScalarFieldEnum)[keyof typeof LinkScalarFieldEnum]
+
+
+  export const PostScalarFieldEnum: {
     id: 'id',
     title: 'title',
     topic: 'topic',
     tags: 'tags',
     content: 'content',
     links: 'links',
-    images: 'images',
     views: 'views',
     likes: 'likes',
     userId: 'userId'
   };
 
-  export type UserPostScalarFieldEnum = (typeof UserPostScalarFieldEnum)[keyof typeof UserPostScalarFieldEnum]
+  export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
 
 
   export const UserScalarFieldEnum: {
@@ -5834,6 +12339,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -5843,51 +12362,259 @@ export namespace Prisma {
    */
 
 
-  export type UserAlbumWhereInput = {
-    AND?: UserAlbumWhereInput | UserAlbumWhereInput[]
-    OR?: UserAlbumWhereInput[]
-    NOT?: UserAlbumWhereInput | UserAlbumWhereInput[]
-    id?: IntFilter<"UserAlbum"> | number
-    src?: StringFilter<"UserAlbum"> | string
-    userId?: IntFilter<"UserAlbum"> | number
+  export type AlbumWhereInput = {
+    AND?: AlbumWhereInput | AlbumWhereInput[]
+    OR?: AlbumWhereInput[]
+    NOT?: AlbumWhereInput | AlbumWhereInput[]
+    id?: IntFilter<"Album"> | number
+    name?: StringFilter<"Album"> | string
+    createdAt?: DateTimeFilter<"Album"> | Date | string
+    previewImage?: StringNullableFilter<"Album"> | string | null
+    userId?: IntFilter<"Album"> | number
+    shown?: BoolFilter<"Album"> | boolean
+    topicId?: IntNullableFilter<"Album"> | number | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    images?: ImageListRelationFilter
+  }
+
+  export type AlbumOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    previewImage?: SortOrderInput | SortOrder
+    userId?: SortOrder
+    shown?: SortOrder
+    topicId?: SortOrderInput | SortOrder
+    user?: UserOrderByWithRelationInput
+    images?: ImageOrderByRelationAggregateInput
+  }
+
+  export type AlbumWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: AlbumWhereInput | AlbumWhereInput[]
+    OR?: AlbumWhereInput[]
+    NOT?: AlbumWhereInput | AlbumWhereInput[]
+    name?: StringFilter<"Album"> | string
+    createdAt?: DateTimeFilter<"Album"> | Date | string
+    previewImage?: StringNullableFilter<"Album"> | string | null
+    userId?: IntFilter<"Album"> | number
+    shown?: BoolFilter<"Album"> | boolean
+    topicId?: IntNullableFilter<"Album"> | number | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    images?: ImageListRelationFilter
+  }, "id">
+
+  export type AlbumOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    previewImage?: SortOrderInput | SortOrder
+    userId?: SortOrder
+    shown?: SortOrder
+    topicId?: SortOrderInput | SortOrder
+    _count?: AlbumCountOrderByAggregateInput
+    _avg?: AlbumAvgOrderByAggregateInput
+    _max?: AlbumMaxOrderByAggregateInput
+    _min?: AlbumMinOrderByAggregateInput
+    _sum?: AlbumSumOrderByAggregateInput
+  }
+
+  export type AlbumScalarWhereWithAggregatesInput = {
+    AND?: AlbumScalarWhereWithAggregatesInput | AlbumScalarWhereWithAggregatesInput[]
+    OR?: AlbumScalarWhereWithAggregatesInput[]
+    NOT?: AlbumScalarWhereWithAggregatesInput | AlbumScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Album"> | number
+    name?: StringWithAggregatesFilter<"Album"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Album"> | Date | string
+    previewImage?: StringNullableWithAggregatesFilter<"Album"> | string | null
+    userId?: IntWithAggregatesFilter<"Album"> | number
+    shown?: BoolWithAggregatesFilter<"Album"> | boolean
+    topicId?: IntNullableWithAggregatesFilter<"Album"> | number | null
+  }
+
+  export type AvatarWhereInput = {
+    AND?: AvatarWhereInput | AvatarWhereInput[]
+    OR?: AvatarWhereInput[]
+    NOT?: AvatarWhereInput | AvatarWhereInput[]
+    id?: IntFilter<"Avatar"> | number
+    image?: StringFilter<"Avatar"> | string
+    userId?: IntFilter<"Avatar"> | number
+    active?: BoolFilter<"Avatar"> | boolean
+    shown?: BoolFilter<"Avatar"> | boolean
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
-  export type UserAlbumOrderByWithRelationInput = {
+  export type AvatarOrderByWithRelationInput = {
     id?: SortOrder
-    src?: SortOrder
+    image?: SortOrder
     userId?: SortOrder
+    active?: SortOrder
+    shown?: SortOrder
     user?: UserOrderByWithRelationInput
   }
 
-  export type UserAlbumWhereUniqueInput = Prisma.AtLeast<{
+  export type AvatarWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: UserAlbumWhereInput | UserAlbumWhereInput[]
-    OR?: UserAlbumWhereInput[]
-    NOT?: UserAlbumWhereInput | UserAlbumWhereInput[]
-    src?: StringFilter<"UserAlbum"> | string
-    userId?: IntFilter<"UserAlbum"> | number
+    AND?: AvatarWhereInput | AvatarWhereInput[]
+    OR?: AvatarWhereInput[]
+    NOT?: AvatarWhereInput | AvatarWhereInput[]
+    image?: StringFilter<"Avatar"> | string
+    userId?: IntFilter<"Avatar"> | number
+    active?: BoolFilter<"Avatar"> | boolean
+    shown?: BoolFilter<"Avatar"> | boolean
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
-  export type UserAlbumOrderByWithAggregationInput = {
+  export type AvatarOrderByWithAggregationInput = {
     id?: SortOrder
-    src?: SortOrder
+    image?: SortOrder
     userId?: SortOrder
-    _count?: UserAlbumCountOrderByAggregateInput
-    _avg?: UserAlbumAvgOrderByAggregateInput
-    _max?: UserAlbumMaxOrderByAggregateInput
-    _min?: UserAlbumMinOrderByAggregateInput
-    _sum?: UserAlbumSumOrderByAggregateInput
+    active?: SortOrder
+    shown?: SortOrder
+    _count?: AvatarCountOrderByAggregateInput
+    _avg?: AvatarAvgOrderByAggregateInput
+    _max?: AvatarMaxOrderByAggregateInput
+    _min?: AvatarMinOrderByAggregateInput
+    _sum?: AvatarSumOrderByAggregateInput
   }
 
-  export type UserAlbumScalarWhereWithAggregatesInput = {
-    AND?: UserAlbumScalarWhereWithAggregatesInput | UserAlbumScalarWhereWithAggregatesInput[]
-    OR?: UserAlbumScalarWhereWithAggregatesInput[]
-    NOT?: UserAlbumScalarWhereWithAggregatesInput | UserAlbumScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"UserAlbum"> | number
-    src?: StringWithAggregatesFilter<"UserAlbum"> | string
-    userId?: IntWithAggregatesFilter<"UserAlbum"> | number
+  export type AvatarScalarWhereWithAggregatesInput = {
+    AND?: AvatarScalarWhereWithAggregatesInput | AvatarScalarWhereWithAggregatesInput[]
+    OR?: AvatarScalarWhereWithAggregatesInput[]
+    NOT?: AvatarScalarWhereWithAggregatesInput | AvatarScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Avatar"> | number
+    image?: StringWithAggregatesFilter<"Avatar"> | string
+    userId?: IntWithAggregatesFilter<"Avatar"> | number
+    active?: BoolWithAggregatesFilter<"Avatar"> | boolean
+    shown?: BoolWithAggregatesFilter<"Avatar"> | boolean
+  }
+
+  export type ChatGroupWhereInput = {
+    AND?: ChatGroupWhereInput | ChatGroupWhereInput[]
+    OR?: ChatGroupWhereInput[]
+    NOT?: ChatGroupWhereInput | ChatGroupWhereInput[]
+    id?: IntFilter<"ChatGroup"> | number
+    name?: StringFilter<"ChatGroup"> | string
+    isPersonalChat?: BoolFilter<"ChatGroup"> | boolean
+    avatar?: StringNullableFilter<"ChatGroup"> | string | null
+    adminId?: IntFilter<"ChatGroup"> | number
+    admin?: XOR<UserScalarRelationFilter, UserWhereInput>
+    members?: UserListRelationFilter
+    messages?: ChatMessageListRelationFilter
+  }
+
+  export type ChatGroupOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    isPersonalChat?: SortOrder
+    avatar?: SortOrderInput | SortOrder
+    adminId?: SortOrder
+    admin?: UserOrderByWithRelationInput
+    members?: UserOrderByRelationAggregateInput
+    messages?: ChatMessageOrderByRelationAggregateInput
+  }
+
+  export type ChatGroupWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ChatGroupWhereInput | ChatGroupWhereInput[]
+    OR?: ChatGroupWhereInput[]
+    NOT?: ChatGroupWhereInput | ChatGroupWhereInput[]
+    name?: StringFilter<"ChatGroup"> | string
+    isPersonalChat?: BoolFilter<"ChatGroup"> | boolean
+    avatar?: StringNullableFilter<"ChatGroup"> | string | null
+    adminId?: IntFilter<"ChatGroup"> | number
+    admin?: XOR<UserScalarRelationFilter, UserWhereInput>
+    members?: UserListRelationFilter
+    messages?: ChatMessageListRelationFilter
+  }, "id">
+
+  export type ChatGroupOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    isPersonalChat?: SortOrder
+    avatar?: SortOrderInput | SortOrder
+    adminId?: SortOrder
+    _count?: ChatGroupCountOrderByAggregateInput
+    _avg?: ChatGroupAvgOrderByAggregateInput
+    _max?: ChatGroupMaxOrderByAggregateInput
+    _min?: ChatGroupMinOrderByAggregateInput
+    _sum?: ChatGroupSumOrderByAggregateInput
+  }
+
+  export type ChatGroupScalarWhereWithAggregatesInput = {
+    AND?: ChatGroupScalarWhereWithAggregatesInput | ChatGroupScalarWhereWithAggregatesInput[]
+    OR?: ChatGroupScalarWhereWithAggregatesInput[]
+    NOT?: ChatGroupScalarWhereWithAggregatesInput | ChatGroupScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ChatGroup"> | number
+    name?: StringWithAggregatesFilter<"ChatGroup"> | string
+    isPersonalChat?: BoolWithAggregatesFilter<"ChatGroup"> | boolean
+    avatar?: StringNullableWithAggregatesFilter<"ChatGroup"> | string | null
+    adminId?: IntWithAggregatesFilter<"ChatGroup"> | number
+  }
+
+  export type ChatMessageWhereInput = {
+    AND?: ChatMessageWhereInput | ChatMessageWhereInput[]
+    OR?: ChatMessageWhereInput[]
+    NOT?: ChatMessageWhereInput | ChatMessageWhereInput[]
+    id?: IntFilter<"ChatMessage"> | number
+    content?: StringFilter<"ChatMessage"> | string
+    sentAt?: DateTimeFilter<"ChatMessage"> | Date | string
+    attachedImage?: StringNullableFilter<"ChatMessage"> | string | null
+    authorId?: IntFilter<"ChatMessage"> | number
+    chatGroupId?: IntFilter<"ChatMessage"> | number
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
+    chatGroup?: XOR<ChatGroupScalarRelationFilter, ChatGroupWhereInput>
+  }
+
+  export type ChatMessageOrderByWithRelationInput = {
+    id?: SortOrder
+    content?: SortOrder
+    sentAt?: SortOrder
+    attachedImage?: SortOrderInput | SortOrder
+    authorId?: SortOrder
+    chatGroupId?: SortOrder
+    author?: UserOrderByWithRelationInput
+    chatGroup?: ChatGroupOrderByWithRelationInput
+  }
+
+  export type ChatMessageWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ChatMessageWhereInput | ChatMessageWhereInput[]
+    OR?: ChatMessageWhereInput[]
+    NOT?: ChatMessageWhereInput | ChatMessageWhereInput[]
+    content?: StringFilter<"ChatMessage"> | string
+    sentAt?: DateTimeFilter<"ChatMessage"> | Date | string
+    attachedImage?: StringNullableFilter<"ChatMessage"> | string | null
+    authorId?: IntFilter<"ChatMessage"> | number
+    chatGroupId?: IntFilter<"ChatMessage"> | number
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
+    chatGroup?: XOR<ChatGroupScalarRelationFilter, ChatGroupWhereInput>
+  }, "id">
+
+  export type ChatMessageOrderByWithAggregationInput = {
+    id?: SortOrder
+    content?: SortOrder
+    sentAt?: SortOrder
+    attachedImage?: SortOrderInput | SortOrder
+    authorId?: SortOrder
+    chatGroupId?: SortOrder
+    _count?: ChatMessageCountOrderByAggregateInput
+    _avg?: ChatMessageAvgOrderByAggregateInput
+    _max?: ChatMessageMaxOrderByAggregateInput
+    _min?: ChatMessageMinOrderByAggregateInput
+    _sum?: ChatMessageSumOrderByAggregateInput
+  }
+
+  export type ChatMessageScalarWhereWithAggregatesInput = {
+    AND?: ChatMessageScalarWhereWithAggregatesInput | ChatMessageScalarWhereWithAggregatesInput[]
+    OR?: ChatMessageScalarWhereWithAggregatesInput[]
+    NOT?: ChatMessageScalarWhereWithAggregatesInput | ChatMessageScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ChatMessage"> | number
+    content?: StringWithAggregatesFilter<"ChatMessage"> | string
+    sentAt?: DateTimeWithAggregatesFilter<"ChatMessage"> | Date | string
+    attachedImage?: StringNullableWithAggregatesFilter<"ChatMessage"> | string | null
+    authorId?: IntWithAggregatesFilter<"ChatMessage"> | number
+    chatGroupId?: IntWithAggregatesFilter<"ChatMessage"> | number
   }
 
   export type FriendWhereInput = {
@@ -5897,6 +12624,7 @@ export namespace Prisma {
     id?: IntFilter<"Friend"> | number
     friendUserId?: IntFilter<"Friend"> | number
     friendOfId?: IntFilter<"Friend"> | number
+    accepted?: BoolFilter<"Friend"> | boolean
     friendUser?: XOR<UserScalarRelationFilter, UserWhereInput>
     friendOf?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -5905,6 +12633,7 @@ export namespace Prisma {
     id?: SortOrder
     friendUserId?: SortOrder
     friendOfId?: SortOrder
+    accepted?: SortOrder
     friendUser?: UserOrderByWithRelationInput
     friendOf?: UserOrderByWithRelationInput
   }
@@ -5916,6 +12645,7 @@ export namespace Prisma {
     NOT?: FriendWhereInput | FriendWhereInput[]
     friendUserId?: IntFilter<"Friend"> | number
     friendOfId?: IntFilter<"Friend"> | number
+    accepted?: BoolFilter<"Friend"> | boolean
     friendUser?: XOR<UserScalarRelationFilter, UserWhereInput>
     friendOf?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
@@ -5924,6 +12654,7 @@ export namespace Prisma {
     id?: SortOrder
     friendUserId?: SortOrder
     friendOfId?: SortOrder
+    accepted?: SortOrder
     _count?: FriendCountOrderByAggregateInput
     _avg?: FriendAvgOrderByAggregateInput
     _max?: FriendMaxOrderByAggregateInput
@@ -5938,88 +12669,192 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Friend"> | number
     friendUserId?: IntWithAggregatesFilter<"Friend"> | number
     friendOfId?: IntWithAggregatesFilter<"Friend"> | number
+    accepted?: BoolWithAggregatesFilter<"Friend"> | boolean
   }
 
-  export type UserPostWhereInput = {
-    AND?: UserPostWhereInput | UserPostWhereInput[]
-    OR?: UserPostWhereInput[]
-    NOT?: UserPostWhereInput | UserPostWhereInput[]
-    id?: IntFilter<"UserPost"> | number
-    title?: StringFilter<"UserPost"> | string
-    topic?: StringNullableFilter<"UserPost"> | string | null
-    tags?: StringNullableFilter<"UserPost"> | string | null
-    content?: StringFilter<"UserPost"> | string
-    links?: StringNullableFilter<"UserPost"> | string | null
-    images?: StringNullableFilter<"UserPost"> | string | null
-    views?: IntFilter<"UserPost"> | number
-    likes?: IntFilter<"UserPost"> | number
-    userId?: IntFilter<"UserPost"> | number
+  export type ImageWhereInput = {
+    AND?: ImageWhereInput | ImageWhereInput[]
+    OR?: ImageWhereInput[]
+    NOT?: ImageWhereInput | ImageWhereInput[]
+    id?: IntFilter<"Image"> | number
+    filename?: StringFilter<"Image"> | string
+    url?: StringFilter<"Image"> | string
+    uploadedAt?: DateTimeFilter<"Image"> | Date | string
+    posts?: PostListRelationFilter
+    albums?: AlbumListRelationFilter
+  }
+
+  export type ImageOrderByWithRelationInput = {
+    id?: SortOrder
+    filename?: SortOrder
+    url?: SortOrder
+    uploadedAt?: SortOrder
+    posts?: PostOrderByRelationAggregateInput
+    albums?: AlbumOrderByRelationAggregateInput
+  }
+
+  export type ImageWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ImageWhereInput | ImageWhereInput[]
+    OR?: ImageWhereInput[]
+    NOT?: ImageWhereInput | ImageWhereInput[]
+    filename?: StringFilter<"Image"> | string
+    url?: StringFilter<"Image"> | string
+    uploadedAt?: DateTimeFilter<"Image"> | Date | string
+    posts?: PostListRelationFilter
+    albums?: AlbumListRelationFilter
+  }, "id">
+
+  export type ImageOrderByWithAggregationInput = {
+    id?: SortOrder
+    filename?: SortOrder
+    url?: SortOrder
+    uploadedAt?: SortOrder
+    _count?: ImageCountOrderByAggregateInput
+    _avg?: ImageAvgOrderByAggregateInput
+    _max?: ImageMaxOrderByAggregateInput
+    _min?: ImageMinOrderByAggregateInput
+    _sum?: ImageSumOrderByAggregateInput
+  }
+
+  export type ImageScalarWhereWithAggregatesInput = {
+    AND?: ImageScalarWhereWithAggregatesInput | ImageScalarWhereWithAggregatesInput[]
+    OR?: ImageScalarWhereWithAggregatesInput[]
+    NOT?: ImageScalarWhereWithAggregatesInput | ImageScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Image"> | number
+    filename?: StringWithAggregatesFilter<"Image"> | string
+    url?: StringWithAggregatesFilter<"Image"> | string
+    uploadedAt?: DateTimeWithAggregatesFilter<"Image"> | Date | string
+  }
+
+  export type LinkWhereInput = {
+    AND?: LinkWhereInput | LinkWhereInput[]
+    OR?: LinkWhereInput[]
+    NOT?: LinkWhereInput | LinkWhereInput[]
+    id?: IntFilter<"Link"> | number
+    url?: StringFilter<"Link"> | string
+    postId?: IntFilter<"Link"> | number
+    post?: XOR<PostScalarRelationFilter, PostWhereInput>
+  }
+
+  export type LinkOrderByWithRelationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    postId?: SortOrder
+    post?: PostOrderByWithRelationInput
+  }
+
+  export type LinkWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: LinkWhereInput | LinkWhereInput[]
+    OR?: LinkWhereInput[]
+    NOT?: LinkWhereInput | LinkWhereInput[]
+    url?: StringFilter<"Link"> | string
+    postId?: IntFilter<"Link"> | number
+    post?: XOR<PostScalarRelationFilter, PostWhereInput>
+  }, "id">
+
+  export type LinkOrderByWithAggregationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    postId?: SortOrder
+    _count?: LinkCountOrderByAggregateInput
+    _avg?: LinkAvgOrderByAggregateInput
+    _max?: LinkMaxOrderByAggregateInput
+    _min?: LinkMinOrderByAggregateInput
+    _sum?: LinkSumOrderByAggregateInput
+  }
+
+  export type LinkScalarWhereWithAggregatesInput = {
+    AND?: LinkScalarWhereWithAggregatesInput | LinkScalarWhereWithAggregatesInput[]
+    OR?: LinkScalarWhereWithAggregatesInput[]
+    NOT?: LinkScalarWhereWithAggregatesInput | LinkScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Link"> | number
+    url?: StringWithAggregatesFilter<"Link"> | string
+    postId?: IntWithAggregatesFilter<"Link"> | number
+  }
+
+  export type PostWhereInput = {
+    AND?: PostWhereInput | PostWhereInput[]
+    OR?: PostWhereInput[]
+    NOT?: PostWhereInput | PostWhereInput[]
+    id?: IntFilter<"Post"> | number
+    title?: StringFilter<"Post"> | string
+    topic?: StringNullableFilter<"Post"> | string | null
+    tags?: StringNullableFilter<"Post"> | string | null
+    content?: StringFilter<"Post"> | string
+    links?: StringNullableFilter<"Post"> | string | null
+    views?: IntFilter<"Post"> | number
+    likes?: IntFilter<"Post"> | number
+    userId?: IntFilter<"Post"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    postImages?: ImageListRelationFilter
+    postLinks?: LinkListRelationFilter
   }
 
-  export type UserPostOrderByWithRelationInput = {
+  export type PostOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
     topic?: SortOrderInput | SortOrder
     tags?: SortOrderInput | SortOrder
     content?: SortOrder
     links?: SortOrderInput | SortOrder
-    images?: SortOrderInput | SortOrder
     views?: SortOrder
     likes?: SortOrder
     userId?: SortOrder
     user?: UserOrderByWithRelationInput
+    postImages?: ImageOrderByRelationAggregateInput
+    postLinks?: LinkOrderByRelationAggregateInput
   }
 
-  export type UserPostWhereUniqueInput = Prisma.AtLeast<{
+  export type PostWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: UserPostWhereInput | UserPostWhereInput[]
-    OR?: UserPostWhereInput[]
-    NOT?: UserPostWhereInput | UserPostWhereInput[]
-    title?: StringFilter<"UserPost"> | string
-    topic?: StringNullableFilter<"UserPost"> | string | null
-    tags?: StringNullableFilter<"UserPost"> | string | null
-    content?: StringFilter<"UserPost"> | string
-    links?: StringNullableFilter<"UserPost"> | string | null
-    images?: StringNullableFilter<"UserPost"> | string | null
-    views?: IntFilter<"UserPost"> | number
-    likes?: IntFilter<"UserPost"> | number
-    userId?: IntFilter<"UserPost"> | number
+    AND?: PostWhereInput | PostWhereInput[]
+    OR?: PostWhereInput[]
+    NOT?: PostWhereInput | PostWhereInput[]
+    title?: StringFilter<"Post"> | string
+    topic?: StringNullableFilter<"Post"> | string | null
+    tags?: StringNullableFilter<"Post"> | string | null
+    content?: StringFilter<"Post"> | string
+    links?: StringNullableFilter<"Post"> | string | null
+    views?: IntFilter<"Post"> | number
+    likes?: IntFilter<"Post"> | number
+    userId?: IntFilter<"Post"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    postImages?: ImageListRelationFilter
+    postLinks?: LinkListRelationFilter
   }, "id">
 
-  export type UserPostOrderByWithAggregationInput = {
+  export type PostOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
     topic?: SortOrderInput | SortOrder
     tags?: SortOrderInput | SortOrder
     content?: SortOrder
     links?: SortOrderInput | SortOrder
-    images?: SortOrderInput | SortOrder
     views?: SortOrder
     likes?: SortOrder
     userId?: SortOrder
-    _count?: UserPostCountOrderByAggregateInput
-    _avg?: UserPostAvgOrderByAggregateInput
-    _max?: UserPostMaxOrderByAggregateInput
-    _min?: UserPostMinOrderByAggregateInput
-    _sum?: UserPostSumOrderByAggregateInput
+    _count?: PostCountOrderByAggregateInput
+    _avg?: PostAvgOrderByAggregateInput
+    _max?: PostMaxOrderByAggregateInput
+    _min?: PostMinOrderByAggregateInput
+    _sum?: PostSumOrderByAggregateInput
   }
 
-  export type UserPostScalarWhereWithAggregatesInput = {
-    AND?: UserPostScalarWhereWithAggregatesInput | UserPostScalarWhereWithAggregatesInput[]
-    OR?: UserPostScalarWhereWithAggregatesInput[]
-    NOT?: UserPostScalarWhereWithAggregatesInput | UserPostScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"UserPost"> | number
-    title?: StringWithAggregatesFilter<"UserPost"> | string
-    topic?: StringNullableWithAggregatesFilter<"UserPost"> | string | null
-    tags?: StringNullableWithAggregatesFilter<"UserPost"> | string | null
-    content?: StringWithAggregatesFilter<"UserPost"> | string
-    links?: StringNullableWithAggregatesFilter<"UserPost"> | string | null
-    images?: StringNullableWithAggregatesFilter<"UserPost"> | string | null
-    views?: IntWithAggregatesFilter<"UserPost"> | number
-    likes?: IntWithAggregatesFilter<"UserPost"> | number
-    userId?: IntWithAggregatesFilter<"UserPost"> | number
+  export type PostScalarWhereWithAggregatesInput = {
+    AND?: PostScalarWhereWithAggregatesInput | PostScalarWhereWithAggregatesInput[]
+    OR?: PostScalarWhereWithAggregatesInput[]
+    NOT?: PostScalarWhereWithAggregatesInput | PostScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Post"> | number
+    title?: StringWithAggregatesFilter<"Post"> | string
+    topic?: StringNullableWithAggregatesFilter<"Post"> | string | null
+    tags?: StringNullableWithAggregatesFilter<"Post"> | string | null
+    content?: StringWithAggregatesFilter<"Post"> | string
+    links?: StringNullableWithAggregatesFilter<"Post"> | string | null
+    views?: IntWithAggregatesFilter<"Post"> | number
+    likes?: IntWithAggregatesFilter<"Post"> | number
+    userId?: IntWithAggregatesFilter<"Post"> | number
   }
 
   export type UserWhereInput = {
@@ -6034,10 +12869,14 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     image?: StringNullableFilter<"User"> | string | null
     birthdate?: StringNullableFilter<"User"> | string | null
-    posts?: UserPostListRelationFilter
-    albums?: UserAlbumListRelationFilter
+    posts?: PostListRelationFilter
+    albums?: AlbumListRelationFilter
     friendOf?: FriendListRelationFilter
     friends?: FriendListRelationFilter
+    avatars?: AvatarListRelationFilter
+    sentMessages?: ChatMessageListRelationFilter
+    chatGroups?: ChatGroupListRelationFilter
+    administeredGroups?: ChatGroupListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -6049,10 +12888,14 @@ export namespace Prisma {
     password?: SortOrder
     image?: SortOrderInput | SortOrder
     birthdate?: SortOrderInput | SortOrder
-    posts?: UserPostOrderByRelationAggregateInput
-    albums?: UserAlbumOrderByRelationAggregateInput
+    posts?: PostOrderByRelationAggregateInput
+    albums?: AlbumOrderByRelationAggregateInput
     friendOf?: FriendOrderByRelationAggregateInput
     friends?: FriendOrderByRelationAggregateInput
+    avatars?: AvatarOrderByRelationAggregateInput
+    sentMessages?: ChatMessageOrderByRelationAggregateInput
+    chatGroups?: ChatGroupOrderByRelationAggregateInput
+    administeredGroups?: ChatGroupOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -6067,10 +12910,14 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     image?: StringNullableFilter<"User"> | string | null
     birthdate?: StringNullableFilter<"User"> | string | null
-    posts?: UserPostListRelationFilter
-    albums?: UserAlbumListRelationFilter
+    posts?: PostListRelationFilter
+    albums?: AlbumListRelationFilter
     friendOf?: FriendListRelationFilter
     friends?: FriendListRelationFilter
+    avatars?: AvatarListRelationFilter
+    sentMessages?: ChatMessageListRelationFilter
+    chatGroups?: ChatGroupListRelationFilter
+    administeredGroups?: ChatGroupListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -6103,45 +12950,248 @@ export namespace Prisma {
     birthdate?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
-  export type UserAlbumCreateInput = {
-    src: string
+  export type AlbumCreateInput = {
+    name: string
+    createdAt?: Date | string
+    previewImage?: string | null
+    shown?: boolean
+    topicId?: number | null
     user: UserCreateNestedOneWithoutAlbumsInput
+    images?: ImageCreateNestedManyWithoutAlbumsInput
   }
 
-  export type UserAlbumUncheckedCreateInput = {
+  export type AlbumUncheckedCreateInput = {
     id?: number
-    src: string
+    name: string
+    createdAt?: Date | string
+    previewImage?: string | null
     userId: number
+    shown?: boolean
+    topicId?: number | null
+    images?: ImageUncheckedCreateNestedManyWithoutAlbumsInput
   }
 
-  export type UserAlbumUpdateInput = {
-    src?: StringFieldUpdateOperationsInput | string
+  export type AlbumUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    previewImage?: NullableStringFieldUpdateOperationsInput | string | null
+    shown?: BoolFieldUpdateOperationsInput | boolean
+    topicId?: NullableIntFieldUpdateOperationsInput | number | null
     user?: UserUpdateOneRequiredWithoutAlbumsNestedInput
+    images?: ImageUpdateManyWithoutAlbumsNestedInput
   }
 
-  export type UserAlbumUncheckedUpdateInput = {
+  export type AlbumUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    src?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    previewImage?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: IntFieldUpdateOperationsInput | number
+    shown?: BoolFieldUpdateOperationsInput | boolean
+    topicId?: NullableIntFieldUpdateOperationsInput | number | null
+    images?: ImageUncheckedUpdateManyWithoutAlbumsNestedInput
   }
 
-  export type UserAlbumCreateManyInput = {
+  export type AlbumCreateManyInput = {
     id?: number
-    src: string
+    name: string
+    createdAt?: Date | string
+    previewImage?: string | null
     userId: number
+    shown?: boolean
+    topicId?: number | null
   }
 
-  export type UserAlbumUpdateManyMutationInput = {
-    src?: StringFieldUpdateOperationsInput | string
+  export type AlbumUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    previewImage?: NullableStringFieldUpdateOperationsInput | string | null
+    shown?: BoolFieldUpdateOperationsInput | boolean
+    topicId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
-  export type UserAlbumUncheckedUpdateManyInput = {
+  export type AlbumUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    src?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    previewImage?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: IntFieldUpdateOperationsInput | number
+    shown?: BoolFieldUpdateOperationsInput | boolean
+    topicId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type AvatarCreateInput = {
+    image: string
+    active?: boolean
+    shown?: boolean
+    user: UserCreateNestedOneWithoutAvatarsInput
+  }
+
+  export type AvatarUncheckedCreateInput = {
+    id?: number
+    image: string
+    userId: number
+    active?: boolean
+    shown?: boolean
+  }
+
+  export type AvatarUpdateInput = {
+    image?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    shown?: BoolFieldUpdateOperationsInput | boolean
+    user?: UserUpdateOneRequiredWithoutAvatarsNestedInput
+  }
+
+  export type AvatarUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    image?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
+    active?: BoolFieldUpdateOperationsInput | boolean
+    shown?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type AvatarCreateManyInput = {
+    id?: number
+    image: string
+    userId: number
+    active?: boolean
+    shown?: boolean
+  }
+
+  export type AvatarUpdateManyMutationInput = {
+    image?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    shown?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type AvatarUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    image?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
+    active?: BoolFieldUpdateOperationsInput | boolean
+    shown?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type ChatGroupCreateInput = {
+    name: string
+    isPersonalChat?: boolean
+    avatar?: string | null
+    admin: UserCreateNestedOneWithoutAdministeredGroupsInput
+    members?: UserCreateNestedManyWithoutChatGroupsInput
+    messages?: ChatMessageCreateNestedManyWithoutChatGroupInput
+  }
+
+  export type ChatGroupUncheckedCreateInput = {
+    id?: number
+    name: string
+    isPersonalChat?: boolean
+    avatar?: string | null
+    adminId: number
+    members?: UserUncheckedCreateNestedManyWithoutChatGroupsInput
+    messages?: ChatMessageUncheckedCreateNestedManyWithoutChatGroupInput
+  }
+
+  export type ChatGroupUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    isPersonalChat?: BoolFieldUpdateOperationsInput | boolean
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: UserUpdateOneRequiredWithoutAdministeredGroupsNestedInput
+    members?: UserUpdateManyWithoutChatGroupsNestedInput
+    messages?: ChatMessageUpdateManyWithoutChatGroupNestedInput
+  }
+
+  export type ChatGroupUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    isPersonalChat?: BoolFieldUpdateOperationsInput | boolean
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: IntFieldUpdateOperationsInput | number
+    members?: UserUncheckedUpdateManyWithoutChatGroupsNestedInput
+    messages?: ChatMessageUncheckedUpdateManyWithoutChatGroupNestedInput
+  }
+
+  export type ChatGroupCreateManyInput = {
+    id?: number
+    name: string
+    isPersonalChat?: boolean
+    avatar?: string | null
+    adminId: number
+  }
+
+  export type ChatGroupUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    isPersonalChat?: BoolFieldUpdateOperationsInput | boolean
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ChatGroupUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    isPersonalChat?: BoolFieldUpdateOperationsInput | boolean
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ChatMessageCreateInput = {
+    content: string
+    sentAt?: Date | string
+    attachedImage?: string | null
+    author: UserCreateNestedOneWithoutSentMessagesInput
+    chatGroup: ChatGroupCreateNestedOneWithoutMessagesInput
+  }
+
+  export type ChatMessageUncheckedCreateInput = {
+    id?: number
+    content: string
+    sentAt?: Date | string
+    attachedImage?: string | null
+    authorId: number
+    chatGroupId: number
+  }
+
+  export type ChatMessageUpdateInput = {
+    content?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    attachedImage?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: UserUpdateOneRequiredWithoutSentMessagesNestedInput
+    chatGroup?: ChatGroupUpdateOneRequiredWithoutMessagesNestedInput
+  }
+
+  export type ChatMessageUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    attachedImage?: NullableStringFieldUpdateOperationsInput | string | null
+    authorId?: IntFieldUpdateOperationsInput | number
+    chatGroupId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ChatMessageCreateManyInput = {
+    id?: number
+    content: string
+    sentAt?: Date | string
+    attachedImage?: string | null
+    authorId: number
+    chatGroupId: number
+  }
+
+  export type ChatMessageUpdateManyMutationInput = {
+    content?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    attachedImage?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ChatMessageUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    attachedImage?: NullableStringFieldUpdateOperationsInput | string | null
+    authorId?: IntFieldUpdateOperationsInput | number
+    chatGroupId?: IntFieldUpdateOperationsInput | number
   }
 
   export type FriendCreateInput = {
+    accepted?: boolean
     friendUser: UserCreateNestedOneWithoutFriendsInput
     friendOf: UserCreateNestedOneWithoutFriendOfInput
   }
@@ -6150,9 +13200,11 @@ export namespace Prisma {
     id?: number
     friendUserId: number
     friendOfId: number
+    accepted?: boolean
   }
 
   export type FriendUpdateInput = {
+    accepted?: BoolFieldUpdateOperationsInput | boolean
     friendUser?: UserUpdateOneRequiredWithoutFriendsNestedInput
     friendOf?: UserUpdateOneRequiredWithoutFriendOfNestedInput
   }
@@ -6161,106 +13213,202 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     friendUserId?: IntFieldUpdateOperationsInput | number
     friendOfId?: IntFieldUpdateOperationsInput | number
+    accepted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type FriendCreateManyInput = {
     id?: number
     friendUserId: number
     friendOfId: number
+    accepted?: boolean
   }
 
   export type FriendUpdateManyMutationInput = {
-
+    accepted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type FriendUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     friendUserId?: IntFieldUpdateOperationsInput | number
     friendOfId?: IntFieldUpdateOperationsInput | number
+    accepted?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type UserPostCreateInput = {
+  export type ImageCreateInput = {
+    filename: string
+    url: string
+    uploadedAt?: Date | string
+    posts?: PostCreateNestedManyWithoutPostImagesInput
+    albums?: AlbumCreateNestedManyWithoutImagesInput
+  }
+
+  export type ImageUncheckedCreateInput = {
+    id?: number
+    filename: string
+    url: string
+    uploadedAt?: Date | string
+    posts?: PostUncheckedCreateNestedManyWithoutPostImagesInput
+    albums?: AlbumUncheckedCreateNestedManyWithoutImagesInput
+  }
+
+  export type ImageUpdateInput = {
+    filename?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posts?: PostUpdateManyWithoutPostImagesNestedInput
+    albums?: AlbumUpdateManyWithoutImagesNestedInput
+  }
+
+  export type ImageUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    filename?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posts?: PostUncheckedUpdateManyWithoutPostImagesNestedInput
+    albums?: AlbumUncheckedUpdateManyWithoutImagesNestedInput
+  }
+
+  export type ImageCreateManyInput = {
+    id?: number
+    filename: string
+    url: string
+    uploadedAt?: Date | string
+  }
+
+  export type ImageUpdateManyMutationInput = {
+    filename?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ImageUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    filename?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LinkCreateInput = {
+    url: string
+    post: PostCreateNestedOneWithoutPostLinksInput
+  }
+
+  export type LinkUncheckedCreateInput = {
+    id?: number
+    url: string
+    postId: number
+  }
+
+  export type LinkUpdateInput = {
+    url?: StringFieldUpdateOperationsInput | string
+    post?: PostUpdateOneRequiredWithoutPostLinksNestedInput
+  }
+
+  export type LinkUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    url?: StringFieldUpdateOperationsInput | string
+    postId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type LinkCreateManyInput = {
+    id?: number
+    url: string
+    postId: number
+  }
+
+  export type LinkUpdateManyMutationInput = {
+    url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type LinkUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    url?: StringFieldUpdateOperationsInput | string
+    postId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type PostCreateInput = {
     title: string
     topic?: string | null
     tags?: string | null
     content: string
     links?: string | null
-    images?: string | null
     views?: number
     likes?: number
-    user?: UserCreateNestedOneWithoutPostsInput
+    user: UserCreateNestedOneWithoutPostsInput
+    postImages?: ImageCreateNestedManyWithoutPostsInput
+    postLinks?: LinkCreateNestedManyWithoutPostInput
   }
 
-  export type UserPostUncheckedCreateInput = {
+  export type PostUncheckedCreateInput = {
     id?: number
     title: string
     topic?: string | null
     tags?: string | null
     content: string
     links?: string | null
-    images?: string | null
     views?: number
     likes?: number
-    userId?: number
+    userId: number
+    postImages?: ImageUncheckedCreateNestedManyWithoutPostsInput
+    postLinks?: LinkUncheckedCreateNestedManyWithoutPostInput
   }
 
-  export type UserPostUpdateInput = {
+  export type PostUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
     topic?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     links?: NullableStringFieldUpdateOperationsInput | string | null
-    images?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     likes?: IntFieldUpdateOperationsInput | number
     user?: UserUpdateOneRequiredWithoutPostsNestedInput
+    postImages?: ImageUpdateManyWithoutPostsNestedInput
+    postLinks?: LinkUpdateManyWithoutPostNestedInput
   }
 
-  export type UserPostUncheckedUpdateInput = {
+  export type PostUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     topic?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     links?: NullableStringFieldUpdateOperationsInput | string | null
-    images?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     likes?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
+    postImages?: ImageUncheckedUpdateManyWithoutPostsNestedInput
+    postLinks?: LinkUncheckedUpdateManyWithoutPostNestedInput
   }
 
-  export type UserPostCreateManyInput = {
+  export type PostCreateManyInput = {
     id?: number
     title: string
     topic?: string | null
     tags?: string | null
     content: string
     links?: string | null
-    images?: string | null
     views?: number
     likes?: number
-    userId?: number
+    userId: number
   }
 
-  export type UserPostUpdateManyMutationInput = {
+  export type PostUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
     topic?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     links?: NullableStringFieldUpdateOperationsInput | string | null
-    images?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     likes?: IntFieldUpdateOperationsInput | number
   }
 
-  export type UserPostUncheckedUpdateManyInput = {
+  export type PostUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     topic?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     links?: NullableStringFieldUpdateOperationsInput | string | null
-    images?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     likes?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
@@ -6274,10 +13422,14 @@ export namespace Prisma {
     password: string
     image?: string | null
     birthdate?: string | null
-    posts?: UserPostCreateNestedManyWithoutUserInput
-    albums?: UserAlbumCreateNestedManyWithoutUserInput
+    posts?: PostCreateNestedManyWithoutUserInput
+    albums?: AlbumCreateNestedManyWithoutUserInput
     friendOf?: FriendCreateNestedManyWithoutFriendOfInput
     friends?: FriendCreateNestedManyWithoutFriendUserInput
+    avatars?: AvatarCreateNestedManyWithoutUserInput
+    sentMessages?: ChatMessageCreateNestedManyWithoutAuthorInput
+    chatGroups?: ChatGroupCreateNestedManyWithoutMembersInput
+    administeredGroups?: ChatGroupCreateNestedManyWithoutAdminInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -6289,10 +13441,14 @@ export namespace Prisma {
     password: string
     image?: string | null
     birthdate?: string | null
-    posts?: UserPostUncheckedCreateNestedManyWithoutUserInput
-    albums?: UserAlbumUncheckedCreateNestedManyWithoutUserInput
+    posts?: PostUncheckedCreateNestedManyWithoutUserInput
+    albums?: AlbumUncheckedCreateNestedManyWithoutUserInput
     friendOf?: FriendUncheckedCreateNestedManyWithoutFriendOfInput
     friends?: FriendUncheckedCreateNestedManyWithoutFriendUserInput
+    avatars?: AvatarUncheckedCreateNestedManyWithoutUserInput
+    sentMessages?: ChatMessageUncheckedCreateNestedManyWithoutAuthorInput
+    chatGroups?: ChatGroupUncheckedCreateNestedManyWithoutMembersInput
+    administeredGroups?: ChatGroupUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type UserUpdateInput = {
@@ -6303,10 +13459,14 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     birthdate?: NullableStringFieldUpdateOperationsInput | string | null
-    posts?: UserPostUpdateManyWithoutUserNestedInput
-    albums?: UserAlbumUpdateManyWithoutUserNestedInput
+    posts?: PostUpdateManyWithoutUserNestedInput
+    albums?: AlbumUpdateManyWithoutUserNestedInput
     friendOf?: FriendUpdateManyWithoutFriendOfNestedInput
     friends?: FriendUpdateManyWithoutFriendUserNestedInput
+    avatars?: AvatarUpdateManyWithoutUserNestedInput
+    sentMessages?: ChatMessageUpdateManyWithoutAuthorNestedInput
+    chatGroups?: ChatGroupUpdateManyWithoutMembersNestedInput
+    administeredGroups?: ChatGroupUpdateManyWithoutAdminNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -6318,10 +13478,14 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     birthdate?: NullableStringFieldUpdateOperationsInput | string | null
-    posts?: UserPostUncheckedUpdateManyWithoutUserNestedInput
-    albums?: UserAlbumUncheckedUpdateManyWithoutUserNestedInput
+    posts?: PostUncheckedUpdateManyWithoutUserNestedInput
+    albums?: AlbumUncheckedUpdateManyWithoutUserNestedInput
     friendOf?: FriendUncheckedUpdateManyWithoutFriendOfNestedInput
     friends?: FriendUncheckedUpdateManyWithoutFriendUserNestedInput
+    avatars?: AvatarUncheckedUpdateManyWithoutUserNestedInput
+    sentMessages?: ChatMessageUncheckedUpdateManyWithoutAuthorNestedInput
+    chatGroups?: ChatGroupUncheckedUpdateManyWithoutMembersNestedInput
+    administeredGroups?: ChatGroupUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -6381,37 +13545,107 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
   }
 
-  export type UserAlbumCountOrderByAggregateInput = {
-    id?: SortOrder
-    src?: SortOrder
-    userId?: SortOrder
+  export type ImageListRelationFilter = {
+    every?: ImageWhereInput
+    some?: ImageWhereInput
+    none?: ImageWhereInput
   }
 
-  export type UserAlbumAvgOrderByAggregateInput = {
-    id?: SortOrder
-    userId?: SortOrder
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
-  export type UserAlbumMaxOrderByAggregateInput = {
-    id?: SortOrder
-    src?: SortOrder
-    userId?: SortOrder
+  export type ImageOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
-  export type UserAlbumMinOrderByAggregateInput = {
+  export type AlbumCountOrderByAggregateInput = {
     id?: SortOrder
-    src?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    previewImage?: SortOrder
     userId?: SortOrder
+    shown?: SortOrder
+    topicId?: SortOrder
   }
 
-  export type UserAlbumSumOrderByAggregateInput = {
+  export type AlbumAvgOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    topicId?: SortOrder
+  }
+
+  export type AlbumMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    previewImage?: SortOrder
+    userId?: SortOrder
+    shown?: SortOrder
+    topicId?: SortOrder
+  }
+
+  export type AlbumMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    previewImage?: SortOrder
+    userId?: SortOrder
+    shown?: SortOrder
+    topicId?: SortOrder
+  }
+
+  export type AlbumSumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    topicId?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -6447,106 +13681,18 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type FriendCountOrderByAggregateInput = {
-    id?: SortOrder
-    friendUserId?: SortOrder
-    friendOfId?: SortOrder
-  }
-
-  export type FriendAvgOrderByAggregateInput = {
-    id?: SortOrder
-    friendUserId?: SortOrder
-    friendOfId?: SortOrder
-  }
-
-  export type FriendMaxOrderByAggregateInput = {
-    id?: SortOrder
-    friendUserId?: SortOrder
-    friendOfId?: SortOrder
-  }
-
-  export type FriendMinOrderByAggregateInput = {
-    id?: SortOrder
-    friendUserId?: SortOrder
-    friendOfId?: SortOrder
-  }
-
-  export type FriendSumOrderByAggregateInput = {
-    id?: SortOrder
-    friendUserId?: SortOrder
-    friendOfId?: SortOrder
-  }
-
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
-  }
-
-  export type UserPostCountOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    topic?: SortOrder
-    tags?: SortOrder
-    content?: SortOrder
-    links?: SortOrder
-    images?: SortOrder
-    views?: SortOrder
-    likes?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type UserPostAvgOrderByAggregateInput = {
-    id?: SortOrder
-    views?: SortOrder
-    likes?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type UserPostMaxOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    topic?: SortOrder
-    tags?: SortOrder
-    content?: SortOrder
-    links?: SortOrder
-    images?: SortOrder
-    views?: SortOrder
-    likes?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type UserPostMinOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    topic?: SortOrder
-    tags?: SortOrder
-    content?: SortOrder
-    links?: SortOrder
-    images?: SortOrder
-    views?: SortOrder
-    likes?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type UserPostSumOrderByAggregateInput = {
-    id?: SortOrder
-    views?: SortOrder
-    likes?: SortOrder
-    userId?: SortOrder
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -6566,16 +13712,335 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type UserPostListRelationFilter = {
-    every?: UserPostWhereInput
-    some?: UserPostWhereInput
-    none?: UserPostWhereInput
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type UserAlbumListRelationFilter = {
-    every?: UserAlbumWhereInput
-    some?: UserAlbumWhereInput
-    none?: UserAlbumWhereInput
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type AvatarCountOrderByAggregateInput = {
+    id?: SortOrder
+    image?: SortOrder
+    userId?: SortOrder
+    active?: SortOrder
+    shown?: SortOrder
+  }
+
+  export type AvatarAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type AvatarMaxOrderByAggregateInput = {
+    id?: SortOrder
+    image?: SortOrder
+    userId?: SortOrder
+    active?: SortOrder
+    shown?: SortOrder
+  }
+
+  export type AvatarMinOrderByAggregateInput = {
+    id?: SortOrder
+    image?: SortOrder
+    userId?: SortOrder
+    active?: SortOrder
+    shown?: SortOrder
+  }
+
+  export type AvatarSumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type UserListRelationFilter = {
+    every?: UserWhereInput
+    some?: UserWhereInput
+    none?: UserWhereInput
+  }
+
+  export type ChatMessageListRelationFilter = {
+    every?: ChatMessageWhereInput
+    some?: ChatMessageWhereInput
+    none?: ChatMessageWhereInput
+  }
+
+  export type UserOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ChatMessageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ChatGroupCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    isPersonalChat?: SortOrder
+    avatar?: SortOrder
+    adminId?: SortOrder
+  }
+
+  export type ChatGroupAvgOrderByAggregateInput = {
+    id?: SortOrder
+    adminId?: SortOrder
+  }
+
+  export type ChatGroupMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    isPersonalChat?: SortOrder
+    avatar?: SortOrder
+    adminId?: SortOrder
+  }
+
+  export type ChatGroupMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    isPersonalChat?: SortOrder
+    avatar?: SortOrder
+    adminId?: SortOrder
+  }
+
+  export type ChatGroupSumOrderByAggregateInput = {
+    id?: SortOrder
+    adminId?: SortOrder
+  }
+
+  export type ChatGroupScalarRelationFilter = {
+    is?: ChatGroupWhereInput
+    isNot?: ChatGroupWhereInput
+  }
+
+  export type ChatMessageCountOrderByAggregateInput = {
+    id?: SortOrder
+    content?: SortOrder
+    sentAt?: SortOrder
+    attachedImage?: SortOrder
+    authorId?: SortOrder
+    chatGroupId?: SortOrder
+  }
+
+  export type ChatMessageAvgOrderByAggregateInput = {
+    id?: SortOrder
+    authorId?: SortOrder
+    chatGroupId?: SortOrder
+  }
+
+  export type ChatMessageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    content?: SortOrder
+    sentAt?: SortOrder
+    attachedImage?: SortOrder
+    authorId?: SortOrder
+    chatGroupId?: SortOrder
+  }
+
+  export type ChatMessageMinOrderByAggregateInput = {
+    id?: SortOrder
+    content?: SortOrder
+    sentAt?: SortOrder
+    attachedImage?: SortOrder
+    authorId?: SortOrder
+    chatGroupId?: SortOrder
+  }
+
+  export type ChatMessageSumOrderByAggregateInput = {
+    id?: SortOrder
+    authorId?: SortOrder
+    chatGroupId?: SortOrder
+  }
+
+  export type FriendCountOrderByAggregateInput = {
+    id?: SortOrder
+    friendUserId?: SortOrder
+    friendOfId?: SortOrder
+    accepted?: SortOrder
+  }
+
+  export type FriendAvgOrderByAggregateInput = {
+    id?: SortOrder
+    friendUserId?: SortOrder
+    friendOfId?: SortOrder
+  }
+
+  export type FriendMaxOrderByAggregateInput = {
+    id?: SortOrder
+    friendUserId?: SortOrder
+    friendOfId?: SortOrder
+    accepted?: SortOrder
+  }
+
+  export type FriendMinOrderByAggregateInput = {
+    id?: SortOrder
+    friendUserId?: SortOrder
+    friendOfId?: SortOrder
+    accepted?: SortOrder
+  }
+
+  export type FriendSumOrderByAggregateInput = {
+    id?: SortOrder
+    friendUserId?: SortOrder
+    friendOfId?: SortOrder
+  }
+
+  export type PostListRelationFilter = {
+    every?: PostWhereInput
+    some?: PostWhereInput
+    none?: PostWhereInput
+  }
+
+  export type AlbumListRelationFilter = {
+    every?: AlbumWhereInput
+    some?: AlbumWhereInput
+    none?: AlbumWhereInput
+  }
+
+  export type PostOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AlbumOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ImageCountOrderByAggregateInput = {
+    id?: SortOrder
+    filename?: SortOrder
+    url?: SortOrder
+    uploadedAt?: SortOrder
+  }
+
+  export type ImageAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type ImageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    filename?: SortOrder
+    url?: SortOrder
+    uploadedAt?: SortOrder
+  }
+
+  export type ImageMinOrderByAggregateInput = {
+    id?: SortOrder
+    filename?: SortOrder
+    url?: SortOrder
+    uploadedAt?: SortOrder
+  }
+
+  export type ImageSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type PostScalarRelationFilter = {
+    is?: PostWhereInput
+    isNot?: PostWhereInput
+  }
+
+  export type LinkCountOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    postId?: SortOrder
+  }
+
+  export type LinkAvgOrderByAggregateInput = {
+    id?: SortOrder
+    postId?: SortOrder
+  }
+
+  export type LinkMaxOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    postId?: SortOrder
+  }
+
+  export type LinkMinOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    postId?: SortOrder
+  }
+
+  export type LinkSumOrderByAggregateInput = {
+    id?: SortOrder
+    postId?: SortOrder
+  }
+
+  export type LinkListRelationFilter = {
+    every?: LinkWhereInput
+    some?: LinkWhereInput
+    none?: LinkWhereInput
+  }
+
+  export type LinkOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PostCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    topic?: SortOrder
+    tags?: SortOrder
+    content?: SortOrder
+    links?: SortOrder
+    views?: SortOrder
+    likes?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type PostAvgOrderByAggregateInput = {
+    id?: SortOrder
+    views?: SortOrder
+    likes?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type PostMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    topic?: SortOrder
+    tags?: SortOrder
+    content?: SortOrder
+    links?: SortOrder
+    views?: SortOrder
+    likes?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type PostMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    topic?: SortOrder
+    tags?: SortOrder
+    content?: SortOrder
+    links?: SortOrder
+    views?: SortOrder
+    likes?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type PostSumOrderByAggregateInput = {
+    id?: SortOrder
+    views?: SortOrder
+    likes?: SortOrder
+    userId?: SortOrder
   }
 
   export type FriendListRelationFilter = {
@@ -6584,15 +14049,27 @@ export namespace Prisma {
     none?: FriendWhereInput
   }
 
-  export type UserPostOrderByRelationAggregateInput = {
-    _count?: SortOrder
+  export type AvatarListRelationFilter = {
+    every?: AvatarWhereInput
+    some?: AvatarWhereInput
+    none?: AvatarWhereInput
   }
 
-  export type UserAlbumOrderByRelationAggregateInput = {
-    _count?: SortOrder
+  export type ChatGroupListRelationFilter = {
+    every?: ChatGroupWhereInput
+    some?: ChatGroupWhereInput
+    none?: ChatGroupWhereInput
   }
 
   export type FriendOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AvatarOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ChatGroupOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -6643,8 +14120,40 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type ImageCreateNestedManyWithoutAlbumsInput = {
+    create?: XOR<ImageCreateWithoutAlbumsInput, ImageUncheckedCreateWithoutAlbumsInput> | ImageCreateWithoutAlbumsInput[] | ImageUncheckedCreateWithoutAlbumsInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutAlbumsInput | ImageCreateOrConnectWithoutAlbumsInput[]
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+  }
+
+  export type ImageUncheckedCreateNestedManyWithoutAlbumsInput = {
+    create?: XOR<ImageCreateWithoutAlbumsInput, ImageUncheckedCreateWithoutAlbumsInput> | ImageCreateWithoutAlbumsInput[] | ImageUncheckedCreateWithoutAlbumsInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutAlbumsInput | ImageCreateOrConnectWithoutAlbumsInput[]
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type UserUpdateOneRequiredWithoutAlbumsNestedInput = {
@@ -6655,12 +14164,174 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAlbumsInput, UserUpdateWithoutAlbumsInput>, UserUncheckedUpdateWithoutAlbumsInput>
   }
 
+  export type ImageUpdateManyWithoutAlbumsNestedInput = {
+    create?: XOR<ImageCreateWithoutAlbumsInput, ImageUncheckedCreateWithoutAlbumsInput> | ImageCreateWithoutAlbumsInput[] | ImageUncheckedCreateWithoutAlbumsInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutAlbumsInput | ImageCreateOrConnectWithoutAlbumsInput[]
+    upsert?: ImageUpsertWithWhereUniqueWithoutAlbumsInput | ImageUpsertWithWhereUniqueWithoutAlbumsInput[]
+    set?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    disconnect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    delete?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    update?: ImageUpdateWithWhereUniqueWithoutAlbumsInput | ImageUpdateWithWhereUniqueWithoutAlbumsInput[]
+    updateMany?: ImageUpdateManyWithWhereWithoutAlbumsInput | ImageUpdateManyWithWhereWithoutAlbumsInput[]
+    deleteMany?: ImageScalarWhereInput | ImageScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type ImageUncheckedUpdateManyWithoutAlbumsNestedInput = {
+    create?: XOR<ImageCreateWithoutAlbumsInput, ImageUncheckedCreateWithoutAlbumsInput> | ImageCreateWithoutAlbumsInput[] | ImageUncheckedCreateWithoutAlbumsInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutAlbumsInput | ImageCreateOrConnectWithoutAlbumsInput[]
+    upsert?: ImageUpsertWithWhereUniqueWithoutAlbumsInput | ImageUpsertWithWhereUniqueWithoutAlbumsInput[]
+    set?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    disconnect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    delete?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    update?: ImageUpdateWithWhereUniqueWithoutAlbumsInput | ImageUpdateWithWhereUniqueWithoutAlbumsInput[]
+    updateMany?: ImageUpdateManyWithWhereWithoutAlbumsInput | ImageUpdateManyWithWhereWithoutAlbumsInput[]
+    deleteMany?: ImageScalarWhereInput | ImageScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutAvatarsInput = {
+    create?: XOR<UserCreateWithoutAvatarsInput, UserUncheckedCreateWithoutAvatarsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAvatarsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutAvatarsNestedInput = {
+    create?: XOR<UserCreateWithoutAvatarsInput, UserUncheckedCreateWithoutAvatarsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAvatarsInput
+    upsert?: UserUpsertWithoutAvatarsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAvatarsInput, UserUpdateWithoutAvatarsInput>, UserUncheckedUpdateWithoutAvatarsInput>
+  }
+
+  export type UserCreateNestedOneWithoutAdministeredGroupsInput = {
+    create?: XOR<UserCreateWithoutAdministeredGroupsInput, UserUncheckedCreateWithoutAdministeredGroupsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAdministeredGroupsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserCreateNestedManyWithoutChatGroupsInput = {
+    create?: XOR<UserCreateWithoutChatGroupsInput, UserUncheckedCreateWithoutChatGroupsInput> | UserCreateWithoutChatGroupsInput[] | UserUncheckedCreateWithoutChatGroupsInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutChatGroupsInput | UserCreateOrConnectWithoutChatGroupsInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
+  export type ChatMessageCreateNestedManyWithoutChatGroupInput = {
+    create?: XOR<ChatMessageCreateWithoutChatGroupInput, ChatMessageUncheckedCreateWithoutChatGroupInput> | ChatMessageCreateWithoutChatGroupInput[] | ChatMessageUncheckedCreateWithoutChatGroupInput[]
+    connectOrCreate?: ChatMessageCreateOrConnectWithoutChatGroupInput | ChatMessageCreateOrConnectWithoutChatGroupInput[]
+    createMany?: ChatMessageCreateManyChatGroupInputEnvelope
+    connect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+  }
+
+  export type UserUncheckedCreateNestedManyWithoutChatGroupsInput = {
+    create?: XOR<UserCreateWithoutChatGroupsInput, UserUncheckedCreateWithoutChatGroupsInput> | UserCreateWithoutChatGroupsInput[] | UserUncheckedCreateWithoutChatGroupsInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutChatGroupsInput | UserCreateOrConnectWithoutChatGroupsInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
+  export type ChatMessageUncheckedCreateNestedManyWithoutChatGroupInput = {
+    create?: XOR<ChatMessageCreateWithoutChatGroupInput, ChatMessageUncheckedCreateWithoutChatGroupInput> | ChatMessageCreateWithoutChatGroupInput[] | ChatMessageUncheckedCreateWithoutChatGroupInput[]
+    connectOrCreate?: ChatMessageCreateOrConnectWithoutChatGroupInput | ChatMessageCreateOrConnectWithoutChatGroupInput[]
+    createMany?: ChatMessageCreateManyChatGroupInputEnvelope
+    connect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutAdministeredGroupsNestedInput = {
+    create?: XOR<UserCreateWithoutAdministeredGroupsInput, UserUncheckedCreateWithoutAdministeredGroupsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAdministeredGroupsInput
+    upsert?: UserUpsertWithoutAdministeredGroupsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAdministeredGroupsInput, UserUpdateWithoutAdministeredGroupsInput>, UserUncheckedUpdateWithoutAdministeredGroupsInput>
+  }
+
+  export type UserUpdateManyWithoutChatGroupsNestedInput = {
+    create?: XOR<UserCreateWithoutChatGroupsInput, UserUncheckedCreateWithoutChatGroupsInput> | UserCreateWithoutChatGroupsInput[] | UserUncheckedCreateWithoutChatGroupsInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutChatGroupsInput | UserCreateOrConnectWithoutChatGroupsInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutChatGroupsInput | UserUpsertWithWhereUniqueWithoutChatGroupsInput[]
+    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    update?: UserUpdateWithWhereUniqueWithoutChatGroupsInput | UserUpdateWithWhereUniqueWithoutChatGroupsInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutChatGroupsInput | UserUpdateManyWithWhereWithoutChatGroupsInput[]
+    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  }
+
+  export type ChatMessageUpdateManyWithoutChatGroupNestedInput = {
+    create?: XOR<ChatMessageCreateWithoutChatGroupInput, ChatMessageUncheckedCreateWithoutChatGroupInput> | ChatMessageCreateWithoutChatGroupInput[] | ChatMessageUncheckedCreateWithoutChatGroupInput[]
+    connectOrCreate?: ChatMessageCreateOrConnectWithoutChatGroupInput | ChatMessageCreateOrConnectWithoutChatGroupInput[]
+    upsert?: ChatMessageUpsertWithWhereUniqueWithoutChatGroupInput | ChatMessageUpsertWithWhereUniqueWithoutChatGroupInput[]
+    createMany?: ChatMessageCreateManyChatGroupInputEnvelope
+    set?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    disconnect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    delete?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    connect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    update?: ChatMessageUpdateWithWhereUniqueWithoutChatGroupInput | ChatMessageUpdateWithWhereUniqueWithoutChatGroupInput[]
+    updateMany?: ChatMessageUpdateManyWithWhereWithoutChatGroupInput | ChatMessageUpdateManyWithWhereWithoutChatGroupInput[]
+    deleteMany?: ChatMessageScalarWhereInput | ChatMessageScalarWhereInput[]
+  }
+
+  export type UserUncheckedUpdateManyWithoutChatGroupsNestedInput = {
+    create?: XOR<UserCreateWithoutChatGroupsInput, UserUncheckedCreateWithoutChatGroupsInput> | UserCreateWithoutChatGroupsInput[] | UserUncheckedCreateWithoutChatGroupsInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutChatGroupsInput | UserCreateOrConnectWithoutChatGroupsInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutChatGroupsInput | UserUpsertWithWhereUniqueWithoutChatGroupsInput[]
+    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    update?: UserUpdateWithWhereUniqueWithoutChatGroupsInput | UserUpdateWithWhereUniqueWithoutChatGroupsInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutChatGroupsInput | UserUpdateManyWithWhereWithoutChatGroupsInput[]
+    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  }
+
+  export type ChatMessageUncheckedUpdateManyWithoutChatGroupNestedInput = {
+    create?: XOR<ChatMessageCreateWithoutChatGroupInput, ChatMessageUncheckedCreateWithoutChatGroupInput> | ChatMessageCreateWithoutChatGroupInput[] | ChatMessageUncheckedCreateWithoutChatGroupInput[]
+    connectOrCreate?: ChatMessageCreateOrConnectWithoutChatGroupInput | ChatMessageCreateOrConnectWithoutChatGroupInput[]
+    upsert?: ChatMessageUpsertWithWhereUniqueWithoutChatGroupInput | ChatMessageUpsertWithWhereUniqueWithoutChatGroupInput[]
+    createMany?: ChatMessageCreateManyChatGroupInputEnvelope
+    set?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    disconnect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    delete?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    connect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    update?: ChatMessageUpdateWithWhereUniqueWithoutChatGroupInput | ChatMessageUpdateWithWhereUniqueWithoutChatGroupInput[]
+    updateMany?: ChatMessageUpdateManyWithWhereWithoutChatGroupInput | ChatMessageUpdateManyWithWhereWithoutChatGroupInput[]
+    deleteMany?: ChatMessageScalarWhereInput | ChatMessageScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutSentMessagesInput = {
+    create?: XOR<UserCreateWithoutSentMessagesInput, UserUncheckedCreateWithoutSentMessagesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSentMessagesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ChatGroupCreateNestedOneWithoutMessagesInput = {
+    create?: XOR<ChatGroupCreateWithoutMessagesInput, ChatGroupUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: ChatGroupCreateOrConnectWithoutMessagesInput
+    connect?: ChatGroupWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutSentMessagesNestedInput = {
+    create?: XOR<UserCreateWithoutSentMessagesInput, UserUncheckedCreateWithoutSentMessagesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSentMessagesInput
+    upsert?: UserUpsertWithoutSentMessagesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSentMessagesInput, UserUpdateWithoutSentMessagesInput>, UserUncheckedUpdateWithoutSentMessagesInput>
+  }
+
+  export type ChatGroupUpdateOneRequiredWithoutMessagesNestedInput = {
+    create?: XOR<ChatGroupCreateWithoutMessagesInput, ChatGroupUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: ChatGroupCreateOrConnectWithoutMessagesInput
+    upsert?: ChatGroupUpsertWithoutMessagesInput
+    connect?: ChatGroupWhereUniqueInput
+    update?: XOR<XOR<ChatGroupUpdateToOneWithWhereWithoutMessagesInput, ChatGroupUpdateWithoutMessagesInput>, ChatGroupUncheckedUpdateWithoutMessagesInput>
   }
 
   export type UserCreateNestedOneWithoutFriendsInput = {
@@ -6691,14 +14362,126 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutFriendOfInput, UserUpdateWithoutFriendOfInput>, UserUncheckedUpdateWithoutFriendOfInput>
   }
 
+  export type PostCreateNestedManyWithoutPostImagesInput = {
+    create?: XOR<PostCreateWithoutPostImagesInput, PostUncheckedCreateWithoutPostImagesInput> | PostCreateWithoutPostImagesInput[] | PostUncheckedCreateWithoutPostImagesInput[]
+    connectOrCreate?: PostCreateOrConnectWithoutPostImagesInput | PostCreateOrConnectWithoutPostImagesInput[]
+    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+  }
+
+  export type AlbumCreateNestedManyWithoutImagesInput = {
+    create?: XOR<AlbumCreateWithoutImagesInput, AlbumUncheckedCreateWithoutImagesInput> | AlbumCreateWithoutImagesInput[] | AlbumUncheckedCreateWithoutImagesInput[]
+    connectOrCreate?: AlbumCreateOrConnectWithoutImagesInput | AlbumCreateOrConnectWithoutImagesInput[]
+    connect?: AlbumWhereUniqueInput | AlbumWhereUniqueInput[]
+  }
+
+  export type PostUncheckedCreateNestedManyWithoutPostImagesInput = {
+    create?: XOR<PostCreateWithoutPostImagesInput, PostUncheckedCreateWithoutPostImagesInput> | PostCreateWithoutPostImagesInput[] | PostUncheckedCreateWithoutPostImagesInput[]
+    connectOrCreate?: PostCreateOrConnectWithoutPostImagesInput | PostCreateOrConnectWithoutPostImagesInput[]
+    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+  }
+
+  export type AlbumUncheckedCreateNestedManyWithoutImagesInput = {
+    create?: XOR<AlbumCreateWithoutImagesInput, AlbumUncheckedCreateWithoutImagesInput> | AlbumCreateWithoutImagesInput[] | AlbumUncheckedCreateWithoutImagesInput[]
+    connectOrCreate?: AlbumCreateOrConnectWithoutImagesInput | AlbumCreateOrConnectWithoutImagesInput[]
+    connect?: AlbumWhereUniqueInput | AlbumWhereUniqueInput[]
+  }
+
+  export type PostUpdateManyWithoutPostImagesNestedInput = {
+    create?: XOR<PostCreateWithoutPostImagesInput, PostUncheckedCreateWithoutPostImagesInput> | PostCreateWithoutPostImagesInput[] | PostUncheckedCreateWithoutPostImagesInput[]
+    connectOrCreate?: PostCreateOrConnectWithoutPostImagesInput | PostCreateOrConnectWithoutPostImagesInput[]
+    upsert?: PostUpsertWithWhereUniqueWithoutPostImagesInput | PostUpsertWithWhereUniqueWithoutPostImagesInput[]
+    set?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    disconnect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    delete?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    update?: PostUpdateWithWhereUniqueWithoutPostImagesInput | PostUpdateWithWhereUniqueWithoutPostImagesInput[]
+    updateMany?: PostUpdateManyWithWhereWithoutPostImagesInput | PostUpdateManyWithWhereWithoutPostImagesInput[]
+    deleteMany?: PostScalarWhereInput | PostScalarWhereInput[]
+  }
+
+  export type AlbumUpdateManyWithoutImagesNestedInput = {
+    create?: XOR<AlbumCreateWithoutImagesInput, AlbumUncheckedCreateWithoutImagesInput> | AlbumCreateWithoutImagesInput[] | AlbumUncheckedCreateWithoutImagesInput[]
+    connectOrCreate?: AlbumCreateOrConnectWithoutImagesInput | AlbumCreateOrConnectWithoutImagesInput[]
+    upsert?: AlbumUpsertWithWhereUniqueWithoutImagesInput | AlbumUpsertWithWhereUniqueWithoutImagesInput[]
+    set?: AlbumWhereUniqueInput | AlbumWhereUniqueInput[]
+    disconnect?: AlbumWhereUniqueInput | AlbumWhereUniqueInput[]
+    delete?: AlbumWhereUniqueInput | AlbumWhereUniqueInput[]
+    connect?: AlbumWhereUniqueInput | AlbumWhereUniqueInput[]
+    update?: AlbumUpdateWithWhereUniqueWithoutImagesInput | AlbumUpdateWithWhereUniqueWithoutImagesInput[]
+    updateMany?: AlbumUpdateManyWithWhereWithoutImagesInput | AlbumUpdateManyWithWhereWithoutImagesInput[]
+    deleteMany?: AlbumScalarWhereInput | AlbumScalarWhereInput[]
+  }
+
+  export type PostUncheckedUpdateManyWithoutPostImagesNestedInput = {
+    create?: XOR<PostCreateWithoutPostImagesInput, PostUncheckedCreateWithoutPostImagesInput> | PostCreateWithoutPostImagesInput[] | PostUncheckedCreateWithoutPostImagesInput[]
+    connectOrCreate?: PostCreateOrConnectWithoutPostImagesInput | PostCreateOrConnectWithoutPostImagesInput[]
+    upsert?: PostUpsertWithWhereUniqueWithoutPostImagesInput | PostUpsertWithWhereUniqueWithoutPostImagesInput[]
+    set?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    disconnect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    delete?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    update?: PostUpdateWithWhereUniqueWithoutPostImagesInput | PostUpdateWithWhereUniqueWithoutPostImagesInput[]
+    updateMany?: PostUpdateManyWithWhereWithoutPostImagesInput | PostUpdateManyWithWhereWithoutPostImagesInput[]
+    deleteMany?: PostScalarWhereInput | PostScalarWhereInput[]
+  }
+
+  export type AlbumUncheckedUpdateManyWithoutImagesNestedInput = {
+    create?: XOR<AlbumCreateWithoutImagesInput, AlbumUncheckedCreateWithoutImagesInput> | AlbumCreateWithoutImagesInput[] | AlbumUncheckedCreateWithoutImagesInput[]
+    connectOrCreate?: AlbumCreateOrConnectWithoutImagesInput | AlbumCreateOrConnectWithoutImagesInput[]
+    upsert?: AlbumUpsertWithWhereUniqueWithoutImagesInput | AlbumUpsertWithWhereUniqueWithoutImagesInput[]
+    set?: AlbumWhereUniqueInput | AlbumWhereUniqueInput[]
+    disconnect?: AlbumWhereUniqueInput | AlbumWhereUniqueInput[]
+    delete?: AlbumWhereUniqueInput | AlbumWhereUniqueInput[]
+    connect?: AlbumWhereUniqueInput | AlbumWhereUniqueInput[]
+    update?: AlbumUpdateWithWhereUniqueWithoutImagesInput | AlbumUpdateWithWhereUniqueWithoutImagesInput[]
+    updateMany?: AlbumUpdateManyWithWhereWithoutImagesInput | AlbumUpdateManyWithWhereWithoutImagesInput[]
+    deleteMany?: AlbumScalarWhereInput | AlbumScalarWhereInput[]
+  }
+
+  export type PostCreateNestedOneWithoutPostLinksInput = {
+    create?: XOR<PostCreateWithoutPostLinksInput, PostUncheckedCreateWithoutPostLinksInput>
+    connectOrCreate?: PostCreateOrConnectWithoutPostLinksInput
+    connect?: PostWhereUniqueInput
+  }
+
+  export type PostUpdateOneRequiredWithoutPostLinksNestedInput = {
+    create?: XOR<PostCreateWithoutPostLinksInput, PostUncheckedCreateWithoutPostLinksInput>
+    connectOrCreate?: PostCreateOrConnectWithoutPostLinksInput
+    upsert?: PostUpsertWithoutPostLinksInput
+    connect?: PostWhereUniqueInput
+    update?: XOR<XOR<PostUpdateToOneWithWhereWithoutPostLinksInput, PostUpdateWithoutPostLinksInput>, PostUncheckedUpdateWithoutPostLinksInput>
+  }
+
   export type UserCreateNestedOneWithoutPostsInput = {
     create?: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
     connectOrCreate?: UserCreateOrConnectWithoutPostsInput
     connect?: UserWhereUniqueInput
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
+  export type ImageCreateNestedManyWithoutPostsInput = {
+    create?: XOR<ImageCreateWithoutPostsInput, ImageUncheckedCreateWithoutPostsInput> | ImageCreateWithoutPostsInput[] | ImageUncheckedCreateWithoutPostsInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutPostsInput | ImageCreateOrConnectWithoutPostsInput[]
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+  }
+
+  export type LinkCreateNestedManyWithoutPostInput = {
+    create?: XOR<LinkCreateWithoutPostInput, LinkUncheckedCreateWithoutPostInput> | LinkCreateWithoutPostInput[] | LinkUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: LinkCreateOrConnectWithoutPostInput | LinkCreateOrConnectWithoutPostInput[]
+    createMany?: LinkCreateManyPostInputEnvelope
+    connect?: LinkWhereUniqueInput | LinkWhereUniqueInput[]
+  }
+
+  export type ImageUncheckedCreateNestedManyWithoutPostsInput = {
+    create?: XOR<ImageCreateWithoutPostsInput, ImageUncheckedCreateWithoutPostsInput> | ImageCreateWithoutPostsInput[] | ImageUncheckedCreateWithoutPostsInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutPostsInput | ImageCreateOrConnectWithoutPostsInput[]
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+  }
+
+  export type LinkUncheckedCreateNestedManyWithoutPostInput = {
+    create?: XOR<LinkCreateWithoutPostInput, LinkUncheckedCreateWithoutPostInput> | LinkCreateWithoutPostInput[] | LinkUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: LinkCreateOrConnectWithoutPostInput | LinkCreateOrConnectWithoutPostInput[]
+    createMany?: LinkCreateManyPostInputEnvelope
+    connect?: LinkWhereUniqueInput | LinkWhereUniqueInput[]
   }
 
   export type UserUpdateOneRequiredWithoutPostsNestedInput = {
@@ -6709,18 +14492,72 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPostsInput, UserUpdateWithoutPostsInput>, UserUncheckedUpdateWithoutPostsInput>
   }
 
-  export type UserPostCreateNestedManyWithoutUserInput = {
-    create?: XOR<UserPostCreateWithoutUserInput, UserPostUncheckedCreateWithoutUserInput> | UserPostCreateWithoutUserInput[] | UserPostUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserPostCreateOrConnectWithoutUserInput | UserPostCreateOrConnectWithoutUserInput[]
-    createMany?: UserPostCreateManyUserInputEnvelope
-    connect?: UserPostWhereUniqueInput | UserPostWhereUniqueInput[]
+  export type ImageUpdateManyWithoutPostsNestedInput = {
+    create?: XOR<ImageCreateWithoutPostsInput, ImageUncheckedCreateWithoutPostsInput> | ImageCreateWithoutPostsInput[] | ImageUncheckedCreateWithoutPostsInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutPostsInput | ImageCreateOrConnectWithoutPostsInput[]
+    upsert?: ImageUpsertWithWhereUniqueWithoutPostsInput | ImageUpsertWithWhereUniqueWithoutPostsInput[]
+    set?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    disconnect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    delete?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    update?: ImageUpdateWithWhereUniqueWithoutPostsInput | ImageUpdateWithWhereUniqueWithoutPostsInput[]
+    updateMany?: ImageUpdateManyWithWhereWithoutPostsInput | ImageUpdateManyWithWhereWithoutPostsInput[]
+    deleteMany?: ImageScalarWhereInput | ImageScalarWhereInput[]
   }
 
-  export type UserAlbumCreateNestedManyWithoutUserInput = {
-    create?: XOR<UserAlbumCreateWithoutUserInput, UserAlbumUncheckedCreateWithoutUserInput> | UserAlbumCreateWithoutUserInput[] | UserAlbumUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserAlbumCreateOrConnectWithoutUserInput | UserAlbumCreateOrConnectWithoutUserInput[]
-    createMany?: UserAlbumCreateManyUserInputEnvelope
-    connect?: UserAlbumWhereUniqueInput | UserAlbumWhereUniqueInput[]
+  export type LinkUpdateManyWithoutPostNestedInput = {
+    create?: XOR<LinkCreateWithoutPostInput, LinkUncheckedCreateWithoutPostInput> | LinkCreateWithoutPostInput[] | LinkUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: LinkCreateOrConnectWithoutPostInput | LinkCreateOrConnectWithoutPostInput[]
+    upsert?: LinkUpsertWithWhereUniqueWithoutPostInput | LinkUpsertWithWhereUniqueWithoutPostInput[]
+    createMany?: LinkCreateManyPostInputEnvelope
+    set?: LinkWhereUniqueInput | LinkWhereUniqueInput[]
+    disconnect?: LinkWhereUniqueInput | LinkWhereUniqueInput[]
+    delete?: LinkWhereUniqueInput | LinkWhereUniqueInput[]
+    connect?: LinkWhereUniqueInput | LinkWhereUniqueInput[]
+    update?: LinkUpdateWithWhereUniqueWithoutPostInput | LinkUpdateWithWhereUniqueWithoutPostInput[]
+    updateMany?: LinkUpdateManyWithWhereWithoutPostInput | LinkUpdateManyWithWhereWithoutPostInput[]
+    deleteMany?: LinkScalarWhereInput | LinkScalarWhereInput[]
+  }
+
+  export type ImageUncheckedUpdateManyWithoutPostsNestedInput = {
+    create?: XOR<ImageCreateWithoutPostsInput, ImageUncheckedCreateWithoutPostsInput> | ImageCreateWithoutPostsInput[] | ImageUncheckedCreateWithoutPostsInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutPostsInput | ImageCreateOrConnectWithoutPostsInput[]
+    upsert?: ImageUpsertWithWhereUniqueWithoutPostsInput | ImageUpsertWithWhereUniqueWithoutPostsInput[]
+    set?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    disconnect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    delete?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    update?: ImageUpdateWithWhereUniqueWithoutPostsInput | ImageUpdateWithWhereUniqueWithoutPostsInput[]
+    updateMany?: ImageUpdateManyWithWhereWithoutPostsInput | ImageUpdateManyWithWhereWithoutPostsInput[]
+    deleteMany?: ImageScalarWhereInput | ImageScalarWhereInput[]
+  }
+
+  export type LinkUncheckedUpdateManyWithoutPostNestedInput = {
+    create?: XOR<LinkCreateWithoutPostInput, LinkUncheckedCreateWithoutPostInput> | LinkCreateWithoutPostInput[] | LinkUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: LinkCreateOrConnectWithoutPostInput | LinkCreateOrConnectWithoutPostInput[]
+    upsert?: LinkUpsertWithWhereUniqueWithoutPostInput | LinkUpsertWithWhereUniqueWithoutPostInput[]
+    createMany?: LinkCreateManyPostInputEnvelope
+    set?: LinkWhereUniqueInput | LinkWhereUniqueInput[]
+    disconnect?: LinkWhereUniqueInput | LinkWhereUniqueInput[]
+    delete?: LinkWhereUniqueInput | LinkWhereUniqueInput[]
+    connect?: LinkWhereUniqueInput | LinkWhereUniqueInput[]
+    update?: LinkUpdateWithWhereUniqueWithoutPostInput | LinkUpdateWithWhereUniqueWithoutPostInput[]
+    updateMany?: LinkUpdateManyWithWhereWithoutPostInput | LinkUpdateManyWithWhereWithoutPostInput[]
+    deleteMany?: LinkScalarWhereInput | LinkScalarWhereInput[]
+  }
+
+  export type PostCreateNestedManyWithoutUserInput = {
+    create?: XOR<PostCreateWithoutUserInput, PostUncheckedCreateWithoutUserInput> | PostCreateWithoutUserInput[] | PostUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PostCreateOrConnectWithoutUserInput | PostCreateOrConnectWithoutUserInput[]
+    createMany?: PostCreateManyUserInputEnvelope
+    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+  }
+
+  export type AlbumCreateNestedManyWithoutUserInput = {
+    create?: XOR<AlbumCreateWithoutUserInput, AlbumUncheckedCreateWithoutUserInput> | AlbumCreateWithoutUserInput[] | AlbumUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AlbumCreateOrConnectWithoutUserInput | AlbumCreateOrConnectWithoutUserInput[]
+    createMany?: AlbumCreateManyUserInputEnvelope
+    connect?: AlbumWhereUniqueInput | AlbumWhereUniqueInput[]
   }
 
   export type FriendCreateNestedManyWithoutFriendOfInput = {
@@ -6737,18 +14574,45 @@ export namespace Prisma {
     connect?: FriendWhereUniqueInput | FriendWhereUniqueInput[]
   }
 
-  export type UserPostUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<UserPostCreateWithoutUserInput, UserPostUncheckedCreateWithoutUserInput> | UserPostCreateWithoutUserInput[] | UserPostUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserPostCreateOrConnectWithoutUserInput | UserPostCreateOrConnectWithoutUserInput[]
-    createMany?: UserPostCreateManyUserInputEnvelope
-    connect?: UserPostWhereUniqueInput | UserPostWhereUniqueInput[]
+  export type AvatarCreateNestedManyWithoutUserInput = {
+    create?: XOR<AvatarCreateWithoutUserInput, AvatarUncheckedCreateWithoutUserInput> | AvatarCreateWithoutUserInput[] | AvatarUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AvatarCreateOrConnectWithoutUserInput | AvatarCreateOrConnectWithoutUserInput[]
+    createMany?: AvatarCreateManyUserInputEnvelope
+    connect?: AvatarWhereUniqueInput | AvatarWhereUniqueInput[]
   }
 
-  export type UserAlbumUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<UserAlbumCreateWithoutUserInput, UserAlbumUncheckedCreateWithoutUserInput> | UserAlbumCreateWithoutUserInput[] | UserAlbumUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserAlbumCreateOrConnectWithoutUserInput | UserAlbumCreateOrConnectWithoutUserInput[]
-    createMany?: UserAlbumCreateManyUserInputEnvelope
-    connect?: UserAlbumWhereUniqueInput | UserAlbumWhereUniqueInput[]
+  export type ChatMessageCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<ChatMessageCreateWithoutAuthorInput, ChatMessageUncheckedCreateWithoutAuthorInput> | ChatMessageCreateWithoutAuthorInput[] | ChatMessageUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ChatMessageCreateOrConnectWithoutAuthorInput | ChatMessageCreateOrConnectWithoutAuthorInput[]
+    createMany?: ChatMessageCreateManyAuthorInputEnvelope
+    connect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+  }
+
+  export type ChatGroupCreateNestedManyWithoutMembersInput = {
+    create?: XOR<ChatGroupCreateWithoutMembersInput, ChatGroupUncheckedCreateWithoutMembersInput> | ChatGroupCreateWithoutMembersInput[] | ChatGroupUncheckedCreateWithoutMembersInput[]
+    connectOrCreate?: ChatGroupCreateOrConnectWithoutMembersInput | ChatGroupCreateOrConnectWithoutMembersInput[]
+    connect?: ChatGroupWhereUniqueInput | ChatGroupWhereUniqueInput[]
+  }
+
+  export type ChatGroupCreateNestedManyWithoutAdminInput = {
+    create?: XOR<ChatGroupCreateWithoutAdminInput, ChatGroupUncheckedCreateWithoutAdminInput> | ChatGroupCreateWithoutAdminInput[] | ChatGroupUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: ChatGroupCreateOrConnectWithoutAdminInput | ChatGroupCreateOrConnectWithoutAdminInput[]
+    createMany?: ChatGroupCreateManyAdminInputEnvelope
+    connect?: ChatGroupWhereUniqueInput | ChatGroupWhereUniqueInput[]
+  }
+
+  export type PostUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<PostCreateWithoutUserInput, PostUncheckedCreateWithoutUserInput> | PostCreateWithoutUserInput[] | PostUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PostCreateOrConnectWithoutUserInput | PostCreateOrConnectWithoutUserInput[]
+    createMany?: PostCreateManyUserInputEnvelope
+    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+  }
+
+  export type AlbumUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<AlbumCreateWithoutUserInput, AlbumUncheckedCreateWithoutUserInput> | AlbumCreateWithoutUserInput[] | AlbumUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AlbumCreateOrConnectWithoutUserInput | AlbumCreateOrConnectWithoutUserInput[]
+    createMany?: AlbumCreateManyUserInputEnvelope
+    connect?: AlbumWhereUniqueInput | AlbumWhereUniqueInput[]
   }
 
   export type FriendUncheckedCreateNestedManyWithoutFriendOfInput = {
@@ -6765,32 +14629,59 @@ export namespace Prisma {
     connect?: FriendWhereUniqueInput | FriendWhereUniqueInput[]
   }
 
-  export type UserPostUpdateManyWithoutUserNestedInput = {
-    create?: XOR<UserPostCreateWithoutUserInput, UserPostUncheckedCreateWithoutUserInput> | UserPostCreateWithoutUserInput[] | UserPostUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserPostCreateOrConnectWithoutUserInput | UserPostCreateOrConnectWithoutUserInput[]
-    upsert?: UserPostUpsertWithWhereUniqueWithoutUserInput | UserPostUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: UserPostCreateManyUserInputEnvelope
-    set?: UserPostWhereUniqueInput | UserPostWhereUniqueInput[]
-    disconnect?: UserPostWhereUniqueInput | UserPostWhereUniqueInput[]
-    delete?: UserPostWhereUniqueInput | UserPostWhereUniqueInput[]
-    connect?: UserPostWhereUniqueInput | UserPostWhereUniqueInput[]
-    update?: UserPostUpdateWithWhereUniqueWithoutUserInput | UserPostUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: UserPostUpdateManyWithWhereWithoutUserInput | UserPostUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: UserPostScalarWhereInput | UserPostScalarWhereInput[]
+  export type AvatarUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<AvatarCreateWithoutUserInput, AvatarUncheckedCreateWithoutUserInput> | AvatarCreateWithoutUserInput[] | AvatarUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AvatarCreateOrConnectWithoutUserInput | AvatarCreateOrConnectWithoutUserInput[]
+    createMany?: AvatarCreateManyUserInputEnvelope
+    connect?: AvatarWhereUniqueInput | AvatarWhereUniqueInput[]
   }
 
-  export type UserAlbumUpdateManyWithoutUserNestedInput = {
-    create?: XOR<UserAlbumCreateWithoutUserInput, UserAlbumUncheckedCreateWithoutUserInput> | UserAlbumCreateWithoutUserInput[] | UserAlbumUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserAlbumCreateOrConnectWithoutUserInput | UserAlbumCreateOrConnectWithoutUserInput[]
-    upsert?: UserAlbumUpsertWithWhereUniqueWithoutUserInput | UserAlbumUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: UserAlbumCreateManyUserInputEnvelope
-    set?: UserAlbumWhereUniqueInput | UserAlbumWhereUniqueInput[]
-    disconnect?: UserAlbumWhereUniqueInput | UserAlbumWhereUniqueInput[]
-    delete?: UserAlbumWhereUniqueInput | UserAlbumWhereUniqueInput[]
-    connect?: UserAlbumWhereUniqueInput | UserAlbumWhereUniqueInput[]
-    update?: UserAlbumUpdateWithWhereUniqueWithoutUserInput | UserAlbumUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: UserAlbumUpdateManyWithWhereWithoutUserInput | UserAlbumUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: UserAlbumScalarWhereInput | UserAlbumScalarWhereInput[]
+  export type ChatMessageUncheckedCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<ChatMessageCreateWithoutAuthorInput, ChatMessageUncheckedCreateWithoutAuthorInput> | ChatMessageCreateWithoutAuthorInput[] | ChatMessageUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ChatMessageCreateOrConnectWithoutAuthorInput | ChatMessageCreateOrConnectWithoutAuthorInput[]
+    createMany?: ChatMessageCreateManyAuthorInputEnvelope
+    connect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+  }
+
+  export type ChatGroupUncheckedCreateNestedManyWithoutMembersInput = {
+    create?: XOR<ChatGroupCreateWithoutMembersInput, ChatGroupUncheckedCreateWithoutMembersInput> | ChatGroupCreateWithoutMembersInput[] | ChatGroupUncheckedCreateWithoutMembersInput[]
+    connectOrCreate?: ChatGroupCreateOrConnectWithoutMembersInput | ChatGroupCreateOrConnectWithoutMembersInput[]
+    connect?: ChatGroupWhereUniqueInput | ChatGroupWhereUniqueInput[]
+  }
+
+  export type ChatGroupUncheckedCreateNestedManyWithoutAdminInput = {
+    create?: XOR<ChatGroupCreateWithoutAdminInput, ChatGroupUncheckedCreateWithoutAdminInput> | ChatGroupCreateWithoutAdminInput[] | ChatGroupUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: ChatGroupCreateOrConnectWithoutAdminInput | ChatGroupCreateOrConnectWithoutAdminInput[]
+    createMany?: ChatGroupCreateManyAdminInputEnvelope
+    connect?: ChatGroupWhereUniqueInput | ChatGroupWhereUniqueInput[]
+  }
+
+  export type PostUpdateManyWithoutUserNestedInput = {
+    create?: XOR<PostCreateWithoutUserInput, PostUncheckedCreateWithoutUserInput> | PostCreateWithoutUserInput[] | PostUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PostCreateOrConnectWithoutUserInput | PostCreateOrConnectWithoutUserInput[]
+    upsert?: PostUpsertWithWhereUniqueWithoutUserInput | PostUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: PostCreateManyUserInputEnvelope
+    set?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    disconnect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    delete?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    update?: PostUpdateWithWhereUniqueWithoutUserInput | PostUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: PostUpdateManyWithWhereWithoutUserInput | PostUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: PostScalarWhereInput | PostScalarWhereInput[]
+  }
+
+  export type AlbumUpdateManyWithoutUserNestedInput = {
+    create?: XOR<AlbumCreateWithoutUserInput, AlbumUncheckedCreateWithoutUserInput> | AlbumCreateWithoutUserInput[] | AlbumUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AlbumCreateOrConnectWithoutUserInput | AlbumCreateOrConnectWithoutUserInput[]
+    upsert?: AlbumUpsertWithWhereUniqueWithoutUserInput | AlbumUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: AlbumCreateManyUserInputEnvelope
+    set?: AlbumWhereUniqueInput | AlbumWhereUniqueInput[]
+    disconnect?: AlbumWhereUniqueInput | AlbumWhereUniqueInput[]
+    delete?: AlbumWhereUniqueInput | AlbumWhereUniqueInput[]
+    connect?: AlbumWhereUniqueInput | AlbumWhereUniqueInput[]
+    update?: AlbumUpdateWithWhereUniqueWithoutUserInput | AlbumUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: AlbumUpdateManyWithWhereWithoutUserInput | AlbumUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: AlbumScalarWhereInput | AlbumScalarWhereInput[]
   }
 
   export type FriendUpdateManyWithoutFriendOfNestedInput = {
@@ -6821,32 +14712,87 @@ export namespace Prisma {
     deleteMany?: FriendScalarWhereInput | FriendScalarWhereInput[]
   }
 
-  export type UserPostUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<UserPostCreateWithoutUserInput, UserPostUncheckedCreateWithoutUserInput> | UserPostCreateWithoutUserInput[] | UserPostUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserPostCreateOrConnectWithoutUserInput | UserPostCreateOrConnectWithoutUserInput[]
-    upsert?: UserPostUpsertWithWhereUniqueWithoutUserInput | UserPostUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: UserPostCreateManyUserInputEnvelope
-    set?: UserPostWhereUniqueInput | UserPostWhereUniqueInput[]
-    disconnect?: UserPostWhereUniqueInput | UserPostWhereUniqueInput[]
-    delete?: UserPostWhereUniqueInput | UserPostWhereUniqueInput[]
-    connect?: UserPostWhereUniqueInput | UserPostWhereUniqueInput[]
-    update?: UserPostUpdateWithWhereUniqueWithoutUserInput | UserPostUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: UserPostUpdateManyWithWhereWithoutUserInput | UserPostUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: UserPostScalarWhereInput | UserPostScalarWhereInput[]
+  export type AvatarUpdateManyWithoutUserNestedInput = {
+    create?: XOR<AvatarCreateWithoutUserInput, AvatarUncheckedCreateWithoutUserInput> | AvatarCreateWithoutUserInput[] | AvatarUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AvatarCreateOrConnectWithoutUserInput | AvatarCreateOrConnectWithoutUserInput[]
+    upsert?: AvatarUpsertWithWhereUniqueWithoutUserInput | AvatarUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: AvatarCreateManyUserInputEnvelope
+    set?: AvatarWhereUniqueInput | AvatarWhereUniqueInput[]
+    disconnect?: AvatarWhereUniqueInput | AvatarWhereUniqueInput[]
+    delete?: AvatarWhereUniqueInput | AvatarWhereUniqueInput[]
+    connect?: AvatarWhereUniqueInput | AvatarWhereUniqueInput[]
+    update?: AvatarUpdateWithWhereUniqueWithoutUserInput | AvatarUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: AvatarUpdateManyWithWhereWithoutUserInput | AvatarUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: AvatarScalarWhereInput | AvatarScalarWhereInput[]
   }
 
-  export type UserAlbumUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<UserAlbumCreateWithoutUserInput, UserAlbumUncheckedCreateWithoutUserInput> | UserAlbumCreateWithoutUserInput[] | UserAlbumUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserAlbumCreateOrConnectWithoutUserInput | UserAlbumCreateOrConnectWithoutUserInput[]
-    upsert?: UserAlbumUpsertWithWhereUniqueWithoutUserInput | UserAlbumUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: UserAlbumCreateManyUserInputEnvelope
-    set?: UserAlbumWhereUniqueInput | UserAlbumWhereUniqueInput[]
-    disconnect?: UserAlbumWhereUniqueInput | UserAlbumWhereUniqueInput[]
-    delete?: UserAlbumWhereUniqueInput | UserAlbumWhereUniqueInput[]
-    connect?: UserAlbumWhereUniqueInput | UserAlbumWhereUniqueInput[]
-    update?: UserAlbumUpdateWithWhereUniqueWithoutUserInput | UserAlbumUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: UserAlbumUpdateManyWithWhereWithoutUserInput | UserAlbumUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: UserAlbumScalarWhereInput | UserAlbumScalarWhereInput[]
+  export type ChatMessageUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<ChatMessageCreateWithoutAuthorInput, ChatMessageUncheckedCreateWithoutAuthorInput> | ChatMessageCreateWithoutAuthorInput[] | ChatMessageUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ChatMessageCreateOrConnectWithoutAuthorInput | ChatMessageCreateOrConnectWithoutAuthorInput[]
+    upsert?: ChatMessageUpsertWithWhereUniqueWithoutAuthorInput | ChatMessageUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: ChatMessageCreateManyAuthorInputEnvelope
+    set?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    disconnect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    delete?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    connect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    update?: ChatMessageUpdateWithWhereUniqueWithoutAuthorInput | ChatMessageUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: ChatMessageUpdateManyWithWhereWithoutAuthorInput | ChatMessageUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: ChatMessageScalarWhereInput | ChatMessageScalarWhereInput[]
+  }
+
+  export type ChatGroupUpdateManyWithoutMembersNestedInput = {
+    create?: XOR<ChatGroupCreateWithoutMembersInput, ChatGroupUncheckedCreateWithoutMembersInput> | ChatGroupCreateWithoutMembersInput[] | ChatGroupUncheckedCreateWithoutMembersInput[]
+    connectOrCreate?: ChatGroupCreateOrConnectWithoutMembersInput | ChatGroupCreateOrConnectWithoutMembersInput[]
+    upsert?: ChatGroupUpsertWithWhereUniqueWithoutMembersInput | ChatGroupUpsertWithWhereUniqueWithoutMembersInput[]
+    set?: ChatGroupWhereUniqueInput | ChatGroupWhereUniqueInput[]
+    disconnect?: ChatGroupWhereUniqueInput | ChatGroupWhereUniqueInput[]
+    delete?: ChatGroupWhereUniqueInput | ChatGroupWhereUniqueInput[]
+    connect?: ChatGroupWhereUniqueInput | ChatGroupWhereUniqueInput[]
+    update?: ChatGroupUpdateWithWhereUniqueWithoutMembersInput | ChatGroupUpdateWithWhereUniqueWithoutMembersInput[]
+    updateMany?: ChatGroupUpdateManyWithWhereWithoutMembersInput | ChatGroupUpdateManyWithWhereWithoutMembersInput[]
+    deleteMany?: ChatGroupScalarWhereInput | ChatGroupScalarWhereInput[]
+  }
+
+  export type ChatGroupUpdateManyWithoutAdminNestedInput = {
+    create?: XOR<ChatGroupCreateWithoutAdminInput, ChatGroupUncheckedCreateWithoutAdminInput> | ChatGroupCreateWithoutAdminInput[] | ChatGroupUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: ChatGroupCreateOrConnectWithoutAdminInput | ChatGroupCreateOrConnectWithoutAdminInput[]
+    upsert?: ChatGroupUpsertWithWhereUniqueWithoutAdminInput | ChatGroupUpsertWithWhereUniqueWithoutAdminInput[]
+    createMany?: ChatGroupCreateManyAdminInputEnvelope
+    set?: ChatGroupWhereUniqueInput | ChatGroupWhereUniqueInput[]
+    disconnect?: ChatGroupWhereUniqueInput | ChatGroupWhereUniqueInput[]
+    delete?: ChatGroupWhereUniqueInput | ChatGroupWhereUniqueInput[]
+    connect?: ChatGroupWhereUniqueInput | ChatGroupWhereUniqueInput[]
+    update?: ChatGroupUpdateWithWhereUniqueWithoutAdminInput | ChatGroupUpdateWithWhereUniqueWithoutAdminInput[]
+    updateMany?: ChatGroupUpdateManyWithWhereWithoutAdminInput | ChatGroupUpdateManyWithWhereWithoutAdminInput[]
+    deleteMany?: ChatGroupScalarWhereInput | ChatGroupScalarWhereInput[]
+  }
+
+  export type PostUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<PostCreateWithoutUserInput, PostUncheckedCreateWithoutUserInput> | PostCreateWithoutUserInput[] | PostUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PostCreateOrConnectWithoutUserInput | PostCreateOrConnectWithoutUserInput[]
+    upsert?: PostUpsertWithWhereUniqueWithoutUserInput | PostUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: PostCreateManyUserInputEnvelope
+    set?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    disconnect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    delete?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    update?: PostUpdateWithWhereUniqueWithoutUserInput | PostUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: PostUpdateManyWithWhereWithoutUserInput | PostUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: PostScalarWhereInput | PostScalarWhereInput[]
+  }
+
+  export type AlbumUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<AlbumCreateWithoutUserInput, AlbumUncheckedCreateWithoutUserInput> | AlbumCreateWithoutUserInput[] | AlbumUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AlbumCreateOrConnectWithoutUserInput | AlbumCreateOrConnectWithoutUserInput[]
+    upsert?: AlbumUpsertWithWhereUniqueWithoutUserInput | AlbumUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: AlbumCreateManyUserInputEnvelope
+    set?: AlbumWhereUniqueInput | AlbumWhereUniqueInput[]
+    disconnect?: AlbumWhereUniqueInput | AlbumWhereUniqueInput[]
+    delete?: AlbumWhereUniqueInput | AlbumWhereUniqueInput[]
+    connect?: AlbumWhereUniqueInput | AlbumWhereUniqueInput[]
+    update?: AlbumUpdateWithWhereUniqueWithoutUserInput | AlbumUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: AlbumUpdateManyWithWhereWithoutUserInput | AlbumUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: AlbumScalarWhereInput | AlbumScalarWhereInput[]
   }
 
   export type FriendUncheckedUpdateManyWithoutFriendOfNestedInput = {
@@ -6877,6 +14823,61 @@ export namespace Prisma {
     deleteMany?: FriendScalarWhereInput | FriendScalarWhereInput[]
   }
 
+  export type AvatarUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<AvatarCreateWithoutUserInput, AvatarUncheckedCreateWithoutUserInput> | AvatarCreateWithoutUserInput[] | AvatarUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AvatarCreateOrConnectWithoutUserInput | AvatarCreateOrConnectWithoutUserInput[]
+    upsert?: AvatarUpsertWithWhereUniqueWithoutUserInput | AvatarUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: AvatarCreateManyUserInputEnvelope
+    set?: AvatarWhereUniqueInput | AvatarWhereUniqueInput[]
+    disconnect?: AvatarWhereUniqueInput | AvatarWhereUniqueInput[]
+    delete?: AvatarWhereUniqueInput | AvatarWhereUniqueInput[]
+    connect?: AvatarWhereUniqueInput | AvatarWhereUniqueInput[]
+    update?: AvatarUpdateWithWhereUniqueWithoutUserInput | AvatarUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: AvatarUpdateManyWithWhereWithoutUserInput | AvatarUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: AvatarScalarWhereInput | AvatarScalarWhereInput[]
+  }
+
+  export type ChatMessageUncheckedUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<ChatMessageCreateWithoutAuthorInput, ChatMessageUncheckedCreateWithoutAuthorInput> | ChatMessageCreateWithoutAuthorInput[] | ChatMessageUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ChatMessageCreateOrConnectWithoutAuthorInput | ChatMessageCreateOrConnectWithoutAuthorInput[]
+    upsert?: ChatMessageUpsertWithWhereUniqueWithoutAuthorInput | ChatMessageUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: ChatMessageCreateManyAuthorInputEnvelope
+    set?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    disconnect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    delete?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    connect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    update?: ChatMessageUpdateWithWhereUniqueWithoutAuthorInput | ChatMessageUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: ChatMessageUpdateManyWithWhereWithoutAuthorInput | ChatMessageUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: ChatMessageScalarWhereInput | ChatMessageScalarWhereInput[]
+  }
+
+  export type ChatGroupUncheckedUpdateManyWithoutMembersNestedInput = {
+    create?: XOR<ChatGroupCreateWithoutMembersInput, ChatGroupUncheckedCreateWithoutMembersInput> | ChatGroupCreateWithoutMembersInput[] | ChatGroupUncheckedCreateWithoutMembersInput[]
+    connectOrCreate?: ChatGroupCreateOrConnectWithoutMembersInput | ChatGroupCreateOrConnectWithoutMembersInput[]
+    upsert?: ChatGroupUpsertWithWhereUniqueWithoutMembersInput | ChatGroupUpsertWithWhereUniqueWithoutMembersInput[]
+    set?: ChatGroupWhereUniqueInput | ChatGroupWhereUniqueInput[]
+    disconnect?: ChatGroupWhereUniqueInput | ChatGroupWhereUniqueInput[]
+    delete?: ChatGroupWhereUniqueInput | ChatGroupWhereUniqueInput[]
+    connect?: ChatGroupWhereUniqueInput | ChatGroupWhereUniqueInput[]
+    update?: ChatGroupUpdateWithWhereUniqueWithoutMembersInput | ChatGroupUpdateWithWhereUniqueWithoutMembersInput[]
+    updateMany?: ChatGroupUpdateManyWithWhereWithoutMembersInput | ChatGroupUpdateManyWithWhereWithoutMembersInput[]
+    deleteMany?: ChatGroupScalarWhereInput | ChatGroupScalarWhereInput[]
+  }
+
+  export type ChatGroupUncheckedUpdateManyWithoutAdminNestedInput = {
+    create?: XOR<ChatGroupCreateWithoutAdminInput, ChatGroupUncheckedCreateWithoutAdminInput> | ChatGroupCreateWithoutAdminInput[] | ChatGroupUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: ChatGroupCreateOrConnectWithoutAdminInput | ChatGroupCreateOrConnectWithoutAdminInput[]
+    upsert?: ChatGroupUpsertWithWhereUniqueWithoutAdminInput | ChatGroupUpsertWithWhereUniqueWithoutAdminInput[]
+    createMany?: ChatGroupCreateManyAdminInputEnvelope
+    set?: ChatGroupWhereUniqueInput | ChatGroupWhereUniqueInput[]
+    disconnect?: ChatGroupWhereUniqueInput | ChatGroupWhereUniqueInput[]
+    delete?: ChatGroupWhereUniqueInput | ChatGroupWhereUniqueInput[]
+    connect?: ChatGroupWhereUniqueInput | ChatGroupWhereUniqueInput[]
+    update?: ChatGroupUpdateWithWhereUniqueWithoutAdminInput | ChatGroupUpdateWithWhereUniqueWithoutAdminInput[]
+    updateMany?: ChatGroupUpdateManyWithWhereWithoutAdminInput | ChatGroupUpdateManyWithWhereWithoutAdminInput[]
+    deleteMany?: ChatGroupScalarWhereInput | ChatGroupScalarWhereInput[]
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -6900,6 +14901,47 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -6946,18 +14988,18 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -6977,7 +15019,15 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | null
     notIn?: number[] | null
@@ -6985,7 +15035,23 @@ export namespace Prisma {
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type UserCreateWithoutAlbumsInput = {
@@ -6996,9 +15062,13 @@ export namespace Prisma {
     password: string
     image?: string | null
     birthdate?: string | null
-    posts?: UserPostCreateNestedManyWithoutUserInput
+    posts?: PostCreateNestedManyWithoutUserInput
     friendOf?: FriendCreateNestedManyWithoutFriendOfInput
     friends?: FriendCreateNestedManyWithoutFriendUserInput
+    avatars?: AvatarCreateNestedManyWithoutUserInput
+    sentMessages?: ChatMessageCreateNestedManyWithoutAuthorInput
+    chatGroups?: ChatGroupCreateNestedManyWithoutMembersInput
+    administeredGroups?: ChatGroupCreateNestedManyWithoutAdminInput
   }
 
   export type UserUncheckedCreateWithoutAlbumsInput = {
@@ -7010,14 +15080,38 @@ export namespace Prisma {
     password: string
     image?: string | null
     birthdate?: string | null
-    posts?: UserPostUncheckedCreateNestedManyWithoutUserInput
+    posts?: PostUncheckedCreateNestedManyWithoutUserInput
     friendOf?: FriendUncheckedCreateNestedManyWithoutFriendOfInput
     friends?: FriendUncheckedCreateNestedManyWithoutFriendUserInput
+    avatars?: AvatarUncheckedCreateNestedManyWithoutUserInput
+    sentMessages?: ChatMessageUncheckedCreateNestedManyWithoutAuthorInput
+    chatGroups?: ChatGroupUncheckedCreateNestedManyWithoutMembersInput
+    administeredGroups?: ChatGroupUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type UserCreateOrConnectWithoutAlbumsInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutAlbumsInput, UserUncheckedCreateWithoutAlbumsInput>
+  }
+
+  export type ImageCreateWithoutAlbumsInput = {
+    filename: string
+    url: string
+    uploadedAt?: Date | string
+    posts?: PostCreateNestedManyWithoutPostImagesInput
+  }
+
+  export type ImageUncheckedCreateWithoutAlbumsInput = {
+    id?: number
+    filename: string
+    url: string
+    uploadedAt?: Date | string
+    posts?: PostUncheckedCreateNestedManyWithoutPostImagesInput
+  }
+
+  export type ImageCreateOrConnectWithoutAlbumsInput = {
+    where: ImageWhereUniqueInput
+    create: XOR<ImageCreateWithoutAlbumsInput, ImageUncheckedCreateWithoutAlbumsInput>
   }
 
   export type UserUpsertWithoutAlbumsInput = {
@@ -7039,9 +15133,13 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     birthdate?: NullableStringFieldUpdateOperationsInput | string | null
-    posts?: UserPostUpdateManyWithoutUserNestedInput
+    posts?: PostUpdateManyWithoutUserNestedInput
     friendOf?: FriendUpdateManyWithoutFriendOfNestedInput
     friends?: FriendUpdateManyWithoutFriendUserNestedInput
+    avatars?: AvatarUpdateManyWithoutUserNestedInput
+    sentMessages?: ChatMessageUpdateManyWithoutAuthorNestedInput
+    chatGroups?: ChatGroupUpdateManyWithoutMembersNestedInput
+    administeredGroups?: ChatGroupUpdateManyWithoutAdminNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAlbumsInput = {
@@ -7053,9 +15151,469 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     birthdate?: NullableStringFieldUpdateOperationsInput | string | null
-    posts?: UserPostUncheckedUpdateManyWithoutUserNestedInput
+    posts?: PostUncheckedUpdateManyWithoutUserNestedInput
     friendOf?: FriendUncheckedUpdateManyWithoutFriendOfNestedInput
     friends?: FriendUncheckedUpdateManyWithoutFriendUserNestedInput
+    avatars?: AvatarUncheckedUpdateManyWithoutUserNestedInput
+    sentMessages?: ChatMessageUncheckedUpdateManyWithoutAuthorNestedInput
+    chatGroups?: ChatGroupUncheckedUpdateManyWithoutMembersNestedInput
+    administeredGroups?: ChatGroupUncheckedUpdateManyWithoutAdminNestedInput
+  }
+
+  export type ImageUpsertWithWhereUniqueWithoutAlbumsInput = {
+    where: ImageWhereUniqueInput
+    update: XOR<ImageUpdateWithoutAlbumsInput, ImageUncheckedUpdateWithoutAlbumsInput>
+    create: XOR<ImageCreateWithoutAlbumsInput, ImageUncheckedCreateWithoutAlbumsInput>
+  }
+
+  export type ImageUpdateWithWhereUniqueWithoutAlbumsInput = {
+    where: ImageWhereUniqueInput
+    data: XOR<ImageUpdateWithoutAlbumsInput, ImageUncheckedUpdateWithoutAlbumsInput>
+  }
+
+  export type ImageUpdateManyWithWhereWithoutAlbumsInput = {
+    where: ImageScalarWhereInput
+    data: XOR<ImageUpdateManyMutationInput, ImageUncheckedUpdateManyWithoutAlbumsInput>
+  }
+
+  export type ImageScalarWhereInput = {
+    AND?: ImageScalarWhereInput | ImageScalarWhereInput[]
+    OR?: ImageScalarWhereInput[]
+    NOT?: ImageScalarWhereInput | ImageScalarWhereInput[]
+    id?: IntFilter<"Image"> | number
+    filename?: StringFilter<"Image"> | string
+    url?: StringFilter<"Image"> | string
+    uploadedAt?: DateTimeFilter<"Image"> | Date | string
+  }
+
+  export type UserCreateWithoutAvatarsInput = {
+    username?: string | null
+    email: string
+    firstname?: string | null
+    lastname?: string | null
+    password: string
+    image?: string | null
+    birthdate?: string | null
+    posts?: PostCreateNestedManyWithoutUserInput
+    albums?: AlbumCreateNestedManyWithoutUserInput
+    friendOf?: FriendCreateNestedManyWithoutFriendOfInput
+    friends?: FriendCreateNestedManyWithoutFriendUserInput
+    sentMessages?: ChatMessageCreateNestedManyWithoutAuthorInput
+    chatGroups?: ChatGroupCreateNestedManyWithoutMembersInput
+    administeredGroups?: ChatGroupCreateNestedManyWithoutAdminInput
+  }
+
+  export type UserUncheckedCreateWithoutAvatarsInput = {
+    id?: number
+    username?: string | null
+    email: string
+    firstname?: string | null
+    lastname?: string | null
+    password: string
+    image?: string | null
+    birthdate?: string | null
+    posts?: PostUncheckedCreateNestedManyWithoutUserInput
+    albums?: AlbumUncheckedCreateNestedManyWithoutUserInput
+    friendOf?: FriendUncheckedCreateNestedManyWithoutFriendOfInput
+    friends?: FriendUncheckedCreateNestedManyWithoutFriendUserInput
+    sentMessages?: ChatMessageUncheckedCreateNestedManyWithoutAuthorInput
+    chatGroups?: ChatGroupUncheckedCreateNestedManyWithoutMembersInput
+    administeredGroups?: ChatGroupUncheckedCreateNestedManyWithoutAdminInput
+  }
+
+  export type UserCreateOrConnectWithoutAvatarsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutAvatarsInput, UserUncheckedCreateWithoutAvatarsInput>
+  }
+
+  export type UserUpsertWithoutAvatarsInput = {
+    update: XOR<UserUpdateWithoutAvatarsInput, UserUncheckedUpdateWithoutAvatarsInput>
+    create: XOR<UserCreateWithoutAvatarsInput, UserUncheckedCreateWithoutAvatarsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutAvatarsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutAvatarsInput, UserUncheckedUpdateWithoutAvatarsInput>
+  }
+
+  export type UserUpdateWithoutAvatarsInput = {
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    firstname?: NullableStringFieldUpdateOperationsInput | string | null
+    lastname?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableStringFieldUpdateOperationsInput | string | null
+    posts?: PostUpdateManyWithoutUserNestedInput
+    albums?: AlbumUpdateManyWithoutUserNestedInput
+    friendOf?: FriendUpdateManyWithoutFriendOfNestedInput
+    friends?: FriendUpdateManyWithoutFriendUserNestedInput
+    sentMessages?: ChatMessageUpdateManyWithoutAuthorNestedInput
+    chatGroups?: ChatGroupUpdateManyWithoutMembersNestedInput
+    administeredGroups?: ChatGroupUpdateManyWithoutAdminNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutAvatarsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    firstname?: NullableStringFieldUpdateOperationsInput | string | null
+    lastname?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableStringFieldUpdateOperationsInput | string | null
+    posts?: PostUncheckedUpdateManyWithoutUserNestedInput
+    albums?: AlbumUncheckedUpdateManyWithoutUserNestedInput
+    friendOf?: FriendUncheckedUpdateManyWithoutFriendOfNestedInput
+    friends?: FriendUncheckedUpdateManyWithoutFriendUserNestedInput
+    sentMessages?: ChatMessageUncheckedUpdateManyWithoutAuthorNestedInput
+    chatGroups?: ChatGroupUncheckedUpdateManyWithoutMembersNestedInput
+    administeredGroups?: ChatGroupUncheckedUpdateManyWithoutAdminNestedInput
+  }
+
+  export type UserCreateWithoutAdministeredGroupsInput = {
+    username?: string | null
+    email: string
+    firstname?: string | null
+    lastname?: string | null
+    password: string
+    image?: string | null
+    birthdate?: string | null
+    posts?: PostCreateNestedManyWithoutUserInput
+    albums?: AlbumCreateNestedManyWithoutUserInput
+    friendOf?: FriendCreateNestedManyWithoutFriendOfInput
+    friends?: FriendCreateNestedManyWithoutFriendUserInput
+    avatars?: AvatarCreateNestedManyWithoutUserInput
+    sentMessages?: ChatMessageCreateNestedManyWithoutAuthorInput
+    chatGroups?: ChatGroupCreateNestedManyWithoutMembersInput
+  }
+
+  export type UserUncheckedCreateWithoutAdministeredGroupsInput = {
+    id?: number
+    username?: string | null
+    email: string
+    firstname?: string | null
+    lastname?: string | null
+    password: string
+    image?: string | null
+    birthdate?: string | null
+    posts?: PostUncheckedCreateNestedManyWithoutUserInput
+    albums?: AlbumUncheckedCreateNestedManyWithoutUserInput
+    friendOf?: FriendUncheckedCreateNestedManyWithoutFriendOfInput
+    friends?: FriendUncheckedCreateNestedManyWithoutFriendUserInput
+    avatars?: AvatarUncheckedCreateNestedManyWithoutUserInput
+    sentMessages?: ChatMessageUncheckedCreateNestedManyWithoutAuthorInput
+    chatGroups?: ChatGroupUncheckedCreateNestedManyWithoutMembersInput
+  }
+
+  export type UserCreateOrConnectWithoutAdministeredGroupsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutAdministeredGroupsInput, UserUncheckedCreateWithoutAdministeredGroupsInput>
+  }
+
+  export type UserCreateWithoutChatGroupsInput = {
+    username?: string | null
+    email: string
+    firstname?: string | null
+    lastname?: string | null
+    password: string
+    image?: string | null
+    birthdate?: string | null
+    posts?: PostCreateNestedManyWithoutUserInput
+    albums?: AlbumCreateNestedManyWithoutUserInput
+    friendOf?: FriendCreateNestedManyWithoutFriendOfInput
+    friends?: FriendCreateNestedManyWithoutFriendUserInput
+    avatars?: AvatarCreateNestedManyWithoutUserInput
+    sentMessages?: ChatMessageCreateNestedManyWithoutAuthorInput
+    administeredGroups?: ChatGroupCreateNestedManyWithoutAdminInput
+  }
+
+  export type UserUncheckedCreateWithoutChatGroupsInput = {
+    id?: number
+    username?: string | null
+    email: string
+    firstname?: string | null
+    lastname?: string | null
+    password: string
+    image?: string | null
+    birthdate?: string | null
+    posts?: PostUncheckedCreateNestedManyWithoutUserInput
+    albums?: AlbumUncheckedCreateNestedManyWithoutUserInput
+    friendOf?: FriendUncheckedCreateNestedManyWithoutFriendOfInput
+    friends?: FriendUncheckedCreateNestedManyWithoutFriendUserInput
+    avatars?: AvatarUncheckedCreateNestedManyWithoutUserInput
+    sentMessages?: ChatMessageUncheckedCreateNestedManyWithoutAuthorInput
+    administeredGroups?: ChatGroupUncheckedCreateNestedManyWithoutAdminInput
+  }
+
+  export type UserCreateOrConnectWithoutChatGroupsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutChatGroupsInput, UserUncheckedCreateWithoutChatGroupsInput>
+  }
+
+  export type ChatMessageCreateWithoutChatGroupInput = {
+    content: string
+    sentAt?: Date | string
+    attachedImage?: string | null
+    author: UserCreateNestedOneWithoutSentMessagesInput
+  }
+
+  export type ChatMessageUncheckedCreateWithoutChatGroupInput = {
+    id?: number
+    content: string
+    sentAt?: Date | string
+    attachedImage?: string | null
+    authorId: number
+  }
+
+  export type ChatMessageCreateOrConnectWithoutChatGroupInput = {
+    where: ChatMessageWhereUniqueInput
+    create: XOR<ChatMessageCreateWithoutChatGroupInput, ChatMessageUncheckedCreateWithoutChatGroupInput>
+  }
+
+  export type ChatMessageCreateManyChatGroupInputEnvelope = {
+    data: ChatMessageCreateManyChatGroupInput | ChatMessageCreateManyChatGroupInput[]
+  }
+
+  export type UserUpsertWithoutAdministeredGroupsInput = {
+    update: XOR<UserUpdateWithoutAdministeredGroupsInput, UserUncheckedUpdateWithoutAdministeredGroupsInput>
+    create: XOR<UserCreateWithoutAdministeredGroupsInput, UserUncheckedCreateWithoutAdministeredGroupsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutAdministeredGroupsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutAdministeredGroupsInput, UserUncheckedUpdateWithoutAdministeredGroupsInput>
+  }
+
+  export type UserUpdateWithoutAdministeredGroupsInput = {
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    firstname?: NullableStringFieldUpdateOperationsInput | string | null
+    lastname?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableStringFieldUpdateOperationsInput | string | null
+    posts?: PostUpdateManyWithoutUserNestedInput
+    albums?: AlbumUpdateManyWithoutUserNestedInput
+    friendOf?: FriendUpdateManyWithoutFriendOfNestedInput
+    friends?: FriendUpdateManyWithoutFriendUserNestedInput
+    avatars?: AvatarUpdateManyWithoutUserNestedInput
+    sentMessages?: ChatMessageUpdateManyWithoutAuthorNestedInput
+    chatGroups?: ChatGroupUpdateManyWithoutMembersNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutAdministeredGroupsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    firstname?: NullableStringFieldUpdateOperationsInput | string | null
+    lastname?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableStringFieldUpdateOperationsInput | string | null
+    posts?: PostUncheckedUpdateManyWithoutUserNestedInput
+    albums?: AlbumUncheckedUpdateManyWithoutUserNestedInput
+    friendOf?: FriendUncheckedUpdateManyWithoutFriendOfNestedInput
+    friends?: FriendUncheckedUpdateManyWithoutFriendUserNestedInput
+    avatars?: AvatarUncheckedUpdateManyWithoutUserNestedInput
+    sentMessages?: ChatMessageUncheckedUpdateManyWithoutAuthorNestedInput
+    chatGroups?: ChatGroupUncheckedUpdateManyWithoutMembersNestedInput
+  }
+
+  export type UserUpsertWithWhereUniqueWithoutChatGroupsInput = {
+    where: UserWhereUniqueInput
+    update: XOR<UserUpdateWithoutChatGroupsInput, UserUncheckedUpdateWithoutChatGroupsInput>
+    create: XOR<UserCreateWithoutChatGroupsInput, UserUncheckedCreateWithoutChatGroupsInput>
+  }
+
+  export type UserUpdateWithWhereUniqueWithoutChatGroupsInput = {
+    where: UserWhereUniqueInput
+    data: XOR<UserUpdateWithoutChatGroupsInput, UserUncheckedUpdateWithoutChatGroupsInput>
+  }
+
+  export type UserUpdateManyWithWhereWithoutChatGroupsInput = {
+    where: UserScalarWhereInput
+    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutChatGroupsInput>
+  }
+
+  export type UserScalarWhereInput = {
+    AND?: UserScalarWhereInput | UserScalarWhereInput[]
+    OR?: UserScalarWhereInput[]
+    NOT?: UserScalarWhereInput | UserScalarWhereInput[]
+    id?: IntFilter<"User"> | number
+    username?: StringNullableFilter<"User"> | string | null
+    email?: StringFilter<"User"> | string
+    firstname?: StringNullableFilter<"User"> | string | null
+    lastname?: StringNullableFilter<"User"> | string | null
+    password?: StringFilter<"User"> | string
+    image?: StringNullableFilter<"User"> | string | null
+    birthdate?: StringNullableFilter<"User"> | string | null
+  }
+
+  export type ChatMessageUpsertWithWhereUniqueWithoutChatGroupInput = {
+    where: ChatMessageWhereUniqueInput
+    update: XOR<ChatMessageUpdateWithoutChatGroupInput, ChatMessageUncheckedUpdateWithoutChatGroupInput>
+    create: XOR<ChatMessageCreateWithoutChatGroupInput, ChatMessageUncheckedCreateWithoutChatGroupInput>
+  }
+
+  export type ChatMessageUpdateWithWhereUniqueWithoutChatGroupInput = {
+    where: ChatMessageWhereUniqueInput
+    data: XOR<ChatMessageUpdateWithoutChatGroupInput, ChatMessageUncheckedUpdateWithoutChatGroupInput>
+  }
+
+  export type ChatMessageUpdateManyWithWhereWithoutChatGroupInput = {
+    where: ChatMessageScalarWhereInput
+    data: XOR<ChatMessageUpdateManyMutationInput, ChatMessageUncheckedUpdateManyWithoutChatGroupInput>
+  }
+
+  export type ChatMessageScalarWhereInput = {
+    AND?: ChatMessageScalarWhereInput | ChatMessageScalarWhereInput[]
+    OR?: ChatMessageScalarWhereInput[]
+    NOT?: ChatMessageScalarWhereInput | ChatMessageScalarWhereInput[]
+    id?: IntFilter<"ChatMessage"> | number
+    content?: StringFilter<"ChatMessage"> | string
+    sentAt?: DateTimeFilter<"ChatMessage"> | Date | string
+    attachedImage?: StringNullableFilter<"ChatMessage"> | string | null
+    authorId?: IntFilter<"ChatMessage"> | number
+    chatGroupId?: IntFilter<"ChatMessage"> | number
+  }
+
+  export type UserCreateWithoutSentMessagesInput = {
+    username?: string | null
+    email: string
+    firstname?: string | null
+    lastname?: string | null
+    password: string
+    image?: string | null
+    birthdate?: string | null
+    posts?: PostCreateNestedManyWithoutUserInput
+    albums?: AlbumCreateNestedManyWithoutUserInput
+    friendOf?: FriendCreateNestedManyWithoutFriendOfInput
+    friends?: FriendCreateNestedManyWithoutFriendUserInput
+    avatars?: AvatarCreateNestedManyWithoutUserInput
+    chatGroups?: ChatGroupCreateNestedManyWithoutMembersInput
+    administeredGroups?: ChatGroupCreateNestedManyWithoutAdminInput
+  }
+
+  export type UserUncheckedCreateWithoutSentMessagesInput = {
+    id?: number
+    username?: string | null
+    email: string
+    firstname?: string | null
+    lastname?: string | null
+    password: string
+    image?: string | null
+    birthdate?: string | null
+    posts?: PostUncheckedCreateNestedManyWithoutUserInput
+    albums?: AlbumUncheckedCreateNestedManyWithoutUserInput
+    friendOf?: FriendUncheckedCreateNestedManyWithoutFriendOfInput
+    friends?: FriendUncheckedCreateNestedManyWithoutFriendUserInput
+    avatars?: AvatarUncheckedCreateNestedManyWithoutUserInput
+    chatGroups?: ChatGroupUncheckedCreateNestedManyWithoutMembersInput
+    administeredGroups?: ChatGroupUncheckedCreateNestedManyWithoutAdminInput
+  }
+
+  export type UserCreateOrConnectWithoutSentMessagesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutSentMessagesInput, UserUncheckedCreateWithoutSentMessagesInput>
+  }
+
+  export type ChatGroupCreateWithoutMessagesInput = {
+    name: string
+    isPersonalChat?: boolean
+    avatar?: string | null
+    admin: UserCreateNestedOneWithoutAdministeredGroupsInput
+    members?: UserCreateNestedManyWithoutChatGroupsInput
+  }
+
+  export type ChatGroupUncheckedCreateWithoutMessagesInput = {
+    id?: number
+    name: string
+    isPersonalChat?: boolean
+    avatar?: string | null
+    adminId: number
+    members?: UserUncheckedCreateNestedManyWithoutChatGroupsInput
+  }
+
+  export type ChatGroupCreateOrConnectWithoutMessagesInput = {
+    where: ChatGroupWhereUniqueInput
+    create: XOR<ChatGroupCreateWithoutMessagesInput, ChatGroupUncheckedCreateWithoutMessagesInput>
+  }
+
+  export type UserUpsertWithoutSentMessagesInput = {
+    update: XOR<UserUpdateWithoutSentMessagesInput, UserUncheckedUpdateWithoutSentMessagesInput>
+    create: XOR<UserCreateWithoutSentMessagesInput, UserUncheckedCreateWithoutSentMessagesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutSentMessagesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutSentMessagesInput, UserUncheckedUpdateWithoutSentMessagesInput>
+  }
+
+  export type UserUpdateWithoutSentMessagesInput = {
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    firstname?: NullableStringFieldUpdateOperationsInput | string | null
+    lastname?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableStringFieldUpdateOperationsInput | string | null
+    posts?: PostUpdateManyWithoutUserNestedInput
+    albums?: AlbumUpdateManyWithoutUserNestedInput
+    friendOf?: FriendUpdateManyWithoutFriendOfNestedInput
+    friends?: FriendUpdateManyWithoutFriendUserNestedInput
+    avatars?: AvatarUpdateManyWithoutUserNestedInput
+    chatGroups?: ChatGroupUpdateManyWithoutMembersNestedInput
+    administeredGroups?: ChatGroupUpdateManyWithoutAdminNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutSentMessagesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    firstname?: NullableStringFieldUpdateOperationsInput | string | null
+    lastname?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableStringFieldUpdateOperationsInput | string | null
+    posts?: PostUncheckedUpdateManyWithoutUserNestedInput
+    albums?: AlbumUncheckedUpdateManyWithoutUserNestedInput
+    friendOf?: FriendUncheckedUpdateManyWithoutFriendOfNestedInput
+    friends?: FriendUncheckedUpdateManyWithoutFriendUserNestedInput
+    avatars?: AvatarUncheckedUpdateManyWithoutUserNestedInput
+    chatGroups?: ChatGroupUncheckedUpdateManyWithoutMembersNestedInput
+    administeredGroups?: ChatGroupUncheckedUpdateManyWithoutAdminNestedInput
+  }
+
+  export type ChatGroupUpsertWithoutMessagesInput = {
+    update: XOR<ChatGroupUpdateWithoutMessagesInput, ChatGroupUncheckedUpdateWithoutMessagesInput>
+    create: XOR<ChatGroupCreateWithoutMessagesInput, ChatGroupUncheckedCreateWithoutMessagesInput>
+    where?: ChatGroupWhereInput
+  }
+
+  export type ChatGroupUpdateToOneWithWhereWithoutMessagesInput = {
+    where?: ChatGroupWhereInput
+    data: XOR<ChatGroupUpdateWithoutMessagesInput, ChatGroupUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type ChatGroupUpdateWithoutMessagesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    isPersonalChat?: BoolFieldUpdateOperationsInput | boolean
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: UserUpdateOneRequiredWithoutAdministeredGroupsNestedInput
+    members?: UserUpdateManyWithoutChatGroupsNestedInput
+  }
+
+  export type ChatGroupUncheckedUpdateWithoutMessagesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    isPersonalChat?: BoolFieldUpdateOperationsInput | boolean
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: IntFieldUpdateOperationsInput | number
+    members?: UserUncheckedUpdateManyWithoutChatGroupsNestedInput
   }
 
   export type UserCreateWithoutFriendsInput = {
@@ -7066,9 +15624,13 @@ export namespace Prisma {
     password: string
     image?: string | null
     birthdate?: string | null
-    posts?: UserPostCreateNestedManyWithoutUserInput
-    albums?: UserAlbumCreateNestedManyWithoutUserInput
+    posts?: PostCreateNestedManyWithoutUserInput
+    albums?: AlbumCreateNestedManyWithoutUserInput
     friendOf?: FriendCreateNestedManyWithoutFriendOfInput
+    avatars?: AvatarCreateNestedManyWithoutUserInput
+    sentMessages?: ChatMessageCreateNestedManyWithoutAuthorInput
+    chatGroups?: ChatGroupCreateNestedManyWithoutMembersInput
+    administeredGroups?: ChatGroupCreateNestedManyWithoutAdminInput
   }
 
   export type UserUncheckedCreateWithoutFriendsInput = {
@@ -7080,9 +15642,13 @@ export namespace Prisma {
     password: string
     image?: string | null
     birthdate?: string | null
-    posts?: UserPostUncheckedCreateNestedManyWithoutUserInput
-    albums?: UserAlbumUncheckedCreateNestedManyWithoutUserInput
+    posts?: PostUncheckedCreateNestedManyWithoutUserInput
+    albums?: AlbumUncheckedCreateNestedManyWithoutUserInput
     friendOf?: FriendUncheckedCreateNestedManyWithoutFriendOfInput
+    avatars?: AvatarUncheckedCreateNestedManyWithoutUserInput
+    sentMessages?: ChatMessageUncheckedCreateNestedManyWithoutAuthorInput
+    chatGroups?: ChatGroupUncheckedCreateNestedManyWithoutMembersInput
+    administeredGroups?: ChatGroupUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type UserCreateOrConnectWithoutFriendsInput = {
@@ -7098,9 +15664,13 @@ export namespace Prisma {
     password: string
     image?: string | null
     birthdate?: string | null
-    posts?: UserPostCreateNestedManyWithoutUserInput
-    albums?: UserAlbumCreateNestedManyWithoutUserInput
+    posts?: PostCreateNestedManyWithoutUserInput
+    albums?: AlbumCreateNestedManyWithoutUserInput
     friends?: FriendCreateNestedManyWithoutFriendUserInput
+    avatars?: AvatarCreateNestedManyWithoutUserInput
+    sentMessages?: ChatMessageCreateNestedManyWithoutAuthorInput
+    chatGroups?: ChatGroupCreateNestedManyWithoutMembersInput
+    administeredGroups?: ChatGroupCreateNestedManyWithoutAdminInput
   }
 
   export type UserUncheckedCreateWithoutFriendOfInput = {
@@ -7112,9 +15682,13 @@ export namespace Prisma {
     password: string
     image?: string | null
     birthdate?: string | null
-    posts?: UserPostUncheckedCreateNestedManyWithoutUserInput
-    albums?: UserAlbumUncheckedCreateNestedManyWithoutUserInput
+    posts?: PostUncheckedCreateNestedManyWithoutUserInput
+    albums?: AlbumUncheckedCreateNestedManyWithoutUserInput
     friends?: FriendUncheckedCreateNestedManyWithoutFriendUserInput
+    avatars?: AvatarUncheckedCreateNestedManyWithoutUserInput
+    sentMessages?: ChatMessageUncheckedCreateNestedManyWithoutAuthorInput
+    chatGroups?: ChatGroupUncheckedCreateNestedManyWithoutMembersInput
+    administeredGroups?: ChatGroupUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type UserCreateOrConnectWithoutFriendOfInput = {
@@ -7141,9 +15715,13 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     birthdate?: NullableStringFieldUpdateOperationsInput | string | null
-    posts?: UserPostUpdateManyWithoutUserNestedInput
-    albums?: UserAlbumUpdateManyWithoutUserNestedInput
+    posts?: PostUpdateManyWithoutUserNestedInput
+    albums?: AlbumUpdateManyWithoutUserNestedInput
     friendOf?: FriendUpdateManyWithoutFriendOfNestedInput
+    avatars?: AvatarUpdateManyWithoutUserNestedInput
+    sentMessages?: ChatMessageUpdateManyWithoutAuthorNestedInput
+    chatGroups?: ChatGroupUpdateManyWithoutMembersNestedInput
+    administeredGroups?: ChatGroupUpdateManyWithoutAdminNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFriendsInput = {
@@ -7155,9 +15733,13 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     birthdate?: NullableStringFieldUpdateOperationsInput | string | null
-    posts?: UserPostUncheckedUpdateManyWithoutUserNestedInput
-    albums?: UserAlbumUncheckedUpdateManyWithoutUserNestedInput
+    posts?: PostUncheckedUpdateManyWithoutUserNestedInput
+    albums?: AlbumUncheckedUpdateManyWithoutUserNestedInput
     friendOf?: FriendUncheckedUpdateManyWithoutFriendOfNestedInput
+    avatars?: AvatarUncheckedUpdateManyWithoutUserNestedInput
+    sentMessages?: ChatMessageUncheckedUpdateManyWithoutAuthorNestedInput
+    chatGroups?: ChatGroupUncheckedUpdateManyWithoutMembersNestedInput
+    administeredGroups?: ChatGroupUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type UserUpsertWithoutFriendOfInput = {
@@ -7179,9 +15761,13 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     birthdate?: NullableStringFieldUpdateOperationsInput | string | null
-    posts?: UserPostUpdateManyWithoutUserNestedInput
-    albums?: UserAlbumUpdateManyWithoutUserNestedInput
+    posts?: PostUpdateManyWithoutUserNestedInput
+    albums?: AlbumUpdateManyWithoutUserNestedInput
     friends?: FriendUpdateManyWithoutFriendUserNestedInput
+    avatars?: AvatarUpdateManyWithoutUserNestedInput
+    sentMessages?: ChatMessageUpdateManyWithoutAuthorNestedInput
+    chatGroups?: ChatGroupUpdateManyWithoutMembersNestedInput
+    administeredGroups?: ChatGroupUpdateManyWithoutAdminNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFriendOfInput = {
@@ -7193,9 +15779,193 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     birthdate?: NullableStringFieldUpdateOperationsInput | string | null
-    posts?: UserPostUncheckedUpdateManyWithoutUserNestedInput
-    albums?: UserAlbumUncheckedUpdateManyWithoutUserNestedInput
+    posts?: PostUncheckedUpdateManyWithoutUserNestedInput
+    albums?: AlbumUncheckedUpdateManyWithoutUserNestedInput
     friends?: FriendUncheckedUpdateManyWithoutFriendUserNestedInput
+    avatars?: AvatarUncheckedUpdateManyWithoutUserNestedInput
+    sentMessages?: ChatMessageUncheckedUpdateManyWithoutAuthorNestedInput
+    chatGroups?: ChatGroupUncheckedUpdateManyWithoutMembersNestedInput
+    administeredGroups?: ChatGroupUncheckedUpdateManyWithoutAdminNestedInput
+  }
+
+  export type PostCreateWithoutPostImagesInput = {
+    title: string
+    topic?: string | null
+    tags?: string | null
+    content: string
+    links?: string | null
+    views?: number
+    likes?: number
+    user: UserCreateNestedOneWithoutPostsInput
+    postLinks?: LinkCreateNestedManyWithoutPostInput
+  }
+
+  export type PostUncheckedCreateWithoutPostImagesInput = {
+    id?: number
+    title: string
+    topic?: string | null
+    tags?: string | null
+    content: string
+    links?: string | null
+    views?: number
+    likes?: number
+    userId: number
+    postLinks?: LinkUncheckedCreateNestedManyWithoutPostInput
+  }
+
+  export type PostCreateOrConnectWithoutPostImagesInput = {
+    where: PostWhereUniqueInput
+    create: XOR<PostCreateWithoutPostImagesInput, PostUncheckedCreateWithoutPostImagesInput>
+  }
+
+  export type AlbumCreateWithoutImagesInput = {
+    name: string
+    createdAt?: Date | string
+    previewImage?: string | null
+    shown?: boolean
+    topicId?: number | null
+    user: UserCreateNestedOneWithoutAlbumsInput
+  }
+
+  export type AlbumUncheckedCreateWithoutImagesInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    previewImage?: string | null
+    userId: number
+    shown?: boolean
+    topicId?: number | null
+  }
+
+  export type AlbumCreateOrConnectWithoutImagesInput = {
+    where: AlbumWhereUniqueInput
+    create: XOR<AlbumCreateWithoutImagesInput, AlbumUncheckedCreateWithoutImagesInput>
+  }
+
+  export type PostUpsertWithWhereUniqueWithoutPostImagesInput = {
+    where: PostWhereUniqueInput
+    update: XOR<PostUpdateWithoutPostImagesInput, PostUncheckedUpdateWithoutPostImagesInput>
+    create: XOR<PostCreateWithoutPostImagesInput, PostUncheckedCreateWithoutPostImagesInput>
+  }
+
+  export type PostUpdateWithWhereUniqueWithoutPostImagesInput = {
+    where: PostWhereUniqueInput
+    data: XOR<PostUpdateWithoutPostImagesInput, PostUncheckedUpdateWithoutPostImagesInput>
+  }
+
+  export type PostUpdateManyWithWhereWithoutPostImagesInput = {
+    where: PostScalarWhereInput
+    data: XOR<PostUpdateManyMutationInput, PostUncheckedUpdateManyWithoutPostImagesInput>
+  }
+
+  export type PostScalarWhereInput = {
+    AND?: PostScalarWhereInput | PostScalarWhereInput[]
+    OR?: PostScalarWhereInput[]
+    NOT?: PostScalarWhereInput | PostScalarWhereInput[]
+    id?: IntFilter<"Post"> | number
+    title?: StringFilter<"Post"> | string
+    topic?: StringNullableFilter<"Post"> | string | null
+    tags?: StringNullableFilter<"Post"> | string | null
+    content?: StringFilter<"Post"> | string
+    links?: StringNullableFilter<"Post"> | string | null
+    views?: IntFilter<"Post"> | number
+    likes?: IntFilter<"Post"> | number
+    userId?: IntFilter<"Post"> | number
+  }
+
+  export type AlbumUpsertWithWhereUniqueWithoutImagesInput = {
+    where: AlbumWhereUniqueInput
+    update: XOR<AlbumUpdateWithoutImagesInput, AlbumUncheckedUpdateWithoutImagesInput>
+    create: XOR<AlbumCreateWithoutImagesInput, AlbumUncheckedCreateWithoutImagesInput>
+  }
+
+  export type AlbumUpdateWithWhereUniqueWithoutImagesInput = {
+    where: AlbumWhereUniqueInput
+    data: XOR<AlbumUpdateWithoutImagesInput, AlbumUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type AlbumUpdateManyWithWhereWithoutImagesInput = {
+    where: AlbumScalarWhereInput
+    data: XOR<AlbumUpdateManyMutationInput, AlbumUncheckedUpdateManyWithoutImagesInput>
+  }
+
+  export type AlbumScalarWhereInput = {
+    AND?: AlbumScalarWhereInput | AlbumScalarWhereInput[]
+    OR?: AlbumScalarWhereInput[]
+    NOT?: AlbumScalarWhereInput | AlbumScalarWhereInput[]
+    id?: IntFilter<"Album"> | number
+    name?: StringFilter<"Album"> | string
+    createdAt?: DateTimeFilter<"Album"> | Date | string
+    previewImage?: StringNullableFilter<"Album"> | string | null
+    userId?: IntFilter<"Album"> | number
+    shown?: BoolFilter<"Album"> | boolean
+    topicId?: IntNullableFilter<"Album"> | number | null
+  }
+
+  export type PostCreateWithoutPostLinksInput = {
+    title: string
+    topic?: string | null
+    tags?: string | null
+    content: string
+    links?: string | null
+    views?: number
+    likes?: number
+    user: UserCreateNestedOneWithoutPostsInput
+    postImages?: ImageCreateNestedManyWithoutPostsInput
+  }
+
+  export type PostUncheckedCreateWithoutPostLinksInput = {
+    id?: number
+    title: string
+    topic?: string | null
+    tags?: string | null
+    content: string
+    links?: string | null
+    views?: number
+    likes?: number
+    userId: number
+    postImages?: ImageUncheckedCreateNestedManyWithoutPostsInput
+  }
+
+  export type PostCreateOrConnectWithoutPostLinksInput = {
+    where: PostWhereUniqueInput
+    create: XOR<PostCreateWithoutPostLinksInput, PostUncheckedCreateWithoutPostLinksInput>
+  }
+
+  export type PostUpsertWithoutPostLinksInput = {
+    update: XOR<PostUpdateWithoutPostLinksInput, PostUncheckedUpdateWithoutPostLinksInput>
+    create: XOR<PostCreateWithoutPostLinksInput, PostUncheckedCreateWithoutPostLinksInput>
+    where?: PostWhereInput
+  }
+
+  export type PostUpdateToOneWithWhereWithoutPostLinksInput = {
+    where?: PostWhereInput
+    data: XOR<PostUpdateWithoutPostLinksInput, PostUncheckedUpdateWithoutPostLinksInput>
+  }
+
+  export type PostUpdateWithoutPostLinksInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    topic?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: StringFieldUpdateOperationsInput | string
+    links?: NullableStringFieldUpdateOperationsInput | string | null
+    views?: IntFieldUpdateOperationsInput | number
+    likes?: IntFieldUpdateOperationsInput | number
+    user?: UserUpdateOneRequiredWithoutPostsNestedInput
+    postImages?: ImageUpdateManyWithoutPostsNestedInput
+  }
+
+  export type PostUncheckedUpdateWithoutPostLinksInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    topic?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: StringFieldUpdateOperationsInput | string
+    links?: NullableStringFieldUpdateOperationsInput | string | null
+    views?: IntFieldUpdateOperationsInput | number
+    likes?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    postImages?: ImageUncheckedUpdateManyWithoutPostsNestedInput
   }
 
   export type UserCreateWithoutPostsInput = {
@@ -7206,9 +15976,13 @@ export namespace Prisma {
     password: string
     image?: string | null
     birthdate?: string | null
-    albums?: UserAlbumCreateNestedManyWithoutUserInput
+    albums?: AlbumCreateNestedManyWithoutUserInput
     friendOf?: FriendCreateNestedManyWithoutFriendOfInput
     friends?: FriendCreateNestedManyWithoutFriendUserInput
+    avatars?: AvatarCreateNestedManyWithoutUserInput
+    sentMessages?: ChatMessageCreateNestedManyWithoutAuthorInput
+    chatGroups?: ChatGroupCreateNestedManyWithoutMembersInput
+    administeredGroups?: ChatGroupCreateNestedManyWithoutAdminInput
   }
 
   export type UserUncheckedCreateWithoutPostsInput = {
@@ -7220,14 +15994,56 @@ export namespace Prisma {
     password: string
     image?: string | null
     birthdate?: string | null
-    albums?: UserAlbumUncheckedCreateNestedManyWithoutUserInput
+    albums?: AlbumUncheckedCreateNestedManyWithoutUserInput
     friendOf?: FriendUncheckedCreateNestedManyWithoutFriendOfInput
     friends?: FriendUncheckedCreateNestedManyWithoutFriendUserInput
+    avatars?: AvatarUncheckedCreateNestedManyWithoutUserInput
+    sentMessages?: ChatMessageUncheckedCreateNestedManyWithoutAuthorInput
+    chatGroups?: ChatGroupUncheckedCreateNestedManyWithoutMembersInput
+    administeredGroups?: ChatGroupUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type UserCreateOrConnectWithoutPostsInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
+  }
+
+  export type ImageCreateWithoutPostsInput = {
+    filename: string
+    url: string
+    uploadedAt?: Date | string
+    albums?: AlbumCreateNestedManyWithoutImagesInput
+  }
+
+  export type ImageUncheckedCreateWithoutPostsInput = {
+    id?: number
+    filename: string
+    url: string
+    uploadedAt?: Date | string
+    albums?: AlbumUncheckedCreateNestedManyWithoutImagesInput
+  }
+
+  export type ImageCreateOrConnectWithoutPostsInput = {
+    where: ImageWhereUniqueInput
+    create: XOR<ImageCreateWithoutPostsInput, ImageUncheckedCreateWithoutPostsInput>
+  }
+
+  export type LinkCreateWithoutPostInput = {
+    url: string
+  }
+
+  export type LinkUncheckedCreateWithoutPostInput = {
+    id?: number
+    url: string
+  }
+
+  export type LinkCreateOrConnectWithoutPostInput = {
+    where: LinkWhereUniqueInput
+    create: XOR<LinkCreateWithoutPostInput, LinkUncheckedCreateWithoutPostInput>
+  }
+
+  export type LinkCreateManyPostInputEnvelope = {
+    data: LinkCreateManyPostInput | LinkCreateManyPostInput[]
   }
 
   export type UserUpsertWithoutPostsInput = {
@@ -7249,9 +16065,13 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     birthdate?: NullableStringFieldUpdateOperationsInput | string | null
-    albums?: UserAlbumUpdateManyWithoutUserNestedInput
+    albums?: AlbumUpdateManyWithoutUserNestedInput
     friendOf?: FriendUpdateManyWithoutFriendOfNestedInput
     friends?: FriendUpdateManyWithoutFriendUserNestedInput
+    avatars?: AvatarUpdateManyWithoutUserNestedInput
+    sentMessages?: ChatMessageUpdateManyWithoutAuthorNestedInput
+    chatGroups?: ChatGroupUpdateManyWithoutMembersNestedInput
+    administeredGroups?: ChatGroupUpdateManyWithoutAdminNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPostsInput = {
@@ -7263,68 +16083,127 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     birthdate?: NullableStringFieldUpdateOperationsInput | string | null
-    albums?: UserAlbumUncheckedUpdateManyWithoutUserNestedInput
+    albums?: AlbumUncheckedUpdateManyWithoutUserNestedInput
     friendOf?: FriendUncheckedUpdateManyWithoutFriendOfNestedInput
     friends?: FriendUncheckedUpdateManyWithoutFriendUserNestedInput
+    avatars?: AvatarUncheckedUpdateManyWithoutUserNestedInput
+    sentMessages?: ChatMessageUncheckedUpdateManyWithoutAuthorNestedInput
+    chatGroups?: ChatGroupUncheckedUpdateManyWithoutMembersNestedInput
+    administeredGroups?: ChatGroupUncheckedUpdateManyWithoutAdminNestedInput
   }
 
-  export type UserPostCreateWithoutUserInput = {
+  export type ImageUpsertWithWhereUniqueWithoutPostsInput = {
+    where: ImageWhereUniqueInput
+    update: XOR<ImageUpdateWithoutPostsInput, ImageUncheckedUpdateWithoutPostsInput>
+    create: XOR<ImageCreateWithoutPostsInput, ImageUncheckedCreateWithoutPostsInput>
+  }
+
+  export type ImageUpdateWithWhereUniqueWithoutPostsInput = {
+    where: ImageWhereUniqueInput
+    data: XOR<ImageUpdateWithoutPostsInput, ImageUncheckedUpdateWithoutPostsInput>
+  }
+
+  export type ImageUpdateManyWithWhereWithoutPostsInput = {
+    where: ImageScalarWhereInput
+    data: XOR<ImageUpdateManyMutationInput, ImageUncheckedUpdateManyWithoutPostsInput>
+  }
+
+  export type LinkUpsertWithWhereUniqueWithoutPostInput = {
+    where: LinkWhereUniqueInput
+    update: XOR<LinkUpdateWithoutPostInput, LinkUncheckedUpdateWithoutPostInput>
+    create: XOR<LinkCreateWithoutPostInput, LinkUncheckedCreateWithoutPostInput>
+  }
+
+  export type LinkUpdateWithWhereUniqueWithoutPostInput = {
+    where: LinkWhereUniqueInput
+    data: XOR<LinkUpdateWithoutPostInput, LinkUncheckedUpdateWithoutPostInput>
+  }
+
+  export type LinkUpdateManyWithWhereWithoutPostInput = {
+    where: LinkScalarWhereInput
+    data: XOR<LinkUpdateManyMutationInput, LinkUncheckedUpdateManyWithoutPostInput>
+  }
+
+  export type LinkScalarWhereInput = {
+    AND?: LinkScalarWhereInput | LinkScalarWhereInput[]
+    OR?: LinkScalarWhereInput[]
+    NOT?: LinkScalarWhereInput | LinkScalarWhereInput[]
+    id?: IntFilter<"Link"> | number
+    url?: StringFilter<"Link"> | string
+    postId?: IntFilter<"Link"> | number
+  }
+
+  export type PostCreateWithoutUserInput = {
     title: string
     topic?: string | null
     tags?: string | null
     content: string
     links?: string | null
-    images?: string | null
     views?: number
     likes?: number
+    postImages?: ImageCreateNestedManyWithoutPostsInput
+    postLinks?: LinkCreateNestedManyWithoutPostInput
   }
 
-  export type UserPostUncheckedCreateWithoutUserInput = {
+  export type PostUncheckedCreateWithoutUserInput = {
     id?: number
     title: string
     topic?: string | null
     tags?: string | null
     content: string
     links?: string | null
-    images?: string | null
     views?: number
     likes?: number
+    postImages?: ImageUncheckedCreateNestedManyWithoutPostsInput
+    postLinks?: LinkUncheckedCreateNestedManyWithoutPostInput
   }
 
-  export type UserPostCreateOrConnectWithoutUserInput = {
-    where: UserPostWhereUniqueInput
-    create: XOR<UserPostCreateWithoutUserInput, UserPostUncheckedCreateWithoutUserInput>
+  export type PostCreateOrConnectWithoutUserInput = {
+    where: PostWhereUniqueInput
+    create: XOR<PostCreateWithoutUserInput, PostUncheckedCreateWithoutUserInput>
   }
 
-  export type UserPostCreateManyUserInputEnvelope = {
-    data: UserPostCreateManyUserInput | UserPostCreateManyUserInput[]
+  export type PostCreateManyUserInputEnvelope = {
+    data: PostCreateManyUserInput | PostCreateManyUserInput[]
   }
 
-  export type UserAlbumCreateWithoutUserInput = {
-    src: string
+  export type AlbumCreateWithoutUserInput = {
+    name: string
+    createdAt?: Date | string
+    previewImage?: string | null
+    shown?: boolean
+    topicId?: number | null
+    images?: ImageCreateNestedManyWithoutAlbumsInput
   }
 
-  export type UserAlbumUncheckedCreateWithoutUserInput = {
+  export type AlbumUncheckedCreateWithoutUserInput = {
     id?: number
-    src: string
+    name: string
+    createdAt?: Date | string
+    previewImage?: string | null
+    shown?: boolean
+    topicId?: number | null
+    images?: ImageUncheckedCreateNestedManyWithoutAlbumsInput
   }
 
-  export type UserAlbumCreateOrConnectWithoutUserInput = {
-    where: UserAlbumWhereUniqueInput
-    create: XOR<UserAlbumCreateWithoutUserInput, UserAlbumUncheckedCreateWithoutUserInput>
+  export type AlbumCreateOrConnectWithoutUserInput = {
+    where: AlbumWhereUniqueInput
+    create: XOR<AlbumCreateWithoutUserInput, AlbumUncheckedCreateWithoutUserInput>
   }
 
-  export type UserAlbumCreateManyUserInputEnvelope = {
-    data: UserAlbumCreateManyUserInput | UserAlbumCreateManyUserInput[]
+  export type AlbumCreateManyUserInputEnvelope = {
+    data: AlbumCreateManyUserInput | AlbumCreateManyUserInput[]
   }
 
   export type FriendCreateWithoutFriendOfInput = {
+    accepted?: boolean
     friendUser: UserCreateNestedOneWithoutFriendsInput
   }
 
   export type FriendUncheckedCreateWithoutFriendOfInput = {
     id?: number
     friendUserId: number
+    accepted?: boolean
   }
 
   export type FriendCreateOrConnectWithoutFriendOfInput = {
@@ -7337,12 +16216,14 @@ export namespace Prisma {
   }
 
   export type FriendCreateWithoutFriendUserInput = {
+    accepted?: boolean
     friendOf: UserCreateNestedOneWithoutFriendOfInput
   }
 
   export type FriendUncheckedCreateWithoutFriendUserInput = {
     id?: number
     friendOfId: number
+    accepted?: boolean
   }
 
   export type FriendCreateOrConnectWithoutFriendUserInput = {
@@ -7354,61 +16235,130 @@ export namespace Prisma {
     data: FriendCreateManyFriendUserInput | FriendCreateManyFriendUserInput[]
   }
 
-  export type UserPostUpsertWithWhereUniqueWithoutUserInput = {
-    where: UserPostWhereUniqueInput
-    update: XOR<UserPostUpdateWithoutUserInput, UserPostUncheckedUpdateWithoutUserInput>
-    create: XOR<UserPostCreateWithoutUserInput, UserPostUncheckedCreateWithoutUserInput>
+  export type AvatarCreateWithoutUserInput = {
+    image: string
+    active?: boolean
+    shown?: boolean
   }
 
-  export type UserPostUpdateWithWhereUniqueWithoutUserInput = {
-    where: UserPostWhereUniqueInput
-    data: XOR<UserPostUpdateWithoutUserInput, UserPostUncheckedUpdateWithoutUserInput>
+  export type AvatarUncheckedCreateWithoutUserInput = {
+    id?: number
+    image: string
+    active?: boolean
+    shown?: boolean
   }
 
-  export type UserPostUpdateManyWithWhereWithoutUserInput = {
-    where: UserPostScalarWhereInput
-    data: XOR<UserPostUpdateManyMutationInput, UserPostUncheckedUpdateManyWithoutUserInput>
+  export type AvatarCreateOrConnectWithoutUserInput = {
+    where: AvatarWhereUniqueInput
+    create: XOR<AvatarCreateWithoutUserInput, AvatarUncheckedCreateWithoutUserInput>
   }
 
-  export type UserPostScalarWhereInput = {
-    AND?: UserPostScalarWhereInput | UserPostScalarWhereInput[]
-    OR?: UserPostScalarWhereInput[]
-    NOT?: UserPostScalarWhereInput | UserPostScalarWhereInput[]
-    id?: IntFilter<"UserPost"> | number
-    title?: StringFilter<"UserPost"> | string
-    topic?: StringNullableFilter<"UserPost"> | string | null
-    tags?: StringNullableFilter<"UserPost"> | string | null
-    content?: StringFilter<"UserPost"> | string
-    links?: StringNullableFilter<"UserPost"> | string | null
-    images?: StringNullableFilter<"UserPost"> | string | null
-    views?: IntFilter<"UserPost"> | number
-    likes?: IntFilter<"UserPost"> | number
-    userId?: IntFilter<"UserPost"> | number
+  export type AvatarCreateManyUserInputEnvelope = {
+    data: AvatarCreateManyUserInput | AvatarCreateManyUserInput[]
   }
 
-  export type UserAlbumUpsertWithWhereUniqueWithoutUserInput = {
-    where: UserAlbumWhereUniqueInput
-    update: XOR<UserAlbumUpdateWithoutUserInput, UserAlbumUncheckedUpdateWithoutUserInput>
-    create: XOR<UserAlbumCreateWithoutUserInput, UserAlbumUncheckedCreateWithoutUserInput>
+  export type ChatMessageCreateWithoutAuthorInput = {
+    content: string
+    sentAt?: Date | string
+    attachedImage?: string | null
+    chatGroup: ChatGroupCreateNestedOneWithoutMessagesInput
   }
 
-  export type UserAlbumUpdateWithWhereUniqueWithoutUserInput = {
-    where: UserAlbumWhereUniqueInput
-    data: XOR<UserAlbumUpdateWithoutUserInput, UserAlbumUncheckedUpdateWithoutUserInput>
+  export type ChatMessageUncheckedCreateWithoutAuthorInput = {
+    id?: number
+    content: string
+    sentAt?: Date | string
+    attachedImage?: string | null
+    chatGroupId: number
   }
 
-  export type UserAlbumUpdateManyWithWhereWithoutUserInput = {
-    where: UserAlbumScalarWhereInput
-    data: XOR<UserAlbumUpdateManyMutationInput, UserAlbumUncheckedUpdateManyWithoutUserInput>
+  export type ChatMessageCreateOrConnectWithoutAuthorInput = {
+    where: ChatMessageWhereUniqueInput
+    create: XOR<ChatMessageCreateWithoutAuthorInput, ChatMessageUncheckedCreateWithoutAuthorInput>
   }
 
-  export type UserAlbumScalarWhereInput = {
-    AND?: UserAlbumScalarWhereInput | UserAlbumScalarWhereInput[]
-    OR?: UserAlbumScalarWhereInput[]
-    NOT?: UserAlbumScalarWhereInput | UserAlbumScalarWhereInput[]
-    id?: IntFilter<"UserAlbum"> | number
-    src?: StringFilter<"UserAlbum"> | string
-    userId?: IntFilter<"UserAlbum"> | number
+  export type ChatMessageCreateManyAuthorInputEnvelope = {
+    data: ChatMessageCreateManyAuthorInput | ChatMessageCreateManyAuthorInput[]
+  }
+
+  export type ChatGroupCreateWithoutMembersInput = {
+    name: string
+    isPersonalChat?: boolean
+    avatar?: string | null
+    admin: UserCreateNestedOneWithoutAdministeredGroupsInput
+    messages?: ChatMessageCreateNestedManyWithoutChatGroupInput
+  }
+
+  export type ChatGroupUncheckedCreateWithoutMembersInput = {
+    id?: number
+    name: string
+    isPersonalChat?: boolean
+    avatar?: string | null
+    adminId: number
+    messages?: ChatMessageUncheckedCreateNestedManyWithoutChatGroupInput
+  }
+
+  export type ChatGroupCreateOrConnectWithoutMembersInput = {
+    where: ChatGroupWhereUniqueInput
+    create: XOR<ChatGroupCreateWithoutMembersInput, ChatGroupUncheckedCreateWithoutMembersInput>
+  }
+
+  export type ChatGroupCreateWithoutAdminInput = {
+    name: string
+    isPersonalChat?: boolean
+    avatar?: string | null
+    members?: UserCreateNestedManyWithoutChatGroupsInput
+    messages?: ChatMessageCreateNestedManyWithoutChatGroupInput
+  }
+
+  export type ChatGroupUncheckedCreateWithoutAdminInput = {
+    id?: number
+    name: string
+    isPersonalChat?: boolean
+    avatar?: string | null
+    members?: UserUncheckedCreateNestedManyWithoutChatGroupsInput
+    messages?: ChatMessageUncheckedCreateNestedManyWithoutChatGroupInput
+  }
+
+  export type ChatGroupCreateOrConnectWithoutAdminInput = {
+    where: ChatGroupWhereUniqueInput
+    create: XOR<ChatGroupCreateWithoutAdminInput, ChatGroupUncheckedCreateWithoutAdminInput>
+  }
+
+  export type ChatGroupCreateManyAdminInputEnvelope = {
+    data: ChatGroupCreateManyAdminInput | ChatGroupCreateManyAdminInput[]
+  }
+
+  export type PostUpsertWithWhereUniqueWithoutUserInput = {
+    where: PostWhereUniqueInput
+    update: XOR<PostUpdateWithoutUserInput, PostUncheckedUpdateWithoutUserInput>
+    create: XOR<PostCreateWithoutUserInput, PostUncheckedCreateWithoutUserInput>
+  }
+
+  export type PostUpdateWithWhereUniqueWithoutUserInput = {
+    where: PostWhereUniqueInput
+    data: XOR<PostUpdateWithoutUserInput, PostUncheckedUpdateWithoutUserInput>
+  }
+
+  export type PostUpdateManyWithWhereWithoutUserInput = {
+    where: PostScalarWhereInput
+    data: XOR<PostUpdateManyMutationInput, PostUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type AlbumUpsertWithWhereUniqueWithoutUserInput = {
+    where: AlbumWhereUniqueInput
+    update: XOR<AlbumUpdateWithoutUserInput, AlbumUncheckedUpdateWithoutUserInput>
+    create: XOR<AlbumCreateWithoutUserInput, AlbumUncheckedCreateWithoutUserInput>
+  }
+
+  export type AlbumUpdateWithWhereUniqueWithoutUserInput = {
+    where: AlbumWhereUniqueInput
+    data: XOR<AlbumUpdateWithoutUserInput, AlbumUncheckedUpdateWithoutUserInput>
+  }
+
+  export type AlbumUpdateManyWithWhereWithoutUserInput = {
+    where: AlbumScalarWhereInput
+    data: XOR<AlbumUpdateManyMutationInput, AlbumUncheckedUpdateManyWithoutUserInput>
   }
 
   export type FriendUpsertWithWhereUniqueWithoutFriendOfInput = {
@@ -7434,6 +16384,7 @@ export namespace Prisma {
     id?: IntFilter<"Friend"> | number
     friendUserId?: IntFilter<"Friend"> | number
     friendOfId?: IntFilter<"Friend"> | number
+    accepted?: BoolFilter<"Friend"> | boolean
   }
 
   export type FriendUpsertWithWhereUniqueWithoutFriendUserInput = {
@@ -7452,108 +16403,540 @@ export namespace Prisma {
     data: XOR<FriendUpdateManyMutationInput, FriendUncheckedUpdateManyWithoutFriendUserInput>
   }
 
-  export type UserPostCreateManyUserInput = {
+  export type AvatarUpsertWithWhereUniqueWithoutUserInput = {
+    where: AvatarWhereUniqueInput
+    update: XOR<AvatarUpdateWithoutUserInput, AvatarUncheckedUpdateWithoutUserInput>
+    create: XOR<AvatarCreateWithoutUserInput, AvatarUncheckedCreateWithoutUserInput>
+  }
+
+  export type AvatarUpdateWithWhereUniqueWithoutUserInput = {
+    where: AvatarWhereUniqueInput
+    data: XOR<AvatarUpdateWithoutUserInput, AvatarUncheckedUpdateWithoutUserInput>
+  }
+
+  export type AvatarUpdateManyWithWhereWithoutUserInput = {
+    where: AvatarScalarWhereInput
+    data: XOR<AvatarUpdateManyMutationInput, AvatarUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type AvatarScalarWhereInput = {
+    AND?: AvatarScalarWhereInput | AvatarScalarWhereInput[]
+    OR?: AvatarScalarWhereInput[]
+    NOT?: AvatarScalarWhereInput | AvatarScalarWhereInput[]
+    id?: IntFilter<"Avatar"> | number
+    image?: StringFilter<"Avatar"> | string
+    userId?: IntFilter<"Avatar"> | number
+    active?: BoolFilter<"Avatar"> | boolean
+    shown?: BoolFilter<"Avatar"> | boolean
+  }
+
+  export type ChatMessageUpsertWithWhereUniqueWithoutAuthorInput = {
+    where: ChatMessageWhereUniqueInput
+    update: XOR<ChatMessageUpdateWithoutAuthorInput, ChatMessageUncheckedUpdateWithoutAuthorInput>
+    create: XOR<ChatMessageCreateWithoutAuthorInput, ChatMessageUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type ChatMessageUpdateWithWhereUniqueWithoutAuthorInput = {
+    where: ChatMessageWhereUniqueInput
+    data: XOR<ChatMessageUpdateWithoutAuthorInput, ChatMessageUncheckedUpdateWithoutAuthorInput>
+  }
+
+  export type ChatMessageUpdateManyWithWhereWithoutAuthorInput = {
+    where: ChatMessageScalarWhereInput
+    data: XOR<ChatMessageUpdateManyMutationInput, ChatMessageUncheckedUpdateManyWithoutAuthorInput>
+  }
+
+  export type ChatGroupUpsertWithWhereUniqueWithoutMembersInput = {
+    where: ChatGroupWhereUniqueInput
+    update: XOR<ChatGroupUpdateWithoutMembersInput, ChatGroupUncheckedUpdateWithoutMembersInput>
+    create: XOR<ChatGroupCreateWithoutMembersInput, ChatGroupUncheckedCreateWithoutMembersInput>
+  }
+
+  export type ChatGroupUpdateWithWhereUniqueWithoutMembersInput = {
+    where: ChatGroupWhereUniqueInput
+    data: XOR<ChatGroupUpdateWithoutMembersInput, ChatGroupUncheckedUpdateWithoutMembersInput>
+  }
+
+  export type ChatGroupUpdateManyWithWhereWithoutMembersInput = {
+    where: ChatGroupScalarWhereInput
+    data: XOR<ChatGroupUpdateManyMutationInput, ChatGroupUncheckedUpdateManyWithoutMembersInput>
+  }
+
+  export type ChatGroupScalarWhereInput = {
+    AND?: ChatGroupScalarWhereInput | ChatGroupScalarWhereInput[]
+    OR?: ChatGroupScalarWhereInput[]
+    NOT?: ChatGroupScalarWhereInput | ChatGroupScalarWhereInput[]
+    id?: IntFilter<"ChatGroup"> | number
+    name?: StringFilter<"ChatGroup"> | string
+    isPersonalChat?: BoolFilter<"ChatGroup"> | boolean
+    avatar?: StringNullableFilter<"ChatGroup"> | string | null
+    adminId?: IntFilter<"ChatGroup"> | number
+  }
+
+  export type ChatGroupUpsertWithWhereUniqueWithoutAdminInput = {
+    where: ChatGroupWhereUniqueInput
+    update: XOR<ChatGroupUpdateWithoutAdminInput, ChatGroupUncheckedUpdateWithoutAdminInput>
+    create: XOR<ChatGroupCreateWithoutAdminInput, ChatGroupUncheckedCreateWithoutAdminInput>
+  }
+
+  export type ChatGroupUpdateWithWhereUniqueWithoutAdminInput = {
+    where: ChatGroupWhereUniqueInput
+    data: XOR<ChatGroupUpdateWithoutAdminInput, ChatGroupUncheckedUpdateWithoutAdminInput>
+  }
+
+  export type ChatGroupUpdateManyWithWhereWithoutAdminInput = {
+    where: ChatGroupScalarWhereInput
+    data: XOR<ChatGroupUpdateManyMutationInput, ChatGroupUncheckedUpdateManyWithoutAdminInput>
+  }
+
+  export type ImageUpdateWithoutAlbumsInput = {
+    filename?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posts?: PostUpdateManyWithoutPostImagesNestedInput
+  }
+
+  export type ImageUncheckedUpdateWithoutAlbumsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    filename?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    posts?: PostUncheckedUpdateManyWithoutPostImagesNestedInput
+  }
+
+  export type ImageUncheckedUpdateManyWithoutAlbumsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    filename?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ChatMessageCreateManyChatGroupInput = {
+    id?: number
+    content: string
+    sentAt?: Date | string
+    attachedImage?: string | null
+    authorId: number
+  }
+
+  export type UserUpdateWithoutChatGroupsInput = {
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    firstname?: NullableStringFieldUpdateOperationsInput | string | null
+    lastname?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableStringFieldUpdateOperationsInput | string | null
+    posts?: PostUpdateManyWithoutUserNestedInput
+    albums?: AlbumUpdateManyWithoutUserNestedInput
+    friendOf?: FriendUpdateManyWithoutFriendOfNestedInput
+    friends?: FriendUpdateManyWithoutFriendUserNestedInput
+    avatars?: AvatarUpdateManyWithoutUserNestedInput
+    sentMessages?: ChatMessageUpdateManyWithoutAuthorNestedInput
+    administeredGroups?: ChatGroupUpdateManyWithoutAdminNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutChatGroupsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    firstname?: NullableStringFieldUpdateOperationsInput | string | null
+    lastname?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableStringFieldUpdateOperationsInput | string | null
+    posts?: PostUncheckedUpdateManyWithoutUserNestedInput
+    albums?: AlbumUncheckedUpdateManyWithoutUserNestedInput
+    friendOf?: FriendUncheckedUpdateManyWithoutFriendOfNestedInput
+    friends?: FriendUncheckedUpdateManyWithoutFriendUserNestedInput
+    avatars?: AvatarUncheckedUpdateManyWithoutUserNestedInput
+    sentMessages?: ChatMessageUncheckedUpdateManyWithoutAuthorNestedInput
+    administeredGroups?: ChatGroupUncheckedUpdateManyWithoutAdminNestedInput
+  }
+
+  export type UserUncheckedUpdateManyWithoutChatGroupsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    firstname?: NullableStringFieldUpdateOperationsInput | string | null
+    lastname?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ChatMessageUpdateWithoutChatGroupInput = {
+    content?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    attachedImage?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: UserUpdateOneRequiredWithoutSentMessagesNestedInput
+  }
+
+  export type ChatMessageUncheckedUpdateWithoutChatGroupInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    attachedImage?: NullableStringFieldUpdateOperationsInput | string | null
+    authorId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ChatMessageUncheckedUpdateManyWithoutChatGroupInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    attachedImage?: NullableStringFieldUpdateOperationsInput | string | null
+    authorId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type PostUpdateWithoutPostImagesInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    topic?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: StringFieldUpdateOperationsInput | string
+    links?: NullableStringFieldUpdateOperationsInput | string | null
+    views?: IntFieldUpdateOperationsInput | number
+    likes?: IntFieldUpdateOperationsInput | number
+    user?: UserUpdateOneRequiredWithoutPostsNestedInput
+    postLinks?: LinkUpdateManyWithoutPostNestedInput
+  }
+
+  export type PostUncheckedUpdateWithoutPostImagesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    topic?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: StringFieldUpdateOperationsInput | string
+    links?: NullableStringFieldUpdateOperationsInput | string | null
+    views?: IntFieldUpdateOperationsInput | number
+    likes?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    postLinks?: LinkUncheckedUpdateManyWithoutPostNestedInput
+  }
+
+  export type PostUncheckedUpdateManyWithoutPostImagesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    topic?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: StringFieldUpdateOperationsInput | string
+    links?: NullableStringFieldUpdateOperationsInput | string | null
+    views?: IntFieldUpdateOperationsInput | number
+    likes?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AlbumUpdateWithoutImagesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    previewImage?: NullableStringFieldUpdateOperationsInput | string | null
+    shown?: BoolFieldUpdateOperationsInput | boolean
+    topicId?: NullableIntFieldUpdateOperationsInput | number | null
+    user?: UserUpdateOneRequiredWithoutAlbumsNestedInput
+  }
+
+  export type AlbumUncheckedUpdateWithoutImagesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    previewImage?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: IntFieldUpdateOperationsInput | number
+    shown?: BoolFieldUpdateOperationsInput | boolean
+    topicId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type AlbumUncheckedUpdateManyWithoutImagesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    previewImage?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: IntFieldUpdateOperationsInput | number
+    shown?: BoolFieldUpdateOperationsInput | boolean
+    topicId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type LinkCreateManyPostInput = {
+    id?: number
+    url: string
+  }
+
+  export type ImageUpdateWithoutPostsInput = {
+    filename?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    albums?: AlbumUpdateManyWithoutImagesNestedInput
+  }
+
+  export type ImageUncheckedUpdateWithoutPostsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    filename?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    albums?: AlbumUncheckedUpdateManyWithoutImagesNestedInput
+  }
+
+  export type ImageUncheckedUpdateManyWithoutPostsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    filename?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LinkUpdateWithoutPostInput = {
+    url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type LinkUncheckedUpdateWithoutPostInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type LinkUncheckedUpdateManyWithoutPostInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PostCreateManyUserInput = {
     id?: number
     title: string
     topic?: string | null
     tags?: string | null
     content: string
     links?: string | null
-    images?: string | null
     views?: number
     likes?: number
   }
 
-  export type UserAlbumCreateManyUserInput = {
+  export type AlbumCreateManyUserInput = {
     id?: number
-    src: string
+    name: string
+    createdAt?: Date | string
+    previewImage?: string | null
+    shown?: boolean
+    topicId?: number | null
   }
 
   export type FriendCreateManyFriendOfInput = {
     id?: number
     friendUserId: number
+    accepted?: boolean
   }
 
   export type FriendCreateManyFriendUserInput = {
     id?: number
     friendOfId: number
+    accepted?: boolean
   }
 
-  export type UserPostUpdateWithoutUserInput = {
+  export type AvatarCreateManyUserInput = {
+    id?: number
+    image: string
+    active?: boolean
+    shown?: boolean
+  }
+
+  export type ChatMessageCreateManyAuthorInput = {
+    id?: number
+    content: string
+    sentAt?: Date | string
+    attachedImage?: string | null
+    chatGroupId: number
+  }
+
+  export type ChatGroupCreateManyAdminInput = {
+    id?: number
+    name: string
+    isPersonalChat?: boolean
+    avatar?: string | null
+  }
+
+  export type PostUpdateWithoutUserInput = {
     title?: StringFieldUpdateOperationsInput | string
     topic?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     links?: NullableStringFieldUpdateOperationsInput | string | null
-    images?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     likes?: IntFieldUpdateOperationsInput | number
+    postImages?: ImageUpdateManyWithoutPostsNestedInput
+    postLinks?: LinkUpdateManyWithoutPostNestedInput
   }
 
-  export type UserPostUncheckedUpdateWithoutUserInput = {
+  export type PostUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     topic?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     links?: NullableStringFieldUpdateOperationsInput | string | null
-    images?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     likes?: IntFieldUpdateOperationsInput | number
+    postImages?: ImageUncheckedUpdateManyWithoutPostsNestedInput
+    postLinks?: LinkUncheckedUpdateManyWithoutPostNestedInput
   }
 
-  export type UserPostUncheckedUpdateManyWithoutUserInput = {
+  export type PostUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     topic?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     links?: NullableStringFieldUpdateOperationsInput | string | null
-    images?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
     likes?: IntFieldUpdateOperationsInput | number
   }
 
-  export type UserAlbumUpdateWithoutUserInput = {
-    src?: StringFieldUpdateOperationsInput | string
+  export type AlbumUpdateWithoutUserInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    previewImage?: NullableStringFieldUpdateOperationsInput | string | null
+    shown?: BoolFieldUpdateOperationsInput | boolean
+    topicId?: NullableIntFieldUpdateOperationsInput | number | null
+    images?: ImageUpdateManyWithoutAlbumsNestedInput
   }
 
-  export type UserAlbumUncheckedUpdateWithoutUserInput = {
+  export type AlbumUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    src?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    previewImage?: NullableStringFieldUpdateOperationsInput | string | null
+    shown?: BoolFieldUpdateOperationsInput | boolean
+    topicId?: NullableIntFieldUpdateOperationsInput | number | null
+    images?: ImageUncheckedUpdateManyWithoutAlbumsNestedInput
   }
 
-  export type UserAlbumUncheckedUpdateManyWithoutUserInput = {
+  export type AlbumUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    src?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    previewImage?: NullableStringFieldUpdateOperationsInput | string | null
+    shown?: BoolFieldUpdateOperationsInput | boolean
+    topicId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type FriendUpdateWithoutFriendOfInput = {
+    accepted?: BoolFieldUpdateOperationsInput | boolean
     friendUser?: UserUpdateOneRequiredWithoutFriendsNestedInput
   }
 
   export type FriendUncheckedUpdateWithoutFriendOfInput = {
     id?: IntFieldUpdateOperationsInput | number
     friendUserId?: IntFieldUpdateOperationsInput | number
+    accepted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type FriendUncheckedUpdateManyWithoutFriendOfInput = {
     id?: IntFieldUpdateOperationsInput | number
     friendUserId?: IntFieldUpdateOperationsInput | number
+    accepted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type FriendUpdateWithoutFriendUserInput = {
+    accepted?: BoolFieldUpdateOperationsInput | boolean
     friendOf?: UserUpdateOneRequiredWithoutFriendOfNestedInput
   }
 
   export type FriendUncheckedUpdateWithoutFriendUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     friendOfId?: IntFieldUpdateOperationsInput | number
+    accepted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type FriendUncheckedUpdateManyWithoutFriendUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     friendOfId?: IntFieldUpdateOperationsInput | number
+    accepted?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type AvatarUpdateWithoutUserInput = {
+    image?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    shown?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type AvatarUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    image?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    shown?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type AvatarUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    image?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    shown?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type ChatMessageUpdateWithoutAuthorInput = {
+    content?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    attachedImage?: NullableStringFieldUpdateOperationsInput | string | null
+    chatGroup?: ChatGroupUpdateOneRequiredWithoutMessagesNestedInput
+  }
+
+  export type ChatMessageUncheckedUpdateWithoutAuthorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    attachedImage?: NullableStringFieldUpdateOperationsInput | string | null
+    chatGroupId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ChatMessageUncheckedUpdateManyWithoutAuthorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    attachedImage?: NullableStringFieldUpdateOperationsInput | string | null
+    chatGroupId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ChatGroupUpdateWithoutMembersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    isPersonalChat?: BoolFieldUpdateOperationsInput | boolean
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: UserUpdateOneRequiredWithoutAdministeredGroupsNestedInput
+    messages?: ChatMessageUpdateManyWithoutChatGroupNestedInput
+  }
+
+  export type ChatGroupUncheckedUpdateWithoutMembersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    isPersonalChat?: BoolFieldUpdateOperationsInput | boolean
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: IntFieldUpdateOperationsInput | number
+    messages?: ChatMessageUncheckedUpdateManyWithoutChatGroupNestedInput
+  }
+
+  export type ChatGroupUncheckedUpdateManyWithoutMembersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    isPersonalChat?: BoolFieldUpdateOperationsInput | boolean
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ChatGroupUpdateWithoutAdminInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    isPersonalChat?: BoolFieldUpdateOperationsInput | boolean
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    members?: UserUpdateManyWithoutChatGroupsNestedInput
+    messages?: ChatMessageUpdateManyWithoutChatGroupNestedInput
+  }
+
+  export type ChatGroupUncheckedUpdateWithoutAdminInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    isPersonalChat?: BoolFieldUpdateOperationsInput | boolean
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    members?: UserUncheckedUpdateManyWithoutChatGroupsNestedInput
+    messages?: ChatMessageUncheckedUpdateManyWithoutChatGroupNestedInput
+  }
+
+  export type ChatGroupUncheckedUpdateManyWithoutAdminInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    isPersonalChat?: BoolFieldUpdateOperationsInput | boolean
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 

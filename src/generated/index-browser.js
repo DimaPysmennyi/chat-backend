@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.7.0
- * Query Engine version: 3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
+ * Prisma Client JS version: 6.10.1
+ * Query Engine version: 9b628578b3b7cae625e8c927178f15a170e74a9c
  */
 Prisma.prismaVersion = {
-  client: "6.7.0",
-  engine: "3cff47a7f5d65c3ea74883f1d736e41d68ce91ed"
+  client: "6.10.1",
+  engine: "9b628578b3b7cae625e8c927178f15a170e74a9c"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -117,26 +117,68 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UserAlbumScalarFieldEnum = {
+exports.Prisma.AlbumScalarFieldEnum = {
   id: 'id',
-  src: 'src',
-  userId: 'userId'
+  name: 'name',
+  createdAt: 'createdAt',
+  previewImage: 'previewImage',
+  userId: 'userId',
+  shown: 'shown',
+  topicId: 'topicId'
+};
+
+exports.Prisma.AvatarScalarFieldEnum = {
+  id: 'id',
+  image: 'image',
+  userId: 'userId',
+  active: 'active',
+  shown: 'shown'
+};
+
+exports.Prisma.ChatGroupScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  isPersonalChat: 'isPersonalChat',
+  avatar: 'avatar',
+  adminId: 'adminId'
+};
+
+exports.Prisma.ChatMessageScalarFieldEnum = {
+  id: 'id',
+  content: 'content',
+  sentAt: 'sentAt',
+  attachedImage: 'attachedImage',
+  authorId: 'authorId',
+  chatGroupId: 'chatGroupId'
 };
 
 exports.Prisma.FriendScalarFieldEnum = {
   id: 'id',
   friendUserId: 'friendUserId',
-  friendOfId: 'friendOfId'
+  friendOfId: 'friendOfId',
+  accepted: 'accepted'
 };
 
-exports.Prisma.UserPostScalarFieldEnum = {
+exports.Prisma.ImageScalarFieldEnum = {
+  id: 'id',
+  filename: 'filename',
+  url: 'url',
+  uploadedAt: 'uploadedAt'
+};
+
+exports.Prisma.LinkScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  postId: 'postId'
+};
+
+exports.Prisma.PostScalarFieldEnum = {
   id: 'id',
   title: 'title',
   topic: 'topic',
   tags: 'tags',
   content: 'content',
   links: 'links',
-  images: 'images',
   views: 'views',
   likes: 'likes',
   userId: 'userId'
@@ -165,9 +207,14 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  UserAlbum: 'UserAlbum',
+  Album: 'Album',
+  Avatar: 'Avatar',
+  ChatGroup: 'ChatGroup',
+  ChatMessage: 'ChatMessage',
   Friend: 'Friend',
-  UserPost: 'UserPost',
+  Image: 'Image',
+  Link: 'Link',
+  Post: 'Post',
   User: 'User'
 };
 

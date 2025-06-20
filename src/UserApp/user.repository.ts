@@ -127,7 +127,7 @@ async function addFriend(id: number, friendId: number) {
 
 async function createAlbum(data: CreateAlbum) {
 	try {
-		const album = client.userAlbum.create({
+		const album = client.album.create({
 			data,
 		});
 		return album;
