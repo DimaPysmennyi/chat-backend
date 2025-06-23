@@ -1,10 +1,10 @@
 model ChatGroup {
-  id             Int       @id @default(autoincrement())
+  id             Int           @id @default(autoincrement())
   name           String
-  isPersonalChat Boolean   @default(false)
+  isPersonalChat Boolean       @default(false)
   avatar         String?
   adminId        Int
-  admin          User      @relation("GroupAdmin", fields: [adminId], references: [id])
-  members        User[]    @relation("GroupMembers")
+  admin          User          @relation("GroupAdmin", fields: [adminId], references: [id])
+  members        User[]        @relation("GroupMembers")
   messages       ChatMessage[]
 }

@@ -1,10 +1,10 @@
 model ChatMessage {
-  id             Int       @id @default(autoincrement())
-  content        String
-  sentAt         DateTime  @default(now())
-  attachedImage  String?
-  authorId       Int
-  chatGroupId    Int
-  author         User      @relation("MessageAuthor", fields: [authorId], references: [id])
-  chatGroup      ChatGroup @relation(fields: [chatGroupId], references: [id])
+  id            Int       @id @default(autoincrement())
+  content       String
+  sentAt        DateTime  @default(now())
+  attachedImage String?
+  authorId      Int
+  chatGroupId   Int
+  author        User      @relation("MessageAuthor", fields: [authorId], references: [id])
+  chatGroup     ChatGroup @relation(fields: [chatGroupId], references: [id])
 }

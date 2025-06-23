@@ -5,9 +5,9 @@ model Album {
   previewImage String?
   userId       Int
   shown        Boolean  @default(true)
-  topicId      Int?
+  topic        String
   user         User     @relation(fields: [userId], references: [id])
-  images       Image[]  @relation("AlbumImages")
+  images       String?
 }
 
 model Avatar {
@@ -53,32 +53,27 @@ model Friend {
 model Image {
   id         Int      @id @default(autoincrement())
   filename   String
-  url        String
+  url        String   @default("/images/posts")
   uploadedAt DateTime @default(now())
-  posts      Post[]   @relation("PostImages")
-  albums     Album[]  @relation("AlbumImages")
 }
 
 model Link {
-  id     Int    @id @default(autoincrement())
-  url    String
-  postId Int
-  post   Post   @relation(fields: [postId], references: [id])
+  id  Int    @id @default(autoincrement())
+  url String
 }
 
 model Post {
-  id         Int     @id @default(autoincrement())
-  title      String
-  topic      String?
-  tags       String?
-  content    String
-  links      String?
-  views      Int     @default(0)
-  likes      Int     @default(0)
-  userId     Int
-  user       User    @relation(fields: [userId], references: [id])
-  postImages Image[] @relation("PostImages")
-  postLinks  Link[]
+  id      Int     @id @default(autoincrement())
+  title   String
+  topic   String?
+  tags    String?
+  content String
+  views   Int     @default(0)
+  likes   Int     @default(0)
+  user    User    @relation(fields: [userId], references: [id])
+  userId  Int
+  images  String?
+  links   String?
 }
 
 model User {

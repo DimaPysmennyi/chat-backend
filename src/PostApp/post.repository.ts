@@ -14,7 +14,7 @@ async function getAllPosts(){
 async function getPostById(id: number){
     try{
         const post = client.post.findUnique({
-            where: {id}
+            where: {id},
         })
         return post;
     } catch (error){
@@ -25,17 +25,14 @@ async function getPostById(id: number){
 async function createPost(data: CreatePost){
     try{
         const post = client.post.create({
-            data: data,
-            include: {
-                postImages: true,
-                postLinks: true
-            }
+            data: data
         });
         return post;
     } catch (error){
         handleError(error);       
     }
 }
+
 
 async function updatePost(id: number, data: UpdatePost){
     try{
@@ -76,5 +73,5 @@ export const repository = {
     createPost,
     updatePost,
     deletePost,
-    getPostsByUserId
+    getPostsByUserId,
 }

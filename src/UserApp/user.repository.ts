@@ -1,5 +1,5 @@
 import { client } from "../client/client";
-import { CreateAlbum, CreateUser, UpdateUser, User } from "./user.types";
+import { CreateAlbum, CreateUser, UpdateAlbum, UpdateUser, User } from "./user.types";
 import { handleError } from "../tools/handleError";
 
 async function findUserByEmail(email: string) {
@@ -57,7 +57,11 @@ async function updateUser(id: number, data: UpdateUser) {
 
 async function getAllFriends(id: number) {
 	try {
-		const friends = await client.friend.findMany({});
+		const friends = await client.friend.findMany({
+			where: {
+				accepted: true
+			}
+		});
         // console.log(id);
 		const filteredFriends = friends.filter((friend) => {
             // console.log(friend);
@@ -66,11 +70,13 @@ async function getAllFriends(id: number) {
 
         // console.log(filteredFriends)
 
-		const users: User[] = [];
+		const acceptedUsers: User[] = [];
+		// const requests: IUser[] = [];
 		for (let friend of filteredFriends) {
 			let user = await client.user.findUnique({
 				where: {
 					id: friend.friendUserId,
+					
 				},
 				select: {
 					id: true,
@@ -87,11 +93,11 @@ async function getAllFriends(id: number) {
 			});
             console.log(user);
             if (user){
-                users.push(user);
+                acceptedUsers.push(user);
             }
 		}
 
-		return users;
+		return {acceptedUsers};
 	} catch (error) {
 		handleError(error);
 	}
@@ -125,10 +131,33 @@ async function addFriend(id: number, friendId: number) {
 	}
 }
 
+async function acceptFriendship(id: number, friendId: number){
+	try{
+		const friendship = await client.friend.findFirst({
+			where: {
+				friendOfId: id,
+				friendUserId: friendId
+			}
+		})
+		const friend = client.friend.update({
+			where: {
+				id: friendship?.id
+			},
+			data: {
+				accepted: true
+			}
+		})
+		return friend
+	} catch(error){
+		handleError(error);
+	}
+}
+
 async function createAlbum(data: CreateAlbum) {
 	try {
 		const album = client.album.create({
-			data,
+			data: data,
+			
 		});
 		return album;
 	} catch (error) {
@@ -215,15 +244,29 @@ async function deleteFriend(id: number, friendId: number) {
 	}
 }
 
+async function updateAlbum(id: number, data: UpdateAlbum) {
+	try {
+		const album = client.album.update({
+			where: { id },
+			data: data,
+		});
+		return album;
+	} catch (error) {
+		handleError(error);
+	}
+}
+
 export const repository = {
 	findUserByEmail,
 	registerUser,
 	getUserAlbums,
 	getAllFriends,
 	addFriend,
+	deleteFriend,
+	acceptFriendship,
 	createAlbum,
 	getAllUsers,
 	updateUser,
 	getUserById,
-	deleteFriend,
+	updateAlbum,
 };

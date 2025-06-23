@@ -1,19 +1,18 @@
 model User {
-  id         Int       @id @default(autoincrement())
-  username   String?
-  email      String    @unique
-  firstname  String?
-  lastname   String?
-  password   String
-  image      String?
-  birthdate  String?
-  posts      Post[]
-  albums     Album[]
-  friendOf   Friend[]  @relation(name: "FriendOf")
-  friends    Friend[]  @relation(name: "Friend")
-  avatars    Avatar[]
-  sentMessages ChatMessage[] @relation("MessageAuthor")
-  chatGroups   ChatGroup[]   @relation("GroupMembers")
-  administeredGroups ChatGroup[] @relation("GroupAdmin")
-
+  id                 Int           @id @default(autoincrement())
+  username           String?
+  email              String        @unique
+  firstname          String?
+  lastname           String?
+  password           String
+  image              String?
+  birthdate          String?
+  posts              Post[]
+  albums             Album[]
+  friendOf           Friend[]      @relation(name: "FriendOf")
+  friends            Friend[]      @relation(name: "Friend")
+  avatars            Avatar[]
+  sentMessages       ChatMessage[] @relation("MessageAuthor")
+  chatGroups         ChatGroup[]   @relation("GroupMembers")
+  administeredGroups ChatGroup[]   @relation("GroupAdmin")
 }

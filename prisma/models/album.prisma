@@ -4,8 +4,8 @@ model Album {
   createdAt    DateTime @default(now())
   previewImage String?
   userId       Int
-  shown        Boolean @default(true)
-  topicId      Int?
+  shown        Boolean  @default(true)
+  topic        String
   user         User     @relation(fields: [userId], references: [id])
-  images       Image[]  @relation("AlbumImages")
+  images       String?
 }

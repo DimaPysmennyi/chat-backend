@@ -124,7 +124,8 @@ exports.Prisma.AlbumScalarFieldEnum = {
   previewImage: 'previewImage',
   userId: 'userId',
   shown: 'shown',
-  topicId: 'topicId'
+  topic: 'topic',
+  images: 'images'
 };
 
 exports.Prisma.AvatarScalarFieldEnum = {
@@ -168,8 +169,7 @@ exports.Prisma.ImageScalarFieldEnum = {
 
 exports.Prisma.LinkScalarFieldEnum = {
   id: 'id',
-  url: 'url',
-  postId: 'postId'
+  url: 'url'
 };
 
 exports.Prisma.PostScalarFieldEnum = {
@@ -178,10 +178,11 @@ exports.Prisma.PostScalarFieldEnum = {
   topic: 'topic',
   tags: 'tags',
   content: 'content',
-  links: 'links',
   views: 'views',
   likes: 'likes',
-  userId: 'userId'
+  userId: 'userId',
+  images: 'images',
+  links: 'links'
 };
 
 exports.Prisma.UserScalarFieldEnum = {

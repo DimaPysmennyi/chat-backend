@@ -4,7 +4,7 @@ import { service } from "./user.service";
 async function registerUser(req: Request, res: Response){
     const {code, ...data} = req.body;
     service.saveCode(data.email, code);
-    const codeResult = await service.verifyCode(data.email, code);
+    const codeResult = service.verifyCode(data.email, code);
     
     if (codeResult.status == "error"){
         res.json(codeResult);
@@ -74,9 +74,21 @@ async function addFriend(req: Request, res: Response){
     res.json(result);
 }
 
+async function acceptFriendship(req: Request, res: Response){
+    const data = req.body;
+    const result = await service.acceptFriendship(+req.params.id, +data.id);
+    res.json(result);
+}
+
 async function deleteFriend(req: Request, res: Response){
     const data = req.body;
     const result = await service.deleteFriend(+req.params.id, +data.id);
+    res.json(result);
+}
+
+async function updateAlbum(req: Request, res: Response){
+    const id = +req.params.id;
+    const result = await service.updateAlbum(id, req.body)
     res.json(result);
 }
 
@@ -92,5 +104,7 @@ export const controller = {
     getAllFriends,
     createAlbum,
     addFriend,
-    deleteFriend
+    acceptFriendship,
+    deleteFriend,
+    updateAlbum
 }

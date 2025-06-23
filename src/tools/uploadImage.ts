@@ -20,5 +20,6 @@ export async function uploadImage(base64: string): Promise<IUploadImageOutput> {
 	} catch (error) {
 		console.log(error);
 	}
+	console.log(fileName);
 	return { fileName };
 }
