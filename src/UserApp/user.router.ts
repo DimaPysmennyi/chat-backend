@@ -9,15 +9,11 @@ router.post('/login', controller.authUser);
 router.post('/send-code', controller.sendCode);
 router.get('/me', authTokenMiddleware, controller.getUserByToken);
 router.get('/all', controller.getAllUsers);
-router.get('/friends/:id', controller.getAllFriends);
 router.get('/albums/:id', controller.getUserAlbums);
 router.get('/unique/:id', controller.getUserById);
 router.post('/update/:id', controller.updateUser);
 router.post('/create-album', controller.createAlbum);
-router.post('/albums/update/:id', controller.updateAlbum)
-router.post('/add-friend/:id', controller.addFriend);
-router.post('/accept-friend/:id', controller.acceptFriendship);
-router.post('/delete-friend/:id', controller.deleteFriend);
+router.post('/albums/update/:id', controller.updateAlbum);
 
 
 export default router;

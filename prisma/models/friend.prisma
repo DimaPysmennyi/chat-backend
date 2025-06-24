@@ -1,8 +1,0 @@
-model Friend {
-  id           Int     @id @default(autoincrement())
-  friendUserId Int
-  friendOfId   Int
-  accepted     Boolean @default(false)
-  friendUser   User    @relation(name: "Friend", fields: [friendUserId], references: [id])
-  friendOf     User    @relation(name: "FriendOf", fields: [friendOfId], references: [id])
-}

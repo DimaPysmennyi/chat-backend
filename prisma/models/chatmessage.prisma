@@ -3,8 +3,8 @@ model ChatMessage {
   content       String
   sentAt        DateTime  @default(now())
   attachedImage String?
-  authorId      Int
-  chatGroupId   Int
   author        User      @relation("MessageAuthor", fields: [authorId], references: [id])
+  authorId      Int
   chatGroup     ChatGroup @relation(fields: [chatGroupId], references: [id])
+  chatGroupId   Int
 }

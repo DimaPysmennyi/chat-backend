@@ -1,0 +1,8 @@
+model Friendship {
+  id         Int     @id @default(autoincrement())
+  accepted   Boolean @default(false)
+  profile1   User    @relation(name: "friendship_sent_request", fields: [profile1Id], references: [id])
+  profile2   User    @relation(name: "friendship_accepted_request", fields: [profile2Id], references: [id])
+  profile1Id Int
+  profile2Id Int
+}

@@ -124,8 +124,7 @@ exports.Prisma.AlbumScalarFieldEnum = {
   previewImage: 'previewImage',
   userId: 'userId',
   shown: 'shown',
-  topic: 'topic',
-  images: 'images'
+  topic: 'topic'
 };
 
 exports.Prisma.AvatarScalarFieldEnum = {
@@ -153,18 +152,20 @@ exports.Prisma.ChatMessageScalarFieldEnum = {
   chatGroupId: 'chatGroupId'
 };
 
-exports.Prisma.FriendScalarFieldEnum = {
+exports.Prisma.FriendshipScalarFieldEnum = {
   id: 'id',
-  friendUserId: 'friendUserId',
-  friendOfId: 'friendOfId',
-  accepted: 'accepted'
+  accepted: 'accepted',
+  profile1Id: 'profile1Id',
+  profile2Id: 'profile2Id'
 };
 
 exports.Prisma.ImageScalarFieldEnum = {
   id: 'id',
   filename: 'filename',
-  url: 'url',
-  uploadedAt: 'uploadedAt'
+  file: 'file',
+  uploadedAt: 'uploadedAt',
+  postId: 'postId',
+  albumId: 'albumId'
 };
 
 exports.Prisma.LinkScalarFieldEnum = {
@@ -181,7 +182,6 @@ exports.Prisma.PostScalarFieldEnum = {
   views: 'views',
   likes: 'likes',
   userId: 'userId',
-  images: 'images',
   links: 'links'
 };
 
@@ -194,6 +194,11 @@ exports.Prisma.UserScalarFieldEnum = {
   password: 'password',
   image: 'image',
   birthdate: 'birthdate'
+};
+
+exports.Prisma.UsersOnChatsScalarFieldEnum = {
+  userId: 'userId',
+  chatId: 'chatId'
 };
 
 exports.Prisma.SortOrder = {
@@ -212,11 +217,12 @@ exports.Prisma.ModelName = {
   Avatar: 'Avatar',
   ChatGroup: 'ChatGroup',
   ChatMessage: 'ChatMessage',
-  Friend: 'Friend',
+  Friendship: 'Friendship',
   Image: 'Image',
   Link: 'Link',
   Post: 'Post',
-  User: 'User'
+  User: 'User',
+  UsersOnChats: 'UsersOnChats'
 };
 
 /**

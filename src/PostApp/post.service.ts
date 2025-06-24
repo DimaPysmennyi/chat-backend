@@ -1,3 +1,4 @@
+import { createImage } from "../tools/createImage";
 import { uploadImage } from "../tools/uploadImage";
 import { IError, ISuccess } from "../types/types";
 import { repository } from "./post.repository";
@@ -22,22 +23,17 @@ async function getPostById(id: number): Promise <IError | ISuccess<Post>>{
 }
 
 async function createPost(data: CreatePost): Promise <IError | ISuccess<Post>>{
-    var imagesString = ""
-    if (data.images){
-        const images = data.images.split(" ");
-        if (images.length > 1){
-            for (let image of images){
-                const {fileName} = await uploadImage(image); 
-                imagesString += ` ${fileName}`
-            }
-        } else{
-            const {fileName} = await uploadImage(images[0]);
-            imagesString += fileName
+	let post;
+	if (data.images) {
+        let images = []
+        for (let image of data.images){
+            const {fileName} = await uploadImage(image)
+            images.push(fileName);
         }
-    }
-
-    console.log(imagesString);
-    const post = await repository.createPost({...data, images: imagesString});
+        
+        post = await repository.createPost({...data, images: images})
+	}
+    post = await repository.createPost(data);
     if (!post){
         return {status: "error", message: "Post did not create"}
     }

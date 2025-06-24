@@ -7,7 +7,7 @@ model Album {
   shown        Boolean  @default(true)
   topic        String
   user         User     @relation(fields: [userId], references: [id])
-  images       String?
+  images       Image[]
 }
 
 model Avatar {
@@ -20,13 +20,13 @@ model Avatar {
 }
 
 model ChatGroup {
-  id             Int           @id @default(autoincrement())
-  name           String
-  isPersonalChat Boolean       @default(false)
+  id             Int            @id @default(autoincrement())
+  name           String?
+  isPersonalChat Boolean        @default(false)
   avatar         String?
   adminId        Int
-  admin          User          @relation("GroupAdmin", fields: [adminId], references: [id])
-  members        User[]        @relation("GroupMembers")
+  admin          User           @relation("GroupAdmin", fields: [adminId], references: [id])
+  members        UsersOnChats[]
   messages       ChatMessage[]
 }
 
@@ -35,26 +35,30 @@ model ChatMessage {
   content       String
   sentAt        DateTime  @default(now())
   attachedImage String?
-  authorId      Int
-  chatGroupId   Int
   author        User      @relation("MessageAuthor", fields: [authorId], references: [id])
+  authorId      Int
   chatGroup     ChatGroup @relation(fields: [chatGroupId], references: [id])
+  chatGroupId   Int
 }
 
-model Friend {
-  id           Int     @id @default(autoincrement())
-  friendUserId Int
-  friendOfId   Int
-  accepted     Boolean @default(false)
-  friendUser   User    @relation(name: "Friend", fields: [friendUserId], references: [id])
-  friendOf     User    @relation(name: "FriendOf", fields: [friendOfId], references: [id])
+model Friendship {
+  id         Int     @id @default(autoincrement())
+  accepted   Boolean @default(false)
+  profile1   User    @relation(name: "friendship_sent_request", fields: [profile1Id], references: [id])
+  profile2   User    @relation(name: "friendship_accepted_request", fields: [profile2Id], references: [id])
+  profile1Id Int
+  profile2Id Int
 }
 
 model Image {
   id         Int      @id @default(autoincrement())
   filename   String
-  url        String   @default("/images/posts")
+  file       String   @default("/images/posts")
   uploadedAt DateTime @default(now())
+  post       Post?    @relation(fields: [postId], references: [id])
+  postId     Int?
+  album      Album?   @relation(fields: [albumId], references: [id])
+  albumId    Int?
 }
 
 model Link {
@@ -72,14 +76,14 @@ model Post {
   likes   Int     @default(0)
   user    User    @relation(fields: [userId], references: [id])
   userId  Int
-  images  String?
+  images  Image[]
   links   String?
 }
 
 model User {
-  id                 Int           @id @default(autoincrement())
+  id                 Int            @id @default(autoincrement())
   username           String?
-  email              String        @unique
+  email              String         @unique
   firstname          String?
   lastname           String?
   password           String
@@ -87,12 +91,21 @@ model User {
   birthdate          String?
   posts              Post[]
   albums             Album[]
-  friendOf           Friend[]      @relation(name: "FriendOf")
-  friends            Friend[]      @relation(name: "Friend")
+  sentRequests       Friendship[]   @relation(name: "friendship_sent_request")
+  receivedRequests   Friendship[]   @relation(name: "friendship_accepted_request")
   avatars            Avatar[]
-  sentMessages       ChatMessage[] @relation("MessageAuthor")
-  chatGroups         ChatGroup[]   @relation("GroupMembers")
-  administeredGroups ChatGroup[]   @relation("GroupAdmin")
+  sentMessages       ChatMessage[]  @relation("MessageAuthor")
+  chatGroups         UsersOnChats[]
+  administeredGroups ChatGroup[]    @relation("GroupAdmin")
+}
+
+model UsersOnChats {
+  user   User      @relation(fields: [userId], references: [id])
+  userId Int
+  chat   ChatGroup @relation(fields: [chatId], references: [id])
+  chatId Int
+
+  @@id([userId, chatId])
 }
 
 // This is your Prisma schema file,

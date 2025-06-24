@@ -1,6 +1,10 @@
 model Image {
   id         Int      @id @default(autoincrement())
   filename   String
-  url        String   @default("/images/posts")
+  file       String   @default("/images/posts")
   uploadedAt DateTime @default(now())
+  post       Post?    @relation(fields: [postId], references: [id])
+  postId     Int?
+  album      Album?   @relation(fields: [albumId], references: [id])
+  albumId    Int?
 }

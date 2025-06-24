@@ -9,18 +9,24 @@ export type User = Prisma.UserGetPayload<{
         lastname?: true,
         posts: true,
         albums: true,
-        friends: true,
         image?: true,
         birthdate?: true
     }
 }>;
 
 export type Album = Prisma.AlbumGetPayload<{}>;
-export type Friend = Prisma.FriendGetPayload<{}>;
 
 export type CreateUser = Prisma.UserUncheckedCreateInput;
 export type CreateAlbum = Prisma.AlbumUncheckedCreateInput;
-export type CreateFriend = Prisma.FriendUncheckedCreateInput;
-export type UpdateAlbum = Prisma.AlbumUncheckedUpdateInput;
+export type UpdateAlbum ={
+    id?: number;
+    name?: string;
+    createdAt?: Date;
+    previewImage?: string | null;
+    userId?: number;
+    shown?: boolean;
+    topic?: string;
+    images: string[]
+};
 
 export type UpdateUser = Prisma.UserUncheckedUpdateInput;

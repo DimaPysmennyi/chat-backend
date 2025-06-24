@@ -7,3 +7,5 @@ export interface ISuccess<T>{
     status: string,
     data: T
 }
+
+export type Result<T> = IError | ISuccess<T>

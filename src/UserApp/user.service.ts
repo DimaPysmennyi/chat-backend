@@ -1,9 +1,7 @@
 import {
 	Album,
 	CreateAlbum,
-	CreateFriend,
 	CreateUser,
-	Friend,
 	UpdateAlbum,
 	UpdateUser,
 	User,
@@ -68,15 +66,6 @@ async function getUserAlbums(id: number): Promise<IError | ISuccess<Album[]>> {
 	return { status: "success", data: result.albums };
 }
 
-async function getAllFriends(id: number): Promise<IError | ISuccess<User[]>> {
-	// console.log(id);
-	const result = await repository.getAllFriends(id);
-	if (!result) {
-		return { status: "error", message: "Friends Not Found" };
-	}
-	return { status: "success", data: result };
-}
-
 async function createAlbum(
 	data: CreateAlbum
 ): Promise<IError | ISuccess<Album>> {
@@ -88,38 +77,6 @@ async function createAlbum(
 	return { status: "success", data: album };
 }
 
-async function addFriend(
-	id: number,
-	friendId: number
-): Promise<IError | ISuccess<Friend>> {
-	const friend = await repository.addFriend(id, friendId);
-	if (!friend) {
-		return { status: "error", message: "Could not add friend" };
-	}
-	return { status: "success", data: friend };
-}
-
-async function acceptFriendship(
-	id: number,
-	friendId: number
-): Promise<IError | ISuccess<Friend>> {
-	const friend = await repository.acceptFriendship(id, friendId);
-	if (!friend) {
-		return { status: "error", message: "Could not accept friend" };
-	}
-	return { status: "success", data: friend };
-}
-
-async function deleteFriend(
-	id: number,
-	friendId: number
-): Promise<IError | ISuccess<Friend>> {
-	const friend = await repository.deleteFriend(id, friendId);
-	if (!friend) {
-		return { status: "error", message: "Could not delete friend" };
-	}
-	return { status: "success", data: friend };
-}
 
 async function getUserById(id: number): Promise<IError | ISuccess<User>> {
 	const user = await repository.getUserById(id);
@@ -211,23 +168,17 @@ async function updateAlbum(
 	id: number,
 	data: UpdateAlbum
 ): Promise<IError | ISuccess<Album>> {
-	var imagesString = "";
-	if (data.images && typeof data.images === "string") {
-		const images = data.images.split(" ");
-		if (images.length > 1) {
-			for (let image of images) {
-				const { fileName } = await uploadImage(image);
-				imagesString += ` ${fileName}`;
-			}
-		} else {
-			const { fileName } = await uploadImage(images[0]);
-			imagesString += fileName;
+	let album;
+	if (data.images) {
+		let images = []
+		for (let image of data.images){
+			const {fileName} = await uploadImage(image)
+			images.push(fileName);
 		}
+		
+		album = await repository.updateAlbum(id, {...data, images: images})
 	}
-	const album = await repository.updateAlbum(id, {
-		...data,
-		images: imagesString,
-	});
+	album = await repository.updateAlbum(id, data);
 	if (!album) {
 		return { status: "error", message: "Album not found" };
 	}
@@ -245,9 +196,5 @@ export const service = {
 	saveCode,
 	getUserAlbums,
 	createAlbum,
-	getAllFriends,
-	addFriend,
-    acceptFriendship,
-	deleteFriend,
 	updateAlbum,
 };

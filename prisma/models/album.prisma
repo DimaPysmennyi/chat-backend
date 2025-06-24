@@ -7,5 +7,5 @@ model Album {
   shown        Boolean  @default(true)
   topic        String
   user         User     @relation(fields: [userId], references: [id])
-  images       String?
+  images       Image[]
 }
