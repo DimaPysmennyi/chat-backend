@@ -41,7 +41,7 @@ async function createPost(data: CreatePost) {
                 ...otherData
             },
 		});
-        if (images.length > 0){
+        if (images.length !== 0){
             await client.image.createMany({
                 data: images.map((image) => ({
                     filename: image,

@@ -13,7 +13,7 @@ export const repository = {
 		});
 	},
 	getAllFriends: async (userId: number) => {
-		return client.user.findMany({
+		return await client.user.findMany({
 			where: {
 				OR: [
 					{
@@ -25,7 +25,7 @@ export const repository = {
 						},
 					},
 					{
-						receivedRequests: {
+						sentRequests: {
 							some: {
 								profile2Id: userId,
 								accepted: true,

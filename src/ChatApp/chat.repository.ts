@@ -45,11 +45,15 @@ export const repository = {
         })
     },
     getAllChats: async (userId: number) => {
-        return client.chatGroup.findFirstOrThrow({
+        return client.chatGroup.findMany({
             where: {
                 members: {
                     some: {userId}
                 }
+            },
+            include: {
+                members: true,
+                messages: true
             }
         })
     }
