@@ -1755,6 +1755,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type ChatMessageCountOutputType
+   */
+
+  export type ChatMessageCountOutputType = {
+    attachedImage: number
+  }
+
+  export type ChatMessageCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    attachedImage?: boolean | ChatMessageCountOutputTypeCountAttachedImageArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ChatMessageCountOutputType without action
+   */
+  export type ChatMessageCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessageCountOutputType
+     */
+    select?: ChatMessageCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ChatMessageCountOutputType without action
+   */
+  export type ChatMessageCountOutputTypeCountAttachedImageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ImageWhereInput
+  }
+
+
+  /**
    * Count Type PostCountOutputType
    */
 
@@ -5307,7 +5338,6 @@ export namespace Prisma {
     id: number | null
     content: string | null
     sentAt: Date | null
-    attachedImage: string | null
     authorId: number | null
     chatGroupId: number | null
   }
@@ -5316,7 +5346,6 @@ export namespace Prisma {
     id: number | null
     content: string | null
     sentAt: Date | null
-    attachedImage: string | null
     authorId: number | null
     chatGroupId: number | null
   }
@@ -5325,7 +5354,6 @@ export namespace Prisma {
     id: number
     content: number
     sentAt: number
-    attachedImage: number
     authorId: number
     chatGroupId: number
     _all: number
@@ -5348,7 +5376,6 @@ export namespace Prisma {
     id?: true
     content?: true
     sentAt?: true
-    attachedImage?: true
     authorId?: true
     chatGroupId?: true
   }
@@ -5357,7 +5384,6 @@ export namespace Prisma {
     id?: true
     content?: true
     sentAt?: true
-    attachedImage?: true
     authorId?: true
     chatGroupId?: true
   }
@@ -5366,7 +5392,6 @@ export namespace Prisma {
     id?: true
     content?: true
     sentAt?: true
-    attachedImage?: true
     authorId?: true
     chatGroupId?: true
     _all?: true
@@ -5462,7 +5487,6 @@ export namespace Prisma {
     id: number
     content: string
     sentAt: Date
-    attachedImage: string | null
     authorId: number
     chatGroupId: number
     _count: ChatMessageCountAggregateOutputType | null
@@ -5490,18 +5514,18 @@ export namespace Prisma {
     id?: boolean
     content?: boolean
     sentAt?: boolean
-    attachedImage?: boolean
     authorId?: boolean
     chatGroupId?: boolean
+    attachedImage?: boolean | ChatMessage$attachedImageArgs<ExtArgs>
     author?: boolean | UserDefaultArgs<ExtArgs>
     chatGroup?: boolean | ChatGroupDefaultArgs<ExtArgs>
+    _count?: boolean | ChatMessageCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["chatMessage"]>
 
   export type ChatMessageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     content?: boolean
     sentAt?: boolean
-    attachedImage?: boolean
     authorId?: boolean
     chatGroupId?: boolean
     author?: boolean | UserDefaultArgs<ExtArgs>
@@ -5512,7 +5536,6 @@ export namespace Prisma {
     id?: boolean
     content?: boolean
     sentAt?: boolean
-    attachedImage?: boolean
     authorId?: boolean
     chatGroupId?: boolean
     author?: boolean | UserDefaultArgs<ExtArgs>
@@ -5523,15 +5546,16 @@ export namespace Prisma {
     id?: boolean
     content?: boolean
     sentAt?: boolean
-    attachedImage?: boolean
     authorId?: boolean
     chatGroupId?: boolean
   }
 
-  export type ChatMessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "content" | "sentAt" | "attachedImage" | "authorId" | "chatGroupId", ExtArgs["result"]["chatMessage"]>
+  export type ChatMessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "content" | "sentAt" | "authorId" | "chatGroupId", ExtArgs["result"]["chatMessage"]>
   export type ChatMessageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    attachedImage?: boolean | ChatMessage$attachedImageArgs<ExtArgs>
     author?: boolean | UserDefaultArgs<ExtArgs>
     chatGroup?: boolean | ChatGroupDefaultArgs<ExtArgs>
+    _count?: boolean | ChatMessageCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ChatMessageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     author?: boolean | UserDefaultArgs<ExtArgs>
@@ -5545,6 +5569,7 @@ export namespace Prisma {
   export type $ChatMessagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ChatMessage"
     objects: {
+      attachedImage: Prisma.$ImagePayload<ExtArgs>[]
       author: Prisma.$UserPayload<ExtArgs>
       chatGroup: Prisma.$ChatGroupPayload<ExtArgs>
     }
@@ -5552,7 +5577,6 @@ export namespace Prisma {
       id: number
       content: string
       sentAt: Date
-      attachedImage: string | null
       authorId: number
       chatGroupId: number
     }, ExtArgs["result"]["chatMessage"]>
@@ -5949,6 +5973,7 @@ export namespace Prisma {
    */
   export interface Prisma__ChatMessageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    attachedImage<T extends ChatMessage$attachedImageArgs<ExtArgs> = {}>(args?: Subset<T, ChatMessage$attachedImageArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     chatGroup<T extends ChatGroupDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ChatGroupDefaultArgs<ExtArgs>>): Prisma__ChatGroupClient<$Result.GetResult<Prisma.$ChatGroupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
@@ -5983,7 +6008,6 @@ export namespace Prisma {
     readonly id: FieldRef<"ChatMessage", 'Int'>
     readonly content: FieldRef<"ChatMessage", 'String'>
     readonly sentAt: FieldRef<"ChatMessage", 'DateTime'>
-    readonly attachedImage: FieldRef<"ChatMessage", 'String'>
     readonly authorId: FieldRef<"ChatMessage", 'Int'>
     readonly chatGroupId: FieldRef<"ChatMessage", 'Int'>
   }
@@ -6377,6 +6401,30 @@ export namespace Prisma {
      * Limit how many ChatMessages to delete.
      */
     limit?: number
+  }
+
+  /**
+   * ChatMessage.attachedImage
+   */
+  export type ChatMessage$attachedImageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    where?: ImageWhereInput
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
+    cursor?: ImageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ImageScalarFieldEnum | ImageScalarFieldEnum[]
   }
 
   /**
@@ -7507,12 +7555,14 @@ export namespace Prisma {
     id: number | null
     postId: number | null
     albumId: number | null
+    messageId: number | null
   }
 
   export type ImageSumAggregateOutputType = {
     id: number | null
     postId: number | null
     albumId: number | null
+    messageId: number | null
   }
 
   export type ImageMinAggregateOutputType = {
@@ -7522,6 +7572,7 @@ export namespace Prisma {
     uploadedAt: Date | null
     postId: number | null
     albumId: number | null
+    messageId: number | null
   }
 
   export type ImageMaxAggregateOutputType = {
@@ -7531,6 +7582,7 @@ export namespace Prisma {
     uploadedAt: Date | null
     postId: number | null
     albumId: number | null
+    messageId: number | null
   }
 
   export type ImageCountAggregateOutputType = {
@@ -7540,6 +7592,7 @@ export namespace Prisma {
     uploadedAt: number
     postId: number
     albumId: number
+    messageId: number
     _all: number
   }
 
@@ -7548,12 +7601,14 @@ export namespace Prisma {
     id?: true
     postId?: true
     albumId?: true
+    messageId?: true
   }
 
   export type ImageSumAggregateInputType = {
     id?: true
     postId?: true
     albumId?: true
+    messageId?: true
   }
 
   export type ImageMinAggregateInputType = {
@@ -7563,6 +7618,7 @@ export namespace Prisma {
     uploadedAt?: true
     postId?: true
     albumId?: true
+    messageId?: true
   }
 
   export type ImageMaxAggregateInputType = {
@@ -7572,6 +7628,7 @@ export namespace Prisma {
     uploadedAt?: true
     postId?: true
     albumId?: true
+    messageId?: true
   }
 
   export type ImageCountAggregateInputType = {
@@ -7581,6 +7638,7 @@ export namespace Prisma {
     uploadedAt?: true
     postId?: true
     albumId?: true
+    messageId?: true
     _all?: true
   }
 
@@ -7677,6 +7735,7 @@ export namespace Prisma {
     uploadedAt: Date
     postId: number | null
     albumId: number | null
+    messageId: number | null
     _count: ImageCountAggregateOutputType | null
     _avg: ImageAvgAggregateOutputType | null
     _sum: ImageSumAggregateOutputType | null
@@ -7705,8 +7764,10 @@ export namespace Prisma {
     uploadedAt?: boolean
     postId?: boolean
     albumId?: boolean
+    messageId?: boolean
     post?: boolean | Image$postArgs<ExtArgs>
     album?: boolean | Image$albumArgs<ExtArgs>
+    message?: boolean | Image$messageArgs<ExtArgs>
   }, ExtArgs["result"]["image"]>
 
   export type ImageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7716,8 +7777,10 @@ export namespace Prisma {
     uploadedAt?: boolean
     postId?: boolean
     albumId?: boolean
+    messageId?: boolean
     post?: boolean | Image$postArgs<ExtArgs>
     album?: boolean | Image$albumArgs<ExtArgs>
+    message?: boolean | Image$messageArgs<ExtArgs>
   }, ExtArgs["result"]["image"]>
 
   export type ImageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7727,8 +7790,10 @@ export namespace Prisma {
     uploadedAt?: boolean
     postId?: boolean
     albumId?: boolean
+    messageId?: boolean
     post?: boolean | Image$postArgs<ExtArgs>
     album?: boolean | Image$albumArgs<ExtArgs>
+    message?: boolean | Image$messageArgs<ExtArgs>
   }, ExtArgs["result"]["image"]>
 
   export type ImageSelectScalar = {
@@ -7738,20 +7803,24 @@ export namespace Prisma {
     uploadedAt?: boolean
     postId?: boolean
     albumId?: boolean
+    messageId?: boolean
   }
 
-  export type ImageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "filename" | "file" | "uploadedAt" | "postId" | "albumId", ExtArgs["result"]["image"]>
+  export type ImageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "filename" | "file" | "uploadedAt" | "postId" | "albumId" | "messageId", ExtArgs["result"]["image"]>
   export type ImageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     post?: boolean | Image$postArgs<ExtArgs>
     album?: boolean | Image$albumArgs<ExtArgs>
+    message?: boolean | Image$messageArgs<ExtArgs>
   }
   export type ImageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     post?: boolean | Image$postArgs<ExtArgs>
     album?: boolean | Image$albumArgs<ExtArgs>
+    message?: boolean | Image$messageArgs<ExtArgs>
   }
   export type ImageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     post?: boolean | Image$postArgs<ExtArgs>
     album?: boolean | Image$albumArgs<ExtArgs>
+    message?: boolean | Image$messageArgs<ExtArgs>
   }
 
   export type $ImagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7759,6 +7828,7 @@ export namespace Prisma {
     objects: {
       post: Prisma.$PostPayload<ExtArgs> | null
       album: Prisma.$AlbumPayload<ExtArgs> | null
+      message: Prisma.$ChatMessagePayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -7767,6 +7837,7 @@ export namespace Prisma {
       uploadedAt: Date
       postId: number | null
       albumId: number | null
+      messageId: number | null
     }, ExtArgs["result"]["image"]>
     composites: {}
   }
@@ -8163,6 +8234,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     post<T extends Image$postArgs<ExtArgs> = {}>(args?: Subset<T, Image$postArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     album<T extends Image$albumArgs<ExtArgs> = {}>(args?: Subset<T, Image$albumArgs<ExtArgs>>): Prisma__AlbumClient<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    message<T extends Image$messageArgs<ExtArgs> = {}>(args?: Subset<T, Image$messageArgs<ExtArgs>>): Prisma__ChatMessageClient<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8198,6 +8270,7 @@ export namespace Prisma {
     readonly uploadedAt: FieldRef<"Image", 'DateTime'>
     readonly postId: FieldRef<"Image", 'Int'>
     readonly albumId: FieldRef<"Image", 'Int'>
+    readonly messageId: FieldRef<"Image", 'Int'>
   }
     
 
@@ -8627,6 +8700,25 @@ export namespace Prisma {
      */
     include?: AlbumInclude<ExtArgs> | null
     where?: AlbumWhereInput
+  }
+
+  /**
+   * Image.message
+   */
+  export type Image$messageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatMessage
+     */
+    omit?: ChatMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+    where?: ChatMessageWhereInput
   }
 
   /**
@@ -13270,7 +13362,6 @@ export namespace Prisma {
     id: 'id',
     content: 'content',
     sentAt: 'sentAt',
-    attachedImage: 'attachedImage',
     authorId: 'authorId',
     chatGroupId: 'chatGroupId'
   };
@@ -13294,7 +13385,8 @@ export namespace Prisma {
     file: 'file',
     uploadedAt: 'uploadedAt',
     postId: 'postId',
-    albumId: 'albumId'
+    albumId: 'albumId',
+    messageId: 'messageId'
   };
 
   export type ImageScalarFieldEnum = (typeof ImageScalarFieldEnum)[keyof typeof ImageScalarFieldEnum]
@@ -13601,9 +13693,9 @@ export namespace Prisma {
     id?: IntFilter<"ChatMessage"> | number
     content?: StringFilter<"ChatMessage"> | string
     sentAt?: DateTimeFilter<"ChatMessage"> | Date | string
-    attachedImage?: StringNullableFilter<"ChatMessage"> | string | null
     authorId?: IntFilter<"ChatMessage"> | number
     chatGroupId?: IntFilter<"ChatMessage"> | number
+    attachedImage?: ImageListRelationFilter
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
     chatGroup?: XOR<ChatGroupScalarRelationFilter, ChatGroupWhereInput>
   }
@@ -13612,9 +13704,9 @@ export namespace Prisma {
     id?: SortOrder
     content?: SortOrder
     sentAt?: SortOrder
-    attachedImage?: SortOrderInput | SortOrder
     authorId?: SortOrder
     chatGroupId?: SortOrder
+    attachedImage?: ImageOrderByRelationAggregateInput
     author?: UserOrderByWithRelationInput
     chatGroup?: ChatGroupOrderByWithRelationInput
   }
@@ -13626,9 +13718,9 @@ export namespace Prisma {
     NOT?: ChatMessageWhereInput | ChatMessageWhereInput[]
     content?: StringFilter<"ChatMessage"> | string
     sentAt?: DateTimeFilter<"ChatMessage"> | Date | string
-    attachedImage?: StringNullableFilter<"ChatMessage"> | string | null
     authorId?: IntFilter<"ChatMessage"> | number
     chatGroupId?: IntFilter<"ChatMessage"> | number
+    attachedImage?: ImageListRelationFilter
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
     chatGroup?: XOR<ChatGroupScalarRelationFilter, ChatGroupWhereInput>
   }, "id">
@@ -13637,7 +13729,6 @@ export namespace Prisma {
     id?: SortOrder
     content?: SortOrder
     sentAt?: SortOrder
-    attachedImage?: SortOrderInput | SortOrder
     authorId?: SortOrder
     chatGroupId?: SortOrder
     _count?: ChatMessageCountOrderByAggregateInput
@@ -13654,7 +13745,6 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"ChatMessage"> | number
     content?: StringWithAggregatesFilter<"ChatMessage"> | string
     sentAt?: DateTimeWithAggregatesFilter<"ChatMessage"> | Date | string
-    attachedImage?: StringNullableWithAggregatesFilter<"ChatMessage"> | string | null
     authorId?: IntWithAggregatesFilter<"ChatMessage"> | number
     chatGroupId?: IntWithAggregatesFilter<"ChatMessage"> | number
   }
@@ -13724,8 +13814,10 @@ export namespace Prisma {
     uploadedAt?: DateTimeFilter<"Image"> | Date | string
     postId?: IntNullableFilter<"Image"> | number | null
     albumId?: IntNullableFilter<"Image"> | number | null
+    messageId?: IntNullableFilter<"Image"> | number | null
     post?: XOR<PostNullableScalarRelationFilter, PostWhereInput> | null
     album?: XOR<AlbumNullableScalarRelationFilter, AlbumWhereInput> | null
+    message?: XOR<ChatMessageNullableScalarRelationFilter, ChatMessageWhereInput> | null
   }
 
   export type ImageOrderByWithRelationInput = {
@@ -13735,8 +13827,10 @@ export namespace Prisma {
     uploadedAt?: SortOrder
     postId?: SortOrderInput | SortOrder
     albumId?: SortOrderInput | SortOrder
+    messageId?: SortOrderInput | SortOrder
     post?: PostOrderByWithRelationInput
     album?: AlbumOrderByWithRelationInput
+    message?: ChatMessageOrderByWithRelationInput
   }
 
   export type ImageWhereUniqueInput = Prisma.AtLeast<{
@@ -13749,8 +13843,10 @@ export namespace Prisma {
     uploadedAt?: DateTimeFilter<"Image"> | Date | string
     postId?: IntNullableFilter<"Image"> | number | null
     albumId?: IntNullableFilter<"Image"> | number | null
+    messageId?: IntNullableFilter<"Image"> | number | null
     post?: XOR<PostNullableScalarRelationFilter, PostWhereInput> | null
     album?: XOR<AlbumNullableScalarRelationFilter, AlbumWhereInput> | null
+    message?: XOR<ChatMessageNullableScalarRelationFilter, ChatMessageWhereInput> | null
   }, "id">
 
   export type ImageOrderByWithAggregationInput = {
@@ -13760,6 +13856,7 @@ export namespace Prisma {
     uploadedAt?: SortOrder
     postId?: SortOrderInput | SortOrder
     albumId?: SortOrderInput | SortOrder
+    messageId?: SortOrderInput | SortOrder
     _count?: ImageCountOrderByAggregateInput
     _avg?: ImageAvgOrderByAggregateInput
     _max?: ImageMaxOrderByAggregateInput
@@ -13777,6 +13874,7 @@ export namespace Prisma {
     uploadedAt?: DateTimeWithAggregatesFilter<"Image"> | Date | string
     postId?: IntNullableWithAggregatesFilter<"Image"> | number | null
     albumId?: IntNullableWithAggregatesFilter<"Image"> | number | null
+    messageId?: IntNullableWithAggregatesFilter<"Image"> | number | null
   }
 
   export type LinkWhereInput = {
@@ -14222,7 +14320,7 @@ export namespace Prisma {
   export type ChatMessageCreateInput = {
     content: string
     sentAt?: Date | string
-    attachedImage?: string | null
+    attachedImage?: ImageCreateNestedManyWithoutMessageInput
     author: UserCreateNestedOneWithoutSentMessagesInput
     chatGroup: ChatGroupCreateNestedOneWithoutMessagesInput
   }
@@ -14231,15 +14329,15 @@ export namespace Prisma {
     id?: number
     content: string
     sentAt?: Date | string
-    attachedImage?: string | null
     authorId: number
     chatGroupId: number
+    attachedImage?: ImageUncheckedCreateNestedManyWithoutMessageInput
   }
 
   export type ChatMessageUpdateInput = {
     content?: StringFieldUpdateOperationsInput | string
     sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    attachedImage?: NullableStringFieldUpdateOperationsInput | string | null
+    attachedImage?: ImageUpdateManyWithoutMessageNestedInput
     author?: UserUpdateOneRequiredWithoutSentMessagesNestedInput
     chatGroup?: ChatGroupUpdateOneRequiredWithoutMessagesNestedInput
   }
@@ -14248,16 +14346,15 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    attachedImage?: NullableStringFieldUpdateOperationsInput | string | null
     authorId?: IntFieldUpdateOperationsInput | number
     chatGroupId?: IntFieldUpdateOperationsInput | number
+    attachedImage?: ImageUncheckedUpdateManyWithoutMessageNestedInput
   }
 
   export type ChatMessageCreateManyInput = {
     id?: number
     content: string
     sentAt?: Date | string
-    attachedImage?: string | null
     authorId: number
     chatGroupId: number
   }
@@ -14265,14 +14362,12 @@ export namespace Prisma {
   export type ChatMessageUpdateManyMutationInput = {
     content?: StringFieldUpdateOperationsInput | string
     sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    attachedImage?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ChatMessageUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    attachedImage?: NullableStringFieldUpdateOperationsInput | string | null
     authorId?: IntFieldUpdateOperationsInput | number
     chatGroupId?: IntFieldUpdateOperationsInput | number
   }
@@ -14327,6 +14422,7 @@ export namespace Prisma {
     uploadedAt?: Date | string
     post?: PostCreateNestedOneWithoutImagesInput
     album?: AlbumCreateNestedOneWithoutImagesInput
+    message?: ChatMessageCreateNestedOneWithoutAttachedImageInput
   }
 
   export type ImageUncheckedCreateInput = {
@@ -14336,6 +14432,7 @@ export namespace Prisma {
     uploadedAt?: Date | string
     postId?: number | null
     albumId?: number | null
+    messageId?: number | null
   }
 
   export type ImageUpdateInput = {
@@ -14344,6 +14441,7 @@ export namespace Prisma {
     uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     post?: PostUpdateOneWithoutImagesNestedInput
     album?: AlbumUpdateOneWithoutImagesNestedInput
+    message?: ChatMessageUpdateOneWithoutAttachedImageNestedInput
   }
 
   export type ImageUncheckedUpdateInput = {
@@ -14353,6 +14451,7 @@ export namespace Prisma {
     uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     postId?: NullableIntFieldUpdateOperationsInput | number | null
     albumId?: NullableIntFieldUpdateOperationsInput | number | null
+    messageId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ImageCreateManyInput = {
@@ -14362,6 +14461,7 @@ export namespace Prisma {
     uploadedAt?: Date | string
     postId?: number | null
     albumId?: number | null
+    messageId?: number | null
   }
 
   export type ImageUpdateManyMutationInput = {
@@ -14377,6 +14477,7 @@ export namespace Prisma {
     uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     postId?: NullableIntFieldUpdateOperationsInput | number | null
     albumId?: NullableIntFieldUpdateOperationsInput | number | null
+    messageId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type LinkCreateInput = {
@@ -14919,7 +15020,6 @@ export namespace Prisma {
     id?: SortOrder
     content?: SortOrder
     sentAt?: SortOrder
-    attachedImage?: SortOrder
     authorId?: SortOrder
     chatGroupId?: SortOrder
   }
@@ -14934,7 +15034,6 @@ export namespace Prisma {
     id?: SortOrder
     content?: SortOrder
     sentAt?: SortOrder
-    attachedImage?: SortOrder
     authorId?: SortOrder
     chatGroupId?: SortOrder
   }
@@ -14943,7 +15042,6 @@ export namespace Prisma {
     id?: SortOrder
     content?: SortOrder
     sentAt?: SortOrder
-    attachedImage?: SortOrder
     authorId?: SortOrder
     chatGroupId?: SortOrder
   }
@@ -15008,6 +15106,11 @@ export namespace Prisma {
     isNot?: AlbumWhereInput | null
   }
 
+  export type ChatMessageNullableScalarRelationFilter = {
+    is?: ChatMessageWhereInput | null
+    isNot?: ChatMessageWhereInput | null
+  }
+
   export type ImageCountOrderByAggregateInput = {
     id?: SortOrder
     filename?: SortOrder
@@ -15015,12 +15118,14 @@ export namespace Prisma {
     uploadedAt?: SortOrder
     postId?: SortOrder
     albumId?: SortOrder
+    messageId?: SortOrder
   }
 
   export type ImageAvgOrderByAggregateInput = {
     id?: SortOrder
     postId?: SortOrder
     albumId?: SortOrder
+    messageId?: SortOrder
   }
 
   export type ImageMaxOrderByAggregateInput = {
@@ -15030,6 +15135,7 @@ export namespace Prisma {
     uploadedAt?: SortOrder
     postId?: SortOrder
     albumId?: SortOrder
+    messageId?: SortOrder
   }
 
   export type ImageMinOrderByAggregateInput = {
@@ -15039,12 +15145,14 @@ export namespace Prisma {
     uploadedAt?: SortOrder
     postId?: SortOrder
     albumId?: SortOrder
+    messageId?: SortOrder
   }
 
   export type ImageSumOrderByAggregateInput = {
     id?: SortOrder
     postId?: SortOrder
     albumId?: SortOrder
+    messageId?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -15449,6 +15557,13 @@ export namespace Prisma {
     deleteMany?: ChatMessageScalarWhereInput | ChatMessageScalarWhereInput[]
   }
 
+  export type ImageCreateNestedManyWithoutMessageInput = {
+    create?: XOR<ImageCreateWithoutMessageInput, ImageUncheckedCreateWithoutMessageInput> | ImageCreateWithoutMessageInput[] | ImageUncheckedCreateWithoutMessageInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutMessageInput | ImageCreateOrConnectWithoutMessageInput[]
+    createMany?: ImageCreateManyMessageInputEnvelope
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+  }
+
   export type UserCreateNestedOneWithoutSentMessagesInput = {
     create?: XOR<UserCreateWithoutSentMessagesInput, UserUncheckedCreateWithoutSentMessagesInput>
     connectOrCreate?: UserCreateOrConnectWithoutSentMessagesInput
@@ -15459,6 +15574,27 @@ export namespace Prisma {
     create?: XOR<ChatGroupCreateWithoutMessagesInput, ChatGroupUncheckedCreateWithoutMessagesInput>
     connectOrCreate?: ChatGroupCreateOrConnectWithoutMessagesInput
     connect?: ChatGroupWhereUniqueInput
+  }
+
+  export type ImageUncheckedCreateNestedManyWithoutMessageInput = {
+    create?: XOR<ImageCreateWithoutMessageInput, ImageUncheckedCreateWithoutMessageInput> | ImageCreateWithoutMessageInput[] | ImageUncheckedCreateWithoutMessageInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutMessageInput | ImageCreateOrConnectWithoutMessageInput[]
+    createMany?: ImageCreateManyMessageInputEnvelope
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+  }
+
+  export type ImageUpdateManyWithoutMessageNestedInput = {
+    create?: XOR<ImageCreateWithoutMessageInput, ImageUncheckedCreateWithoutMessageInput> | ImageCreateWithoutMessageInput[] | ImageUncheckedCreateWithoutMessageInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutMessageInput | ImageCreateOrConnectWithoutMessageInput[]
+    upsert?: ImageUpsertWithWhereUniqueWithoutMessageInput | ImageUpsertWithWhereUniqueWithoutMessageInput[]
+    createMany?: ImageCreateManyMessageInputEnvelope
+    set?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    disconnect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    delete?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    update?: ImageUpdateWithWhereUniqueWithoutMessageInput | ImageUpdateWithWhereUniqueWithoutMessageInput[]
+    updateMany?: ImageUpdateManyWithWhereWithoutMessageInput | ImageUpdateManyWithWhereWithoutMessageInput[]
+    deleteMany?: ImageScalarWhereInput | ImageScalarWhereInput[]
   }
 
   export type UserUpdateOneRequiredWithoutSentMessagesNestedInput = {
@@ -15475,6 +15611,20 @@ export namespace Prisma {
     upsert?: ChatGroupUpsertWithoutMessagesInput
     connect?: ChatGroupWhereUniqueInput
     update?: XOR<XOR<ChatGroupUpdateToOneWithWhereWithoutMessagesInput, ChatGroupUpdateWithoutMessagesInput>, ChatGroupUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type ImageUncheckedUpdateManyWithoutMessageNestedInput = {
+    create?: XOR<ImageCreateWithoutMessageInput, ImageUncheckedCreateWithoutMessageInput> | ImageCreateWithoutMessageInput[] | ImageUncheckedCreateWithoutMessageInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutMessageInput | ImageCreateOrConnectWithoutMessageInput[]
+    upsert?: ImageUpsertWithWhereUniqueWithoutMessageInput | ImageUpsertWithWhereUniqueWithoutMessageInput[]
+    createMany?: ImageCreateManyMessageInputEnvelope
+    set?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    disconnect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    delete?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    update?: ImageUpdateWithWhereUniqueWithoutMessageInput | ImageUpdateWithWhereUniqueWithoutMessageInput[]
+    updateMany?: ImageUpdateManyWithWhereWithoutMessageInput | ImageUpdateManyWithWhereWithoutMessageInput[]
+    deleteMany?: ImageScalarWhereInput | ImageScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutSentRequestsInput = {
@@ -15517,6 +15667,12 @@ export namespace Prisma {
     connect?: AlbumWhereUniqueInput
   }
 
+  export type ChatMessageCreateNestedOneWithoutAttachedImageInput = {
+    create?: XOR<ChatMessageCreateWithoutAttachedImageInput, ChatMessageUncheckedCreateWithoutAttachedImageInput>
+    connectOrCreate?: ChatMessageCreateOrConnectWithoutAttachedImageInput
+    connect?: ChatMessageWhereUniqueInput
+  }
+
   export type PostUpdateOneWithoutImagesNestedInput = {
     create?: XOR<PostCreateWithoutImagesInput, PostUncheckedCreateWithoutImagesInput>
     connectOrCreate?: PostCreateOrConnectWithoutImagesInput
@@ -15535,6 +15691,16 @@ export namespace Prisma {
     delete?: AlbumWhereInput | boolean
     connect?: AlbumWhereUniqueInput
     update?: XOR<XOR<AlbumUpdateToOneWithWhereWithoutImagesInput, AlbumUpdateWithoutImagesInput>, AlbumUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type ChatMessageUpdateOneWithoutAttachedImageNestedInput = {
+    create?: XOR<ChatMessageCreateWithoutAttachedImageInput, ChatMessageUncheckedCreateWithoutAttachedImageInput>
+    connectOrCreate?: ChatMessageCreateOrConnectWithoutAttachedImageInput
+    upsert?: ChatMessageUpsertWithoutAttachedImageInput
+    disconnect?: ChatMessageWhereInput | boolean
+    delete?: ChatMessageWhereInput | boolean
+    connect?: ChatMessageWhereUniqueInput
+    update?: XOR<XOR<ChatMessageUpdateToOneWithWhereWithoutAttachedImageInput, ChatMessageUpdateWithoutAttachedImageInput>, ChatMessageUncheckedUpdateWithoutAttachedImageInput>
   }
 
   export type NullableIntFieldUpdateOperationsInput = {
@@ -16186,6 +16352,7 @@ export namespace Prisma {
     file?: string
     uploadedAt?: Date | string
     post?: PostCreateNestedOneWithoutImagesInput
+    message?: ChatMessageCreateNestedOneWithoutAttachedImageInput
   }
 
   export type ImageUncheckedCreateWithoutAlbumInput = {
@@ -16194,6 +16361,7 @@ export namespace Prisma {
     file?: string
     uploadedAt?: Date | string
     postId?: number | null
+    messageId?: number | null
   }
 
   export type ImageCreateOrConnectWithoutAlbumInput = {
@@ -16277,6 +16445,7 @@ export namespace Prisma {
     uploadedAt?: DateTimeFilter<"Image"> | Date | string
     postId?: IntNullableFilter<"Image"> | number | null
     albumId?: IntNullableFilter<"Image"> | number | null
+    messageId?: IntNullableFilter<"Image"> | number | null
   }
 
   export type UserCreateWithoutAvatarsInput = {
@@ -16425,7 +16594,7 @@ export namespace Prisma {
   export type ChatMessageCreateWithoutChatGroupInput = {
     content: string
     sentAt?: Date | string
-    attachedImage?: string | null
+    attachedImage?: ImageCreateNestedManyWithoutMessageInput
     author: UserCreateNestedOneWithoutSentMessagesInput
   }
 
@@ -16433,8 +16602,8 @@ export namespace Prisma {
     id?: number
     content: string
     sentAt?: Date | string
-    attachedImage?: string | null
     authorId: number
+    attachedImage?: ImageUncheckedCreateNestedManyWithoutMessageInput
   }
 
   export type ChatMessageCreateOrConnectWithoutChatGroupInput = {
@@ -16539,9 +16708,34 @@ export namespace Prisma {
     id?: IntFilter<"ChatMessage"> | number
     content?: StringFilter<"ChatMessage"> | string
     sentAt?: DateTimeFilter<"ChatMessage"> | Date | string
-    attachedImage?: StringNullableFilter<"ChatMessage"> | string | null
     authorId?: IntFilter<"ChatMessage"> | number
     chatGroupId?: IntFilter<"ChatMessage"> | number
+  }
+
+  export type ImageCreateWithoutMessageInput = {
+    filename: string
+    file?: string
+    uploadedAt?: Date | string
+    post?: PostCreateNestedOneWithoutImagesInput
+    album?: AlbumCreateNestedOneWithoutImagesInput
+  }
+
+  export type ImageUncheckedCreateWithoutMessageInput = {
+    id?: number
+    filename: string
+    file?: string
+    uploadedAt?: Date | string
+    postId?: number | null
+    albumId?: number | null
+  }
+
+  export type ImageCreateOrConnectWithoutMessageInput = {
+    where: ImageWhereUniqueInput
+    create: XOR<ImageCreateWithoutMessageInput, ImageUncheckedCreateWithoutMessageInput>
+  }
+
+  export type ImageCreateManyMessageInputEnvelope = {
+    data: ImageCreateManyMessageInput | ImageCreateManyMessageInput[]
   }
 
   export type UserCreateWithoutSentMessagesInput = {
@@ -16604,6 +16798,22 @@ export namespace Prisma {
   export type ChatGroupCreateOrConnectWithoutMessagesInput = {
     where: ChatGroupWhereUniqueInput
     create: XOR<ChatGroupCreateWithoutMessagesInput, ChatGroupUncheckedCreateWithoutMessagesInput>
+  }
+
+  export type ImageUpsertWithWhereUniqueWithoutMessageInput = {
+    where: ImageWhereUniqueInput
+    update: XOR<ImageUpdateWithoutMessageInput, ImageUncheckedUpdateWithoutMessageInput>
+    create: XOR<ImageCreateWithoutMessageInput, ImageUncheckedCreateWithoutMessageInput>
+  }
+
+  export type ImageUpdateWithWhereUniqueWithoutMessageInput = {
+    where: ImageWhereUniqueInput
+    data: XOR<ImageUpdateWithoutMessageInput, ImageUncheckedUpdateWithoutMessageInput>
+  }
+
+  export type ImageUpdateManyWithWhereWithoutMessageInput = {
+    where: ImageScalarWhereInput
+    data: XOR<ImageUpdateManyMutationInput, ImageUncheckedUpdateManyWithoutMessageInput>
   }
 
   export type UserUpsertWithoutSentMessagesInput = {
@@ -16904,6 +17114,26 @@ export namespace Prisma {
     create: XOR<AlbumCreateWithoutImagesInput, AlbumUncheckedCreateWithoutImagesInput>
   }
 
+  export type ChatMessageCreateWithoutAttachedImageInput = {
+    content: string
+    sentAt?: Date | string
+    author: UserCreateNestedOneWithoutSentMessagesInput
+    chatGroup: ChatGroupCreateNestedOneWithoutMessagesInput
+  }
+
+  export type ChatMessageUncheckedCreateWithoutAttachedImageInput = {
+    id?: number
+    content: string
+    sentAt?: Date | string
+    authorId: number
+    chatGroupId: number
+  }
+
+  export type ChatMessageCreateOrConnectWithoutAttachedImageInput = {
+    where: ChatMessageWhereUniqueInput
+    create: XOR<ChatMessageCreateWithoutAttachedImageInput, ChatMessageUncheckedCreateWithoutAttachedImageInput>
+  }
+
   export type PostUpsertWithoutImagesInput = {
     update: XOR<PostUpdateWithoutImagesInput, PostUncheckedUpdateWithoutImagesInput>
     create: XOR<PostCreateWithoutImagesInput, PostUncheckedCreateWithoutImagesInput>
@@ -16968,6 +17198,32 @@ export namespace Prisma {
     topic?: StringFieldUpdateOperationsInput | string
   }
 
+  export type ChatMessageUpsertWithoutAttachedImageInput = {
+    update: XOR<ChatMessageUpdateWithoutAttachedImageInput, ChatMessageUncheckedUpdateWithoutAttachedImageInput>
+    create: XOR<ChatMessageCreateWithoutAttachedImageInput, ChatMessageUncheckedCreateWithoutAttachedImageInput>
+    where?: ChatMessageWhereInput
+  }
+
+  export type ChatMessageUpdateToOneWithWhereWithoutAttachedImageInput = {
+    where?: ChatMessageWhereInput
+    data: XOR<ChatMessageUpdateWithoutAttachedImageInput, ChatMessageUncheckedUpdateWithoutAttachedImageInput>
+  }
+
+  export type ChatMessageUpdateWithoutAttachedImageInput = {
+    content?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    author?: UserUpdateOneRequiredWithoutSentMessagesNestedInput
+    chatGroup?: ChatGroupUpdateOneRequiredWithoutMessagesNestedInput
+  }
+
+  export type ChatMessageUncheckedUpdateWithoutAttachedImageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    authorId?: IntFieldUpdateOperationsInput | number
+    chatGroupId?: IntFieldUpdateOperationsInput | number
+  }
+
   export type UserCreateWithoutPostsInput = {
     username?: string | null
     email: string
@@ -17013,6 +17269,7 @@ export namespace Prisma {
     file?: string
     uploadedAt?: Date | string
     album?: AlbumCreateNestedOneWithoutImagesInput
+    message?: ChatMessageCreateNestedOneWithoutAttachedImageInput
   }
 
   export type ImageUncheckedCreateWithoutPostInput = {
@@ -17021,6 +17278,7 @@ export namespace Prisma {
     file?: string
     uploadedAt?: Date | string
     albumId?: number | null
+    messageId?: number | null
   }
 
   export type ImageCreateOrConnectWithoutPostInput = {
@@ -17219,7 +17477,7 @@ export namespace Prisma {
   export type ChatMessageCreateWithoutAuthorInput = {
     content: string
     sentAt?: Date | string
-    attachedImage?: string | null
+    attachedImage?: ImageCreateNestedManyWithoutMessageInput
     chatGroup: ChatGroupCreateNestedOneWithoutMessagesInput
   }
 
@@ -17227,8 +17485,8 @@ export namespace Prisma {
     id?: number
     content: string
     sentAt?: Date | string
-    attachedImage?: string | null
     chatGroupId: number
+    attachedImage?: ImageUncheckedCreateNestedManyWithoutMessageInput
   }
 
   export type ChatMessageCreateOrConnectWithoutAuthorInput = {
@@ -17613,6 +17871,7 @@ export namespace Prisma {
     file?: string
     uploadedAt?: Date | string
     postId?: number | null
+    messageId?: number | null
   }
 
   export type ImageUpdateWithoutAlbumInput = {
@@ -17620,6 +17879,7 @@ export namespace Prisma {
     file?: StringFieldUpdateOperationsInput | string
     uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     post?: PostUpdateOneWithoutImagesNestedInput
+    message?: ChatMessageUpdateOneWithoutAttachedImageNestedInput
   }
 
   export type ImageUncheckedUpdateWithoutAlbumInput = {
@@ -17628,6 +17888,7 @@ export namespace Prisma {
     file?: StringFieldUpdateOperationsInput | string
     uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     postId?: NullableIntFieldUpdateOperationsInput | number | null
+    messageId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ImageUncheckedUpdateManyWithoutAlbumInput = {
@@ -17636,6 +17897,7 @@ export namespace Prisma {
     file?: StringFieldUpdateOperationsInput | string
     uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     postId?: NullableIntFieldUpdateOperationsInput | number | null
+    messageId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type UsersOnChatsCreateManyChatInput = {
@@ -17646,7 +17908,6 @@ export namespace Prisma {
     id?: number
     content: string
     sentAt?: Date | string
-    attachedImage?: string | null
     authorId: number
   }
 
@@ -17665,7 +17926,7 @@ export namespace Prisma {
   export type ChatMessageUpdateWithoutChatGroupInput = {
     content?: StringFieldUpdateOperationsInput | string
     sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    attachedImage?: NullableStringFieldUpdateOperationsInput | string | null
+    attachedImage?: ImageUpdateManyWithoutMessageNestedInput
     author?: UserUpdateOneRequiredWithoutSentMessagesNestedInput
   }
 
@@ -17673,16 +17934,50 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    attachedImage?: NullableStringFieldUpdateOperationsInput | string | null
     authorId?: IntFieldUpdateOperationsInput | number
+    attachedImage?: ImageUncheckedUpdateManyWithoutMessageNestedInput
   }
 
   export type ChatMessageUncheckedUpdateManyWithoutChatGroupInput = {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    attachedImage?: NullableStringFieldUpdateOperationsInput | string | null
     authorId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ImageCreateManyMessageInput = {
+    id?: number
+    filename: string
+    file?: string
+    uploadedAt?: Date | string
+    postId?: number | null
+    albumId?: number | null
+  }
+
+  export type ImageUpdateWithoutMessageInput = {
+    filename?: StringFieldUpdateOperationsInput | string
+    file?: StringFieldUpdateOperationsInput | string
+    uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    post?: PostUpdateOneWithoutImagesNestedInput
+    album?: AlbumUpdateOneWithoutImagesNestedInput
+  }
+
+  export type ImageUncheckedUpdateWithoutMessageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    filename?: StringFieldUpdateOperationsInput | string
+    file?: StringFieldUpdateOperationsInput | string
+    uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    postId?: NullableIntFieldUpdateOperationsInput | number | null
+    albumId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type ImageUncheckedUpdateManyWithoutMessageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    filename?: StringFieldUpdateOperationsInput | string
+    file?: StringFieldUpdateOperationsInput | string
+    uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    postId?: NullableIntFieldUpdateOperationsInput | number | null
+    albumId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ImageCreateManyPostInput = {
@@ -17691,6 +17986,7 @@ export namespace Prisma {
     file?: string
     uploadedAt?: Date | string
     albumId?: number | null
+    messageId?: number | null
   }
 
   export type ImageUpdateWithoutPostInput = {
@@ -17698,6 +17994,7 @@ export namespace Prisma {
     file?: StringFieldUpdateOperationsInput | string
     uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     album?: AlbumUpdateOneWithoutImagesNestedInput
+    message?: ChatMessageUpdateOneWithoutAttachedImageNestedInput
   }
 
   export type ImageUncheckedUpdateWithoutPostInput = {
@@ -17706,6 +18003,7 @@ export namespace Prisma {
     file?: StringFieldUpdateOperationsInput | string
     uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     albumId?: NullableIntFieldUpdateOperationsInput | number | null
+    messageId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ImageUncheckedUpdateManyWithoutPostInput = {
@@ -17714,6 +18012,7 @@ export namespace Prisma {
     file?: StringFieldUpdateOperationsInput | string
     uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     albumId?: NullableIntFieldUpdateOperationsInput | number | null
+    messageId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type PostCreateManyUserInput = {
@@ -17759,7 +18058,6 @@ export namespace Prisma {
     id?: number
     content: string
     sentAt?: Date | string
-    attachedImage?: string | null
     chatGroupId: number
   }
 
@@ -17893,7 +18191,7 @@ export namespace Prisma {
   export type ChatMessageUpdateWithoutAuthorInput = {
     content?: StringFieldUpdateOperationsInput | string
     sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    attachedImage?: NullableStringFieldUpdateOperationsInput | string | null
+    attachedImage?: ImageUpdateManyWithoutMessageNestedInput
     chatGroup?: ChatGroupUpdateOneRequiredWithoutMessagesNestedInput
   }
 
@@ -17901,15 +18199,14 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    attachedImage?: NullableStringFieldUpdateOperationsInput | string | null
     chatGroupId?: IntFieldUpdateOperationsInput | number
+    attachedImage?: ImageUncheckedUpdateManyWithoutMessageNestedInput
   }
 
   export type ChatMessageUncheckedUpdateManyWithoutAuthorInput = {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    attachedImage?: NullableStringFieldUpdateOperationsInput | string | null
     chatGroupId?: IntFieldUpdateOperationsInput | number
   }
 

@@ -3,7 +3,11 @@ import { Result } from "../types/types";
 
 export type Chat = Prisma.ChatGroupGetPayload<{
     include: {
-        members: true,
+        members: {
+			select: {
+				user: true
+			}
+		},
         messages: true,
     }
 }>;

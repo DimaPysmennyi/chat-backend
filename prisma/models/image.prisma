@@ -7,4 +7,6 @@ model Image {
   postId     Int?
   album      Album?   @relation(fields: [albumId], references: [id])
   albumId    Int?
+  message    ChatMessage? @relation(fields: [messageId], references: [id])
+  messageId  Int?
 }

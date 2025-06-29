@@ -61,10 +61,14 @@ async function updateUser(id: number, data: UpdateUser) {
 
 async function getUserAlbums(id: number) {
 	try {
-		const users = client.user.findUnique({
-			where: { id },
-			select: {
-				albums: true,
+		const users = client.album.findMany({
+			where: { userId: id },
+			include: {
+				images: {
+					select: {
+						filename: true
+					}
+				},
 			},
 		});
 		return users;
@@ -77,6 +81,13 @@ async function createAlbum(data: CreateAlbum) {
 	try {
 		const album = client.album.create({
 			data: data,
+			include: {
+				images: {
+					select: {
+						filename: true
+					}
+				}
+			}
 		});
 		return album;
 	} catch (error) {
@@ -131,31 +142,40 @@ async function getUserById(id: number) {
 }
 
 async function updateAlbum(id: number, data: UpdateAlbum) {
-	const {
-		images: [],
-		...otherData
-	} = data;
+	const images = data.images.map((image) => {
+		return { filename: image };
+	});
 
 	try {
-		const album = await client.album.update({
-			where: { id },
-			data: {...otherData},
+		const deletedImages = await client.image.deleteMany({
+			where: {
+				albumId: id,
+			},
 		});
+		if (deletedImages) {
+			const album = await client.album.update({
+				where: { id },
+				data: {
+					...data,
+					images: {
+						createMany: { data: images },
+					},
+				},
+				include: {
+					images: true,
+				},
+			});
 
-		// if (images.length > 0){
-        //     await client.image.createMany({
-        //         data: images.map((image) => ({
-        //             filename: image,
-        //             albumId: album.id
-        //         }))
-        //     })
-        // }
-
-        const albumWithImages = await client.album.findUnique({
-            where: {id: album.id},
-            include: {images: true}
-        })
-		return albumWithImages;
+			const albumWithImages = await client.album.findUnique({
+				where: { id: album.id },
+				include: { images: {
+					select: {
+						filename: true,
+					}
+				} },
+			});
+			return albumWithImages;
+		}
 	} catch (error) {
 		handleError(error);
 	}

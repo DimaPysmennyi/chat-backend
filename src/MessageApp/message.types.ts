@@ -1,9 +1,13 @@
 import { Prisma } from "../generated";
 
-export type Message = Prisma.ChatMessageGetPayload<{}>
+export type Message = Prisma.ChatMessageGetPayload<{
+    select: {
+        attachedImage: true
+    }
+}>
 
 interface NewMessagePayload {
-    message: CreateMessage
+    message: Message,
 };
 
 interface SendMessagePayload {
@@ -20,4 +24,11 @@ export interface IMessageClientEvents{
     sendMessage: (data: SendMessagePayload) => void;
 }
 
-export type CreateMessage = Prisma.ChatMessageUncheckedCreateInput;
+export type CreateMessage = {
+    content: string,
+    attachedImage?: {
+        filename: string,
+    },
+    authorId: number,
+    chatGroupId: number
+};

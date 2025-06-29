@@ -2,7 +2,7 @@ model ChatMessage {
   id            Int       @id @default(autoincrement())
   content       String
   sentAt        DateTime  @default(now())
-  attachedImage String?
+  attachedImage Image[]   
   author        User      @relation("MessageAuthor", fields: [authorId], references: [id])
   authorId      Int
   chatGroup     ChatGroup @relation(fields: [chatGroupId], references: [id])

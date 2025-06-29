@@ -34,7 +34,7 @@ model ChatMessage {
   id            Int       @id @default(autoincrement())
   content       String
   sentAt        DateTime  @default(now())
-  attachedImage String?
+  attachedImage Image[]
   author        User      @relation("MessageAuthor", fields: [authorId], references: [id])
   authorId      Int
   chatGroup     ChatGroup @relation(fields: [chatGroupId], references: [id])
@@ -51,14 +51,16 @@ model Friendship {
 }
 
 model Image {
-  id         Int      @id @default(autoincrement())
+  id         Int          @id @default(autoincrement())
   filename   String
-  file       String   @default("/images/posts")
-  uploadedAt DateTime @default(now())
-  post       Post?    @relation(fields: [postId], references: [id])
+  file       String       @default("/images/posts")
+  uploadedAt DateTime     @default(now())
+  post       Post?        @relation(fields: [postId], references: [id])
   postId     Int?
-  album      Album?   @relation(fields: [albumId], references: [id])
+  album      Album?       @relation(fields: [albumId], references: [id])
   albumId    Int?
+  message    ChatMessage? @relation(fields: [messageId], references: [id])
+  messageId  Int?
 }
 
 model Link {

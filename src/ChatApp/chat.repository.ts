@@ -39,7 +39,11 @@ export const repository = {
                 id: id
             },
             include: {
-                members: true,
+                members: {
+                    select: {
+                        user: true
+                    }
+                },
                 messages: true
             }
         })
@@ -52,7 +56,11 @@ export const repository = {
                 }
             },
             include: {
-                members: true,
+                members: {
+                    select: {
+                        user: true
+                    }
+                },
                 messages: true
             }
         })

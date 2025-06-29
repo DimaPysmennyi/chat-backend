@@ -147,7 +147,6 @@ exports.Prisma.ChatMessageScalarFieldEnum = {
   id: 'id',
   content: 'content',
   sentAt: 'sentAt',
-  attachedImage: 'attachedImage',
   authorId: 'authorId',
   chatGroupId: 'chatGroupId'
 };
@@ -165,7 +164,8 @@ exports.Prisma.ImageScalarFieldEnum = {
   file: 'file',
   uploadedAt: 'uploadedAt',
   postId: 'postId',
-  albumId: 'albumId'
+  albumId: 'albumId',
+  messageId: 'messageId'
 };
 
 exports.Prisma.LinkScalarFieldEnum = {

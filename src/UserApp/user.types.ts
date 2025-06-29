@@ -14,11 +14,19 @@ export type User = Prisma.UserGetPayload<{
     }
 }>;
 
-export type Album = Prisma.AlbumGetPayload<{}>;
+export type Album = Prisma.AlbumGetPayload<{
+    include: {
+        images: {
+            select: {
+                filename: true
+            }
+        }
+    }
+}>;
 
 export type CreateUser = Prisma.UserUncheckedCreateInput;
 export type CreateAlbum = Prisma.AlbumUncheckedCreateInput;
-export type UpdateAlbum ={
+export type UpdateAlbum = {
     id?: number;
     name?: string;
     createdAt?: Date;

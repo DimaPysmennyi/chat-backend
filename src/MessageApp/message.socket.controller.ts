@@ -1,3 +1,4 @@
+import { uploadImage } from "../tools/uploadImage";
 import { AuthenticatedSocket } from "../types/socket";
 import { service } from "./message.service";
 import { CreateMessage } from "./message.types";
@@ -11,7 +12,12 @@ export const messageSocketController = {
     },
     newMessage: async (socket: AuthenticatedSocket, data: CreateMessage) => {
         try{
-            const result = await service.createMessage(data);
+            if (data.attachedImage){
+                const {fileName} = await uploadImage(data.attachedImage.filename)
+                var result = await service.createMessage({...data, attachedImage: {filename: fileName}});
+            } else{
+                var result = await service.createMessage(data);
+            }
             console.log(result.data);
             console.log(data.chatGroupId);
             if (result.data){

@@ -63,7 +63,7 @@ async function getUserAlbums(id: number): Promise<IError | ISuccess<Album[]>> {
 	if (!result) {
 		return { status: "error", message: "Albums not found" };
 	}
-	return { status: "success", data: result.albums };
+	return { status: "success", data: result };
 }
 
 async function createAlbum(
